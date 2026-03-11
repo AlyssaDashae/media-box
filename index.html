@@ -107,13 +107,12 @@ color: var(--main-gold);
 
 /* BUTTON STYLES */
 .request-btn {
-/* Metallic gradient to look like light reflecting */
 background: linear-gradient(135deg, var(--main-gold) 0%, #fff0b3 45%, var(--main-gold) 100%);
 background-size: 200% auto;
-color: var(--main-teal); /* Dark text for contrast against the gold */
+color: var(--main-teal);
 border: none;
 padding: 0.8rem 1.8rem;
-border-radius: 0; /* Sharp corners */
+border-radius: 0;
 font-weight: 700;
 font-size: 0.9rem;
 cursor: pointer;
@@ -122,7 +121,7 @@ text-transform: uppercase;
 }
 
 .request-btn:hover {
-background-position: right center; /* Animates the reflection */
+background-position: right center;
 box-shadow: 0 0 15px rgba(212, 175, 55, 0.6);
 }
 
@@ -132,15 +131,15 @@ background-image: url(Hero.png);
 background-size: cover;
 background-position: center;
 color: var(--text-light);
-/* Increased bottom padding to make room for overlapping cards */
-padding: 12rem 5% 15rem 5%;
-text-align: center; /* Centered like the photo */
+/* Adjusted bottom padding to end the image higher up */
+padding: 12rem 5% 10rem 5%;
+text-align: center;
 position: relative;
 }
 
 .hero-content {
 max-width: 900px;
-margin: 0 auto; /* Centers the block */
+margin: 0 auto;
 }
 
 .hero h1 {
@@ -148,7 +147,7 @@ font-family: var(--font-heading);
 font-size: 3.5rem;
 line-height: 1.2;
 margin-bottom: 1.5rem;
-text-shadow: 2px 2px 4px rgba(0,0,0,0.6); /* Adds pop over images */
+text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
 }
 
 .hero h2 {
@@ -163,7 +162,8 @@ text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
 .services {
 padding: 0 5% 5rem 5%;
 text-align: center;
-margin-top: -12rem; /* THIS pulls the section up over the hero image */
+/* Pulls the section up so the cards straddle the background line */
+margin-top: -8rem;
 position: relative;
 z-index: 10;
 }
@@ -171,8 +171,8 @@ z-index: 10;
 .services h2 {
 font-family: var(--font-heading);
 font-size: 2.5rem;
-color: var(--text-light); /* White text to show on hero background */
-margin-bottom: 3rem;
+color: var(--text-light);
+margin-bottom: 4rem; /* Keeps title on the image, pushes cards down to straddle the line */
 text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
 }
 
@@ -183,28 +183,37 @@ gap: 2rem;
 justify-content: center;
 }
 
-/* FLOATING & INSET GOLD TRIM CARDS */
+/* CARDS WITH INSET BORDER */
 .service-card {
 background-color: var(--accent-bg);
 padding: 3rem 2rem;
-border-radius: 0; /* Sharp corners */
-border: none; /* Removed standard border */
-outline: 1px solid var(--main-gold); /* The gold trim */
-outline-offset: -12px; /* Pulls the line inside the card to leave white space */
-box-shadow: 0 20px 40px rgba(0,0,0,0.2); /* Drop shadow for floating effect */
-text-align: center; /* Centered text */
+border-radius: 0;
+border: none;
+outline: 1px solid var(--main-gold);
+outline-offset: -12px;
+box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+text-align: center;
 transition: transform 0.3s ease;
 position: relative;
 }
 
 .service-card:hover {
-transform: translateY(-5px); /* Makes it float up slightly when hovered */
+transform: translateY(-5px);
 }
 
+/* SVG Line Icons Styling */
 .service-icon {
-font-size: 2.5rem;
-color: var(--main-gold);
 margin-bottom: 1.5rem;
+display: flex;
+justify-content: center;
+}
+
+.service-icon svg {
+width: 55px;
+height: 55px;
+stroke: var(--main-gold);
+stroke-width: 1.2;
+fill: none;
 }
 
 .service-card h3 {
@@ -225,7 +234,7 @@ opacity: 0.8;
 /* --- Portfolio Section --- */
 .portfolio {
 padding: 5rem 5%;
-background-color: var(--bg-color); /* Matches body background */
+background-color: var(--bg-color);
 text-align: center;
 }
 
@@ -338,7 +347,7 @@ opacity: 0.7;
 /* Mobile Responsiveness */
 @media (max-width: 1024px) {
 .services-grid { grid-template-columns: repeat(2, 1fr); }
-.hero { padding: 10rem 5% 15rem 5%; }
+.hero { padding: 10rem 5% 12rem 5%; }
 }
 
 @media (max-width: 768px) {
@@ -346,8 +355,8 @@ header { padding: 1rem; width: 95%; flex-wrap: wrap; gap: 1rem;}
 nav ul { flex-direction: column; text-align: center; gap: 1rem; }
 .hero h1 { font-size: 2.5rem; }
 .services-grid { grid-template-columns: 1fr; }
-.services { margin-top: -5rem; }
-.hero { padding: 10rem 5% 8rem 5%; }
+.services { margin-top: -4rem; }
+.hero { padding: 10rem 5% 6rem 5%; }
 }
 
 </style>
@@ -384,22 +393,30 @@ nav ul { flex-direction: column; text-align: center; gap: 1rem; }
 <h2>Services</h2>
 <div class="services-grid">
 <article class="service-card">
-<div class="service-icon" aria-hidden="true">🌐</div>
+<div class="service-icon" aria-hidden="true">
+<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path><path d="M2 12h20"></path></svg>
+</div>
 <h3>GLOBAL ADVERTISING</h3>
 <p>Global advertising and communications. Reaching audience and strategic placement.</p>
 </article>
 <article class="service-card">
-<div class="service-icon" aria-hidden="true">🎥</div>
+<div class="service-icon" aria-hidden="true">
+<svg viewBox="0 0 24 24"><path d="M23 7l-7 5 7 5V7z" stroke-linejoin="round"></path><rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect></svg>
+</div>
 <h3>BESPOKE VIDEO PRODUCTION</h3>
 <p>Bespoke video presentations and professional editing.</p>
 </article>
 <article class="service-card">
-<div class="service-icon" aria-hidden="true">🎯</div>
+<div class="service-icon" aria-hidden="true">
+<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>
+</div>
 <h3>BRAND STRATEGY</h3>
 <p>Developing comprehensive and meaningful brand strategies.</p>
 </article>
 <article class="service-card">
-<div class="service-icon" aria-hidden="true">💻</div>
+<div class="service-icon" aria-hidden="true">
+<svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="2" y1="20" x2="22" y2="20"></line></svg>
+</div>
 <h3>DIGITAL CONSULTANCY</h3>
 <p>Digital consulting and digital strategies for maximizing online presence.</p>
 </article>
@@ -457,7 +474,7 @@ document.addEventListener('DOMContentLoaded', () => {
 const track = document.querySelector('.portfolio-track');
 const prevBtn = document.querySelector('.prev-btn');
 const nextBtn = document.querySelector('.next-btn');
-const itemWidth = 374; /* Adjusted for new card width + gap */
+const itemWidth = 374;
 let currentTranslate = 0;
 
 nextBtn.addEventListener('click', () => {

@@ -27,6 +27,7 @@
 "@id": "https://www.yourwebsite.com",
 "url": "https://www.yourwebsite.com",
 "telephone": "+12424332528",
+"email": "Mediaboxbahamaslimited@gmail.com",
 "address": {
 "@type": "PostalAddress",
 "streetAddress": "Braynen Building",
@@ -70,10 +71,9 @@ position: fixed;
 width: 90%;
 top: 0;
 z-index: 1000;
-border-bottom: 2px solid var(--main-gold); /* Added Gold Line */
+border-bottom: 2px solid var(--main-gold);
 }
 
-/* FIXED ULTRA-TIGHT LOGO LAYOUT */
 .logo {
 display: flex;
 align-items: center;
@@ -109,7 +109,7 @@ font-size: 0.75rem;
 color: #aaa;
 margin-top: 2px;
 letter-spacing: 0.5px;
-text-transform: uppercase; /* Made ALL CAPS */
+text-transform: uppercase;
 }
 
 nav ul {
@@ -132,7 +132,6 @@ nav a:hover {
 color: var(--main-gold);
 }
 
-/* BUTTON STYLES */
 .request-btn {
 background: linear-gradient(135deg, var(--main-gold) 0%, #fff0b3 45%, var(--main-gold) 100%);
 background-size: 200% auto;
@@ -158,7 +157,8 @@ background-image: url(Hero.png);
 background-size: cover;
 background-position: center;
 color: var(--text-light);
-padding: 12rem 5% 10rem 5%;
+/* Greatly increased padding to make room for the massive float effect */
+padding: 14rem 5% 16rem 5%;
 text-align: center;
 position: relative;
 }
@@ -176,6 +176,11 @@ margin-bottom: 1.5rem;
 text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
 }
 
+/* Gold Text Class for Hero */
+.hero-gold {
+color: var(--main-gold);
+}
+
 .hero h2 {
 font-size: 1.2rem;
 font-weight: 400;
@@ -188,7 +193,8 @@ text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
 .services {
 padding: 0 5% 5rem 5%;
 text-align: center;
-margin-top: -8rem;
+/* Increased negative margin for a dramatic floating effect */
+margin-top: -12rem;
 position: relative;
 z-index: 10;
 }
@@ -196,7 +202,7 @@ z-index: 10;
 .services h2 {
 font-family: var(--font-heading);
 font-size: 2.5rem;
-color: var(--text-light);
+color: var(--main-gold); /* Updated to Gold */
 margin-bottom: 4rem;
 text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
 }
@@ -208,7 +214,6 @@ gap: 2rem;
 justify-content: center;
 }
 
-/* CARDS WITH INSET BORDER */
 .service-card {
 background-color: var(--accent-bg);
 padding: 3rem 2rem;
@@ -216,7 +221,7 @@ border-radius: 0;
 border: none;
 outline: 1px solid var(--main-gold);
 outline-offset: -12px;
-box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+box-shadow: 0 35px 70px rgba(0,0,0,0.25); /* Deep shadow */
 text-align: center;
 transition: transform 0.3s ease;
 position: relative;
@@ -226,7 +231,6 @@ position: relative;
 transform: translateY(-5px);
 }
 
-/* SVG Line Icons Styling */
 .service-icon {
 margin-bottom: 1.5rem;
 display: flex;
@@ -282,22 +286,24 @@ margin: 10px auto 0 auto;
 }
 
 .product-track {
-display: flex;
-gap: 2rem;
-justify-content: center;
-flex-wrap: wrap;
+display: grid;
+grid-template-columns: repeat(4, 1fr);
+gap: 1.5rem;
+max-width: 1200px;
+margin: 0 auto;
 }
 
 .product-item {
-flex: 0 1 350px;
 background-color: #fff;
 border-radius: 0;
 outline: 1px solid var(--main-gold);
-outline-offset: -10px; /* Elegant inset border */
-box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+outline-offset: -8px;
+box-shadow: 0 10px 25px rgba(0,0,0,0.06);
 text-align: center;
 position: relative;
 transition: transform 0.3s ease;
+display: flex;
+flex-direction: column;
 }
 
 .product-item:hover {
@@ -306,13 +312,13 @@ transform: translateY(-5px);
 
 .product-banner {
 position: absolute;
-top: 18px;
-right: 8px;
+top: 15px;
+right: 5px;
 background: var(--main-gold);
 color: var(--main-teal);
-font-size: 0.75rem;
+font-size: 0.65rem;
 font-weight: 700;
-padding: 0.4rem 1rem;
+padding: 0.3rem 0.8rem;
 text-transform: uppercase;
 letter-spacing: 1px;
 z-index: 10;
@@ -320,54 +326,59 @@ box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
 
 .product-item img {
-width: calc(100% - 20px);
-margin: 10px 10px 0 10px; /* Fits perfectly inside the inset outline */
-height: 220px;
+width: calc(100% - 16px);
+margin: 8px 8px 0 8px;
+height: 160px;
 object-fit: cover;
 }
 
 .product-info {
-padding: 1.5rem 2rem 2.5rem 2rem;
+padding: 1.2rem;
+display: flex;
+flex-direction: column;
+flex-grow: 1;
 }
 
 .product-info h4 {
 font-family: var(--font-heading);
-font-size: 1.3rem;
+font-size: 1.1rem;
 color: var(--main-teal);
-margin-bottom: 1rem;
+margin-bottom: 0.8rem;
 }
 
 .product-desc {
-font-size: 0.9rem;
+font-size: 0.85rem;
 color: #666;
-line-height: 1.6;
-margin-bottom: 1.5rem;
-height: 65px; /* Keeps card heights uniform */
+line-height: 1.5;
+margin-bottom: 1.2rem;
+flex-grow: 1;
 }
 
 .product-price {
-font-size: 1.5rem;
+font-size: 1.25rem;
 color: var(--main-gold);
 font-weight: 700;
-margin-bottom: 1.5rem;
+margin-bottom: 1.2rem;
 font-family: var(--font-heading);
 }
 
 .product-price span {
-font-size: 0.9rem;
+font-size: 0.8rem;
 color: #999;
 font-weight: 400;
 font-family: var(--font-main);
 }
 
 .quote-btn {
-width: 100%; /* Makes the button span the full card width */
+width: 100%;
+padding: 0.6rem 1rem;
+font-size: 0.85rem;
 }
 
 /* --- Portfolio Section --- */
 .portfolio {
 padding: 5rem 5%;
-background-color: #fff; /* Changed to white to contrast with products bg */
+background-color: #fff;
 text-align: center;
 }
 
@@ -457,30 +468,115 @@ color: var(--main-teal);
 .prev-btn { left: 0; }
 .next-btn { right: 0; }
 
-/* FOOTER STYLES */
+/* --- NEW ELEGANT FOOTER --- */
 footer {
 background-color: var(--main-teal);
 color: var(--text-light);
-padding: 3rem 5%;
-text-align: center;
-border-top: 2px solid var(--main-gold); /* Match header thickness */
+padding: 5rem 5% 2rem 5%;
+border-top: 2px solid var(--main-gold);
 }
 
-footer .logo {
-justify-content: center;
-margin-bottom: 1rem;
+.footer-content {
+display: flex;
+justify-content: space-between;
+flex-wrap: wrap;
+gap: 3rem;
+max-width: 1200px;
+margin: 0 auto 4rem auto;
+text-align: left;
 }
 
-footer p {
+.footer-col {
+flex: 1;
+min-width: 250px;
+}
+
+.footer-col .logo {
+margin-bottom: 1.5rem;
+}
+
+.footer-col h4 {
+color: var(--main-gold);
+font-family: var(--font-heading);
+font-size: 1.3rem;
+margin-bottom: 1.5rem;
+}
+
+.footer-col p, .footer-col a {
+font-size: 0.9rem;
+color: #ddd;
+line-height: 1.8;
+text-decoration: none;
+margin-bottom: 0.8rem;
+display: flex;
+align-items: center;
+gap: 10px;
+transition: color 0.3s;
+}
+
+.footer-col a:hover {
+color: var(--main-gold);
+}
+
+/* Social & Contact Icons */
+.social-links {
+display: flex;
+gap: 1.5rem;
+margin-top: 1.5rem;
+}
+
+.social-links a svg {
+width: 28px;
+height: 28px;
+fill: var(--main-gold);
+transition: transform 0.3s;
+}
+
+.social-links a:hover svg {
+transform: translateY(-4px);
+}
+
+/* Bottom Payment Bar */
+.footer-bottom {
+max-width: 1200px;
+margin: 0 auto;
+padding-top: 2rem;
+border-top: 1px solid rgba(255, 255, 255, 0.1);
+display: flex;
+justify-content: space-between;
+align-items: center;
+flex-wrap: wrap;
+gap: 1.5rem;
+}
+
+.footer-bottom p {
 font-size: 0.8rem;
-opacity: 0.7;
+color: #888;
+margin: 0;
+}
+
+.payment-options {
+display: flex;
+gap: 1.2rem;
+align-items: center;
+}
+
+.payment-options svg {
+height: 24px;
+width: auto;
+fill: #aaa;
+transition: fill 0.3s;
+}
+
+.payment-options svg:hover {
+fill: var(--main-gold);
 }
 
 /* Mobile Responsiveness */
 @media (max-width: 1024px) {
 .services-grid { grid-template-columns: repeat(2, 1fr); }
-.hero { padding: 10rem 5% 12rem 5%; }
-.product-desc { height: auto; }
+.product-track { grid-template-columns: repeat(2, 1fr); }
+.hero { padding: 12rem 5% 15rem 5%; }
 }
 
 @media (max-width: 768px) {
@@ -488,10 +584,12 @@ header { padding: 1rem; width: 95%; flex-wrap: wrap; gap: 1rem;}
 nav ul { flex-direction: column; text-align: center; gap: 1rem; }
 .hero h1 { font-size: 2.5rem; }
 .services-grid { grid-template-columns: 1fr; }
-.services { margin-top: -4rem; }
-.hero { padding: 10rem 5% 6rem 5%; }
+.product-track { grid-template-columns: 1fr; }
+.services { margin-top: -6rem; }
+.hero { padding: 12rem 5% 8rem 5%; }
+.footer-content { flex-direction: column; }
+.footer-bottom { flex-direction: column; justify-content: center; }
 }
-
 </style>
 </head>
 <body>
@@ -509,7 +607,7 @@ nav ul { flex-direction: column; text-align: center; gap: 1rem; }
 <li><a href="#home">HOME</a></li>
 <li><a href="#services">SERVICES</a></li>
 <li><a href="#portfolio">PORTFOLIO</a></li>
-<li><a href="#about">ABOUT US</a></li>
+<li><a href="about.html">ABOUT US</a></li>
 <li><a href="#insights">INSIGHTS</a></li>
 </ul>
 </nav>
@@ -519,7 +617,7 @@ nav ul { flex-direction: column; text-align: center; gap: 1rem; }
 <main>
 <section class="hero" id="home" aria-label="Introduction">
 <div class="hero-content">
-<h1>LUXURY MEDIA.<br> CORPORATE EXCELLENCE.<br> UNMATCHED IMPACT.</h1>
+<h1><span class="hero-gold">LUXURY MEDIA.<br> CORPORATE EXCELLENCE.</span><br> UNMATCHED IMPACT.</h1>
 <h2>Strategic Communications and Media Production<br> for the Bahamas' Elite Brands.</h2>
 </div>
 </section>
@@ -566,7 +664,7 @@ nav ul { flex-direction: column; text-align: center; gap: 1rem; }
 <div class="product-banner">BEST VALUE</div>
 <img src="https://images.unsplash.com/photo-1559828854-15f5fc858c2a?q=80&w=600&auto=format&fit=crop" alt="10x8 Solar Billboard">
 <div class="product-info">
-<h4>Solar Billboard (10ft x 8ft)</h4>
+<h4>Solar Billboard (10x8)</h4>
 <p class="product-desc">High-visibility solar-powered billboard display at premium locations like East Street & Independence Highway.</p>
 <p class="product-price">$1,040 <span>/ month</span></p>
 <button class="request-btn quote-btn">QUOTE</button>
@@ -587,9 +685,19 @@ nav ul { flex-direction: column; text-align: center; gap: 1rem; }
 <div class="product-banner">POPULAR</div>
 <img src="https://images.unsplash.com/photo-1588196749597-9ff046fe6e60?q=80&w=600&auto=format&fit=crop" alt="Pull Up Banners">
 <div class="product-info">
-<h4>Customized Pull Up Banners</h4>
+<h4>Customized Banners</h4>
 <p class="product-desc">Premium customized pull-up banners perfectly designed for corporate events, seminars, and exhibitions.</p>
 <p class="product-price">$850 <span>/ 2 units</span></p>
+<button class="request-btn quote-btn">QUOTE</button>
+</div>
+</article>
+
+<article class="product-item">
+<img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=600&auto=format&fit=crop" alt="Business Plans">
+<div class="product-info">
+<h4>Strategic Business Plans</h4>
+<p class="product-desc">Professional and customized business plan creation tailored to guide your company's growth and vision.</p>
+<p class="product-price">$2,500</p>
 <button class="request-btn quote-btn">QUOTE</button>
 </div>
 </article>
@@ -635,14 +743,62 @@ nav ul { flex-direction: column; text-align: center; gap: 1rem; }
 </main>
 
 <footer>
+<div class="footer-content">
+<div class="footer-col">
 <div class="logo">
 <img src="Logo.png" alt="MediaBox Bahamas Gold Logo">
-<div class="logo-text" style="align-items: center; margin-left: -10px;">
+<div class="logo-text" style="align-items: flex-start; margin-left: -10px;">
 <span class="brand-name">MediaBox</span>
 <span class="brand-country">BAHAMAS</span>
 </div>
 </div>
+<p style="margin-top: 1rem;">Premium marketing and media production for the Bahamas' Elite Brands.</p>
+
+<div class="social-links">
+<a href="#" aria-label="Facebook">
+<svg viewBox="0 0 24 24"><path d="M22.675 0h-21.35C.597 0 0 .597 0 1.325v21.351C0 23.403.597 24 1.325 24H12.82v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116c.73 0 1.323-.597 1.323-1.324V1.325C24 .597 23.403 0 22.675 0z"/></svg>
+</a>
+<a href="https://wa.me/12424332528" aria-label="WhatsApp">
+<svg viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 000 12a12 12 0 001.917 6.483L.416 24l5.656-1.488A11.94 11.94 0 0011.944 24a12 12 0 0012-12 12 12 0 00-12-12zm6.658 17.15c-.279.79-1.573 1.485-2.203 1.54-.588.051-1.346.21-3.83-1.04-3.024-1.52-4.985-4.62-5.136-4.825-.15-.203-1.226-1.636-1.226-3.116 0-1.48.766-2.21 1.036-2.493.27-.283.593-.354.79-.354.195 0 .392.002.564.01.182.008.428-.073.67.513.25.602.812 1.983.886 2.133.074.15.123.325.025.524-.099.201-.15.326-.3.476-.15.15-.316.34-.45.474-.15.152-.308.318-.135.617.172.3.766 1.27 1.642 2.05.18.253 1.127 1.378 2.22 1.83.298.125.473.1.652-.11.178-.21.766-.89.97-1.196.202-.307.403-.254.67-.152.27.102 1.704.805 1.996.954.293.15.488.225.56.35.074.125.074.723-.205 1.513z"/></svg>
+</a>
+</div>
+</div>
+
+<div class="footer-col">
+<h4>Contact Us</h4>
+<p>
+<svg style="width:16px; height:16px; fill:var(--main-gold);" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+Braynen Building, Nassau, Bahamas
+</p>
+<p>
+<svg style="width:16px; height:16px; fill:var(--main-gold);" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+Mediaboxbahamaslimited@gmail.com
+</p>
+<p>
+<svg style="width:16px; height:16px; fill:var(--main-gold);" viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
++1 (242) 433-2528
+</p>
+</div>
+
+<div class="footer-col">
+<h4>Quick Links</h4>
+<a href="#services">Our Services</a>
+<a href="#portfolio">Client Portfolio</a>
+<a href="about.html">About Us</a>
+<a href="#insights">Insights & News</a>
+</div>
+</div>
+
+<div class="footer-bottom">
 <p>&copy; 2026 MediaBox Bahamas Limited. All Rights Reserved.</p>
+
+<div class="payment-options">
+<svg viewBox="0 0 38 24"><path d="M13.73 17.653l2.228-11.45h3.606l-2.23 11.45h-3.604zm16.516-11.232c-1.12-.42-2.887-.8-4.707-.8-5.11 0-8.707 2.454-8.736 5.976-.03 2.597 2.585 4.04 4.57 4.93 2.025.91 2.703 1.493 2.71 2.308.01 1.255-1.637 1.82-3.152 1.82-1.996 0-3.058-.292-4.672-.942l-.66-3.12c1.077.472 3.085.875 5.176.896 2.57 0 4.137-1.144 4.15-2.914-.015-1.168-.895-2.03-3.41-3.107-1.745-.758-2.94-1.63-2.94-3.177.03-2.585 2.152-4.838 6.46-4.838 1.626-.03 2.942.27 3.996.64l-.785 3.37zM9.814 17.653h-3.48L3.926 7.425C3.78 6.78 3.572 6.55 3.047 6.305L.015 4.95v.35c.78.204 2.193.717 2.912 1.412l3.417 10.94H10.1l4.98-11.45h-3.76L9.814 17.653zm26.49 0h3.297l-2.853-11.45h-3.328c-.628 0-1.15.34-1.396.885l-5.305 10.565h3.766l.75-1.92h4.594l.432 1.92h-.002z" fill="#aaa"/></svg>
+<svg viewBox="0 0 38 24"><path d="M12.185 11.968A7.78 7.78 0 0115.176 5.6 7.848 7.848 0 007.84 0 7.84 7.84 0 000 7.84a7.84 7.84 0 007.84 7.84 7.82 7.82 0 004.345-1.312V11.97M23.52 0a7.84 7.84 0 00-7.84 7.84 7.84 7.84 0 002.99 6.228 7.84 7.84 0 0012.69-6.228A7.84 7.84 0 0023.52 0z" fill="#aaa"/></svg>
+<svg viewBox="0 0 38 24"><path d="M33.916 16.71H38l-4.14-10h-4.2l-4.15 10h3.51l.83-2.12h4.48l.58 2.12zm-3.04-4.85l1.32-3.38 1.48 3.38h-2.8zM18.814 6.71h-5.46v10h2.64v-3.7h2.82v3.7h2.64V6.71zM8.514 6.71H0v10h2.64V12.9h2.36l1.83 3.82h3.04L7.69 12.33c1.08-.5 1.76-1.52 1.76-2.71 0-1.68-1.29-2.91-3.2-2.91zm-2.82 4.1h-3V8.82h3c.6 0 .96.3.96.98s-.36 1-1 1zm7.42 5.9h-2.64v-10h4.48c1.9 0 3.2 1.23 3.2 2.91 0 1.2-.68 2.2-1.76 2.7l2.18 4.38H15.5l-1.83-3.8h-2.36v3.8h1.83zm13.34-5.45l-2.06-4.54h-3.4v10h2.64v-5l1.6 3.4h1.94l1.6-3.4v5h2.65v-10h-3.4l-1.57 4.54z" fill="#aaa"/></svg>
+<svg viewBox="0 0 38 24"><path d="M22.096 15.688c2.14 0 3.83-1.69 3.83-3.83 0-2.14-1.69-3.83-3.83-3.83-2.14 0-3.83 1.69-3.83 3.83 0 2.14 1.69 3.83 3.83 3.83zm0-6.19c1.33 0 2.36 1.03 2.36 2.36 0 1.33-1.03 2.36-2.36 2.36-1.33 0-2.36-1.03-2.36-2.36 0-1.33 1.03-2.36 2.36-2.36zm-8.87.1v6h2.88v-6h-2.88zm8.87 0h-3.1v6h3.1c1.65 0 2.99-1.34 2.99-2.99 0-1.65-1.34-3.01-2.99-3.01zm-5.97 6v-6H13.6v6h2.53zM7.29 9.6h3v1.39c.67-.93 1.76-1.49 2.95-1.49 2.14 0 3.83 1.69 3.83 3.83 0 2.14-1.69 3.83-3.83 3.83-1.19 0-2.28-.56-2.95-1.49v1.39H7.29V9.6zm3 4.13c0 1.33 1.03 2.36 2.36 2.36 1.33 0 2.36-1.03 2.36-2.36 0-1.33-1.03-2.36-2.36-2.36-1.33 0-2.36 1.03-2.36 2.36zm-7.66 0c0 2.14 1.69 3.83 3.83 3.83 2.14 0 3.83-1.69 3.83-3.83V9.6H6.46v2.33c0 1.33-1.03 2.36-2.36 2.36-1.33 0-2.36-1.03-2.36-2.36 0-1.33 1.03-2.36 2.36-2.36 1.19 0 2.28.56 2.95 1.49V9.5c-1.19-.93-2.28-1.49-3.47-1.49-2.42 0-4.33 1.91-4.33 4.33 0 2.42 1.91 4.33 4.33 4.33 1.19 0 2.28-.56 2.95-1.49v-1.39H2.63v6.09H0v-6.09z" fill="#aaa"/></svg>
+</div>
+</div>
 </footer>
 
 <script>

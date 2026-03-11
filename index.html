@@ -23,7 +23,7 @@
 "@context": "https://schema.org",
 "@type": "LocalBusiness",
 "name": "MediaBox Bahamas Limited",
-"image": "",
+"image": "Logo.png",
 "@id": "https://www.yourwebsite.com",
 "url": "https://www.yourwebsite.com",
 "telephone": "+12424332528",
@@ -42,7 +42,7 @@
 :root {
 --bg-color: #f7f9fc;
 --main-teal: #0c182d;
---main-gold: #c69f68;
+--main-gold: #d4af37; /* Richer, more vibrant metallic gold */
 --text-dark: #333;
 --text-light: #fff;
 --accent-bg: #fff;
@@ -105,20 +105,25 @@ nav a:hover {
 color: var(--main-gold);
 }
 
+/* NEW BUTTON STYLES */
 .request-btn {
-background-color: var(--main-gold);
-color: var(--text-light);
+/* Metallic gradient to look like light reflecting */
+background: linear-gradient(135deg, var(--main-gold) 0%, #fff0b3 45%, var(--main-gold) 100%);
+background-size: 200% auto;
+color: var(--main-teal); /* Dark text for contrast against the gold */
 border: none;
 padding: 0.8rem 1.8rem;
-border-radius: 50px;
-font-weight: 600;
+border-radius: 0; /* Sharp corners */
+font-weight: 700;
 font-size: 0.9rem;
 cursor: pointer;
-transition: opacity 0.3s ease;
+transition: all 0.4s ease;
+text-transform: uppercase;
 }
 
 .request-btn:hover {
-opacity: 0.8;
+background-position: right center; /* Animates the reflection */
+box-shadow: 0 0 15px rgba(212, 175, 55, 0.6);
 }
 
 /* --- Hero Section --- */
@@ -127,14 +132,15 @@ background-image: url(Hero.png);
 background-size: cover;
 background-position: center;
 color: var(--text-light);
-padding: 15rem 5% 10rem 5%;
-text-align: left;
+/* Increased bottom padding to make room for overlapping cards */
+padding: 12rem 5% 15rem 5%;
+text-align: center; /* Centered like the photo */
 position: relative;
 }
 
 .hero-content {
-max-width: 800px;
-padding-bottom: 5rem;
+max-width: 900px;
+margin: 0 auto; /* Centers the block */
 }
 
 .hero h1 {
@@ -142,6 +148,7 @@ font-family: var(--font-heading);
 font-size: 3.5rem;
 line-height: 1.2;
 margin-bottom: 1.5rem;
+text-shadow: 2px 2px 4px rgba(0,0,0,0.6); /* Adds pop over images */
 }
 
 .hero h2 {
@@ -149,19 +156,24 @@ font-size: 1.2rem;
 font-weight: 400;
 margin-bottom: 3rem;
 opacity: 0.9;
+text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
 }
 
 /* --- Services Section --- */
 .services {
-padding: 5rem 5%;
+padding: 0 5% 5rem 5%;
 text-align: center;
+margin-top: -12rem; /* THIS pulls the section up over the hero image */
+position: relative;
+z-index: 10;
 }
 
 .services h2 {
 font-family: var(--font-heading);
 font-size: 2.5rem;
-color: var(--main-teal);
-margin-bottom: 4rem;
+color: var(--text-light); /* White text to show on hero background */
+margin-bottom: 3rem;
+text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
 }
 
 .services-grid {
@@ -171,18 +183,25 @@ gap: 2rem;
 justify-content: center;
 }
 
+/* FLOATING & GOLD TRIM CARDS */
 .service-card {
 background-color: var(--accent-bg);
-padding: 3rem;
-border-radius: 10px;
-box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-text-align: left;
+padding: 3rem 2rem;
+border-radius: 0; /* Sharp corners */
+border: 2px solid var(--main-gold); /* Gold Trim */
+box-shadow: 0 25px 50px rgba(0,0,0,0.3); /* Heavy drop shadow for floating effect */
+text-align: center; /* Centered text */
+transition: transform 0.3s ease;
+}
+
+.service-card:hover {
+transform: translateY(-5px); /* Makes it float up slightly when hovered */
 }
 
 .service-icon {
 font-size: 2.5rem;
 color: var(--main-gold);
-margin-bottom: 2rem;
+margin-bottom: 1.5rem;
 }
 
 .service-card h3 {
@@ -203,7 +222,7 @@ opacity: 0.8;
 /* --- Portfolio Section --- */
 .portfolio {
 padding: 5rem 5%;
-background-color: var(--accent-bg);
+background-color: var(--bg-color); /* Matches body background */
 text-align: center;
 }
 
@@ -228,27 +247,30 @@ margin: 10px auto 0 auto;
 .portfolio-carousel-container {
 overflow: hidden;
 position: relative;
+max-width: 1200px;
+margin: 0 auto;
 }
 
 .portfolio-track {
 display: flex;
-gap: 1rem;
+gap: 1.5rem;
 padding: 2rem 0;
 transition: transform 0.3s ease;
 }
 
 .portfolio-item {
-flex: 0 0 300px;
+flex: 0 0 350px;
 background-color: #fff;
-border-radius: 5px;
+border-radius: 0;
+border: 1px solid #eee;
 overflow: hidden;
-box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+box-shadow: 0 10px 20px rgba(0,0,0,0.05);
 text-align: left;
 }
 
 .portfolio-item img {
 width: 100%;
-height: 200px;
+height: 220px;
 object-fit: cover;
 }
 
@@ -272,30 +294,57 @@ color: #666;
 position: absolute;
 top: 50%;
 transform: translateY(-50%);
-background: rgba(255, 255, 255, 0.7);
-border: none;
-font-size: 1.5rem;
-color: var(--main-teal);
-padding: 1rem;
-border-radius: 50%;
+background: var(--main-teal);
+border: 1px solid var(--main-gold);
+font-size: 1.2rem;
+color: var(--main-gold);
+padding: 1rem 1.2rem;
 cursor: pointer;
 z-index: 10;
+transition: all 0.3s ease;
 }
 
-.prev-btn { left: 1rem; }
-.next-btn { right: 1rem; }
+.carousel-control:hover {
+background: var(--main-gold);
+color: var(--main-teal);
+}
+
+.prev-btn { left: 0; }
+.next-btn { right: 0; }
+
+/* NEW FOOTER STYLES */
+footer {
+background-color: var(--main-teal);
+color: var(--text-light);
+padding: 3rem 5%;
+text-align: center;
+margin-top: 3rem;
+border-top: 3px solid var(--main-gold);
+}
+
+footer .logo {
+justify-content: center;
+margin-bottom: 1rem;
+}
+
+footer p {
+font-size: 0.8rem;
+opacity: 0.7;
+}
 
 /* Mobile Responsiveness */
-@media (max-width: 900px) {
+@media (max-width: 1024px) {
+.services-grid { grid-template-columns: repeat(2, 1fr); }
+.hero { padding: 10rem 5% 15rem 5%; }
+}
+
+@media (max-width: 768px) {
 header { padding: 1rem; width: 95%; flex-wrap: wrap; gap: 1rem;}
 nav ul { flex-direction: column; text-align: center; gap: 1rem; }
 .hero h1 { font-size: 2.5rem; }
-.services-grid { grid-template-columns: repeat(2, 1fr); }
-}
-
-@media (max-width: 600px) {
 .services-grid { grid-template-columns: 1fr; }
-.hero h1 { font-size: 2rem; }
+.services { margin-top: -5rem; }
+.hero { padding: 10rem 5% 8rem 5%; }
 }
 
 </style>
@@ -391,12 +440,21 @@ nav ul { flex-direction: column; text-align: center; gap: 1rem; }
 </section>
 </main>
 
+<footer>
+<div class="logo">
+<img src="Logo.png" alt="MediaBox Bahamas Gold Logo">
+<span>MediaBox</span>
+<span style="font-size: 0.8rem; color: #aaa; margin-left: 5px;">Bahamas</span>
+</div>
+<p>&copy; 2026 MediaBox Bahamas Limited. All Rights Reserved.</p>
+</footer>
+
 <script>
 document.addEventListener('DOMContentLoaded', () => {
 const track = document.querySelector('.portfolio-track');
 const prevBtn = document.querySelector('.prev-btn');
 const nextBtn = document.querySelector('.next-btn');
-const itemWidth = 316;
+const itemWidth = 374; /* Adjusted for new card width + gap */
 let currentTranslate = 0;
 
 nextBtn.addEventListener('click', () => {
@@ -418,3 +476,4 @@ track.style.transform = `translateX(${currentTranslate}px)`;
 
 </body>
 </html>
+

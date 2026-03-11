@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>MediaBox Bahamas | Luxury Media & Corporate Excellence</title>
+<meta name="title" content="MediaBox Bahamas | Luxury Media & Corporate Excellence">
+<meta name="description" content="MediaBox Bahamas is a premium marketing and media production company offering bespoke video, global advertising, and digital consultancy for elite brands in The Bahamas.">
+<meta name="keywords" content="MediaBox Bahamas, Bahamas marketing agency, luxury video production Nassau, corporate advertising Bahamas, digital consultancy New Providence">
+<meta name="author" content="MediaBox Bahamas Limited">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.yourwebsite.com/">
+<meta property="og:title" content="MediaBox Bahamas | Luxury Media & Corporate Excellence">
+<meta property="og:description" content="Premium marketing, bespoke video production, and brand strategy for elite brands in The Bahamas.">
+<meta property="og:image" content="URL_TO_YOUR_SOCIAL_SHARE_IMAGE">
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+
+<script type="application/ld+json">
+{
+"@context": "https://schema.org",
+"@type": "LocalBusiness",
+"name": "MediaBox Bahamas Limited",
+"image": "",
+"@id": "https://www.yourwebsite.com",
+"url": "https://www.yourwebsite.com",
+"telephone": "+12424332528",
+"address": {
+"@type": "PostalAddress",
+"streetAddress": "Braynen Building",
+"addressLocality": "Nassau",
+"addressRegion": "New Providence",
+"addressCountry": "BS"
+},
+"description": "MediaBox Bahamas provides a variety of marketing, advertising, bespoke video production, and business development services for the Bahamas' Elite Brands."
+}
+</script>
+
+<style>
+:root {
+--bg-color: #f7f9fc;
+--main-teal: #0c182d;
+--main-gold: #c69f68;
+--text-dark: #333;
+--text-light: #fff;
+--accent-bg: #fff;
+--font-main: 'Montserrat', sans-serif;
+--font-heading: 'Playfair Display', serif;
+}
+
+body {
+margin: 0;
+font-family: var(--font-main);
+color: var(--text-dark);
+background-color: var(--bg-color);
+overflow-x: hidden;
+}
+
+/* --- Header --- */
+header {
+background-color: var(--main-teal);
+color: var(--text-light);
+padding: 1rem 5%;
+display: flex;
+justify-content: space-between;
+align-items: center;
+position: fixed;
+width: 90%;
+top: 0;
+z-index: 1000;
+}
+
+.logo {
+display: flex;
+align-items: center;
+font-family: var(--font-heading);
+font-size: 1.5rem;
+color: var(--main-gold);
+}
+
+.logo img {
+height: 30px;
+margin-right: 10px;
+}
+
+nav ul {
+list-style: none;
+margin: 0;
+padding: 0;
+display: flex;
+gap: 2rem;
+}
+
+nav a {
+text-decoration: none;
+color: var(--text-light);
+font-size: 0.9rem;
+font-weight: 600;
+transition: color 0.3s ease;
+}
+
+nav a:hover {
+color: var(--main-gold);
+}
+
+.request-btn {
+background-color: var(--main-gold);
+color: var(--text-light);
+border: none;
+padding: 0.8rem 1.8rem;
+border-radius: 50px;
+font-weight: 600;
+font-size: 0.9rem;
+cursor: pointer;
+transition: opacity 0.3s ease;
+}
+
+.request-btn:hover {
+opacity: 0.8;
+}
+
+/* --- Hero Section --- */
+.hero {
+background-image: url('PLACEHOLDER_YACHT_BUILDING_BACKGROUND_IMAGE_URL');
+background-size: cover;
+background-position: center;
+color: var(--text-light);
+padding: 15rem 5% 10rem 5%;
+text-align: left;
+position: relative;
+}
+
+.hero-content {
+max-width: 800px;
+padding-bottom: 5rem;
+}
+
+.hero h1 {
+font-family: var(--font-heading);
+font-size: 3.5rem;
+line-height: 1.2;
+margin-bottom: 1.5rem;
+}
+
+.hero h2 {
+font-size: 1.2rem;
+font-weight: 400;
+margin-bottom: 3rem;
+opacity: 0.9;
+}
+
+/* --- Services Section --- */
+.services {
+padding: 5rem 5%;
+text-align: center;
+}
+
+.services h2 {
+font-family: var(--font-heading);
+font-size: 2.5rem;
+color: var(--main-teal);
+margin-bottom: 4rem;
+}
+
+.services-grid {
+display: grid;
+grid-template-columns: repeat(4, 1fr);
+gap: 2rem;
+justify-content: center;
+}
+
+.service-card {
+background-color: var(--accent-bg);
+padding: 3rem;
+border-radius: 10px;
+box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+text-align: left;
+}
+
+.service-icon {
+font-size: 2.5rem;
+color: var(--main-gold);
+margin-bottom: 2rem;
+}
+
+.service-card h3 {
+font-size: 1.1rem;
+font-weight: 700;
+color: var(--text-dark);
+margin-bottom: 1rem;
+text-transform: uppercase;
+}
+
+.service-card p {
+font-size: 0.9rem;
+color: var(--text-dark);
+line-height: 1.6;
+opacity: 0.8;
+}
+
+/* --- Portfolio Section --- */
+.portfolio {
+padding: 5rem 5%;
+background-color: var(--accent-bg);
+text-align: center;
+}
+
+.portfolio h2 {
+font-family: var(--font-heading);
+font-size: 2.5rem;
+color: var(--main-teal);
+margin-bottom: 2rem;
+position: relative;
+display: inline-block;
+}
+
+.portfolio h2::after {
+content: '';
+display: block;
+width: 80px;
+height: 2px;
+background-color: var(--main-gold);
+margin: 10px auto 0 auto;
+}
+
+.portfolio-carousel-container {
+overflow: hidden;
+position: relative;
+}
+
+.portfolio-track {
+display: flex;
+gap: 1rem;
+padding: 2rem 0;
+transition: transform 0.3s ease;
+}
+
+.portfolio-item {
+flex: 0 0 300px;
+background-color: #fff;
+border-radius: 5px;
+overflow: hidden;
+box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+text-align: left;
+}
+
+.portfolio-item img {
+width: 100%;
+height: 200px;
+object-fit: cover;
+}
+
+.portfolio-info {
+padding: 1.5rem;
+}
+
+.portfolio-info h4 {
+font-size: 1rem;
+margin: 0 0 0.5rem 0;
+font-weight: 600;
+}
+
+.portfolio-info p {
+font-size: 0.8rem;
+margin: 0;
+color: #666;
+}
+
+.carousel-control {
+position: absolute;
+top: 50%;
+transform: translateY(-50%);
+background: rgba(255, 255, 255, 0.7);
+border: none;
+font-size: 1.5rem;
+color: var(--main-teal);
+padding: 1rem;
+border-radius: 50%;
+cursor: pointer;
+z-index: 10;
+}
+
+.prev-btn { left: 1rem; }
+.next-btn { right: 1rem; }
+
+/* Mobile Responsiveness */
+@media (max-width: 900px) {
+header { padding: 1rem; width: 95%; flex-wrap: wrap; gap: 1rem;}
+nav ul { flex-direction: column; text-align: center; gap: 1rem; }
+.hero h1 { font-size: 2.5rem; }
+.services-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 600px) {
+.services-grid { grid-template-columns: 1fr; }
+.hero h1 { font-size: 2rem; }
+}
+
+</style>
+</head>
+<body>
+
+<header>
+<div class="logo">
+<img src="Logo.png" alt="MediaBox Bahamas Gold Logo">
+<span>MediaBox</span>
+<span style="font-size: 0.8rem; color: #aaa; margin-left: 5px;">Bahamas</span>
+</div>
+<nav aria-label="Main Navigation">
+<ul>
+<li><a href="#home">HOME</a></li>
+<li><a href="#services">SERVICES</a></li>
+<li><a href="#portfolio">PORTFOLIO</a></li>
+<li><a href="#about">ABOUT US</a></li>
+<li><a href="#insights">INSIGHTS</a></li>
+</ul>
+</nav>
+<button class="request-btn">REQUEST A CONSULTATION</button>
+</header>
+
+<main>
+<section class="hero" id="home" aria-label="Introduction">
+<div class="hero-content">
+<h1>LUXURY MEDIA.<br> CORPORATE EXCELLENCE.<br> UNMATCHED IMPACT.</h1>
+<h2>Strategic Communications and Media Production<br> for the Bahamas' Elite Brands.</h2>
+</div>
+</section>
+
+<section class="services" id="services">
+<h2>Services</h2>
+<div class="services-grid">
+<article class="service-card">
+<div class="service-icon" aria-hidden="true">🌐</div>
+<h3>GLOBAL ADVERTISING</h3>
+<p>Global advertising and communications. Reaching audience and strategic placement.</p>
+</article>
+<article class="service-card">
+<div class="service-icon" aria-hidden="true">🎥</div>
+<h3>BESPOKE VIDEO PRODUCTION</h3>
+<p>Bespoke video presentations and professional editing.</p>
+</article>
+<article class="service-card">
+<div class="service-icon" aria-hidden="true">🎯</div>
+<h3>BRAND STRATEGY</h3>
+<p>Developing comprehensive and meaningful brand strategies.</p>
+</article>
+<article class="service-card">
+<div class="service-icon" aria-hidden="true">💻</div>
+<h3>DIGITAL CONSULTANCY</h3>
+<p>Digital consulting and digital strategies for maximizing online presence.</p>
+</article>
+</div>
+</section>
+
+<section class="portfolio" id="portfolio">
+<h2>Selected Client Portfolio</h2>
+
+<div class="portfolio-carousel-container">
+<button class="carousel-control prev-btn" aria-label="Previous portfolio item">&#10094;</button>
+<div class="portfolio-track">
+
+<article class="portfolio-item">
+<img src="https://images.unsplash.com/photo-1620131435213-9a3b6164f20f?q=80&w=400&auto=format&fit=crop" alt="Exterior view of luxury Bahamas real estate development">
+<div class="portfolio-info">
+<h4>Real Estate Development Portfolio</h4>
+<p>Bahamas Luxury Living</p>
+</div>
+</article>
+
+<article class="portfolio-item">
+<img src="https://images.unsplash.com/photo-1599818817361-b1e605d8f28c?q=80&w=400&auto=format&fit=crop" alt="Corporate professionals at a Nassau business conference event">
+<div class="portfolio-info">
+<h4>Corporate Event Showcase</h4>
+<p>Nassau Business Conference</p>
+</div>
+</article>
+
+<article class="portfolio-item">
+<img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=400&auto=format&fit=crop" alt="Cinematic bespoke film shot of Bahamas resort">
+<div class="portfolio-info">
+<h4>Bespoke Brand Film</h4>
+<p>Bahamas Resorts Global Campaign</p>
+</div>
+</article>
+
+</div>
+<button class="carousel-control next-btn" aria-label="Next portfolio item">&#10095;</button>
+</div>
+</section>
+</main>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+const track = document.querySelector('.portfolio-track');
+const prevBtn = document.querySelector('.prev-btn');
+const nextBtn = document.querySelector('.next-btn');
+const itemWidth = 316;
+let currentTranslate = 0;
+
+nextBtn.addEventListener('click', () => {
+const maxTranslate = (track.children.length - 1) * itemWidth;
+if (Math.abs(currentTranslate) < maxTranslate) {
+currentTranslate -= itemWidth;
+track.style.transform = `translateX(${currentTranslate}px)`;
+}
+});
+
+prevBtn.addEventListener('click', () => {
+if (currentTranslate < 0) {
+currentTranslate += itemWidth;
+track.style.transform = `translateX(${currentTranslate}px)`;
+}
+});
+});
+</script>
+
+</body>
+</html>

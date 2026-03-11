@@ -59,7 +59,6 @@ background-color: var(--bg-color);
 overflow-x: hidden;
 }
 
-/* Stops scrolling while the splash screen is active */
 body.no-scroll {
 overflow: hidden;
 }
@@ -141,6 +140,7 @@ width: 90%;
 top: 0;
 z-index: 1000;
 border-bottom: 2px solid var(--main-gold);
+transition: all 0.3s ease;
 }
 
 .logo {
@@ -179,6 +179,12 @@ color: #aaa;
 margin-top: 2px;
 letter-spacing: 0.5px;
 text-transform: uppercase;
+}
+
+/* HAMBURGER MENU ICON (Hidden on Desktop) */
+.menu-toggle {
+display: none;
+cursor: pointer;
 }
 
 nav ul {
@@ -291,7 +297,7 @@ margin: 0 auto;
 .hero h1 {
 font-family: var(--font-heading);
 font-size: 3.5rem;
-font-weight: 400; /* Reduced from bold to regular */
+font-weight: 400;
 line-height: 1.2;
 margin-bottom: 1.5rem;
 text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
@@ -707,24 +713,42 @@ transition: fill 0.3s;
 fill: var(--main-gold);
 }
 
-/* Mobile Responsiveness */
+/* =========================================
+MOBILE RESPONSIVENESS
+========================================= */
 @media (max-width: 1024px) {
 .services-grid { grid-template-columns: repeat(2, 1fr); }
 .product-track { grid-template-columns: repeat(2, 1fr); }
-.hero { padding: 10rem 5% 10rem 5%; }
+
+/* Activate Hamburger Menu */
+.menu-toggle { display: block; }
+header { flex-wrap: wrap; }
+nav, .request-btn { display: none; width: 100%; } /* Hide links on mobile initially */
+
+/* When menu is open via Javascript */
+header.active { background-color: var(--main-teal); }
+header.active nav, header.active .request-btn { display: flex; }
+
+nav ul { flex-direction: column; text-align: center; gap: 1.5rem; padding: 2rem 0; width: 100%;}
+.request-btn { margin-bottom: 1.5rem; justify-content: center;}
+
+/* Fix Dropdown for Mobile */
+.dropdown-content { position: relative; min-width: 100%; box-shadow: none; border-top: none; padding-top: 1rem; background-color: transparent;}
+.dropdown-content a { text-align: center; color: #aaa; }
 }
 
 @media (max-width: 768px) {
-header { padding: 1rem; width: 95%; flex-wrap: wrap; gap: 1rem;}
-nav ul { flex-direction: column; text-align: center; gap: 1rem; }
-.dropdown-content { position: relative; border-top: none; min-width: 100%; box-shadow: none; }
-.dropdown-content a { text-align: center; padding: 10px; }
-.hero h1 { font-size: 2.5rem; }
+header { padding: 1rem; width: 95%; }
+/* Resize Hero Text & Fix Overlapping */
+.hero { padding: 10rem 5% 12rem 5%; }
+.hero h1 { font-size: 2.2rem; margin-top: 1rem; }
+.hero h2 { font-size: 1rem; }
+.services { margin-top: -8rem; }
+.services h2 { font-size: 2rem; }
+
 .services-grid { grid-template-columns: 1fr; }
 .product-track { grid-template-columns: 1fr; }
-.services { margin-top: -6rem; }
-.hero { padding: 10rem 5% 6rem 5%; }
-.footer-content { flex-direction: column; }
+.footer-content { flex-direction: column; gap: 2rem;}
 .footer-bottom { flex-direction: column; justify-content: center; }
 }
 </style>
@@ -739,7 +763,7 @@ MediaBox
 </svg>
 </div>
 
-<header>
+<header id="main-header">
 <div class="logo">
 <img src="Logo.png" alt="MediaBox Bahamas Gold Logo">
 <div class="logo-text">
@@ -747,6 +771,11 @@ MediaBox
 <span class="brand-country">BAHAMAS</span>
 </div>
 </div>
+
+<div class="menu-toggle" id="mobile-menu-btn">
+<svg viewBox="0 0 24 24" width="30" height="30" stroke="var(--main-gold)" stroke-width="2" fill="none"><path d="M3 12h18M3 6h18M3 18h18"></path></svg>
+</div>
+
 <nav aria-label="Main Navigation">
 <ul>
 <li><a href="#home">HOME</a></li>
@@ -938,8 +967,8 @@ Mediaboxbahamaslimited@gmail.com
 <a href="#services">Our Services</a>
 <a href="#portfolio">Client Portfolio</a>
 <a href="about.html">About Us</a>
-<a href="National-Rate.pdf" target="_blank">National Rate Brochure</a>
-<a href="International-Rate.pdf" target="_blank">International Rate Brochure</a>
+<a href="National.pdf" target="_blank">National Rate Brochure</a>
+<a href="International.pdf" target="_blank">International Rate Brochure</a>
 </div>
 </div>
 
@@ -956,18 +985,24 @@ Mediaboxbahamaslimited@gmail.com
 </footer>
 
 <script>
-// Logic to handle the splash screen animation timing
+// --- Mobile Menu Toggle Logic ---
+const menuBtn = document.getElementById('mobile-menu-btn');
+const header = document.getElementById('main-header');
+
+menuBtn.addEventListener('click', () => {
+header.classList.toggle('active');
+});
+
+// --- Splash Screen Logic ---
 window.addEventListener('load', () => {
 setTimeout(() => {
 const splashScreen = document.getElementById('splash-screen');
 splashScreen.classList.add('fade-out-splash');
-
-// Re-enable scrolling on the body
 document.body.classList.remove('no-scroll');
 }, 4000);
 });
 
-// Logic for the Portfolio Carousel
+// --- Portfolio Carousel Logic ---
 document.addEventListener('DOMContentLoaded', () => {
 const track = document.querySelector('.portfolio-track');
 const prevBtn = document.querySelector('.prev-btn');

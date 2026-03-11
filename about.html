@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>About Us | MediaBox Bahamas</title>
+<meta name="title" content="About Us | MediaBox Bahamas">
+<meta name="description" content="Learn about MediaBox Bahamas, an enviro-friendly marketing and media firm providing effective marketing solutions and billboard advertising.">
+<meta name="author" content="MediaBox Bahamas Limited">
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+:root {
+--bg-color: #f7f9fc;
+--main-teal: #0c182d;
+--main-gold: #c5a059; /* Champagne Gold */
+--text-dark: #333;
+--text-light: #fff;
+--accent-bg: #fff;
+--font-main: 'Montserrat', sans-serif;
+--font-heading: 'Playfair Display', serif;
+}
+
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+
+body {
+font-family: var(--font-main);
+color: var(--text-dark);
+background-color: var(--bg-color);
+overflow-x: hidden;
+}
+
+/* --- Header --- */
+header {
+background-color: var(--main-teal);
+color: var(--text-light);
+padding: 1rem 5%;
+display: flex;
+justify-content: space-between;
+align-items: center;
+position: fixed;
+width: 100%;
+top: 0;
+z-index: 1000;
+border-bottom: 2px solid var(--main-gold);
+}
+
+.logo-group {
+display: flex;
+align-items: center;
+cursor: pointer;
+text-decoration: none;
+}
+
+.logo-group img {
+height: 45px;
+margin-right: 0;
+position: relative;
+z-index: 2;
+}
+
+.logo-text {
+display: flex;
+flex-direction: column;
+line-height: 1.1;
+margin-left: -10px; /* Ultra-tight logo spacing */
+position: relative;
+z-index: 1;
+}
+
+.brand-name {
+font-family: var(--font-heading);
+font-size: 1.6rem;
+color: var(--main-gold);
+margin: 0;
+}
+
+.brand-country {
+font-family: var(--font-main);
+font-size: 0.75rem;
+color: #aaa;
+margin-top: 2px;
+letter-spacing: 0.5px;
+text-transform: uppercase;
+}
+
+nav ul {
+list-style: none;
+margin: 0;
+padding: 0;
+display: flex;
+gap: 2rem;
+}
+
+nav a {
+text-decoration: none;
+color: var(--text-light);
+font-size: 0.9rem;
+font-weight: 600;
+transition: color 0.3s ease;
+}
+
+nav a:hover {
+color: var(--main-gold);
+}
+
+.request-btn {
+background: linear-gradient(135deg, var(--main-gold) 0%, #fff0b3 45%, var(--main-gold) 100%);
+background-size: 200% auto;
+color: var(--main-teal);
+border: none;
+padding: 0.8rem 1.8rem;
+border-radius: 0;
+font-weight: 700;
+font-size: 0.9rem;
+cursor: pointer;
+transition: all 0.4s ease;
+text-transform: uppercase;
+}
+
+.request-btn:hover {
+background-position: right center;
+box-shadow: 0 0 15px rgba(197, 160, 89, 0.6);
+}
+
+/* --- Page Hero (Shorter for inner pages) --- */
+.page-hero {
+background-color: var(--main-teal);
+background-image: linear-gradient(rgba(12, 24, 45, 0.8), rgba(12, 24, 45, 0.9)), url('https://images.unsplash.com/photo-1574950454793-100db5a16d8a?q=80&w=1600&auto=format&fit=crop');
+background-size: cover;
+background-position: center;
+color: var(--text-light);
+padding: 12rem 5% 6rem 5%;
+text-align: center;
+}
+
+.page-hero h1 {
+font-family: var(--font-heading);
+font-size: 3.5rem;
+margin-bottom: 1rem;
+color: var(--main-gold);
+}
+
+.page-hero p {
+font-size: 1.1rem;
+opacity: 0.9;
+max-width: 600px;
+margin: 0 auto;
+}
+
+/* --- Content Sections --- */
+.content-section {
+padding: 6rem 5%;
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 4rem;
+align-items: center;
+max-width: 1400px;
+margin: 0 auto;
+}
+
+.content-section.reverse {
+direction: rtl; /* Swaps the image to the left for layout variety */
+background-color: var(--accent-bg);
+}
+
+.content-section.reverse > * {
+direction: ltr; /* Keeps text reading normally */
+}
+
+.text-content h2 {
+font-family: var(--font-heading);
+font-size: 2.5rem;
+color: var(--main-teal);
+margin-bottom: 1.5rem;
+position: relative;
+display: inline-block;
+}
+
+.text-content h2::after {
+content: '';
+display: block;
+width: 60px;
+height: 2px;
+background-color: var(--main-gold);
+margin-top: 10px;
+}
+
+.text-content p {
+font-size: 1rem;
+line-height: 1.8;
+color: #555;
+margin-bottom: 1.5rem;
+}
+
+/* Mini Grid for Benefits */
+.benefits-list {
+display: grid;
+grid-template-columns: 1fr;
+gap: 1rem;
+margin-top: 2rem;
+}
+
+.benefit-item {
+display: flex;
+align-items: center;
+gap: 1rem;
+font-weight: 600;
+color: var(--main-teal);
+font-size: 1.1rem;
+}
+
+.benefit-item svg {
+width: 24px;
+height: 24px;
+stroke: var(--main-gold);
+fill: none;
+stroke-width: 2;
+}
+
+/* --- Elegant Image Holder --- */
+.elegant-image-wrapper {
+position: relative;
+padding: 20px; /* Creates space for the gold frame to show */
+}
+
+/* The Gold Frame Behind */
+.elegant-image-wrapper::before {
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+width: calc(100% - 40px);
+height: calc(100% - 40px);
+border: 2px solid var(--main-gold);
+z-index: 1;
+transition: all 0.4s ease;
+}
+
+/* The Actual Image Container */
+.elegant-image-wrapper .img-container {
+position: relative;
+z-index: 2;
+transform: translate(20px, 20px); /* Offsets the image from the frame */
+box-shadow: 0 20px 40px rgba(0,0,0,0.15); /* Corporate floating shadow */
+transition: all 0.4s ease;
+background-color: #eee;
+}
+
+.elegant-image-wrapper img {
+width: 100%;
+height: 400px;
+object-fit: cover;
+display: block;
+filter: grayscale(20%); /* Slight corporate desaturation */
+transition: filter 0.4s ease;
+}
+
+/* Hover Effect for Premium Feel */
+.elegant-image-wrapper:hover .img-container {
+transform: translate(10px, 10px);
+box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+.elegant-image-wrapper:hover img {
+filter: grayscale(0%);
+}
+
+/* FOOTER STYLES */
+footer {
+background-color: var(--main-teal);
+color: var(--text-light);
+padding: 3rem 5%;
+text-align: center;
+border-top: 3px solid var(--main-gold);
+}
+
+footer .logo-group {
+justify-content: center;
+margin-bottom: 1rem;
+cursor: default;
+}
+
+footer p {
+font-size: 0.8rem;
+opacity: 0.7;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 900px) {
+.content-section { grid-template-columns: 1fr; gap: 3rem; }
+header { padding: 1rem; flex-wrap: wrap; gap: 1rem;}
+nav ul { flex-direction: column; text-align: center; gap: 1rem; width: 100%; }
+.request-btn { margin: 0 auto; }
+}
+</style>
+</head>
+<body>
+
+<header>
+<a href="index.html" class="logo-group">
+<img src="Logo.png" alt="MediaBox Bahamas Gold Logo">
+<div class="logo-text">
+<span class="brand-name">MediaBox</span>
+<span class="brand-country">Bahamas</span>
+</div>
+</a>
+<nav aria-label="Main Navigation">
+<ul>
+<li><a href="index.html#home">HOME</a></li>
+<li><a href="index.html#services">SERVICES</a></li>
+<li><a href="index.html#portfolio">PORTFOLIO</a></li>
+<li><a href="about.html">ABOUT US</a></li>
+<li><a href="index.html#insights">INSIGHTS</a></li>
+</ul>
+</nav>
+<button class="request-btn">REQUEST A CONSULTATION</button>
+</header>
+
+<main>
+
+<section class="page-hero">
+<h1>Our Story</h1>
+<p>Using our knowledge, experience, and creativity to communicate your brand effectively.</p>
+</section>
+
+<section class="content-section">
+<div class="text-content">
+<h2>About Company</h2>
+<p>Mediabox Bahamas Ltd. is an enviro-friendly marketing and media firm whose focus is to provide effective marketing solutions while contributing to entrepreneurial environmental stability.[span_0](end_span)</p>
+<p>Our mission is to offer clients with a long term, mutually beneficial business relationship by using our knowledge, experience, and creativity to communicate their brands effectively.[span_1](end_span)</p>
+</div>
+
+<div class="elegant-image-wrapper">
+<div class="img-container">
+<img src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=800&auto=format&fit=crop" alt="Corporate Office">
+</div>
+</div>
+</section>
+
+<section class="content-section reverse">
+<div class="text-content">
+<h2>Why Choose Us?</h2>
+<p>MediaBox Bahamas highly recommends the use of our mediabox displays.[span_2](end_span) [span_3](start_span)This is the best time for your company to creatively attract the attention of its target audience and MediaBox can assist with content creation to help your company engage with its audience on a deeper level.[span_3](end_span)</p>
+<p>Our billboards and media strategies can provide a number of key benefits to your brand, including:[span_4](end_span)</p>
+
+<div class="benefits-list">
+<div class="benefit-item">
+<svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+High traffic advertising[span_5](end_span)
+</div>
+<div class="benefit-item">
+<svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+Overnight Brand awareness[span_6](end_span)
+</div>
+<div class="benefit-item">
+<svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+Increase Sales[span_7](end_span)
+</div>
+</div>
+</div>
+
+<div class="elegant-image-wrapper">
+<div class="img-container">
+<img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?q=80&w=800&auto=format&fit=crop" alt="Marketing Strategy Meeting">
+</div>
+</div>
+</section>
+
+</main>
+
+<footer>
+<div class="logo-group">
+<img src="Logo.png" alt="MediaBox Bahamas Gold Logo">
+<div class="logo-text">
+<span class="brand-name">MediaBox</span>
+<span class="brand-country">Bahamas</span>
+</div>
+</div>
+<p>&copy; 2026 MediaBox Bahamas Limited. All Rights Reserved.</p>
+</footer>
+
+</body>
+</html>

@@ -7,48 +7,22 @@
 <title>MediaBox Bahamas | Luxury Media & Corporate Excellence</title>
 <meta name="title" content="MediaBox Bahamas | Luxury Media & Corporate Excellence">
 <meta name="description" content="MediaBox Bahamas is a premium marketing and media production company offering bespoke video, global advertising, and digital consultancy for elite brands in The Bahamas.">
-<meta name="keywords" content="MediaBox Bahamas, Bahamas marketing agency, luxury video production Nassau, corporate advertising Bahamas, digital consultancy New Providence">
 <meta name="author" content="MediaBox Bahamas Limited">
 
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://www.yourwebsite.com/">
-<meta property="og:title" content="MediaBox Bahamas | Luxury Media & Corporate Excellence">
-<meta property="og:description" content="Premium marketing, bespoke video production, and brand strategy for elite brands in The Bahamas.">
-<meta property="og:image" content="URL_TO_YOUR_SOCIAL_SHARE_IMAGE">
-
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
-
-<script type="application/ld+json">
-{
-"@context": "https://schema.org",
-"@type": "LocalBusiness",
-"name": "MediaBox Bahamas Limited",
-"image": "Logo.png",
-"@id": "https://www.yourwebsite.com",
-"url": "https://www.yourwebsite.com",
-"telephone": "+12424332528",
-"email": "Mediaboxbahamaslimited@gmail.com",
-"address": {
-"@type": "PostalAddress",
-"streetAddress": "Braynen Building",
-"addressLocality": "Nassau",
-"addressRegion": "New Providence",
-"addressCountry": "BS"
-},
-"description": "MediaBox Bahamas provides a variety of marketing, advertising, bespoke video production, and business development services for the Bahamas' Elite Brands."
-}
-</script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
 
 <style>
 :root {
---bg-color: #f7f9fc;
+--bg-color: #f4f7f6; /* Bright digital silver/white */
 --main-teal: #0c182d;
 --main-gold: #c5a059; /* Champagne Gold */
+--accent-cyan: #00f3ff;
 --text-dark: #333;
 --text-light: #fff;
---accent-bg: #fff;
+--glass-bg: rgba(255, 255, 255, 0.65);
+--glass-border: rgba(197, 160, 89, 0.4);
 --font-main: 'Montserrat', sans-serif;
---font-heading: 'Playfair Display', serif;
+--font-heading: 'Space Grotesk', sans-serif; /* New Tech Font */
 }
 
 body {
@@ -57,661 +31,248 @@ font-family: var(--font-main);
 color: var(--text-dark);
 background-color: var(--bg-color);
 overflow-x: hidden;
+/* Bright tech background pattern */
+background-image:
+radial-gradient(circle at 10% 40%, rgba(0, 243, 255, 0.05), transparent 30%),
+radial-gradient(circle at 90% 60%, rgba(197, 160, 89, 0.08), transparent 30%),
+linear-gradient(rgba(12, 24, 45, 0.03) 1px, transparent 1px),
+linear-gradient(90deg, rgba(12, 24, 45, 0.03) 1px, transparent 1px);
+background-size: 100% 100%, 100% 100%, 40px 40px, 40px 40px;
 }
 
-body.no-scroll {
-overflow: hidden;
-}
+body.no-scroll { overflow: hidden; }
 
 /* =========================================
 LUXURY SPLASH SCREEN (PRELOADER)
 ========================================= */
 #splash-screen {
 position: fixed;
-top: 0;
-left: 0;
-width: 100vw;
-height: 100vh;
-background-color: var(--main-teal);
+top: 0; left: 0; width: 100vw; height: 100vh;
+background-color: var(--bg-color);
 z-index: 9999;
-display: flex;
-justify-content: center;
-align-items: center;
+display: flex; justify-content: center; align-items: center;
 transition: opacity 1.2s ease-in-out, visibility 1.2s ease-in-out;
 }
 
-.splash-svg {
-width: 80%;
-max-width: 800px;
-filter: drop-shadow(0 0 10px rgba(197, 160, 89, 0.5)) drop-shadow(0 0 25px rgba(197, 160, 89, 0.3));
-}
+.splash-svg { width: 80%; max-width: 800px; filter: drop-shadow(0 0 15px rgba(197, 160, 89, 0.4)); }
 
 .splash-text {
-font-family: var(--font-heading);
-font-size: 110px;
-font-weight: 700;
-fill: transparent;
-stroke: var(--main-gold);
-stroke-width: 1.5px;
-stroke-dasharray: 600;
-stroke-dashoffset: 600;
-animation:
-drawLetter 2.5s cubic-bezier(0.4, 0, 0.2, 1) forwards,
-fillLetter 1.2s 2s ease-in-out forwards,
-shimmerGlow 2s 2.5s infinite alternate;
+font-family: var(--font-heading); font-size: 90px; font-weight: 700;
+fill: transparent; stroke: var(--main-gold); stroke-width: 1.5px;
+stroke-dasharray: 600; stroke-dashoffset: 600;
+animation: drawLetter 2.5s cubic-bezier(0.4, 0, 0.2, 1) forwards, fillLetter 1.2s 2s ease-in-out forwards;
 }
 
-@keyframes drawLetter {
-0% { stroke-dashoffset: 600; }
-100% { stroke-dashoffset: 0; }
-}
+@keyframes drawLetter { 100% { stroke-dashoffset: 0; } }
+@keyframes fillLetter { 100% { fill: var(--main-gold); stroke-width: 0; } }
+.fade-out-splash { opacity: 0 !important; visibility: hidden !important; }
 
-@keyframes fillLetter {
-0% { fill: transparent; stroke-width: 1.5px; }
-100% { fill: var(--main-gold); stroke-width: 0; }
-}
-
-@keyframes shimmerGlow {
-0% { filter: brightness(1); }
-100% { filter: brightness(1.3) contrast(1.2); }
-}
-
-.fade-out-splash {
-opacity: 0 !important;
-visibility: hidden !important;
-}
-
-@media (max-width: 768px) {
-.splash-text { font-size: 55px; }
-}
+@media (max-width: 768px) { .splash-text { font-size: 45px; } }
 
 /* =========================================
-HEADER & NAVIGATION
+HEADER & NAVIGATION (GLASSMORPHISM)
 ========================================= */
 header {
-background-color: var(--main-teal);
-color: var(--text-light);
+background: rgba(244, 247, 246, 0.85);
+backdrop-filter: blur(15px);
+-webkit-backdrop-filter: blur(15px);
 padding: 1rem 5%;
-display: flex;
-justify-content: space-between;
-align-items: center;
-position: fixed;
-width: 90%;
-top: 0;
-z-index: 1000;
-border-bottom: 2px solid var(--main-gold);
-transition: all 0.3s ease;
+display: flex; justify-content: space-between; align-items: center;
+position: fixed; width: 100%; top: 0; z-index: 1000;
+border-bottom: 1px solid rgba(197, 160, 89, 0.3);
+box-shadow: 0 4px 30px rgba(0,0,0,0.05);
 }
 
-.logo {
-display: flex;
-align-items: center;
-cursor: pointer;
-}
+.logo { display: flex; align-items: center; cursor: pointer; text-decoration: none;}
+.logo img { height: 40px; position: relative; z-index: 2; }
+.logo-text { display: flex; flex-direction: column; line-height: 1.1; margin-left: 5px; position: relative; z-index: 1;}
+.brand-name { font-family: var(--font-heading); font-size: 1.5rem; color: var(--main-gold); font-weight: 700; margin: 0;}
+.brand-country { font-family: var(--font-main); font-size: 0.7rem; color: var(--main-teal); font-weight: 600; margin-top: 2px; letter-spacing: 1px;}
 
-.logo img {
-height: 45px;
-margin-right: 0;
-position: relative;
-z-index: 2;
-}
+.menu-toggle { display: none; cursor: pointer; }
 
-.logo-text {
-display: flex;
-flex-direction: column;
-line-height: 1.1;
-margin-left: -10px;
-position: relative;
-z-index: 1;
-}
+nav ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 2rem; align-items: center; }
+nav a { text-decoration: none; color: var(--main-teal); font-size: 0.85rem; font-weight: 700; transition: color 0.3s ease; letter-spacing: 0.5px;}
+nav a:hover { color: var(--main-gold); }
 
-.brand-name {
-font-family: var(--font-heading);
-font-size: 1.6rem;
-color: var(--main-gold);
-margin: 0;
-}
-
-.brand-country {
-font-family: var(--font-main);
-font-size: 0.75rem;
-color: #aaa;
-margin-top: 2px;
-letter-spacing: 0.5px;
-text-transform: uppercase;
-}
-
-/* HAMBURGER MENU ICON (Hidden on Desktop) */
-.menu-toggle {
-display: none;
-cursor: pointer;
-}
-
-nav ul {
-list-style: none;
-margin: 0;
-padding: 0;
-display: flex;
-gap: 2rem;
-align-items: center;
-}
-
-nav a {
-text-decoration: none;
-color: var(--text-light);
-font-size: 0.9rem;
-font-weight: 600;
-transition: color 0.3s ease;
-}
-
-nav a:hover {
-color: var(--main-gold);
-}
-
-/* DROPDOWN MENU STYLES */
-.dropdown {
-position: relative;
-display: inline-block;
-}
-
+/* DROPDOWN */
+.dropdown { position: relative; display: inline-block; }
 .dropdown-content {
-display: none;
-position: absolute;
-background-color: var(--main-teal);
-min-width: 180px;
-box-shadow: 0px 8px 20px rgba(0,0,0,0.3);
-z-index: 1001;
-top: 100%;
-left: 0;
-border-top: 2px solid var(--main-gold);
-padding: 0;
-flex-direction: column;
-gap: 0;
+display: none; position: absolute; top: 100%; left: 0;
+background: rgba(255,255,255,0.95); backdrop-filter: blur(10px);
+min-width: 180px; box-shadow: 0px 8px 20px rgba(0,0,0,0.1); z-index: 1001;
+border-top: 2px solid var(--main-gold); padding: 0; flex-direction: column;
 }
-
-.dropdown-content li {
-width: 100%;
-}
-
-.dropdown-content a {
-color: var(--text-light);
-padding: 15px 20px;
-text-decoration: none;
-display: block;
-text-align: left;
-font-size: 0.85rem;
-transition: background-color 0.3s, color 0.3s;
-border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-.dropdown-content a:last-child {
-border-bottom: none;
-}
-
-.dropdown-content a:hover {
-background-color: rgba(255, 255, 255, 0.08);
-color: var(--main-gold);
-}
-
-.dropdown:hover .dropdown-content {
-display: flex;
-}
+.dropdown-content a { color: var(--main-teal); padding: 15px 20px; border-bottom: 1px solid #eee; }
+.dropdown-content a:hover { background-color: #f9f9f9; color: var(--main-gold); }
+.dropdown:hover .dropdown-content { display: flex; }
 
 .request-btn {
 background: linear-gradient(135deg, var(--main-gold) 0%, #fff0b3 45%, var(--main-gold) 100%);
-background-size: 200% auto;
-color: var(--main-teal);
-border: none;
-padding: 0.8rem 1.8rem;
-border-radius: 0;
-font-weight: 700;
-font-size: 0.9rem;
-cursor: pointer;
-transition: all 0.4s ease;
-text-transform: uppercase;
+background-size: 200% auto; color: var(--main-teal); border: none; padding: 0.7rem 1.5rem;
+font-weight: 700; font-size: 0.85rem; cursor: pointer; transition: all 0.4s ease;
+text-transform: uppercase; border-radius: 4px; box-shadow: 0 4px 15px rgba(197, 160, 89, 0.3);
 }
-
-.request-btn:hover {
-background-position: right center;
-box-shadow: 0 0 15px rgba(197, 160, 89, 0.6);
-}
+.request-btn:hover { background-position: right center; box-shadow: 0 4px 20px rgba(197, 160, 89, 0.6); }
 
 /* =========================================
-HERO SECTION
+DIGITAL BILLBOARD HERO SECTION
 ========================================= */
-.hero {
-background-image: url(Hero.png);
-background-size: cover;
-background-position: center;
-color: var(--text-light);
-padding: 12rem 5% 14rem 5%;
-text-align: center;
-position: relative;
-}
-
-.hero-content {
-max-width: 900px;
+.hero-wrapper {
+padding: 9rem 5% 6rem 5%;
+max-width: 1500px;
 margin: 0 auto;
 }
 
-.hero h1 {
+.digital-billboard {
+position: relative;
+width: 100%;
+height: 650px; /* Large cinematic height */
+border: 4px solid var(--main-gold);
+border-radius: 12px;
+background-color: #000;
+overflow: hidden;
+box-shadow: 0 25px 60px rgba(0,0,0,0.2), inset 0 0 50px rgba(0,0,0,0.8);
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+/* Digital UI Accents inside Billboard */
+.billboard-ui {
+position: absolute; top: 20px; right: 20px; z-index: 5;
+display: flex; gap: 15px; align-items: center;
+background: rgba(0,0,0,0.5); padding: 8px 15px; border-radius: 4px; border: 1px solid rgba(0,243,255,0.3);
+}
+.billboard-ui span { color: var(--accent-cyan); font-family: var(--font-heading); font-size: 0.7rem; letter-spacing: 2px;}
+.billboard-ui .pulse { width: 8px; height: 8px; background: var(--accent-cyan); border-radius: 50%; animation: blink 1.5s infinite;}
+
+@keyframes blink { 50% { opacity: 0.3; box-shadow: 0 0 10px var(--accent-cyan); } }
+
+/* The Image Slider */
+.slider-container { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1;}
+.slide {
+position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+background-size: cover; background-position: center;
+opacity: 0; transition: opacity 1.5s ease-in-out;
+}
+.slide.active { opacity: 1; }
+.slide::after { /* Dark overlay to make the glass text pop */
+content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+background: linear-gradient(rgba(12, 24, 45, 0.4), rgba(12, 24, 45, 0.7));
+}
+
+/* Center Frosted Glass Panel */
+.hero-glass-panel {
+position: relative;
+z-index: 10;
+background: var(--glass-bg);
+backdrop-filter: blur(25px); -webkit-backdrop-filter: blur(25px);
+border: 1px solid rgba(255, 255, 255, 0.8);
+padding: 4rem;
+text-align: center;
+border-radius: 8px;
+max-width: 850px;
+width: 90%;
+box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+}
+
+.hero-glass-panel h1 {
 font-family: var(--font-heading);
-font-size: 3.5rem;
-font-weight: 400;
-line-height: 1.2;
-margin-bottom: 1.5rem;
-text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
+font-size: 3rem; color: var(--main-gold);
+line-height: 1.2; margin-bottom: 1rem; text-transform: uppercase;
 }
 
-.hero-gold {
-color: var(--main-gold);
-}
+.hero-glass-panel h1 span { color: var(--main-teal); }
 
-.hero h2 {
-font-size: 1.2rem;
-font-weight: 400;
-margin-bottom: 3rem;
-opacity: 0.9;
-text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
+.hero-glass-panel p {
+font-size: 1.1rem; color: var(--main-teal); font-weight: 600;
+line-height: 1.6; margin: 0;
 }
 
 /* =========================================
-SERVICES SECTION
+SERVICES SECTION (FLOATING CARDS)
 ========================================= */
 .services {
-padding: 0 5% 3.5rem 5%;
-text-align: center;
-margin-top: -12rem;
+padding: 0 5% 5rem 5%;
+margin-top: -8rem; /* Overlaps the bottom of the billboard */
 position: relative;
-z-index: 10;
-}
-
-.services h2 {
-font-family: var(--font-heading);
-font-size: 2.5rem;
-color: #ffffff;
-font-weight: 400;
-margin-bottom: 2rem;
-text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
-}
-
-.services h2::before {
-content: '';
-display: block;
-width: 140px;
-height: 2px;
-background: linear-gradient(90deg, transparent, var(--main-gold), transparent);
-margin: 0 auto 15px auto;
+z-index: 20;
 }
 
 .services-grid {
-display: grid;
-grid-template-columns: repeat(4, 1fr);
-gap: 2rem;
-justify-content: center;
+display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; max-width: 1300px; margin: 0 auto;
 }
 
 .service-card {
-background-color: var(--accent-bg);
-padding: 3rem 2rem;
-border-radius: 0;
-border: none;
-outline: 1px solid var(--main-gold);
-outline-offset: -12px;
-box-shadow: 0 35px 70px rgba(0,0,0,0.25);
+background: rgba(255, 255, 255, 0.85);
+backdrop-filter: blur(15px);
+border: 1px solid var(--glass-border);
+padding: 2.5rem 1.5rem;
+border-radius: 8px;
 text-align: center;
-transition: transform 0.3s ease;
-position: relative;
+box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
-.service-card:hover {
-transform: translateY(-5px);
-}
+.service-card:hover { transform: translateY(-10px); box-shadow: 0 25px 45px rgba(197, 160, 89, 0.15); border-color: var(--main-gold);}
 
-.service-icon {
-margin-bottom: 1.5rem;
-display: flex;
-justify-content: center;
-}
-
-.service-icon svg {
-width: 55px;
-height: 55px;
-stroke: var(--main-gold);
-stroke-width: 1.2;
-fill: none;
-}
+.service-icon { margin-bottom: 1rem; display: flex; justify-content: center; }
+.service-icon svg { width: 50px; height: 50px; stroke: var(--main-gold); stroke-width: 1.2; fill: none; }
 
 .service-card h3 {
-font-size: 1.1rem;
-font-weight: 700;
-color: var(--text-dark);
-margin-bottom: 1rem;
-text-transform: uppercase;
+font-family: var(--font-heading); font-size: 1.1rem; font-weight: 700; color: var(--main-teal); margin-bottom: 0.8rem;
 }
 
-.service-card p {
-font-size: 0.9rem;
-color: var(--text-dark);
-line-height: 1.6;
-opacity: 0.8;
-}
+.service-card p { font-size: 0.85rem; color: #555; line-height: 1.6; }
 
 /* =========================================
-FEATURED PRODUCTS SECTION
+PRODUCTS & PORTFOLIO (LIGHT THEME)
 ========================================= */
-.featured-products {
-padding: 4rem 5%;
-background-color: var(--bg-color);
-text-align: center;
+.section-title {
+text-align: center; font-family: var(--font-heading); font-size: 2.5rem;
+color: var(--main-teal); margin-bottom: 3rem; position: relative;
+}
+.section-title::after {
+content: ''; display: block; width: 60px; height: 3px; background: var(--main-gold); margin: 15px auto 0 auto;
 }
 
-.featured-products h2 {
-font-family: var(--font-heading);
-font-size: 2.5rem;
-color: var(--main-teal);
-margin-bottom: 3rem;
-position: relative;
-display: inline-block;
-}
+.featured-products { padding: 4rem 5%; }
+.product-track { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; max-width: 1300px; margin: 0 auto; }
+.product-item { background: #fff; border-radius: 8px; border: 1px solid #eaeaea; box-shadow: 0 10px 25px rgba(0,0,0,0.04); overflow: hidden; display: flex; flex-direction: column; transition: transform 0.3s;}
+.product-item:hover { transform: translateY(-5px); border-color: var(--main-gold);}
+.product-banner { position: absolute; top: 15px; right: 15px; background: var(--main-gold); color: var(--text-light); font-size: 0.65rem; font-weight: 700; padding: 0.4rem 0.8rem; border-radius: 20px;}
+.product-item img { width: 100%; height: 180px; object-fit: cover; }
+.product-info { padding: 1.5rem; display: flex; flex-direction: column; flex-grow: 1; }
+.product-info h4 { font-family: var(--font-heading); font-size: 1.1rem; color: var(--main-teal); margin-bottom: 0.5rem; }
+.product-desc { font-size: 0.85rem; color: #666; margin-bottom: 1rem; flex-grow: 1; }
+.product-price { font-size: 1.3rem; color: var(--main-gold); font-weight: 700; font-family: var(--font-heading); margin-bottom: 1rem;}
+.quote-btn { width: 100%; text-align: center; }
 
-.featured-products h2::after {
-content: '';
-display: block;
-width: 80px;
-height: 2px;
-background-color: var(--main-gold);
-margin: 10px auto 0 auto;
-}
-
-.product-track {
-display: grid;
-grid-template-columns: repeat(4, 1fr);
-gap: 1.5rem;
-max-width: 1200px;
-margin: 0 auto;
-}
-
-.product-item {
-background-color: #fff;
-border-radius: 0;
-outline: 1px solid var(--main-gold);
-outline-offset: -8px;
-box-shadow: 0 10px 25px rgba(0,0,0,0.06);
-text-align: center;
-position: relative;
-transition: transform 0.3s ease;
-display: flex;
-flex-direction: column;
-}
-
-.product-item:hover {
-transform: translateY(-5px);
-}
-
-.product-banner {
-position: absolute;
-top: 15px;
-right: 5px;
-background: var(--main-gold);
-color: var(--main-teal);
-font-size: 0.65rem;
-font-weight: 700;
-padding: 0.3rem 0.8rem;
-text-transform: uppercase;
-letter-spacing: 1px;
-z-index: 10;
-box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-}
-
-.product-item img {
-width: calc(100% - 16px);
-margin: 8px 8px 0 8px;
-height: 160px;
-object-fit: cover;
-}
-
-.product-info {
-padding: 1.2rem;
-display: flex;
-flex-direction: column;
-flex-grow: 1;
-}
-
-.product-info h4 {
-font-family: var(--font-heading);
-font-size: 1.1rem;
-color: var(--main-teal);
-margin-bottom: 0.8rem;
-}
-
-.product-desc {
-font-size: 0.85rem;
-color: #666;
-line-height: 1.5;
-margin-bottom: 1.2rem;
-flex-grow: 1;
-}
-
-.product-price {
-font-size: 1.25rem;
-color: var(--main-gold);
-font-weight: 700;
-margin-bottom: 1.2rem;
-font-family: var(--font-heading);
-}
-
-.product-price span {
-font-size: 0.8rem;
-color: #999;
-font-weight: 400;
-font-family: var(--font-main);
-}
-
-.quote-btn {
-width: 100%;
-padding: 0.6rem 1rem;
-font-size: 0.85rem;
-}
+.portfolio { padding: 4rem 5% 6rem 5%; }
+.portfolio-track { display: flex; gap: 1.5rem; max-width: 1300px; margin: 0 auto; overflow-x: auto; padding-bottom: 1rem;}
+.portfolio-item { flex: 0 0 350px; background: #fff; border-radius: 8px; border: 1px solid #eaeaea; overflow: hidden; box-shadow: 0 10px 20px rgba(0,0,0,0.04); }
+.portfolio-item img { width: 100%; height: 220px; object-fit: cover; }
+.portfolio-info { padding: 1.5rem; }
+.portfolio-info h4 { font-family: var(--font-heading); font-size: 1.1rem; margin-bottom: 0.5rem; color: var(--main-teal);}
+.portfolio-info p { font-size: 0.85rem; color: #666; }
 
 /* =========================================
-PORTFOLIO SECTION
+FOOTER (DARK ANCHOR)
 ========================================= */
-.portfolio {
-padding: 4rem 5%;
-background-color: #fff;
-text-align: center;
-}
-
-.portfolio h2 {
-font-family: var(--font-heading);
-font-size: 2.5rem;
-color: var(--main-teal);
-margin-bottom: 2rem;
-position: relative;
-display: inline-block;
-}
-
-.portfolio h2::after {
-content: '';
-display: block;
-width: 80px;
-height: 2px;
-background-color: var(--main-gold);
-margin: 10px auto 0 auto;
-}
-
-.portfolio-carousel-container {
-overflow: hidden;
-position: relative;
-max-width: 1200px;
-margin: 0 auto;
-}
-
-.portfolio-track {
-display: flex;
-gap: 1.5rem;
-padding: 2rem 0;
-transition: transform 0.3s ease;
-}
-
-.portfolio-item {
-flex: 0 0 350px;
-background-color: #f7f9fc;
-border-radius: 0;
-border: 1px solid #eee;
-overflow: hidden;
-box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-text-align: left;
-}
-
-.portfolio-item img {
-width: 100%;
-height: 220px;
-object-fit: cover;
-}
-
-.portfolio-info {
-padding: 1.5rem;
-}
-
-.portfolio-info h4 {
-font-size: 1rem;
-margin: 0 0 0.5rem 0;
-font-weight: 600;
-}
-
-.portfolio-info p {
-font-size: 0.8rem;
-margin: 0;
-color: #666;
-}
-
-.carousel-control {
-position: absolute;
-top: 50%;
-transform: translateY(-50%);
-background: var(--main-teal);
-border: 1px solid var(--main-gold);
-font-size: 1.2rem;
-color: var(--main-gold);
-padding: 1rem 1.2rem;
-cursor: pointer;
-z-index: 10;
-transition: all 0.3s ease;
-}
-
-.carousel-control:hover {
-background: var(--main-gold);
-color: var(--main-teal);
-}
-
-.prev-btn { left: 0; }
-.next-btn { right: 0; }
-
-/* =========================================
-FOOTER
-========================================= */
-footer {
-background-color: var(--main-teal);
-color: var(--text-light);
-padding: 4rem 5% 2rem 5%;
-border-top: 2px solid var(--main-gold);
-}
-
-.footer-content {
-display: flex;
-justify-content: space-between;
-flex-wrap: wrap;
-gap: 3rem;
-max-width: 1200px;
-margin: 0 auto 3rem auto;
-text-align: left;
-}
-
-.footer-col {
-flex: 1;
-min-width: 250px;
-}
-
-.footer-col .logo {
-margin-bottom: 1.5rem;
-}
-
-.footer-col h4 {
-color: var(--main-gold);
-font-family: var(--font-heading);
-font-size: 1.3rem;
-margin-bottom: 1.5rem;
-}
-
-.footer-col p, .footer-col a {
-font-size: 0.9rem;
-color: #ddd;
-line-height: 1.8;
-text-decoration: none;
-margin-bottom: 0.8rem;
-display: flex;
-align-items: center;
-gap: 10px;
-transition: color 0.3s;
-}
-
-.footer-col a:hover {
-color: var(--main-gold);
-}
-
-.social-links {
-display: flex;
-gap: 1.5rem;
-margin-top: 1.5rem;
-}
-
-.social-links a svg {
-width: 28px;
-height: 28px;
-fill: var(--main-gold);
-transition: transform 0.3s;
-}
-
-.social-links a:hover svg {
-transform: translateY(-4px);
-}
-
-.footer-bottom {
-max-width: 1200px;
-margin: 0 auto;
-padding-top: 2rem;
-border-top: 1px solid rgba(255, 255, 255, 0.1);
-display: flex;
-justify-content: space-between;
-align-items: center;
-flex-wrap: wrap;
-gap: 1.5rem;
-}
-
-.footer-bottom p {
-font-size: 0.8rem;
-color: #888;
-margin: 0;
-}
-
-.payment-options {
-display: flex;
-gap: 1.2rem;
-align-items: center;
-}
-
-.payment-options svg {
-height: 24px;
-width: auto;
-fill: #aaa;
-transition: fill 0.3s;
-}
-
-.payment-options svg:hover {
-fill: var(--main-gold);
-}
+footer { background-color: var(--main-teal); color: var(--text-light); padding: 4rem 5% 2rem 5%; border-top: 3px solid var(--main-gold); }
+.footer-content { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 3rem; max-width: 1300px; margin: 0 auto 3rem auto; }
+.footer-col { flex: 1; min-width: 250px; }
+.footer-col h4 { color: var(--main-gold); font-family: var(--font-heading); font-size: 1.3rem; margin-bottom: 1.5rem; }
+.footer-col p, .footer-col a { font-size: 0.9rem; color: #ddd; line-height: 1.8; text-decoration: none; margin-bottom: 0.8rem; display: flex; align-items: center; gap: 10px; transition: color 0.3s; }
+.footer-col a:hover { color: var(--accent-cyan); }
+.social-links { display: flex; gap: 1.5rem; margin-top: 1.5rem; }
+.social-links a svg { width: 24px; height: 24px; fill: var(--main-gold); transition: transform 0.3s; }
+.social-links a:hover svg { transform: translateY(-4px); fill: var(--accent-cyan);}
+.footer-bottom { max-width: 1300px; margin: 0 auto; padding-top: 2rem; border-top: 1px solid rgba(255, 255, 255, 0.1); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem; }
+.footer-bottom p { font-size: 0.8rem; color: #888; margin: 0; }
+.payment-options { display: flex; gap: 1.2rem; align-items: center; }
+.payment-options svg { height: 24px; fill: #aaa; }
 
 /* =========================================
 MOBILE RESPONSIVENESS
@@ -719,37 +280,27 @@ MOBILE RESPONSIVENESS
 @media (max-width: 1024px) {
 .services-grid { grid-template-columns: repeat(2, 1fr); }
 .product-track { grid-template-columns: repeat(2, 1fr); }
-
-/* Activate Hamburger Menu */
 .menu-toggle { display: block; }
 header { flex-wrap: wrap; }
-nav, .request-btn { display: none; width: 100%; } /* Hide links on mobile initially */
-
-/* When menu is open via Javascript */
-header.active { background-color: var(--main-teal); }
+nav, .request-btn { display: none; width: 100%; }
+header.active { background-color: rgba(255,255,255,0.98); }
 header.active nav, header.active .request-btn { display: flex; }
-
 nav ul { flex-direction: column; text-align: center; gap: 1.5rem; padding: 2rem 0; width: 100%;}
 .request-btn { margin-bottom: 1.5rem; justify-content: center;}
-
-/* Fix Dropdown for Mobile */
 .dropdown-content { position: relative; min-width: 100%; box-shadow: none; border-top: none; padding-top: 1rem; background-color: transparent;}
-.dropdown-content a { text-align: center; color: #aaa; }
+.dropdown-content a { text-align: center; }
 }
 
 @media (max-width: 768px) {
-header { padding: 1rem; width: 95%; }
-/* Resize Hero Text & Fix Overlapping */
-.hero { padding: 10rem 5% 12rem 5%; }
-.hero h1 { font-size: 2.2rem; margin-top: 1rem; }
-.hero h2 { font-size: 1rem; }
-.services { margin-top: -8rem; }
-.services h2 { font-size: 2rem; }
-
+.hero-wrapper { padding: 7rem 5% 4rem 5%; }
+.digital-billboard { height: 500px; border-width: 2px;}
+.hero-glass-panel { padding: 2rem; width: 95%; }
+.hero-glass-panel h1 { font-size: 2rem; }
+.services { margin-top: -4rem; }
 .services-grid { grid-template-columns: 1fr; }
 .product-track { grid-template-columns: 1fr; }
-.footer-content { flex-direction: column; gap: 2rem;}
-.footer-bottom { flex-direction: column; justify-content: center; }
+.footer-content { flex-direction: column; }
+.footer-bottom { flex-direction: column; text-align: center; }
 }
 </style>
 </head>
@@ -757,15 +308,13 @@ header { padding: 1rem; width: 95%; }
 
 <div id="splash-screen">
 <svg class="splash-svg" viewBox="0 0 800 200">
-<text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" class="splash-text">
-MediaBox
-</text>
+<text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" class="splash-text">MediaBox</text>
 </svg>
 </div>
 
 <header id="main-header">
 <div class="logo">
-<img src="Logo.png" alt="MediaBox Bahamas Gold Logo">
+<img src="Logo.png" alt="MediaBox Bahamas Logo">
 <div class="logo-text">
 <span class="brand-name">MediaBox</span>
 <span class="brand-country">BAHAMAS</span>
@@ -773,7 +322,7 @@ MediaBox
 </div>
 
 <div class="menu-toggle" id="mobile-menu-btn">
-<svg viewBox="0 0 24 24" width="30" height="30" stroke="var(--main-gold)" stroke-width="2" fill="none"><path d="M3 12h18M3 6h18M3 18h18"></path></svg>
+<svg viewBox="0 0 24 24" width="30" height="30" stroke="var(--main-teal)" stroke-width="2" fill="none"><path d="M3 12h18M3 6h18M3 18h18"></path></svg>
 </div>
 
 <nav aria-label="Main Navigation">
@@ -782,7 +331,6 @@ MediaBox
 <li><a href="#services">SERVICES</a></li>
 <li><a href="#portfolio">PORTFOLIO</a></li>
 <li><a href="about.html">ABOUT US</a></li>
-
 <li class="dropdown">
 <a href="#" style="cursor: default;">BROCHURE ▾</a>
 <ul class="dropdown-content">
@@ -790,66 +338,76 @@ MediaBox
 <li><a href="International.pdf" target="_blank">International Rate</a></li>
 </ul>
 </li>
-
 </ul>
 </nav>
-<button class="request-btn">REQUEST A CONSULTATION</button>
+<button class="request-btn" onclick="window.location.href='consultation.html'">REQUEST A CONSULTATION</button>
 </header>
 
 <main>
-<section class="hero" id="home" aria-label="Introduction">
-<div class="hero-content">
-<h1><span class="hero-gold">LUXURY MEDIA.<br> CORPORATE EXCELLENCE.</span><br> UNMATCHED IMPACT.</h1>
-<h2>Strategic Communications and Media Production<br> for the Bahamas' Elite Brands.</h2>
+
+<section class="hero-wrapper" id="home">
+<div class="digital-billboard">
+
+<div class="billboard-ui">
+<div class="pulse"></div>
+<span>TRANSITIONING</span>
+</div>
+
+<div class="slider-container">
+<div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1569263979104-865ab7cd8d13?q=80&w=1600&auto=format&fit=crop');"></div>
+<div class="slide" style="background-image: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1600&auto=format&fit=crop');"></div>
+<div class="slide" style="background-image: url('https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=1600&auto=format&fit=crop');"></div>
+</div>
+
+<div class="hero-glass-panel">
+<h1>DIGITAL LUXURY.<br><span>CORPORATE EXCELLENCE.</span></h1>
+<p>Strategic Communications and Media Production for the Bahamas' Elite Brands.</p>
+</div>
+
 </div>
 </section>
 
 <section class="services" id="services">
-<h2>Services</h2>
 <div class="services-grid">
 <article class="service-card">
-<div class="service-icon" aria-hidden="true">
-<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path><path d="M2 12h20"></path></svg>
-</div>
+<div class="service-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path><path d="M2 12h20"></path></svg></div>
 <h3>GLOBAL ADVERTISING</h3>
 <p>Global advertising and communications. Reaching audience and strategic placement.</p>
 </article>
+
 <article class="service-card">
-<div class="service-icon" aria-hidden="true">
-<svg viewBox="0 0 24 24"><path d="M23 7l-7 5 7 5V7z" stroke-linejoin="round"></path><rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect></svg>
-</div>
-<h3>BESPOKE VIDEO PRODUCTION</h3>
-<p>Bespoke video presentations and professional editing.</p>
+<div class="service-icon"><svg viewBox="0 0 24 24"><path d="M23 7l-7 5 7 5V7z" stroke-linejoin="round"></path><rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect></svg></div>
+<h3>BESPOKE VIDEO</h3>
+<p>Bespoke video presentations and high-end professional digital editing.</p>
 </article>
+
 <article class="service-card">
-<div class="service-icon" aria-hidden="true">
-<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>
-</div>
+<div class="service-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg></div>
 <h3>BRAND STRATEGY</h3>
-<p>Developing comprehensive and meaningful brand strategies.</p>
+<p>Developing comprehensive and meaningful corporate brand strategies.</p>
 </article>
+
 <article class="service-card">
-<div class="service-icon" aria-hidden="true">
-<svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="2" y1="20" x2="22" y2="20"></line></svg>
-</div>
+<div class="service-icon"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="2" y1="20" x2="22" y2="20"></line></svg></div>
 <h3>DIGITAL CONSULTANCY</h3>
-<p>Digital consulting and digital strategies for maximizing online presence.</p>
+<p>Digital consulting and advanced digital strategies for maximizing online presence.</p>
 </article>
 </div>
 </section>
 
 <section class="featured-products" id="products">
-<h2>Featured Products</h2>
+<h2 class="section-title">Featured Placements</h2>
 <div class="product-track">
-
 <article class="product-item">
+<div style="position:relative;">
 <div class="product-banner">BEST VALUE</div>
 <img src="https://images.unsplash.com/photo-1559828854-15f5fc858c2a?q=80&w=600&auto=format&fit=crop" alt="10x8 Solar Billboard">
+</div>
 <div class="product-info">
 <h4>Solar Billboard (10x8)</h4>
-<p class="product-desc">High-visibility solar-powered billboard display at premium locations like East Street & Independence Highway.</p>
-<p class="product-price">$1,040 <span>/ month</span></p>
-<button class="request-btn quote-btn">QUOTE</button>
+<p class="product-desc">High-visibility solar-powered billboard display at premium locations.</p>
+<p class="product-price">$1,040 <span style="font-size:0.8rem; color:#999; font-weight:400; font-family:var(--font-main);">/ month</span></p>
+<button class="request-btn quote-btn" onclick="window.location.href='consultation.html'">QUOTE</button>
 </div>
 </article>
 
@@ -857,20 +415,22 @@ MediaBox
 <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=600&auto=format&fit=crop" alt="Marketing Campaigns">
 <div class="product-info">
 <h4>Marketing Campaigns</h4>
-<p class="product-desc">Comprehensive and strategic marketing campaign development to elevate your elite brand presence.</p>
+<p class="product-desc">Comprehensive marketing campaign development to elevate your brand.</p>
 <p class="product-price">$3,000</p>
-<button class="request-btn quote-btn">QUOTE</button>
+<button class="request-btn quote-btn" onclick="window.location.href='consultation.html'">QUOTE</button>
 </div>
 </article>
 
 <article class="product-item">
+<div style="position:relative;">
 <div class="product-banner">POPULAR</div>
 <img src="https://images.unsplash.com/photo-1588196749597-9ff046fe6e60?q=80&w=600&auto=format&fit=crop" alt="Pull Up Banners">
+</div>
 <div class="product-info">
 <h4>Customized Banners</h4>
-<p class="product-desc">Premium customized pull-up banners perfectly designed for corporate events, seminars, and exhibitions.</p>
-<p class="product-price">$850 <span>/ 2 units</span></p>
-<button class="request-btn quote-btn">QUOTE</button>
+<p class="product-desc">Premium pull-up banners designed for corporate events and seminars.</p>
+<p class="product-price">$850 <span style="font-size:0.8rem; color:#999; font-weight:400; font-family:var(--font-main);">/ 2 units</span></p>
+<button class="request-btn quote-btn" onclick="window.location.href='consultation.html'">QUOTE</button>
 </div>
 </article>
 
@@ -878,32 +438,27 @@ MediaBox
 <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=600&auto=format&fit=crop" alt="Business Plans">
 <div class="product-info">
 <h4>Strategic Business Plans</h4>
-<p class="product-desc">Professional and customized business plan creation tailored to guide your company's growth and vision.</p>
+<p class="product-desc">Professional business plan creation tailored to guide your company's growth.</p>
 <p class="product-price">$2,500</p>
-<button class="request-btn quote-btn">QUOTE</button>
+<button class="request-btn quote-btn" onclick="window.location.href='consultation.html'">QUOTE</button>
 </div>
 </article>
-
 </div>
 </section>
 
 <section class="portfolio" id="portfolio">
-<h2>Selected Client Portfolio</h2>
-
-<div class="portfolio-carousel-container">
-<button class="carousel-control prev-btn" aria-label="Previous portfolio item">&#10094;</button>
+<h2 class="section-title">Selected Client Portfolio</h2>
 <div class="portfolio-track">
-
 <article class="portfolio-item">
-<img src="https://images.unsplash.com/photo-1620131435213-9a3b6164f20f?q=80&w=400&auto=format&fit=crop" alt="Exterior view of luxury Bahamas real estate development">
+<img src="https://images.unsplash.com/photo-1620131435213-9a3b6164f20f?q=80&w=400&auto=format&fit=crop" alt="Bahamas real estate">
 <div class="portfolio-info">
-<h4>Real Estate Development Portfolio</h4>
+<h4>Real Estate Development</h4>
 <p>Bahamas Luxury Living</p>
 </div>
 </article>
 
 <article class="portfolio-item">
-<img src="https://images.unsplash.com/photo-1599818817361-b1e605d8f28c?q=80&w=400&auto=format&fit=crop" alt="Corporate professionals at a Nassau business conference event">
+<img src="https://images.unsplash.com/photo-1599818817361-b1e605d8f28c?q=80&w=400&auto=format&fit=crop" alt="Corporate professionals">
 <div class="portfolio-info">
 <h4>Corporate Event Showcase</h4>
 <p>Nassau Business Conference</p>
@@ -911,15 +466,12 @@ MediaBox
 </article>
 
 <article class="portfolio-item">
-<img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=400&auto=format&fit=crop" alt="Cinematic bespoke film shot of Bahamas resort">
+<img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=400&auto=format&fit=crop" alt="Cinematic bespoke film">
 <div class="portfolio-info">
 <h4>Bespoke Brand Film</h4>
 <p>Bahamas Resorts Global Campaign</p>
 </div>
 </article>
-
-</div>
-<button class="carousel-control next-btn" aria-label="Next portfolio item">&#10095;</button>
 </div>
 </section>
 </main>
@@ -931,35 +483,21 @@ MediaBox
 <img src="Logo.png" alt="MediaBox Bahamas Gold Logo">
 <div class="logo-text" style="align-items: flex-start; margin-left: -10px;">
 <span class="brand-name">MediaBox</span>
-<span class="brand-country">BAHAMAS</span>
+<span class="brand-country" style="color: #aaa;">BAHAMAS</span>
 </div>
 </div>
-<p style="margin-top: 1rem;">Premium marketing and media production for the Bahamas' Elite Brands.</p>
-
+<p style="margin-top: 1rem;">Premium digital marketing and media production for the Bahamas' Elite Brands.</p>
 <div class="social-links">
-<a href="#" aria-label="Facebook">
-<svg viewBox="0 0 24 24"><path d="M22.675 0h-21.35C.597 0 0 .597 0 1.325v21.351C0 23.403.597 24 1.325 24H12.82v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116c.73 0 1.323-.597 1.323-1.324V1.325C24 .597 23.403 0 22.675 0z"/></svg>
-</a>
-<a href="https://wa.me/12424332528" aria-label="WhatsApp">
-<svg viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 000 12a12 12 0 001.917 6.483L.416 24l5.656-1.488A11.94 11.94 0 0011.944 24a12 12 0 0012-12 12 12 0 00-12-12zm6.658 17.15c-.279.79-1.573 1.485-2.203 1.54-.588.051-1.346.21-3.83-1.04-3.024-1.52-4.985-4.62-5.136-4.825-.15-.203-1.226-1.636-1.226-3.116 0-1.48.766-2.21 1.036-2.493.27-.283.593-.354.79-.354.195 0 .392.002.564.01.182.008.428-.073.67.513.25.602.812 1.983.886 2.133.074.15.123.325.025.524-.099.201-.15.326-.3.476-.15.15-.316.34-.45.474-.15.152-.308.318-.135.617.172.3.766 1.27 1.642 2.05.18.253 1.127 1.378 2.22 1.83.298.125.473.1.652-.11.178-.21.766-.89.97-1.196.202-.307.403-.254.67-.152.27.102 1.704.805 1.996.954.293.15.488.225.56.35.074.125.074.723-.205 1.513z"/></svg>
-</a>
+<a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M22.675 0h-21.35C.597 0 0 .597 0 1.325v21.351C0 23.403.597 24 1.325 24H12.82v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116c.73 0 1.323-.597 1.323-1.324V1.325C24 .597 23.403 0 22.675 0z"/></svg></a>
+<a href="https://wa.me/12424332528" aria-label="WhatsApp"><svg viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 000 12a12 12 0 001.917 6.483L.416 24l5.656-1.488A11.94 11.94 0 0011.944 24a12 12 0 0012-12 12 12 0 00-12-12zm6.658 17.15c-.279.79-1.573 1.485-2.203 1.54-.588.051-1.346.21-3.83-1.04-3.024-1.52-4.985-4.62-5.136-4.825-.15-.203-1.226-1.636-1.226-3.116 0-1.48.766-2.21 1.036-2.493.27-.283.593-.354.79-.354.195 0 .392.002.564.01.182.008.428-.073.67.513.25.602.812 1.983.886 2.133.074.15.123.325.025.524-.099.201-.15.326-.3.476-.15.15-.316.34-.45.474-.15.152-.308.318-.135.617.172.3.766 1.27 1.642 2.05.18.253 1.127 1.378 2.22 1.83.298.125.473.1.652-.11.178-.21.766-.89.97-1.196.202-.307.403-.254.67-.152.27.102 1.704.805 1.996.954.293.15.488.225.56.35.074.125.074.723-.205 1.513z"/></svg></a>
 </div>
 </div>
 
 <div class="footer-col">
 <h4>Contact Us</h4>
-<p>
-<svg style="width:16px; height:16px; fill:var(--main-gold);" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-Braynen Building, Nassau, Bahamas
-</p>
-<p>
-<svg style="width:16px; height:16px; fill:var(--main-gold);" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-Mediaboxbahamaslimited@gmail.com
-</p>
-<p>
-<svg style="width:16px; height:16px; fill:var(--main-gold);" viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
-+1 (242) 433-2528
-</p>
+<p><svg style="width:16px; height:16px; fill:var(--main-gold);" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg> Braynen Building, Nassau, Bahamas</p>
+<p><svg style="width:16px; height:16px; fill:var(--main-gold);" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg> Mediaboxbahamaslimited@gmail.com</p>
+<p><svg style="width:16px; height:16px; fill:var(--main-gold);" viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg> +1 (242) 433-2528</p>
 </div>
 
 <div class="footer-col">
@@ -974,65 +512,42 @@ Mediaboxbahamaslimited@gmail.com
 
 <div class="footer-bottom">
 <p>&copy; 2026 MediaBox Bahamas Limited. All Rights Reserved.</p>
-
 <div class="payment-options">
-<svg viewBox="0 0 38 24"><path d="M13.73 17.653l2.228-11.45h3.606l-2.23 11.45h-3.604zm16.516-11.232c-1.12-.42-2.887-.8-4.707-.8-5.11 0-8.707 2.454-8.736 5.976-.03 2.597 2.585 4.04 4.57 4.93 2.025.91 2.703 1.493 2.71 2.308.01 1.255-1.637 1.82-3.152 1.82-1.996 0-3.058-.292-4.672-.942l-.66-3.12c1.077.472 3.085.875 5.176.896 2.57 0 4.137-1.144 4.15-2.914-.015-1.168-.895-2.03-3.41-3.107-1.745-.758-2.94-1.63-2.94-3.177.03-2.585 2.152-4.838 6.46-4.838 1.626-.03 2.942.27 3.996.64l-.785 3.37zM9.814 17.653h-3.48L3.926 7.425C3.78 6.78 3.572 6.55 3.047 6.305L.015 4.95v.35c.78.204 2.193.717 2.912 1.412l3.417 10.94H10.1l4.98-11.45h-3.76L9.814 17.653zm26.49 0h3.297l-2.853-11.45h-3.328c-.628 0-1.15.34-1.396.885l-5.305 10.565h3.766l.75-1.92h4.594l.432 1.92h-.002z" fill="#aaa"/></svg>
-<svg viewBox="0 0 38 24"><path d="M12.185 11.968A7.78 7.78 0 0115.176 5.6 7.848 7.848 0 007.84 0 7.84 7.84 0 000 7.84a7.84 7.84 0 007.84 7.84 7.82 7.82 0 004.345-1.312V11.97M23.52 0a7.84 7.84 0 00-7.84 7.84 7.84 7.84 0 002.99 6.228 7.84 7.84 0 0012.69-6.228A7.84 7.84 0 0023.52 0z" fill="#aaa"/></svg>
-<svg viewBox="0 0 38 24"><path d="M33.916 16.71H38l-4.14-10h-4.2l-4.15 10h3.51l.83-2.12h4.48l.58 2.12zm-3.04-4.85l1.32-3.38 1.48 3.38h-2.8zM18.814 6.71h-5.46v10h2.64v-3.7h2.82v3.7h2.64V6.71zM8.514 6.71H0v10h2.64V12.9h2.36l1.83 3.82h3.04L7.69 12.33c1.08-.5 1.76-1.52 1.76-2.71 0-1.68-1.29-2.91-3.2-2.91zm-2.82 4.1h-3-V8.82h3c.6 0 .96.3.96.98s-.36 1-1 1zm7.42 5.9h-2.64v-10h4.48c1.9 0 3.2 1.23 3.2 2.91 0 1.2-.68 2.2-1.76 2.7l2.18 4.38H15.5l-1.83-3.8h-2.36v3.8h1.83zm13.34-5.45l-2.06-4.54h-3.4v10h2.64v-5l1.6 3.4h1.94l1.6-3.4v5h2.65v-10h-3.4l-1.57 4.54z" fill="#aaa"/></svg>
-<svg viewBox="0 0 38 24"><path d="M22.096 15.688c2.14 0 3.83-1.69 3.83-3.83 0-2.14-1.69-3.83-3.83-3.83-2.14 0-3.83 1.69-3.83 3.83 0 2.14 1.69 3.83 3.83 3.83zm0-6.19c1.33 0 2.36 1.03 2.36 2.36 0 1.33-1.03 2.36-2.36 2.36-1.33 0-2.36-1.03-2.36-2.36 0-1.33 1.03-2.36 2.36-2.36zm-8.87.1v6h2.88v-6h-2.88zm8.87 0h-3.1v6h3.1c1.65 0 2.99-1.34 2.99-2.99 0-1.65-1.34-3.01-2.99-3.01zm-5.97 6v-6H13.6v6h2.53zM7.29 9.6h3v1.39c.67-.93 1.76-1.49 2.95-1.49 2.14 0 3.83 1.69 3.83 3.83 0 2.14-1.69 3.83-3.83 3.83-1.19 0-2.28-.56-2.95-1.49v1.39H7.29V9.6zm3 4.13c0 1.33 1.03 2.36 2.36 2.36 1.33 0 2.36-1.03 2.36-2.36 0-1.33-1.03-2.36-2.36-2.36-1.33 0-2.36 1.03-2.36 2.36zm-7.66 0c0 2.14 1.69 3.83 3.83 3.83 2.14 0 3.83-1.69 3.83-3.83V9.6H6.46v2.33c0 1.33-1.03 2.36-2.36 2.36-1.33 0-2.36-1.03-2.36-2.36 0-1.33 1.03-2.36 2.36-2.36 1.19 0 2.28.56 2.95 1.49V9.5c-1.19-.93-2.28-1.49-3.47-1.49-2.42 0-4.33 1.91-4.33 4.33 0 2.42 1.91 4.33 4.33 4.33 1.19 0 2.28-.56 2.95-1.49v-1.39H2.63v6.09H0v-6.09z" fill="#aaa"/></svg>
+<svg viewBox="0 0 38 24"><path d="M13.73 17.653l2.228-11.45h3.606l-2.23 11.45h-3.604zm16.516-11.232c-1.12-.42-2.887-.8-4.707-.8-5.11 0-8.707 2.454-8.736 5.976-.03 2.597 2.585 4.04 4.57 4.93 2.025.91 2.703 1.493 2.71 2.308.01 1.255-1.637 1.82-3.152 1.82-1.996 0-3.058-.292-4.672-.942l-.66-3.12c1.077.472 3.085.875 5.176.896 2.57 0 4.137-1.144 4.15-2.914-.015-1.168-.895-2.03-3.41-3.107-1.745-.758-2.94-1.63-2.94-3.177.03-2.585 2.152-4.838 6.46-4.838 1.626-.03 2.942.27 3.996.64l-.785 3.37zM9.814 17.653h-3.48L3.926 7.425C3.78 6.78 3.572 6.55 3.047 6.305L.015 4.95v.35c.78.204 2.193.717 2.912 1.412l3.417 10.94H10.1l4.98-11.45h-3.76L9.814 17.653zm26.49 0h3.297l-2.853-11.45h-3.328c-.628 0-1.15.34-1.396.885l-5.305 10.565h3.766l.75-1.92h4.594l.432 1.92h-.002z"/></svg>
+<svg viewBox="0 0 38 24"><path d="M12.185 11.968A7.78 7.78 0 0115.176 5.6 7.848 7.848 0 007.84 0 7.84 7.84 0 000 7.84a7.84 7.84 0 007.84 7.84 7.82 7.82 0 004.345-1.312V11.97M23.52 0a7.84 7.84 0 00-7.84 7.84 7.84 7.84 0 002.99 6.228 7.84 7.84 0 0012.69-6.228A7.84 7.84 0 0023.52 0z"/></svg>
+<svg viewBox="0 0 38 24"><path d="M33.916 16.71H38l-4.14-10h-4.2l-4.15 10h3.51l.83-2.12h4.48l.58 2.12zm-3.04-4.85l1.32-3.38 1.48 3.38h-2.8zM18.814 6.71h-5.46v10h2.64v-3.7h2.82v3.7h2.64V6.71zM8.514 6.71H0v10h2.64V12.9h2.36l1.83 3.82h3.04L7.69 12.33c1.08-.5 1.76-1.52 1.76-2.71 0-1.68-1.29-2.91-3.2-2.91zm-2.82 4.1h-3-V8.82h3c.6 0 .96.3.96.98s-.36 1-1 1zm7.42 5.9h-2.64v-10h4.48c1.9 0 3.2 1.23 3.2 2.91 0 1.2-.68 2.2-1.76 2.7l2.18 4.38H15.5l-1.83-3.8h-2.36v3.8h1.83zm13.34-5.45l-2.06-4.54h-3.4v10h2.64v-5l1.6 3.4h1.94l1.6-3.4v5h2.65v-10h-3.4l-1.57 4.54z"/></svg>
 </div>
 </div>
 </footer>
 
 <script>
-// --- Mobile Menu Toggle Logic ---
+// --- Mobile Menu Logic ---
 const menuBtn = document.getElementById('mobile-menu-btn');
 const header = document.getElementById('main-header');
+menuBtn.addEventListener('click', () => { header.classList.toggle('active'); });
 
-menuBtn.addEventListener('click', () => {
-header.classList.toggle('active');
-});
-
-// --- Splash Screen Logic ---
+// --- Preloader Logic ---
 window.addEventListener('load', () => {
 setTimeout(() => {
-const splashScreen = document.getElementById('splash-screen');
-splashScreen.classList.add('fade-out-splash');
+document.getElementById('splash-screen').classList.add('fade-out-splash');
 document.body.classList.remove('no-scroll');
 }, 4000);
 });
 
-// --- Portfolio Carousel Logic ---
-document.addEventListener('DOMContentLoaded', () => {
-const track = document.querySelector('.portfolio-track');
-const prevBtn = document.querySelector('.prev-btn');
-const nextBtn = document.querySelector('.next-btn');
-const itemWidth = 374;
-let currentTranslate = 0;
+// --- DIGITAL BILLBOARD SLIDER LOGIC ---
+const slides = document.querySelectorAll('.slide');
+let currentSlide = 0;
 
-nextBtn.addEventListener('click', () => {
-const maxTranslate = (track.children.length - 1) * itemWidth;
-if (Math.abs(currentTranslate) < maxTranslate) {
-currentTranslate -= itemWidth;
-track.style.transform = `translateX(${currentTranslate}px)`;
-}
-});
-
-prevBtn.addEventListener('click', () => {
-if (currentTranslate < 0) {
-currentTranslate += itemWidth;
-track.style.transform = `translateX(${currentTranslate}px)`;
-}
-});
-});
+// Automatically transition the billboard background every 5 seconds
+setInterval(() => {
+slides[currentSlide].classList.remove('active'); // Hide current
+currentSlide = (currentSlide + 1) % slides.length; // Move to next
+slides[currentSlide].classList.add('active'); // Show next
+}, 5000);
 </script>
 
 </body>
 </html>
-
-
-
-
 
 
 

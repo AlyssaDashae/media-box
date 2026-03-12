@@ -7,7 +7,6 @@
 <title>MediaBox Bahamas | Luxury Media & Corporate Excellence</title>
 <meta name="title" content="MediaBox Bahamas | Luxury Media & Corporate Excellence">
 <meta name="description" content="MediaBox Bahamas is a premium marketing and media production company offering bespoke video, global advertising, and digital consultancy for elite brands in The Bahamas.">
-<meta name="keywords" content="MediaBox Bahamas, Bahamas marketing agency, luxury video production Nassau, corporate advertising Bahamas, digital consultancy New Providence">
 <meta name="author" content="MediaBox Bahamas Limited">
 
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
@@ -16,7 +15,8 @@
 :root {
 --bg-color: #f4f7f6;
 --main-teal: #0c182d;
---main-gold: #c5a059;
+--main-gold: #c5a059; /* Bright Reference Gold */
+--muted-link: #64748b; /* The greyish-blue from your mockup */
 --accent-cyan: #00f3ff;
 --text-dark: #333;
 --text-light: #fff;
@@ -65,7 +65,7 @@ opacity: 1;
 position: fixed;
 top: 0; left: 0; width: 100vw; height: 100vh;
 z-index: -1;
-background-color: rgba(255, 255, 255, 0.1); /* Subtle light overlay */
+background-color: rgba(255, 255, 255, 0.1);
 pointer-events: none;
 }
 
@@ -117,8 +117,18 @@ box-sizing: border-box;
 .menu-toggle { display: none; cursor: pointer; }
 
 nav ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 2rem; align-items: center; }
-nav a { text-decoration: none; color: var(--main-teal); font-size: 0.85rem; font-weight: 700; transition: color 0.3s ease; letter-spacing: 0.5px;}
-nav a:hover { color: var(--main-gold); }
+
+/* Updated Link Colors to match mockup (Blue-Grey default, Gold on hover) */
+nav a {
+text-decoration: none;
+color: var(--muted-link);
+font-size: 0.85rem;
+font-weight: 700;
+transition: all 0.3s ease;
+letter-spacing: 0.5px;
+text-transform: uppercase;
+}
+nav a:hover, nav a.active { color: var(--main-gold); }
 
 .dropdown { position: relative; display: inline-block; }
 .dropdown-content {
@@ -126,17 +136,26 @@ display: none; position: absolute; top: 100%; left: 0;
 background: #fff; min-width: 180px; box-shadow: 0px 8px 20px rgba(0,0,0,0.1); z-index: 1001;
 border-top: 2px solid var(--main-gold); padding: 0; flex-direction: column;
 }
-.dropdown-content a { color: var(--main-teal); padding: 15px 20px; border-bottom: 1px solid #eee; }
+.dropdown-content a { color: var(--muted-link); padding: 15px 20px; border-bottom: 1px solid #eee; }
 .dropdown-content a:hover { background-color: #f9f9f9; color: var(--main-gold); }
 .dropdown:hover .dropdown-content { display: flex; }
 
+/* THE EXACT BLUE GLOW REQUEST BUTTON */
 .request-btn {
 background: linear-gradient(135deg, var(--main-gold) 0%, #fff0b3 45%, var(--main-gold) 100%);
-background-size: 200% auto; color: var(--main-teal); border: none; padding: 0.7rem 1.5rem;
+background-size: 200% auto;
+color: var(--main-teal);
+border: 1px solid rgba(0, 243, 255, 0.4);
+padding: 0.7rem 1.5rem;
 font-weight: 700; font-size: 0.85rem; cursor: pointer; transition: all 0.4s ease;
-text-transform: uppercase; border-radius: 4px; box-shadow: 0 4px 15px rgba(197, 160, 89, 0.3);
+text-transform: uppercase; border-radius: 4px;
+box-shadow: 0 0 12px 2px rgba(0, 243, 255, 0.5); /* The Neon Cyan Glow */
 }
-.request-btn:hover { background-position: right center; box-shadow: 0 4px 20px rgba(197, 160, 89, 0.6); }
+.request-btn:hover {
+background-position: right center;
+box-shadow: 0 0 20px 4px rgba(0, 243, 255, 0.8);
+transform: translateY(-1px);
+}
 
 /* =========================================
 DIGITAL BILLBOARD HERO SECTION
@@ -180,6 +199,8 @@ background: rgba(0,0,0,0.6); padding: 6px 12px; border-radius: 4px; border: 1px 
 }
 .billboard-ui span { color: var(--accent-cyan); font-family: var(--font-heading); font-size: 0.6rem; letter-spacing: 2px;}
 .billboard-ui .pulse { width: 6px; height: 6px; background: var(--accent-cyan); border-radius: 50%; animation: blink 1.5s infinite;}
+
+@keyframes blink { 50% { opacity: 0.3; } }
 
 .slider-container { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1;}
 .slide {
@@ -233,7 +254,7 @@ display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; max-width: 12
 
 .service-card {
 background: rgba(255, 255, 255, 0.95);
-border: 1px solid rgba(197, 160, 89, 0.3);
+border: 1.5px solid var(--main-gold);
 padding: 2.5rem 1.5rem;
 border-radius: 6px;
 text-align: center;
@@ -241,11 +262,20 @@ box-shadow: 0 15px 35px rgba(0,0,0,0.08);
 transition: transform 0.4s ease;
 }
 
-.service-card:hover { transform: translateY(-10px); border-color: var(--main-gold);}
+.service-card:hover { transform: translateY(-10px); box-shadow: 0 25px 45px rgba(197, 160, 89, 0.2); }
 
 .service-icon { margin-bottom: 1rem; display: flex; justify-content: center; }
 .service-icon svg { width: 50px; height: 50px; stroke: var(--main-gold); stroke-width: 1.2; fill: none; }
-.service-card h3 { font-family: var(--font-heading); font-size: 1.1rem; font-weight: 700; color: var(--main-teal); margin-bottom: 0.8rem;}
+
+.service-card h3 {
+font-family: var(--font-heading);
+font-size: 1rem;
+font-weight: 700;
+color: var(--main-gold);
+margin-bottom: 0.8rem;
+letter-spacing: 1px;
+}
+
 .service-card p { font-size: 0.85rem; color: #555; line-height: 1.6; }
 
 /* =========================================
@@ -289,8 +319,6 @@ footer { background-color: var(--main-teal); color: var(--text-light); padding: 
 .social-links a svg { width: 24px; height: 24px; fill: var(--main-gold); }
 .footer-bottom { max-width: 1200px; margin: 0 auto; padding-top: 2rem; border-top: 1px solid rgba(255, 255, 255, 0.1); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem; }
 .footer-bottom p { font-size: 0.8rem; color: #888; }
-.payment-options { display: flex; gap: 1.2rem; align-items: center; }
-.payment-options svg { height: 24px; fill: #aaa; }
 
 @media (max-width: 1024px) {
 .services-grid { grid-template-columns: repeat(2, 1fr); }
@@ -310,7 +338,7 @@ nav, .request-btn { display: none; width: 100%; }
 
 <div class="video-bg-container">
 <video autoplay loop muted playsinline>
-<source src="bg-video.mp4.mp4" type="video/mp4">
+<source src="bg-video.mp4" type="video/mp4">
 </video>
 </div>
 <div class="video-overlay"></div>
@@ -370,24 +398,35 @@ nav, .request-btn { display: none; width: 100%; }
 <section class="services" id="services">
 <div class="services-grid">
 <article class="service-card">
-<div class="service-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg></div>
+<div class="service-icon">
+<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path><path d="M2 12h20"></path></svg>
+</div>
 <h3>GLOBAL ADVERTISING</h3>
 <p>Global advertising and communications. Reaching audience and strategic placement.</p>
 </article>
+
 <article class="service-card">
-<div class="service-icon"><svg viewBox="0 0 24 24"><path d="M23 7l-7 5 7 5V7z"></path><rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect></svg></div>
-<h3>BESPOKE VIDEO</h3>
-<p>Bespoke video presentations and professional digital editing.</p>
+<div class="service-icon">
+<svg viewBox="0 0 24 24"><path d="M23 7l-7 5 7 5V7z"></path><rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect></svg>
+</div>
+<h3>BESPOKE VIDEO PRODUCTION</h3>
+<p>Bespoke video presentations and high-end professional digital editing.</p>
 </article>
+
 <article class="service-card">
-<div class="service-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle></svg></div>
+<div class="service-icon">
+<svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+</div>
 <h3>BRAND STRATEGY</h3>
 <p>Developing comprehensive and meaningful corporate brand strategies.</p>
 </article>
+
 <article class="service-card">
-<div class="service-icon"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect></svg></div>
+<div class="service-icon">
+<svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+</div>
 <h3>DIGITAL CONSULTANCY</h3>
-<p>Digital consulting and digital strategies for maximizing online presence.</p>
+<p>Digital consulting and advanced digital strategies for maximizing online presence.</p>
 </article>
 </div>
 </section>
@@ -483,4 +522,5 @@ slides[currentSlide].classList.add('active');
 
 </body>
 </html>
+
 

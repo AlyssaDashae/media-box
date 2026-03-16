@@ -87,7 +87,7 @@ body.no-scroll { overflow: hidden; }
 .hidden { opacity: 0 !important; visibility: hidden !important; }
 
 .splash-logo-wrap {
-  animation: splashIn 2.2s cubic-bezier(0.22,1,0.36,1) 0.2s both;
+  animation: splashIn 1.4s cubic-bezier(0.22,1,0.36,1) 0.1s both;
   text-decoration: none !important;
 }
 
@@ -237,14 +237,68 @@ nav li:first-child a { color:#c5a059; }
 .svc-card h3 { font-family:'Space Grotesk',sans-serif; font-size:0.84rem; font-weight:700; color:#2a3545; text-transform:uppercase; letter-spacing:0.7px; line-height:1.35; margin-bottom:0.5rem; }
 .svc-card p { font-size:0.76rem; color:#6a7888; line-height:1.6; }
 
+/* Marketing Products Section */
+.mktg-section { padding:5rem 4%; position:relative; z-index:10; }
+.mktg-inner { max-width:1200px; margin:0 auto; display:flex; flex-direction:column; gap:5rem; }
+.mktg-row {
+  display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:center;
+}
+.mktg-row.reverse { direction:rtl; }
+.mktg-row.reverse > * { direction:ltr; }
+.mktg-img {
+  position:relative; border-radius:12px; overflow:hidden;
+  box-shadow:0 20px 50px rgba(0,0,0,0.12);
+  border-top:3px solid #c5a059;
+}
+.mktg-img img { width:100%; height:320px; object-fit:cover; display:block; }
+.mktg-img::after {
+  content:''; position:absolute; inset:0;
+  background:linear-gradient(160deg, rgba(197,160,89,0.08) 0%, transparent 60%);
+  pointer-events:none;
+}
+.mktg-text .eyebrow { font-size:0.72rem; font-weight:700; color:#c5a059; letter-spacing:3px; text-transform:uppercase; margin-bottom:0.8rem; display:block; }
+.mktg-text h2 { font-family:'Space Grotesk',sans-serif; font-size:1.9rem; font-weight:700; color:#0c182d; line-height:1.25; margin-bottom:1.2rem; }
+.mktg-text h2 span { color:#c5a059; }
+.mktg-text p { font-size:0.9rem; color:#556; line-height:1.8; margin-bottom:1rem; }
+.mktg-features { list-style:none; margin:1.2rem 0 1.8rem; display:flex; flex-direction:column; gap:0.6rem; }
+.mktg-features li { display:flex; align-items:center; gap:0.7rem; font-size:0.85rem; color:#445; font-weight:500; }
+.mktg-features li::before { content:''; width:18px; height:18px; flex-shrink:0; background:linear-gradient(135deg,#c5a059,#e8c87a); border-radius:50%; display:flex; align-items:center; justify-content:center; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolyline points='20 6 9 17 4 12' stroke='%23fff' stroke-width='3' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-size:11px; background-repeat:no-repeat; background-position:center; }
+.mktg-price { font-family:'Space Grotesk',sans-serif; font-size:1.8rem; font-weight:700; color:#c5a059; margin-bottom:1.4rem; }
+.mktg-price span { font-size:0.9rem; color:#888; font-weight:400; }
+@media(max-width:1024px){ .mktg-row, .mktg-row.reverse { grid-template-columns:1fr; direction:ltr; gap:2rem; } }
+
 .sec-title { text-align:center; font-family:'Space Grotesk',sans-serif; font-size:2rem; color:#0c182d; margin-bottom:2.2rem; position:relative; z-index:10; }
 .sec-title::after { content:''; display:block; width:50px; height:3px; background:#c5a059; margin:10px auto 0; }
 .products { padding:4rem 4%; position:relative; z-index:10; }
 .prod-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:1.2rem; max-width:1200px; margin:0 auto; }
-.prod-card { background:rgba(255,255,255,0.93); border-radius:8px; border:1px solid #dce8ee; box-shadow:0 5px 16px rgba(0,0,0,0.05); overflow:hidden; position:relative; display:flex; flex-direction:column; transition:transform 0.3s; }
+.prod-card { background:rgba(255,255,255,0.93); border-radius:12px; border:1px solid #dce8ee; box-shadow:0 5px 16px rgba(0,0,0,0.05); overflow:hidden; position:relative; display:flex; flex-direction:column; transition:transform 0.3s; }
 .prod-card:hover { transform:translateY(-5px); border-color:#c5a059; }
-.prod-badge { position:absolute; top:12px; right:12px; background:#c5a059; color:#fff; font-size:0.58rem; font-weight:700; padding:3px 9px; border-radius:20px; }
-.prod-card img { width:100%; height:165px; object-fit:cover; }
+.prod-badge { position:absolute; top:12px; right:12px; background:#c5a059; color:#fff; font-size:0.58rem; font-weight:700; padding:3px 9px; border-radius:20px; z-index:5; }
+
+/* Media container with toggle */
+.prod-media { position:relative; width:100%; height:185px; overflow:hidden; background:#000; }
+.prod-media img,
+.prod-media video { position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; transition:opacity 0.4s ease; }
+.prod-media img { opacity:1; z-index:1; }
+.prod-media video { opacity:0; z-index:2; }
+.prod-card.playing .prod-media img { opacity:0; }
+.prod-card.playing .prod-media video { opacity:1; }
+
+/* Toggle button */
+.media-toggle {
+  position:absolute; bottom:10px; left:50%; transform:translateX(-50%);
+  z-index:6; display:flex; gap:0; border-radius:20px; overflow:hidden;
+  border:1.5px solid rgba(197,160,89,0.8); background:rgba(0,0,0,0.55);
+  backdrop-filter:blur(8px);
+}
+.media-toggle button {
+  background:none; border:none; cursor:pointer;
+  padding:5px 14px; font-size:0.62rem; font-weight:700;
+  color:rgba(255,255,255,0.6); letter-spacing:0.8px; font-family:'Montserrat',sans-serif;
+  transition:all 0.2s;
+}
+.media-toggle button.active { background:#c5a059; color:#0c182d; }
+
 .prod-info { padding:1.2rem; display:flex; flex-direction:column; flex-grow:1; }
 .prod-info h4 { font-family:'Space Grotesk',sans-serif; font-size:0.95rem; color:#0c182d; margin-bottom:0.4rem; }
 .prod-desc { font-size:0.78rem; color:#778; margin-bottom:0.8rem; flex-grow:1; }
@@ -340,13 +394,54 @@ nav li:first-child a { color:#c5a059; }
 .stat .num { font-family:'Space Grotesk',sans-serif; font-size:1.6rem; font-weight:700; color:#c5a059; line-height:1; margin-bottom:0.3rem; }
 .stat .label { font-size:0.72rem; color:#778; font-weight:600; text-transform:uppercase; letter-spacing:0.5px; }
 
+/* Swipeable portfolio card */
+.port-item-media { flex:0 0 320px; background:rgba(255,255,255,0.9); border-radius:8px; border:1px solid #dce8ee; overflow:hidden; box-shadow:0 5px 16px rgba(0,0,0,0.04); }
+.media-slider { position:relative; width:100%; height:195px; overflow:hidden; }
+.media-slides { display:flex; height:100%; transition:transform 0.4s cubic-bezier(0.4,0,0.2,1); }
+.media-slide { flex:0 0 100%; height:100%; position:relative; }
+.media-slide img { width:100%; height:100%; object-fit:cover; display:block; }
+.media-slide video { width:100%; height:100%; object-fit:cover; display:block; background:#000; }
+.slide-btn {
+  position:absolute; top:50%; transform:translateY(-50%);
+  background:rgba(0,0,0,0.55); border:none; color:#fff;
+  width:28px; height:28px; border-radius:50%; cursor:pointer;
+  display:flex; align-items:center; justify-content:center;
+  font-size:0.75rem; z-index:5; transition:background 0.2s;
+  backdrop-filter:blur(4px);
+}
+.slide-btn:hover { background:rgba(197,160,89,0.85); }
+.slide-btn.prev { left:8px; }
+.slide-btn.next { right:8px; }
+.slide-dots { position:absolute; bottom:7px; left:50%; transform:translateX(-50%); display:flex; gap:5px; z-index:5; }
+.slide-dot { width:6px; height:6px; border-radius:50%; background:rgba(255,255,255,0.5); cursor:pointer; transition:background 0.2s, transform 0.2s; }
+.slide-dot.active { background:#c5a059; transform:scale(1.25); }
+.play-badge {
+  position:absolute; top:8px; left:8px; z-index:5;
+  background:rgba(197,160,89,0.9); color:#0c182d;
+  font-size:0.52rem; font-weight:700; padding:3px 8px; border-radius:20px;
+  letter-spacing:0.5px; text-transform:uppercase;
+  display:flex; align-items:center; gap:4px;
+}
+
 .portfolio { padding:4rem 4% 6rem; position:relative; z-index:10; }
-.port-track { display:flex; gap:1.2rem; max-width:1200px; margin:0 auto; overflow-x:auto; padding-bottom:1rem; scrollbar-width:thin; }
-.port-item { flex:0 0 320px; background:rgba(255,255,255,0.9); border-radius:8px; border:1px solid #dce8ee; overflow:hidden; box-shadow:0 5px 16px rgba(0,0,0,0.04); }
-.port-item img { width:100%; height:195px; object-fit:cover; }
+.port-carousel { position:relative; max-width:1200px; margin:0 auto; }
+.port-track { display:grid; grid-template-columns:repeat(4,1fr); gap:1.2rem; max-width:1200px; margin:0 auto; }
+.port-item {
+  background:rgba(255,255,255,0.93);
+  border-radius:12px;
+  border:1px solid #dce8ee;
+  border-top:3px solid #c5a059;
+  overflow:hidden;
+  box-shadow:0 5px 16px rgba(0,0,0,0.05);
+  transition:transform 0.3s, box-shadow 0.3s;
+}
+.port-item:hover { transform:translateY(-5px); box-shadow:0 16px 32px rgba(0,0,0,0.1); }
 .port-info { padding:1.2rem; }
 .port-info h4 { font-family:'Space Grotesk',sans-serif; font-size:0.95rem; color:#0c182d; margin-bottom:0.35rem; }
 .port-info p  { font-size:0.78rem; color:#778; }
+
+@media(max-width:1024px){ .port-track { grid-template-columns:repeat(2,1fr); } }
+@media(max-width:600px){ .port-track { grid-template-columns:1fr; } }
 
 footer { background:rgba(255,255,255,0.9); color:#333; padding:4rem 4% 2rem; border-top:3px solid #c5a059; position:relative; z-index:100; }
 .ft-grid { display:flex; justify-content:space-between; flex-wrap:wrap; gap:3rem; max-width:1200px; margin:0 auto 3rem; }
@@ -459,7 +554,7 @@ footer { background:rgba(255,255,255,0.9); color:#333; padding:4rem 4% 2rem; bor
       <li><a href="#services">SERVICES</a></li>
       <li><a href="#portfolio">PORTFOLIO</a></li>
       <li><a href="about.html">ABOUT US</a></li>
-      <li><a href="insight.html">INSIGHTS</a></li>
+      <li><a href="insights.html">INSIGHTS</a></li>
       <li class="dropdown">
         <a href="#">BROCHURE ▾</a>
         <div class="dd-menu">
@@ -491,28 +586,12 @@ footer { background:rgba(255,255,255,0.9); color:#333; padding:4rem 4% 2rem; bor
           <h1>DIGITAL LUXURY.<br>UNMATCHED IMPACT.<br>CORPORATE EXCELLENCE.</h1>
           <p>Strategic Communications and Media Production<br>for the Bahamas' Elite Brands.</p>
         </div>
-        <div class="thumb-strip">
-          <div class="thumb-track">
-            <div class="th"><img src="https://images.unsplash.com/photo-1569263979104-865ab7cd8d13?w=140" alt=""></div>
-            <div class="th"><img src="https://images.unsplash.com/photo-1559628233-100c798642d8?w=140" alt=""></div>
-            <div class="th"><img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=140" alt=""></div>
-            <div class="th"><img src="https://images.unsplash.com/photo-1566737236500-1cfeb61e2e48?w=140" alt=""></div>
-            <div class="th"><img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=140" alt=""></div>
-            <div class="th"><img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=140" alt=""></div>
-            <div class="th"><img src="https://images.unsplash.com/photo-1569263979104-865ab7cd8d13?w=140" alt=""></div>
-            <div class="th"><img src="https://images.unsplash.com/photo-1559628233-100c798642d8?w=140" alt=""></div>
-            <div class="th"><img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=140" alt=""></div>
-            <div class="th"><img src="https://images.unsplash.com/photo-1566737236500-1cfeb61e2e48?w=140" alt=""></div>
-            <div class="th"><img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=140" alt=""></div>
-            <div class="th"><img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=140" alt=""></div>
-          </div>
-          <div class="playing-tag2">▶ PLAYING 1</div>
-        </div>
       </div>
     </div>
   </section>
 
   <section class="services" id="services">
+    <h2 class="sec-title">Our Services</h2>
     <div class="svc-grid">
       <article class="svc-card">
         <div class="svc-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/><path d="M2 12h20"/></svg></div>
@@ -547,47 +626,54 @@ footer { background:rgba(255,255,255,0.9); color:#333; padding:4rem 4% 2rem; bor
     </div>
   </section>
 
-  <section class="products" id="products">
-    <h2 class="sec-title">Featured Placements</h2>
-    <div class="prod-grid">
-      <article class="prod-card">
-        <div class="prod-badge">BEST VALUE</div>
-        <img src="https://images.unsplash.com/photo-1559828854-15f5fc858c2a?q=80&w=600" alt="">
-        <div class="prod-info">
-          <h4>Solar Billboard (10x8)</h4>
-          <p class="prod-desc">High-visibility solar-powered billboard display.</p>
-          <p class="prod-price">$1,040</p>
-          <button class="consult-btn" onclick="location.href='consultation.html'" style="width:100%;">QUOTE</button>
+  <!-- MARKETING PRODUCTS -->
+  <section class="mktg-section">
+    <div class="mktg-inner">
+
+      <!-- MEDIABOOK ROW -->
+      <div class="mktg-row">
+        <div class="mktg-img">
+          <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?q=80&w=800" alt="MediaBook">
         </div>
-      </article>
-      <article class="prod-card">
-        <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=600" alt="">
-        <div class="prod-info">
-          <h4>Marketing Campaigns</h4>
-          <p class="prod-desc">Comprehensive marketing campaign development.</p>
-          <p class="prod-price">$3,000</p>
-          <button class="consult-btn" onclick="location.href='consultation.html'" style="width:100%;">QUOTE</button>
+        <div class="mktg-text">
+          <span class="eyebrow">Premium Marketing Tool</span>
+          <h2>Get Your <span>MediaBook</span> Today.</h2>
+          <p>A MediaBook is your brand's most powerful leave-behind. Professionally designed and fully customized, it tells your company's story in a format that clients remember long after the meeting ends.</p>
+          <p>From corporate profiles to product catalogues, your MediaBook positions your business as the premium choice in every room it enters.</p>
+          <ul class="mktg-features">
+            <li>Fully customized to your brand identity</li>
+            <li>Premium print quality — high-gloss & matte finishes</li>
+            <li>Perfect for client meetings, pitches & events</li>
+            <li>Available in multiple sizes and formats</li>
+            <li>Pairs with digital & billboard campaigns</li>
+          </ul>
+          <div class="mktg-price">Custom Pricing <span>/ based on size & quantity</span></div>
+          <button class="consult-btn" onclick="location.href='consultation.html'">ORDER YOUR MEDIABOOK</button>
         </div>
-      </article>
-      <article class="prod-card">
-        <div class="prod-badge">POPULAR</div>
-        <img src="https://images.unsplash.com/photo-1588196749597-9ff046fe6e60?q=80&w=600" alt="">
-        <div class="prod-info">
-          <h4>Customized Banners</h4>
-          <p class="prod-desc">Premium pull-up banners for events.</p>
-          <p class="prod-price">$850</p>
-          <button class="consult-btn" onclick="location.href='consultation.html'" style="width:100%;">QUOTE</button>
+      </div>
+
+      <!-- BANNERS ROW -->
+      <div class="mktg-row reverse">
+        <div class="mktg-img">
+          <img src="https://images.unsplash.com/photo-1588196749597-9ff046fe6e60?q=80&w=800" alt="Pull-Up Banners">
         </div>
-      </article>
-      <article class="prod-card">
-        <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=600" alt="">
-        <div class="prod-info">
-          <h4>Strategic Business Plans</h4>
-          <p class="prod-desc">Professional tailored business plans for growth.</p>
-          <p class="prod-price">$2,500</p>
-          <button class="consult-btn" onclick="location.href='consultation.html'" style="width:100%;">QUOTE</button>
+        <div class="mktg-text">
+          <span class="eyebrow">Event & Retail Marketing</span>
+          <h2>Customized <span>Pull-Up Banners</span> — 2 for $850.</h2>
+          <p>Make a bold statement at trade shows, events, storefronts, and exhibitions. Our customized pull-up banners are professionally printed with vibrant, eye-catching graphics that stop people in their tracks.</p>
+          <p>Lightweight, portable, and built to last — these banners go wherever your business goes, keeping your brand front and center every time.</p>
+          <ul class="mktg-features">
+            <li>Full-color professional printing</li>
+            <li>Lightweight & easy to set up in seconds</li>
+            <li>Durable material built for repeated use</li>
+            <li>Custom sizing available</li>
+            <li>Ideal for events, lobbies & storefronts</li>
+          </ul>
+          <div class="mktg-price">$850 <span>/ 2 banners</span></div>
+          <button class="consult-btn" onclick="location.href='consultation.html'">ORDER YOUR BANNERS</button>
         </div>
-      </article>
+      </div>
+
     </div>
   </section>
 
@@ -621,21 +707,130 @@ footer { background:rgba(255,255,255,0.9); color:#333; padding:4rem 4% 2rem; bor
     </div>
   </section>
 
+  <section class="products" id="products">
+    <h2 class="sec-title">Featured Placements</h2>
+    <div class="prod-grid">
+
+      <article class="prod-card">
+        <div class="prod-badge">BEST VALUE</div>
+        <div class="prod-media">
+          <img src="https://images.unsplash.com/photo-1559828854-15f5fc858c2a?q=80&w=600" alt="Solar Billboard">
+          <video muted loop playsinline src="billboard.mp4"></video>
+          <div class="media-toggle">
+            <button class="active" onclick="showPhoto(this)">PHOTO</button>
+            <button onclick="showVideo(this)">VIDEO</button>
+          </div>
+        </div>
+        <div class="prod-info">
+          <h4>Solar Billboard (10x8)</h4>
+          <p class="prod-desc">High-visibility solar-powered billboard display.</p>
+          <p class="prod-price">$1,040</p>
+          <button class="consult-btn" onclick="location.href='consultation.html'" style="width:100%;">QUOTE</button>
+        </div>
+      </article>
+
+      <article class="prod-card">
+        <div class="prod-media">
+          <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=600" alt="Marketing Campaigns">
+          <video muted loop playsinline src="billboard.mp4"></video>
+          <div class="media-toggle">
+            <button class="active" onclick="showPhoto(this)">PHOTO</button>
+            <button onclick="showVideo(this)">VIDEO</button>
+          </div>
+        </div>
+        <div class="prod-info">
+          <h4>Marketing Campaigns</h4>
+          <p class="prod-desc">Comprehensive marketing campaign development.</p>
+          <p class="prod-price">$3,000</p>
+          <button class="consult-btn" onclick="location.href='consultation.html'" style="width:100%;">QUOTE</button>
+        </div>
+      </article>
+
+      <article class="prod-card">
+        <div class="prod-badge">POPULAR</div>
+        <div class="prod-media">
+          <img src="https://images.unsplash.com/photo-1588196749597-9ff046fe6e60?q=80&w=600" alt="Customized Banners">
+          <video muted loop playsinline src="billboard.mp4"></video>
+          <div class="media-toggle">
+            <button class="active" onclick="showPhoto(this)">PHOTO</button>
+            <button onclick="showVideo(this)">VIDEO</button>
+          </div>
+        </div>
+        <div class="prod-info">
+          <h4>Customized Banners</h4>
+          <p class="prod-desc">Premium pull-up banners for events.</p>
+          <p class="prod-price">$850</p>
+          <button class="consult-btn" onclick="location.href='consultation.html'" style="width:100%;">QUOTE</button>
+        </div>
+      </article>
+
+      <article class="prod-card">
+        <div class="prod-media">
+          <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=600" alt="Strategic Business Plans">
+          <video muted loop playsinline src="billboard.mp4"></video>
+          <div class="media-toggle">
+            <button class="active" onclick="showPhoto(this)">PHOTO</button>
+            <button onclick="showVideo(this)">VIDEO</button>
+          </div>
+        </div>
+        <div class="prod-info">
+          <h4>Strategic Business Plans</h4>
+          <p class="prod-desc">Professional tailored business plans for growth.</p>
+          <p class="prod-price">$2,500</p>
+          <button class="consult-btn" onclick="location.href='consultation.html'" style="width:100%;">QUOTE</button>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
   <section class="portfolio" id="portfolio">
     <h2 class="sec-title">Selected Client Portfolio</h2>
     <div class="port-track">
+
       <article class="port-item">
-        <img src="BICCU.jpg" alt="">
+        <div class="prod-media">
+          <img src="BICCU.jpg" alt="BICCU Mediabook">
+        </div>
         <div class="port-info"><h4>Corporate Marketing: Mediabook</h4><p>BICCU</p></div>
       </article>
+
       <article class="port-item">
-        <img src="https://images.unsplash.com/photo-1599818817361-b1e605d8f28c?q=80&w=400" alt="">
+        <div class="prod-media">
+          <img src="https://images.unsplash.com/photo-1599818817361-b1e605d8f28c?q=80&w=600" alt="Corporate Events">
+          <video muted loop playsinline src="billboard.mp4"></video>
+          <div class="media-toggle">
+            <button class="active" onclick="showPhoto(this)">PHOTO</button>
+            <button onclick="showVideo(this)">VIDEO</button>
+          </div>
+        </div>
         <div class="port-info"><h4>Corporate Events</h4><p>Nassau Business Conference</p></div>
       </article>
+
       <article class="port-item">
-        <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=400" alt="">
+        <div class="prod-media">
+          <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=600" alt="Brand Film">
+          <video muted loop playsinline src="billboard.mp4"></video>
+          <div class="media-toggle">
+            <button class="active" onclick="showPhoto(this)">PHOTO</button>
+            <button onclick="showVideo(this)">VIDEO</button>
+          </div>
+        </div>
         <div class="port-info"><h4>Brand Film</h4><p>Global Campaign</p></div>
       </article>
+
+      <article class="port-item">
+        <div class="prod-media">
+          <img src="https://images.unsplash.com/photo-1559628233-100c798642d8?q=80&w=600" alt="Billboard Campaign">
+          <video muted loop playsinline src="billboard.mp4"></video>
+          <div class="media-toggle">
+            <button class="active" onclick="showPhoto(this)">PHOTO</button>
+            <button onclick="showVideo(this)">VIDEO</button>
+          </div>
+        </div>
+        <div class="port-info"><h4>Digital Billboard Campaign</h4><p>Multi-platform brand activation across Nassau</p></div>
+      </article>
+
     </div>
   </section>
 </main>
@@ -741,8 +936,26 @@ function dismissSplash() {
     const splash = document.getElementById('splash');
     if (splash) splash.classList.add('hidden');
     document.body.classList.remove('no-scroll');
-  }, 4200);
+  }, 2800);
 }
+
+function showPhoto(btn) {
+  const card = btn.closest('.prod-card');
+  card.classList.remove('playing');
+  const vid = card.querySelector('video');
+  vid.pause();
+  btn.classList.add('active');
+  btn.nextElementSibling.classList.remove('active');
+}
+function showVideo(btn) {
+  const card = btn.closest('.prod-card');
+  card.classList.add('playing');
+  const vid = card.querySelector('video');
+  vid.play();
+  btn.classList.add('active');
+  btn.previousElementSibling.classList.remove('active');
+}
+
 if (document.readyState === 'complete') { dismissSplash(); }
 else {
   window.addEventListener('load', dismissSplash);

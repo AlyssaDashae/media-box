@@ -414,11 +414,14 @@ nav li:first-child a { color: #c5a059; }
   box-shadow: 0 20px 50px rgba(0,0,0,0.25);
   background: #000;
   aspect-ratio: 16/9;
+  width: 100%;
 }
 .video-box iframe,
 .video-box video {
   width: 100%; height: 100%;
   display: block; border: none;
+  object-fit: cover;
+  position: absolute; top: 0; left: 0;
 }
 /* Corner accents */
 .video-frame-wrap .corner {
@@ -666,11 +669,11 @@ footer { background: rgba(255,255,255,0.9); color: #333; padding:4rem 4% 2rem; b
   </a>
   <nav id="main-nav">
     <ul>
-      <li><a href="#home">HOME</a></li>
+      <li><a href="index.html">HOME</a></li>
       <li><a href="#services">SERVICES</a></li>
       <li><a href="#portfolio">PORTFOLIO</a></li>
       <li><a href="about.html">ABOUT US</a></li>
-      <li><a href="#insights">INSIGHTS</a></li>
+      <li><a href="insight.html">INSIGHTS</a></li>
       <li class="dropdown">
         <a href="#">BROCHURE ▾</a>
         <div class="dd-menu">
@@ -701,7 +704,7 @@ footer { background: rgba(255,255,255,0.9); color: #333; padding:4rem 4% 2rem; b
         <div class="bb-badge"><div class="blink"></div><span>TRANSITIONING</span></div>
         <div class="bb-playing">'PLAYING'</div>
         <div class="hero-glass">
-          <h1>DIGITAL LUXURY.<br>CORPORATE EXCELLENCE.<br>UNMATCHED IMPACT.</h1>
+          <h1>DIGITAL LUXURY.<br>UNMATCHED IMPACT.<br>CORPORATE EXCELLENCE.</h1>
           <p>Strategic Communications and Media Production<br>for the Bahamas' Elite Brands.</p>
         </div>
         <div class="thumb-strip">
@@ -735,8 +738,8 @@ footer { background: rgba(255,255,255,0.9); color: #333; padding:4rem 4% 2rem; b
       </article>
       <article class="svc-card">
         <div class="svc-icon"><svg viewBox="0 0 24 24"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2"/><circle cx="7" cy="12" r="1.5"/></svg></div>
-        <h3>BESPOKE VIDEO<br>PRODUCTION</h3>
-        <p>Bespoke video presentations and professional digital editing for elite brands.</p>
+        <h3>VIDEO<br>PRODUCTION</h3>
+        <p>video presentations and professional digital editing for elite brands.</p>
       </article>
       <article class="svc-card">
         <div class="svc-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="5"/><polyline points="10 8 12 7 14 8"/><line x1="12" y1="7" x2="12" y2="17"/></svg></div>
@@ -751,7 +754,7 @@ footer { background: rgba(255,255,255,0.9); color: #333; padding:4rem 4% 2rem; b
       <article class="svc-card">
         <div class="svc-icon"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="14" rx="2"/><path d="M8 22h8M12 18v4"/><polyline points="9 8 12 5 15 8"/><line x1="12" y1="5" x2="12" y2="15"/></svg></div>
         <h3>WEBSITE<br>DEVELOPMENT</h3>
-        <p>Bespoke, high-performance digital experiences crafted to elevate your brand's online presence.</p>
+        <p>High-performance digital experiences crafted to elevate your brand's online presence.</p>
       </article>
       <article class="svc-card">
         <div class="svc-icon"><svg viewBox="0 0 24 24"><rect x="1" y="3" width="22" height="14" rx="1"/><line x1="12" y1="17" x2="12" y2="21"/><line x1="5" y1="21" x2="19" y2="21"/><circle cx="12" cy="10" r="2"/><path d="M5 8h2M17 8h2M5 12h2M17 12h2"/></svg></div>
@@ -817,13 +820,9 @@ footer { background: rgba(255,255,255,0.9); color: #333; padding:4rem 4% 2rem; b
         <div class="corner corner-bl"></div>
         <div class="corner corner-br"></div>
         <div class="video-box">
-          <!-- Replace the src below with your actual YouTube embed URL or video file -->
-          <iframe
-            src="billboard.mp4"
-            title="MediaBox Bahamas — Billboard Advertising"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen>
-          </iframe>
+          <video autoplay muted loop playsinline>
+            <source src="billboard.mp4" type="video/mp4">
+          </video>
         </div>
       </div>
 
@@ -837,7 +836,7 @@ footer { background: rgba(255,255,255,0.9); color: #333; padding:4rem 4% 2rem; b
         <div class="video-stats">
           <div class="stat">
             <div class="num">100K+</div>
-            <div class="label">Weekly Impressions</div>
+            <div class="label">Weekly Impressions at Cruise Port</div>
           </div>
           <div class="stat">
             <div class="num">24/7</div>
@@ -864,8 +863,8 @@ footer { background: rgba(255,255,255,0.9); color: #333; padding:4rem 4% 2rem; b
     <h2 class="sec-title">Selected Client Portfolio</h2>
     <div class="port-track">
       <article class="port-item">
-        <img src="https://images.unsplash.com/photo-1620131435213-9a3b6164f20f?q=80&w=400" alt="">
-        <div class="port-info"><h4>Real Estate Development</h4><p>Bahamas Luxury Living</p></div>
+        <img src="BICCU.jpg" alt="">
+        <div class="port-info"><h4>Coroprate Marketing:Mediabook</h4><p>BICCU</p></div>
       </article>
       <article class="port-item">
         <img src="https://images.unsplash.com/photo-1599818817361-b1e605d8f28c?q=80&w=400" alt="">
@@ -873,7 +872,7 @@ footer { background: rgba(255,255,255,0.9); color: #333; padding:4rem 4% 2rem; b
       </article>
       <article class="port-item">
         <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=400" alt="">
-        <div class="port-info"><h4>Bespoke Brand Film</h4><p>Global Campaign</p></div>
+        <div class="port-info"><h4>Brand Film</h4><p>Global Campaign</p></div>
       </article>
     </div>
   </section>

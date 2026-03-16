@@ -246,11 +246,9 @@ nav li:first-child a { color:#c5a059; }
 .mktg-row.reverse { direction:rtl; }
 .mktg-row.reverse > * { direction:ltr; }
 .mktg-img {
-  position:relative; border-radius:12px; overflow:hidden;
-  box-shadow:0 20px 50px rgba(0,0,0,0.12);
-  border-top:3px solid #c5a059;
+  position:relative; border-radius:0; overflow:hidden;
 }
-.mktg-img img { width:100%; height:320px; object-fit:cover; display:block; }
+.mktg-img img { width:100%; height:320px; object-fit:contain; display:block; background:transparent; }
 .mktg-img::after {
   content:''; position:absolute; inset:0;
   background:linear-gradient(160deg, rgba(197,160,89,0.08) 0%, transparent 60%);
@@ -262,7 +260,7 @@ nav li:first-child a { color:#c5a059; }
 .mktg-text p { font-size:0.9rem; color:#556; line-height:1.8; margin-bottom:1rem; }
 .mktg-features { list-style:none; margin:1.2rem 0 1.8rem; display:flex; flex-direction:column; gap:0.6rem; }
 .mktg-features li { display:flex; align-items:center; gap:0.7rem; font-size:0.85rem; color:#445; font-weight:500; }
-.mktg-features li::before { content:''; width:18px; height:18px; flex-shrink:0; background:linear-gradient(135deg,#c5a059,#e8c87a); border-radius:50%; display:flex; align-items:center; justify-content:center; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolyline points='20 6 9 17 4 12' stroke='%23fff' stroke-width='3' fill='none' stroke-linecap='round'/%3E%3C/svg%3E"); background-size:11px; background-repeat:no-repeat; background-position:center; }
+.mktg-features li::before { content:''; width:18px; height:18px; flex-shrink:0; background:linear-gradient(135deg,#c5a059,#e8c87a); border-radius:50%; display:inline-block; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolyline points='20 6 9 17 4 12' stroke='%230c182d' stroke-width='3' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); background-size:11px; background-repeat:no-repeat; background-position:center; }
 .mktg-price { font-family:'Space Grotesk',sans-serif; font-size:1.8rem; font-weight:700; color:#c5a059; margin-bottom:1.4rem; }
 .mktg-price span { font-size:0.9rem; color:#888; font-weight:400; }
 @media(max-width:1024px){ .mktg-row, .mktg-row.reverse { grid-template-columns:1fr; direction:ltr; gap:2rem; } }
@@ -633,7 +631,7 @@ footer { background:rgba(255,255,255,0.9); color:#333; padding:4rem 4% 2rem; bor
       <!-- MEDIABOOK ROW -->
       <div class="mktg-row">
         <div class="mktg-img">
-          <img src="mediabook.png" alt="MediaBook">
+          <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?q=80&w=800" alt="MediaBook">
         </div>
         <div class="mktg-text">
           <span class="eyebrow">Premium Marketing Tool</span>

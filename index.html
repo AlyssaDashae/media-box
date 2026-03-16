@@ -367,6 +367,116 @@ nav li:first-child a { color: #c5a059; }
 .prod-price { font-size:1.15rem; color:#c5a059; font-weight:700; font-family:'Space Grotesk',sans-serif; margin-bottom:0.8rem; }
 
 /* =====================================================
+   VIDEO SECTION
+===================================================== */
+.video-section {
+  padding: 5rem 4%;
+  position: relative; z-index: 10;
+}
+.video-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+/* Gold frame around video */
+.video-frame-wrap {
+  position: relative;
+  padding: 16px;
+}
+.video-frame-wrap::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: calc(100% - 32px);
+  height: calc(100% - 32px);
+  border: 2px solid #c5a059;
+  z-index: 0;
+  box-shadow: 0 0 30px rgba(197,160,89,0.2);
+}
+.video-frame-wrap::after {
+  content: '';
+  position: absolute;
+  top: 8px; left: 8px;
+  right: 8px; bottom: 8px;
+  border: 1px solid rgba(197,160,89,0.35);
+  z-index: 0;
+  pointer-events: none;
+}
+.video-box {
+  position: relative;
+  z-index: 1;
+  transform: translate(16px, 16px);
+  border-radius: 3px;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.25);
+  background: #000;
+  aspect-ratio: 16/9;
+}
+.video-box iframe,
+.video-box video {
+  width: 100%; height: 100%;
+  display: block; border: none;
+}
+/* Corner accents */
+.video-frame-wrap .corner {
+  position: absolute;
+  width: 20px; height: 20px;
+  z-index: 2;
+}
+.video-frame-wrap .corner-tl { top: 0; left: 0; border-top: 3px solid #c5a059; border-left: 3px solid #c5a059; }
+.video-frame-wrap .corner-tr { top: 0; right: 16px; border-top: 3px solid #c5a059; border-right: 3px solid #c5a059; }
+.video-frame-wrap .corner-bl { bottom: 16px; left: 0; border-bottom: 3px solid #c5a059; border-left: 3px solid #c5a059; }
+.video-frame-wrap .corner-br { bottom: 16px; right: 16px; border-bottom: 3px solid #c5a059; border-right: 3px solid #c5a059; }
+
+/* Text side */
+.video-text .eyebrow {
+  font-size: 0.72rem; font-weight: 700;
+  color: #c5a059; letter-spacing: 3px;
+  text-transform: uppercase; margin-bottom: 0.8rem;
+}
+.video-text h2 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 2rem; font-weight: 700;
+  color: #0c182d; line-height: 1.25;
+  margin-bottom: 1.2rem;
+}
+.video-text h2 span { color: #c5a059; }
+.video-text p {
+  font-size: 0.9rem; color: #556;
+  line-height: 1.8; margin-bottom: 1rem;
+}
+.video-stats {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 1rem; margin: 1.8rem 0 2rem;
+}
+.stat {
+  background: rgba(242,246,249,0.85);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.95);
+  border-top: 3px solid #c5a059;
+  border-radius: 8px; padding: 1rem 1.2rem;
+}
+.stat .num {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.6rem; font-weight: 700;
+  color: #c5a059; line-height: 1;
+  margin-bottom: 0.3rem;
+}
+.stat .label {
+  font-size: 0.72rem; color: #778;
+  font-weight: 600; text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+@media(max-width:1024px) {
+  .video-inner { grid-template-columns: 1fr; gap: 3rem; }
+  .video-text h2 { font-size: 1.6rem; }
+}
+
+/* =====================================================
    PORTFOLIO
 ===================================================== */
 .portfolio { padding:4rem 4% 6rem; position:relative; z-index:10; }
@@ -560,7 +670,7 @@ footer { background: rgba(255,255,255,0.9); color: #333; padding:4rem 4% 2rem; b
       <li><a href="#services">SERVICES</a></li>
       <li><a href="#portfolio">PORTFOLIO</a></li>
       <li><a href="about.html">ABOUT US</a></li>
-      <li><a href="insight.html">INSIGHTS</a></li>
+      <li><a href="#insights">INSIGHTS</a></li>
       <li class="dropdown">
         <a href="#">BROCHURE ▾</a>
         <div class="dd-menu">
@@ -625,7 +735,7 @@ footer { background: rgba(255,255,255,0.9); color: #333; padding:4rem 4% 2rem; b
       </article>
       <article class="svc-card">
         <div class="svc-icon"><svg viewBox="0 0 24 24"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2"/><circle cx="7" cy="12" r="1.5"/></svg></div>
-        <h3>VIDEO<br>PRODUCTION</h3>
+        <h3>BESPOKE VIDEO<br>PRODUCTION</h3>
         <p>Bespoke video presentations and professional digital editing for elite brands.</p>
       </article>
       <article class="svc-card">
@@ -641,7 +751,7 @@ footer { background: rgba(255,255,255,0.9); color: #333; padding:4rem 4% 2rem; b
       <article class="svc-card">
         <div class="svc-icon"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="14" rx="2"/><path d="M8 22h8M12 18v4"/><polyline points="9 8 12 5 15 8"/><line x1="12" y1="5" x2="12" y2="15"/></svg></div>
         <h3>WEBSITE<br>DEVELOPMENT</h3>
-        <p>high-performance digital experiences crafted to elevate your brand's online presence.</p>
+        <p>Bespoke, high-performance digital experiences crafted to elevate your brand's online presence.</p>
       </article>
       <article class="svc-card">
         <div class="svc-icon"><svg viewBox="0 0 24 24"><rect x="1" y="3" width="22" height="14" rx="1"/><line x1="12" y1="17" x2="12" y2="21"/><line x1="5" y1="21" x2="19" y2="21"/><circle cx="12" cy="10" r="2"/><path d="M5 8h2M17 8h2M5 12h2M17 12h2"/></svg></div>
@@ -696,21 +806,74 @@ footer { background: rgba(255,255,255,0.9); color: #333; padding:4rem 4% 2rem; b
     </div>
   </section>
 
+  <!-- VIDEO SECTION -->
+  <section class="video-section">
+    <div class="video-inner">
+
+      <!-- VIDEO with gold frame -->
+      <div class="video-frame-wrap">
+        <div class="corner corner-tl"></div>
+        <div class="corner corner-tr"></div>
+        <div class="corner corner-bl"></div>
+        <div class="corner corner-br"></div>
+        <div class="video-box">
+          <!-- Replace the src below with your actual YouTube embed URL or video file -->
+          <iframe
+            src="billboard.mp4"
+            title="MediaBox Bahamas — Billboard Advertising"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+
+      <!-- TEXT SIDE -->
+      <div class="video-text">
+        <p class="eyebrow">Why Advertise With Us</p>
+        <h2>Your Brand. <span>Maximum</span> Exposure. Zero Compromise.</h2>
+        <p>MediaBox billboards are strategically positioned at the highest-traffic intersections, roundabouts, and commercial corridors across Nassau and Grand Bahama — ensuring your message is seen by tens of thousands of commuters, shoppers, and visitors every single day.</p>
+        <p>Our solar-powered and digital displays operate 24 hours a day, delivering your campaign to morning rush-hour traffic, afternoon shoppers, and evening commuters without interruption. This isn't just advertising — it's unavoidable brand presence.</p>
+
+        <div class="video-stats">
+          <div class="stat">
+            <div class="num">100K+</div>
+            <div class="label">Weekly Impressions</div>
+          </div>
+          <div class="stat">
+            <div class="num">24/7</div>
+            <div class="label">Continuous Display Operation</div>
+          </div>
+          <div class="stat">
+            <div class="num">10+</div>
+            <div class="label">Premium Nassau Locations</div>
+          </div>
+          <div class="stat">
+            <div class="num">$690</div>
+            <div class="label">Starting From Per Month</div>
+          </div>
+        </div>
+
+        <button class="consult-btn" onclick="location.href='consultation.html'">GET YOUR SPOT TODAY</button>
+      </div>
+
+    </div>
+  </section>
+
   <!-- PORTFOLIO -->
   <section class="portfolio" id="portfolio">
     <h2 class="sec-title">Selected Client Portfolio</h2>
     <div class="port-track">
       <article class="port-item">
-        <img src="BICCU.jpg" alt="">
-        <div class="port-info"><h4>Corporate Mediabook</h4><p>BICCU's Customized Marketing Plan</p></div>
+        <img src="https://images.unsplash.com/photo-1620131435213-9a3b6164f20f?q=80&w=400" alt="">
+        <div class="port-info"><h4>Real Estate Development</h4><p>Bahamas Luxury Living</p></div>
       </article>
       <article class="port-item">
         <img src="https://images.unsplash.com/photo-1599818817361-b1e605d8f28c?q=80&w=400" alt="">
-        <div class="port-info"><h4>Event Planning</h4><p>Nassau Business Conference</p></div>
+        <div class="port-info"><h4>Corporate Events</h4><p>Nassau Business Conference</p></div>
       </article>
       <article class="port-item">
         <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=400" alt="">
-        <div class="port-info"><h4>Brand Film</h4><p>Global Campaign</p></div>
+        <div class="port-info"><h4>Bespoke Brand Film</h4><p>Global Campaign</p></div>
       </article>
     </div>
   </section>

@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Insights & Pricing | MediaBox Bahamas</title>
+<meta name="description" content="Explore MediaBox Bahamas pricing, billboard locations, and marketing services across Nassau and the Bahamas.">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Montserrat',sans-serif; background:#e8eef2; overflow-x:hidden; }
+
+#bg-canvas { position:fixed; top:0; left:0; width:100vw; height:100vh; z-index:0; pointer-events:none; }
+.orb { position:fixed; border-radius:50%; pointer-events:none; z-index:1; animation:orbDrift 10s ease-in-out infinite alternate; }
+.orb-1 { width:220px; height:220px; top:-60px; left:-60px; background:radial-gradient(circle at 50% 50%, rgba(200,248,255,1) 0%, rgba(140,235,252,0.95) 28%, rgba(80,215,245,0.65) 55%, transparent 100%); filter:blur(6px) drop-shadow(0 0 24px rgba(140,235,255,0.95)); animation-duration:11s; }
+.orb-2 { width:200px; height:200px; top:-55px; right:-55px; background:radial-gradient(circle at 50% 50%, rgba(255,235,150,1) 0%, rgba(240,205,110,0.9) 32%, rgba(210,170,70,0.6) 58%, transparent 100%); filter:blur(6px) drop-shadow(0 0 22px rgba(255,200,60,0.85)); animation-duration:14s; animation-delay:-3s; }
+.orb-3 { width:160px; height:160px; bottom:12%; left:2%; background:radial-gradient(circle at 50% 50%, rgba(210,250,255,0.98) 0%, rgba(150,238,252,0.82) 32%, transparent 100%); filter:blur(5px) drop-shadow(0 0 18px rgba(160,240,255,0.85)); animation-duration:16s; animation-delay:-6s; }
+.orb-4 { width:150px; height:150px; bottom:8%; right:3%; background:radial-gradient(circle at 50% 50%, rgba(252,230,140,0.95) 0%, rgba(230,195,90,0.72) 34%, transparent 100%); filter:blur(5px) drop-shadow(0 0 16px rgba(240,190,60,0.7)); animation-duration:13s; animation-delay:-9s; }
+@keyframes orbDrift { 0%{transform:translate(0,0) scale(1);} 25%{transform:translate(14px,10px) scale(1.06);} 55%{transform:translate(-8px,18px) scale(0.95);} 100%{transform:translate(10px,-14px) scale(1.04);} }
+
+/* HEADER */
+header { position:fixed; top:0; width:100%; z-index:1000; background:rgba(255,255,255,0.88); backdrop-filter:blur(16px); border-bottom:3px solid #c5a059; display:flex; align-items:center; justify-content:space-between; padding:0.85rem 4%; }
+.logo { display:flex; align-items:center; gap:8px; text-decoration:none; }
+.logo img { height:38px; }
+.logo-text { line-height:1.1; }
+.brand-name { display:block; font-family:'Space Grotesk',sans-serif; font-size:1.42rem; font-weight:700; color:#c5a059; }
+.brand-sub { display:block; font-size:0.62rem; color:#333; letter-spacing:1.8px; font-weight:600; }
+nav ul { list-style:none; display:flex; gap:2rem; align-items:center; }
+nav a { text-decoration:none; color:#7ab8c0; font-size:0.8rem; font-weight:700; letter-spacing:0.7px; transition:color 0.2s; }
+nav a:hover { color:#c5a059; }
+nav li:first-child a { color:#c5a059; }
+.dropdown { position:relative; }
+.dd-menu { display:none; position:absolute; top:100%; left:0; background:#fff; min-width:180px; box-shadow:0 8px 20px rgba(0,0,0,0.1); border-top:2px solid #c5a059; z-index:2000; }
+.dd-menu a { display:block; padding:12px 18px; border-bottom:1px solid #eee; color:#333; font-size:0.8rem; font-weight:600; }
+.dd-menu a:hover { color:#c5a059; }
+.dropdown:hover .dd-menu { display:block; }
+.consult-btn { background:linear-gradient(135deg, #c5a059, #e8c87a 50%, #c5a059); background-size:200% auto; color:#0c182d; border:none; padding:0.62rem 1.3rem; font-family:'Montserrat',sans-serif; font-weight:700; font-size:0.76rem; text-transform:uppercase; letter-spacing:0.4px; border-radius:4px; cursor:pointer; transition:all 0.4s; box-shadow:0 0 0 1px rgba(197,160,89,0.6), 0 0 18px rgba(0,210,255,0.5); }
+.consult-btn:hover { background-position:right; box-shadow:0 0 0 1px #c5a059, 0 0 28px rgba(0,210,255,0.8); }
+.mobile-consult { display:none; }
+.hamburger { display:none; flex-direction:column; justify-content:center; gap:5px; background:none; border:none; cursor:pointer; padding:6px; z-index:1001; }
+.hamburger span { display:block; width:24px; height:2.5px; background:#c5a059; border-radius:2px; transition:all 0.3s ease; }
+.hamburger.open span:nth-child(1) { transform:translateY(7.5px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity:0; }
+.hamburger.open span:nth-child(3) { transform:translateY(-7.5px) rotate(-45deg); }
+
+/* PAGE CONTENT */
+.page-wrap { position:relative; z-index:10; padding-top:6rem; }
+
+/* HERO BANNER */
+.page-hero { padding:4rem 5% 3rem; text-align:center; }
+.page-hero h1 { font-family:'Space Grotesk',sans-serif; font-size:2.8rem; font-weight:700; color:#c5a059; text-transform:uppercase; letter-spacing:1px; margin-bottom:0.8rem; }
+.page-hero h1::after { content:''; display:block; width:60px; height:3px; background:#c5a059; margin:12px auto 0; }
+.page-hero p { font-size:1rem; color:#3a4858; font-weight:500; max-width:600px; margin:1rem auto 0; line-height:1.65; }
+
+/* SECTION TITLES */
+.sec-head { text-align:center; margin-bottom:2.5rem; }
+.sec-head h2 { font-family:'Space Grotesk',sans-serif; font-size:1.8rem; font-weight:700; color:#0c182d; }
+.sec-head h2::after { content:''; display:block; width:44px; height:3px; background:#c5a059; margin:10px auto 0; }
+.sec-head p { font-size:0.88rem; color:#667; margin-top:0.7rem; }
+
+/* GLASS CARD */
+.glass { background:rgba(242,246,249,0.85); backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px); border:1px solid rgba(255,255,255,0.95); border-radius:8px; box-shadow:0 8px 24px rgba(0,0,0,0.06); }
+
+/* ===== SECTIONS ===== */
+section.content { padding:3rem 5%; max-width:1200px; margin:0 auto; }
+
+/* SERVICES GRID — what's included */
+.services-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; }
+.svc-item { padding:1.6rem 1.4rem; border-radius:8px; }
+.svc-item .icon { font-size:1.8rem; margin-bottom:0.7rem; }
+.svc-item h3 { font-family:'Space Grotesk',sans-serif; font-size:0.95rem; font-weight:700; color:#0c182d; margin-bottom:0.4rem; }
+.svc-item p { font-size:0.8rem; color:#667; line-height:1.6; }
+
+/* PRICING TABLES */
+.pricing-section { padding:3rem 5%; }
+.pricing-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(280px,1fr)); gap:1.4rem; max-width:1200px; margin:0 auto; }
+
+.price-card { padding:2rem 1.8rem; border-radius:10px; position:relative; overflow:hidden; transition:transform 0.3s, box-shadow 0.3s; }
+.price-card:hover { transform:translateY(-6px); box-shadow:0 20px 40px rgba(0,0,0,0.1); }
+.price-card .tag { position:absolute; top:14px; right:14px; background:#c5a059; color:#fff; font-size:0.6rem; font-weight:700; padding:3px 10px; border-radius:20px; text-transform:uppercase; letter-spacing:0.5px; }
+.price-card h3 { font-family:'Space Grotesk',sans-serif; font-size:1.05rem; font-weight:700; color:#0c182d; margin-bottom:0.4rem; }
+.price-card .location { font-size:0.78rem; color:#7ab8c0; font-weight:600; margin-bottom:1rem; letter-spacing:0.5px; }
+.price-card .price { font-family:'Space Grotesk',sans-serif; font-size:2rem; font-weight:700; color:#c5a059; }
+.price-card .price span { font-size:0.85rem; color:#888; font-weight:400; }
+.price-card .note { font-size:0.75rem; color:#778; margin-top:0.8rem; line-height:1.6; }
+.price-card ul { list-style:none; margin-top:1rem; }
+.price-card ul li { font-size:0.8rem; color:#556; padding:0.3rem 0; border-bottom:1px solid rgba(0,0,0,0.05); display:flex; align-items:center; gap:0.5rem; }
+.price-card ul li::before { content:'›'; color:#c5a059; font-weight:700; font-size:1rem; }
+
+/* FEATURED — cruise port / freeport */
+.featured-card { grid-column:span 2; }
+@media(max-width:700px){ .featured-card { grid-column:span 1; } }
+
+/* LOCATION TABLE */
+.loc-table { width:100%; border-collapse:collapse; }
+.loc-table th { font-family:'Space Grotesk',sans-serif; font-size:0.75rem; text-transform:uppercase; letter-spacing:1px; color:#c5a059; padding:0.8rem 1rem; text-align:left; border-bottom:2px solid rgba(197,160,89,0.3); }
+.loc-table td { font-size:0.84rem; color:#445; padding:0.75rem 1rem; border-bottom:1px solid rgba(0,0,0,0.05); }
+.loc-table tr:hover td { background:rgba(197,160,89,0.05); }
+.loc-table .price-col { color:#c5a059; font-weight:700; font-family:'Space Grotesk',sans-serif; }
+
+/* DIVIDER */
+.divider { height:1px; background:linear-gradient(90deg, transparent, rgba(197,160,89,0.4), transparent); margin:2.5rem 0; }
+
+/* CTA BANNER */
+.cta-banner { margin:3rem 5%; padding:3rem 4%; border-radius:10px; background:linear-gradient(135deg, rgba(12,24,45,0.92), rgba(12,24,45,0.85)); text-align:center; position:relative; overflow:hidden; }
+.cta-banner::before { content:''; position:absolute; inset:0; background:url('https://images.unsplash.com/photo-1569263979104-865ab7cd8d13?q=80&w=1200') center/cover; opacity:0.12; }
+.cta-banner h2 { font-family:'Space Grotesk',sans-serif; font-size:2rem; font-weight:700; color:#c5a059; margin-bottom:0.8rem; position:relative; }
+.cta-banner p { color:rgba(255,255,255,0.8); font-size:0.95rem; margin-bottom:1.8rem; position:relative; max-width:500px; margin-left:auto; margin-right:auto; }
+.cta-banner .consult-btn { position:relative; padding:0.9rem 2.5rem; font-size:0.88rem; }
+
+/* FOOTER */
+footer { background:rgba(255,255,255,0.9); color:#333; padding:4rem 4% 2rem; border-top:3px solid #c5a059; position:relative; z-index:100; margin-top:4rem; }
+.ft-grid { display:flex; justify-content:space-between; flex-wrap:wrap; gap:3rem; max-width:1200px; margin:0 auto 3rem; }
+.ft-col { flex:1; min-width:220px; }
+.ft-col h4 { color:#c5a059; font-family:'Space Grotesk',sans-serif; font-size:1.15rem; margin-bottom:1.2rem; }
+.ft-col p,.ft-col a { font-size:0.84rem; color:#b8a898; line-height:1.9; text-decoration:none; display:block; transition:color 0.3s; }
+.ft-col a:hover { color:#c5a059; }
+.ft-bottom { max-width:1200px; margin:0 auto; padding-top:1.6rem; border-top:1px solid rgba(0,0,0,0.08); display:flex; justify-content:space-between; flex-wrap:wrap; gap:1rem; }
+.ft-bottom p { font-size:0.72rem; color:#b8a898; }
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+  .desktop-only { display:none !important; }
+  .hamburger { display:flex; }
+  #main-nav { display:none; position:fixed; top:62px; left:0; right:0; background:rgba(255,255,255,0.97); backdrop-filter:blur(16px); border-bottom:3px solid #c5a059; z-index:999; padding:1.5rem 0; }
+  #main-nav.open { display:block; }
+  #main-nav ul { flex-direction:column; gap:0; }
+  #main-nav ul li a { display:block; padding:0.9rem 5%; font-size:0.9rem; border-bottom:1px solid rgba(197,160,89,0.15); }
+  #main-nav ul li:first-child a { color:#c5a059; }
+  .dd-menu { position:static; box-shadow:none; border-top:none; background:rgba(197,160,89,0.06); }
+  .mobile-consult { display:block !important; margin:1rem 5%; text-align:center; padding:0.8rem; background:linear-gradient(135deg,#c5a059,#e8c87a 50%,#c5a059); color:#0c182d; font-weight:700; font-size:0.8rem; text-transform:uppercase; border-radius:4px; text-decoration:none; }
+  .services-grid { grid-template-columns:repeat(2,1fr); }
+  .featured-card { grid-column:span 1; }
+}
+@media(max-width:768px){
+  .page-hero h1 { font-size:2rem; }
+  .services-grid { grid-template-columns:1fr; }
+  .pricing-grid { grid-template-columns:1fr; }
+}
+</style>
+</head>
+<body>
+
+<canvas id="bg-canvas"></canvas>
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+<div class="orb orb-3"></div>
+<div class="orb orb-4"></div>
+
+<header>
+  <a class="logo" href="index.html">
+    <img src="Logo.png" alt="MediaBox Bahamas" onerror="this.style.display='none'">
+    <div class="logo-text">
+      <span class="brand-name">MEDIABOX</span>
+      <span class="brand-sub">BAHAMAS</span>
+    </div>
+  </a>
+  <nav id="main-nav">
+    <ul>
+      <li><a href="index.html#home">HOME</a></li>
+      <li><a href="index.html#services">SERVICES</a></li>
+      <li><a href="index.html#portfolio">PORTFOLIO</a></li>
+      <li><a href="about.html">ABOUT US</a></li>
+      <li><a href="insights.html">INSIGHTS</a></li>
+      <li class="dropdown">
+        <a href="#">BROCHURE ▾</a>
+        <div class="dd-menu">
+          <a href="National.pdf" target="_blank">National Rate</a>
+          <a href="International.pdf" target="_blank">International Rate</a>
+        </div>
+      </li>
+    </ul>
+    <a class="mobile-consult" href="consultation.html">REQUEST A CONSULTATION</a>
+  </nav>
+  <button class="consult-btn desktop-only" onclick="location.href='consultation.html'">REQUEST A CONSULTATION</button>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<div class="page-wrap">
+
+  <!-- HERO -->
+  <div class="page-hero">
+    <h1>Insights & Pricing</h1>
+    <p>Everything you need to know about our advertising solutions, locations, and investment options across the Bahamas.</p>
+  </div>
+
+  <!-- WHAT WE OFFER -->
+  <section class="content">
+    <div class="sec-head">
+      <h2>Our Full Suite of Services</h2>
+      <p>From billboards to social media — we cover every angle of your brand's growth.</p>
+    </div>
+    <div class="services-grid">
+      <div class="svc-item glass">
+        <div class="icon">📡</div>
+        <h3>Mediabox Billboards</h3>
+        <p>Solar & digital billboard advertising with monthly and annual packages. Franchise opportunities available.</p>
+      </div>
+      <div class="svc-item glass">
+        <div class="icon">📋</div>
+        <h3>Marketing & Business Plans</h3>
+        <p>Comprehensive marketing plans, campaign development, and tailored business strategies.</p>
+      </div>
+      <div class="svc-item glass">
+        <div class="icon">🤝</div>
+        <h3>Business Consulting</h3>
+        <p>Expert business consulting and negotiating services to help your company achieve its goals.</p>
+      </div>
+      <div class="svc-item glass">
+        <div class="icon">📖</div>
+        <h3>Mediabooks & Content</h3>
+        <p>Customized mediabooks and full content management to keep your brand messaging consistent.</p>
+      </div>
+      <div class="svc-item glass">
+        <div class="icon">🖨️</div>
+        <h3>Print & Graphic Design</h3>
+        <p>Pull-up banners, signage printing, books, magazines, and full graphic design services.</p>
+      </div>
+      <div class="svc-item glass">
+        <div class="icon">📱</div>
+        <h3>Social Media & E-Blast</h3>
+        <p>Facebook, Instagram, TikTok, YouTube management plus targeted e-blast marketing campaigns.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider" style="max-width:1200px;margin:0 auto;padding:0 5%;"></div>
+
+  <!-- SOLAR BILLBOARD PRICING -->
+  <div class="pricing-section">
+    <div class="sec-head">
+      <h2>Solar Billboard Pricing</h2>
+      <p>Nassau, New Providence — eco-friendly, high-visibility outdoor advertising</p>
+    </div>
+    <div class="pricing-grid" style="max-width:1200px;margin:0 auto;">
+
+      <div class="price-card glass">
+        <div class="tag">Solar Powered</div>
+        <h3>Solar Billboard</h3>
+        <div class="location">📍 6FT × 4FT</div>
+        <div class="price">$690 <span>/ month</span></div>
+        <ul>
+          <li>Saunders Beach</li>
+          <li>Marathon</li>
+          <li>Milo Butler Highway</li>
+        </ul>
+        <p class="note">Discounts available for 3, 6, or 12-month campaigns.</p>
+      </div>
+
+      <div class="price-card glass">
+        <div class="tag">Best Value</div>
+        <h3>Solar Billboard</h3>
+        <div class="location">📍 10FT × 8FT</div>
+        <div class="price">$1,040 <span>/ month</span></div>
+        <ul>
+          <li>East Street & Independence Highway</li>
+          <li>2-sided view of traffic available</li>
+        </ul>
+        <p class="note">Discounts available for 3, 6, or 12-month campaigns.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="divider" style="max-width:1200px;margin:0 auto;padding:0 5%;"></div>
+
+  <!-- DIGITAL BILLBOARD PRICING -->
+  <div class="pricing-section">
+    <div class="sec-head">
+      <h2>Digital Billboard Pricing</h2>
+      <p>Nassau premium digital screen locations — minimum monthly rate</p>
+    </div>
+    <div class="pricing-grid" style="max-width:1200px;margin:0 auto;">
+
+      <div class="price-card glass" style="grid-column:span 1;">
+        <h3>Nassau Digital Screens</h3>
+        <div class="location">📍 Multiple Nassau Locations</div>
+        <div class="price">$690 <span>/ month per location</span></div>
+        <div class="divider" style="margin:1rem 0;"></div>
+        <table class="loc-table">
+          <thead><tr><th>Location</th><th>Monthly Rate</th></tr></thead>
+          <tbody>
+            <tr><td>Marathon</td><td class="price-col">$690</td></tr>
+            <tr><td>Airport Roundabout</td><td class="price-col">$690</td></tr>
+            <tr><td>Shirley Street West</td><td class="price-col">$690</td></tr>
+            <tr><td>Old Fort Bay</td><td class="price-col">$690</td></tr>
+            <tr><td>Arawak Cay</td><td class="price-col">$690</td></tr>
+            <tr><td>Balliou Hill Road</td><td class="price-col">$690</td></tr>
+            <tr><td>Soldier Road West</td><td class="price-col">$690</td></tr>
+            <tr><td>Shirley Street East</td><td class="price-col">$690</td></tr>
+          </tbody>
+        </table>
+        <p class="note" style="margin-top:1rem;">Discount applied when advertising on multiple locations. Prices customized for video content based on duration.</p>
+      </div>
+
+      <div class="price-card glass">
+        <div class="tag">Grand Bahama</div>
+        <h3>Freeport Digital Billboard</h3>
+        <div class="location">📍 Freeport, Grand Bahama</div>
+        <div class="price">$4,000 <span>/ month</span></div>
+        <ul>
+          <li>24-hour operation</li>
+          <li>Ads displayed 10 seconds each</li>
+          <li>Full rotation every 5 minutes</li>
+          <li>Up to 30 advertiser slots available</li>
+          <li>Multiple slot packages available</li>
+        </ul>
+        <p class="note">Coordinates: 26.53916, -78.695694</p>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="divider" style="max-width:1200px;margin:0 auto;padding:0 5%;"></div>
+
+  <!-- NASSAU CRUISE PORT -->
+  <div class="pricing-section">
+    <div class="sec-head">
+      <h2>Nassau Cruise Port</h2>
+      <p>Reach approximately 100,000 cruise passengers every week</p>
+    </div>
+    <div class="pricing-grid" style="max-width:1200px;margin:0 auto;">
+
+      <div class="price-card glass featured-card">
+        <div class="tag">🚢 High Traffic</div>
+        <h3>Arrivals LED Screen</h3>
+        <div class="location">📍 Nassau Cruise Port — Arrivals Terminal</div>
+        <div class="price">$16,000 <span>/ month</span></div>
+        <p class="note">Oversized LED screen targeting every passenger as they disembark. 10 spots with 6 slots currently available. Go big or go home — showcase your brand to a captive audience that can't miss it. Discounted rates for long-term contracts.</p>
+      </div>
+
+      <div class="price-card glass">
+        <h3>Wall Ad Space</h3>
+        <div class="location">📍 Port Plaza — 750 sq ft Wall</div>
+        <div class="price">$3,000 <span>/ month</span></div>
+        <p class="note">Make your brand larger than life. A 750 square foot wall canvas with endless eye-catching possibilities. We identify the most suitable location based on your goals.</p>
+      </div>
+
+      <div class="price-card glass">
+        <h3>Light Pole Banners</h3>
+        <div class="location">📍 Piers, Arrivals Terminal, Port Marketplace & Amphitheatre</div>
+        <div class="price">$3,000 <span>/ month</span></div>
+        <p class="note">Submit a 2×5 graphic to boost your brand across high-traffic pole locations. Add a QR code for easy access to your website or sales pages.</p>
+      </div>
+
+      <div class="price-card glass">
+        <h3>Canopy Ad Spaces</h3>
+        <div class="location">📍 Port Canopy Structures — 28 rows available</div>
+        <div class="price">$4,000 <span>/ month</span></div>
+        <ul>
+          <li>Only 18 vacant spaces left</li>
+          <li>Unparalleled foot traffic</li>
+          <li>New product launches, brand awareness</li>
+        </ul>
+        <p class="note">Connect with your target audience in a truly memorable way.</p>
+      </div>
+
+      <div class="price-card glass">
+        <h3>Blue Wall Ad Space</h3>
+        <div class="location">📍 Port Plaza Entry — 12×8ft</div>
+        <div class="price">$6,000 <span>/ month</span></div>
+        <p class="note" style="color:#c5a059;font-weight:600;">3 Month Minimum</p>
+        <p class="note">Eye-catching 12×8ft ad against a bold blue wall. Every excursion guest MUST pass this space on their return — impossibly high visibility.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="divider" style="max-width:1200px;margin:0 auto;padding:0 5%;"></div>
+
+  <!-- MARKETING PRODUCTS & SERVICES -->
+  <div class="pricing-section">
+    <div class="sec-head">
+      <h2>Marketing Products & Services</h2>
+      <p>Print, plans, and digital — everything your brand needs</p>
+    </div>
+    <div class="pricing-grid" style="max-width:1200px;margin:0 auto;">
+
+      <div class="price-card glass">
+        <h3>Customized Pull-Up Banners</h3>
+        <div class="location">Print Products</div>
+        <div class="price">$850 <span>for 2</span></div>
+        <p class="note">Professional customized pull-up banners for events, trade shows, and promotions.</p>
+      </div>
+
+      <div class="price-card glass">
+        <h3>Print Services</h3>
+        <div class="location">Signage & Publications</div>
+        <ul>
+          <li>6ft × 4ft Print — $250</li>
+          <li>10ft × 8ft Print — $950</li>
+          <li>Books & Magazines — Varies</li>
+        </ul>
+        <p class="note">High-quality print production for all billboard and marketing material needs.</p>
+      </div>
+
+      <div class="price-card glass">
+        <h3>Marketing & Business Plans</h3>
+        <div class="location">Strategy & Planning</div>
+        <ul>
+          <li>Marketing Campaigns — $3,000</li>
+          <li>Business Plans — $2,500</li>
+          <li>Marketing Plans — $2,000+</li>
+        </ul>
+        <p class="note">Prices may vary based on client needs and scope of project.</p>
+      </div>
+
+      <div class="price-card glass">
+        <h3>Social Media Management</h3>
+        <div class="location">Digital Presence</div>
+        <div class="price">Custom <span>pricing</span></div>
+        <ul>
+          <li>Facebook</li>
+          <li>Instagram</li>
+          <li>TikTok</li>
+          <li>YouTube</li>
+        </ul>
+        <p class="note">Tailored social media packages based on your platform needs and goals.</p>
+      </div>
+
+      <div class="price-card glass">
+        <h3>Customized Mediabooks</h3>
+        <div class="location">Branded Publications</div>
+        <div class="price">Varies <span>by size</span></div>
+        <p class="note">Beautifully produced branded mediabooks. Pricing varies based on screen and book size. Contact us for a custom quote.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- CTA BANNER -->
+  <div class="cta-banner">
+    <h2>Ready to Elevate Your Brand?</h2>
+    <p>Let's build a campaign that puts your business in front of the right audience across the Bahamas.</p>
+    <button class="consult-btn" onclick="location.href='consultation.html'">REQUEST A CONSULTATION</button>
+  </div>
+
+</div>
+
+<footer>
+  <div class="ft-grid">
+    <div class="ft-col">
+      <h4>Contact Us</h4>
+      <p>Braynen Building, Nassau, Bahamas</p>
+      <p>Mediaboxbahamaslimited@gmail.com</p>
+      <p>+1 (242) 433-2528</p>
+    </div>
+    <div class="ft-col">
+      <h4>Quick Links</h4>
+      <a href="index.html#services">Our Services</a>
+      <a href="index.html#portfolio">Client Portfolio</a>
+      <a href="about.html">About Us</a>
+      <a href="National.pdf">National Rate Brochure</a>
+      <a href="International.pdf">International Rate Brochure</a>
+    </div>
+  </div>
+  <div class="ft-bottom">
+    <p>&copy; 2026 MediaBox Bahamas Limited. All Rights Reserved.</p>
+  </div>
+</footer>
+
+<script>
+const c = document.getElementById('bg-canvas');
+c.style.cssText='position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:0;pointer-events:none;';
+const cx = c.getContext('2d');
+function drawBg(){
+  c.width=innerWidth; c.height=innerHeight;
+  const g=cx.createLinearGradient(0,0,c.width,c.height);
+  g.addColorStop(0,'#dde8ef'); g.addColorStop(0.4,'#e8eef3');
+  g.addColorStop(0.7,'#eaece9'); g.addColorStop(1,'#dce8e2');
+  cx.fillStyle=g; cx.fillRect(0,0,c.width,c.height);
+}
+drawBg(); window.addEventListener('resize',drawBg);
+
+const hamburger = document.getElementById('hamburger');
+const mainNav = document.getElementById('main-nav');
+hamburger.addEventListener('click',()=>{
+  hamburger.classList.toggle('open');
+  mainNav.classList.toggle('open');
+});
+mainNav.querySelectorAll('a').forEach(l=>l.addEventListener('click',()=>{
+  hamburger.classList.remove('open');
+  mainNav.classList.remove('open');
+}));
+</script>
+</body>
+</html>

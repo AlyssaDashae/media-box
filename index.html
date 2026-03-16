@@ -99,26 +99,29 @@ body.no-scroll { overflow: hidden; }
 }
 
 /* =====================================================
-   SPLASH
+   SPLASH — logo image only, clean dramatic animation
 ===================================================== */
 #splash {
   position: fixed; inset: 0; z-index: 9999;
-  background: #e8eef2;
+  background: #f2f5f7;
   display: flex; align-items: center; justify-content: center;
-  transition: opacity 1.2s, visibility 1.2s;
+  transition: opacity 1.4s ease, visibility 1.4s ease;
 }
-.splash-svg { width: 70%; max-width: 680px; }
-.splash-text {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 86px; font-weight: 700;
-  fill: transparent;
-  stroke: #c5a059; stroke-width: 1.5px;
-  stroke-dasharray: 620; stroke-dashoffset: 620;
-  animation: draw 2.5s ease forwards, fill 1s 2.2s ease forwards;
-}
-@keyframes draw { to { stroke-dashoffset: 0; } }
-@keyframes fill  { to { fill: #c5a059; stroke-width: 0; } }
 .hidden { opacity: 0 !important; visibility: hidden !important; }
+
+.splash-img {
+  width: 460px; max-width: 82vw;
+  animation: splashIn 2.2s cubic-bezier(0.22,1,0.36,1) 0.2s both;
+}
+
+@keyframes splashIn {
+  0%   { opacity:0; transform: scale(0.1) rotate(-12deg); filter: blur(8px); }
+  40%  { opacity:1; filter: blur(0); }
+  55%  { transform: scale(1.12) rotate(2deg); }
+  70%  { transform: scale(0.95) rotate(-1deg); }
+  83%  { transform: scale(1.05) rotate(0.5deg); }
+  100% { opacity:1; transform: scale(1) rotate(0deg); }
+}
 
 /* =====================================================
    HEADER — nav links are warm medium gray matching image
@@ -169,36 +172,39 @@ nav li:first-child a { color: #c5a059; }
 .consult-btn:hover { background-position:right; box-shadow:0 0 0 1px #c5a059, 0 0 28px rgba(0,210,255,0.8); }
 
 /* =====================================================
-   HERO SECTION
+   HERO SECTION — OUTDOOR DIGITAL BILLBOARD
 ===================================================== */
 .hero {
   position: relative; z-index: 10;
   padding-top: 5rem;
-  display: flex; justify-content: center;
+  display: flex; flex-direction: column; align-items: center;
 }
 
-/* THE SCREEN — matches image exactly */
-.tv {
-  width: 88%; max-width: 1100px; height: 500px;
+.billboard-wrap {
+  display: flex; flex-direction: column; align-items: center;
+  width: 100%;
+}
+
+/* Full-bleed wide billboard screen — no poles, just the display */
+.bb-screen {
+  width: 96%; max-width: 1280px;
+  height: 480px;
   position: relative; overflow: hidden;
-  /* Rounded top corners, flat bottom — just like image */
-  border-radius: 14px 14px 6px 6px;
-  /* Dark bezel then gold outer border */
-  outline: 9px solid #111;
-  border: 3px solid #c5a059;
+  border-radius: 2px;
+  /* Layered gold frame like a real premium digital billboard */
+  border: 4px solid #c5a059;
+  outline: 2px solid rgba(197,160,89,0.3);
+  outline-offset: 5px;
   box-shadow:
-    0 0 0 3px #c5a059,
-    0 0 0 12px #111,
-    0 0 0 14px #c5a059,
-    0 -6px 40px rgba(197,160,89,0.3),
-    0 20px 60px rgba(0,0,0,0.5);
-  /* Very subtle perspective — screen curves slightly at top like image */
-  transform: perspective(1800px) rotateX(2deg);
-  transform-origin: bottom center;
+    inset 0 0 0 2px rgba(197,160,89,0.15),
+    0 0 0 1px rgba(197,160,89,0.5),
+    0 30px 80px rgba(0,0,0,0.4),
+    0 8px 30px rgba(197,160,89,0.15),
+    0 -4px 20px rgba(197,160,89,0.1);
 }
 
 /* LEFT PANEL — yacht + teal HUD */
-.tv-left {
+.bb-left {
   position: absolute; left: 0; top: 0; width: 38%; height: 100%;
   background:
     linear-gradient(160deg, rgba(0,25,50,0.72) 0%, rgba(0,15,35,0.5) 100%),
@@ -206,14 +212,14 @@ nav li:first-child a { color: #c5a059; }
 }
 
 /* RIGHT PANEL — glass building */
-.tv-right {
+.bb-right {
   position: absolute; right: 0; top: 0; width: 62%; height: 100%;
   background:
     linear-gradient(160deg, rgba(5,12,28,0.42) 0%, rgba(8,18,40,0.62) 100%),
     url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=900&auto=format&fit=crop') center/cover no-repeat;
 }
 
-/* HUD overlay canvas — teal circuit art on left panel */
+/* HUD canvas */
 #hud-canvas {
   position: absolute; left: 0; top: 0; width: 38%; height: 100%;
   z-index: 2; pointer-events: none;
@@ -235,36 +241,33 @@ nav li:first-child a { color: #c5a059; }
   font-family: 'Space Grotesk', sans-serif; letter-spacing: 2px;
 }
 
-/* Top-right status indicator */
-.tv-badge {
+/* Top-right status badge */
+.bb-badge {
   position: absolute; top: 10px; right: 10px; z-index: 6;
   display: flex; align-items: center; gap: 6px;
   background: rgba(0,0,0,0.65); padding: 5px 11px; border-radius: 3px;
   border: 1px solid rgba(0,229,255,0.4);
 }
-.tv-badge span { color: #00e5ff; font-family: 'Space Grotesk', sans-serif; font-size: 0.52rem; letter-spacing: 2px; }
+.bb-badge span { color: #00e5ff; font-family: 'Space Grotesk', sans-serif; font-size: 0.52rem; letter-spacing: 2px; }
 .blink { width: 5px; height: 5px; background: #00e5ff; border-radius: 50%; animation: bl 1.5s infinite; }
 @keyframes bl { 50% { opacity: 0.1; } }
 
-.tv-playing {
+.bb-playing {
   position: absolute; top: 10px; left: 39%; z-index: 6;
   color: rgba(255,255,255,0.42); font-size: 0.48rem;
   font-family: 'Space Grotesk', sans-serif; letter-spacing: 1px;
   background: rgba(0,0,0,0.38); padding: 3px 7px; border-radius: 2px;
 }
 
-/* CENTER GLASS HERO PANEL */
+/* CENTER GLASS PANEL */
 .hero-glass {
   position: absolute;
   top: 8%; left: 50%; transform: translateX(-50%);
-  z-index: 8;
-  width: 55%;
+  z-index: 8; width: 55%;
   background: rgba(236,242,246,0.74);
   backdrop-filter: blur(26px); -webkit-backdrop-filter: blur(26px);
   border: 1px solid rgba(255,255,255,0.9);
-  border-radius: 5px;
-  padding: 2.5rem 2rem;
-  text-align: center;
+  border-radius: 5px; padding: 2.5rem 2rem; text-align: center;
   box-shadow: 0 8px 32px rgba(0,0,0,0.07);
 }
 .hero-glass h1 {
@@ -299,8 +302,6 @@ nav li:first-child a { color: #c5a059; }
   font-family: 'Space Grotesk', sans-serif; letter-spacing: 1.5px;
 }
 
-/* NO POLE */
-
 /* =====================================================
    SERVICE CARDS — overlapping screen bottom
 ===================================================== */
@@ -310,7 +311,7 @@ nav li:first-child a { color: #c5a059; }
   padding: 0 4% 5rem;
 }
 .svc-grid {
-  display: grid; grid-template-columns: repeat(4,1fr); gap: 0.9rem;
+  display: grid; grid-template-columns: repeat(3,1fr); gap: 0.9rem;
   max-width: 1020px; margin: 0 auto;
 }
 .svc-card {
@@ -384,7 +385,8 @@ footer { background: rgba(255,255,255,0.9); color: #333; padding:4rem 4% 2rem; b
 .ft-bottom p { font-size:0.72rem; color: #b8a898; }
 
 @media(max-width:1024px){
-  .svc-grid,.prod-grid{grid-template-columns:repeat(2,1fr);}
+  .svc-grid{grid-template-columns:repeat(2,1fr);}
+  .prod-grid{grid-template-columns:repeat(2,1fr);}
   nav,.consult-btn{display:none;}
 }
 @media(max-width:768px){
@@ -407,11 +409,9 @@ footer { background: rgba(255,255,255,0.9); color: #333; padding:4rem 4% 2rem; b
 <div class="orb orb-3"></div>
 <div class="orb orb-4"></div>
 
-<!-- SPLASH -->
+<!-- SPLASH — logo image only -->
 <div id="splash">
-  <svg class="splash-svg" viewBox="0 0 720 180">
-    <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" class="splash-text">MediaBox</text>
-  </svg>
+  <img class="splash-img" src="media-logo.jpeg" alt="MediaBox Bahamas">
 </div>
 
 <!-- HEADER -->
@@ -443,36 +443,38 @@ footer { background: rgba(255,255,255,0.9); color: #333; padding:4rem 4% 2rem; b
 </header>
 
 <main>
-  <!-- HERO -->
+  <!-- HERO BILLBOARD -->
   <section class="hero" id="home">
-    <div class="tv">
-      <div class="tv-left"></div>
-      <div class="tv-right"></div>
-      <canvas id="hud-canvas"></canvas>
-      <div class="lbl-model">MODEL BUILD</div>
-      <div class="lbl-timeline">TIMELINE ——————</div>
-      <div class="tv-badge"><div class="blink"></div><span>TRANSITIONING</span></div>
-      <div class="tv-playing">'PLAYING'</div>
-      <div class="hero-glass">
-        <h1>DIGITAL LUXURY.<br>CORPORATE EXCELLENCE.<br>UNMATCHED IMPACT.</h1>
-        <p>Strategic Communications and Media Production<br>for the Bahamas' Elite Brands.</p>
-      </div>
-      <div class="thumb-strip">
-        <div class="thumb-track">
-          <div class="th"><img src="https://images.unsplash.com/photo-1569263979104-865ab7cd8d13?w=140" alt=""></div>
-          <div class="th"><img src="https://images.unsplash.com/photo-1559628233-100c798642d8?w=140" alt=""></div>
-          <div class="th"><img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=140" alt=""></div>
-          <div class="th"><img src="https://images.unsplash.com/photo-1566737236500-1cfeb61e2e48?w=140" alt=""></div>
-          <div class="th"><img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=140" alt=""></div>
-          <div class="th"><img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=140" alt=""></div>
-          <div class="th"><img src="https://images.unsplash.com/photo-1569263979104-865ab7cd8d13?w=140" alt=""></div>
-          <div class="th"><img src="https://images.unsplash.com/photo-1559628233-100c798642d8?w=140" alt=""></div>
-          <div class="th"><img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=140" alt=""></div>
-          <div class="th"><img src="https://images.unsplash.com/photo-1566737236500-1cfeb61e2e48?w=140" alt=""></div>
-          <div class="th"><img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=140" alt=""></div>
-          <div class="th"><img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=140" alt=""></div>
+    <div class="billboard-wrap">
+      <div class="bb-screen">
+        <div class="bb-left"></div>
+        <div class="bb-right"></div>
+        <canvas id="hud-canvas"></canvas>
+        <div class="lbl-model">MODEL BUILD</div>
+        <div class="lbl-timeline">TIMELINE ——————</div>
+        <div class="bb-badge"><div class="blink"></div><span>TRANSITIONING</span></div>
+        <div class="bb-playing">'PLAYING'</div>
+        <div class="hero-glass">
+          <h1>DIGITAL LUXURY.<br>CORPORATE EXCELLENCE.<br>UNMATCHED IMPACT.</h1>
+          <p>Strategic Communications and Media Production<br>for the Bahamas' Elite Brands.</p>
         </div>
-        <div class="playing-tag2">▶ PLAYING 1</div>
+        <div class="thumb-strip">
+          <div class="thumb-track">
+            <div class="th"><img src="https://images.unsplash.com/photo-1569263979104-865ab7cd8d13?w=140" alt=""></div>
+            <div class="th"><img src="https://images.unsplash.com/photo-1559628233-100c798642d8?w=140" alt=""></div>
+            <div class="th"><img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=140" alt=""></div>
+            <div class="th"><img src="https://images.unsplash.com/photo-1566737236500-1cfeb61e2e48?w=140" alt=""></div>
+            <div class="th"><img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=140" alt=""></div>
+            <div class="th"><img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=140" alt=""></div>
+            <div class="th"><img src="https://images.unsplash.com/photo-1569263979104-865ab7cd8d13?w=140" alt=""></div>
+            <div class="th"><img src="https://images.unsplash.com/photo-1559628233-100c798642d8?w=140" alt=""></div>
+            <div class="th"><img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=140" alt=""></div>
+            <div class="th"><img src="https://images.unsplash.com/photo-1566737236500-1cfeb61e2e48?w=140" alt=""></div>
+            <div class="th"><img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=140" alt=""></div>
+            <div class="th"><img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=140" alt=""></div>
+          </div>
+          <div class="playing-tag2">▶ PLAYING 1</div>
+        </div>
       </div>
     </div>
   </section>
@@ -499,6 +501,16 @@ footer { background: rgba(255,255,255,0.9); color: #333; padding:4rem 4% 2rem; b
         <div class="svc-icon"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="12" y1="17" x2="12" y2="21"/><line x1="8" y1="21" x2="16" y2="21"/><polyline points="5 9 9 13 13 9 18 13"/></svg></div>
         <h3>DIGITAL<br>CONSULTANCY</h3>
         <p>Advanced digital strategies for maximizing online presence and impact.</p>
+      </article>
+      <article class="svc-card">
+        <div class="svc-icon"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="14" rx="2"/><path d="M8 22h8M12 18v4"/><polyline points="9 8 12 5 15 8"/><line x1="12" y1="5" x2="12" y2="15"/></svg></div>
+        <h3>WEBSITE<br>DEVELOPMENT</h3>
+        <p>Bespoke, high-performance digital experiences crafted to elevate your brand's online presence.</p>
+      </article>
+      <article class="svc-card">
+        <div class="svc-icon"><svg viewBox="0 0 24 24"><rect x="1" y="3" width="22" height="14" rx="1"/><line x1="12" y1="17" x2="12" y2="21"/><line x1="5" y1="21" x2="19" y2="21"/><circle cx="12" cy="10" r="2"/><path d="M5 8h2M17 8h2M5 12h2M17 12h2"/></svg></div>
+        <h3>PREMIUM DISPLAY<br>SOLUTIONS</h3>
+        <p>Turnkey supply and professional installation of state-of-the-art digital billboard systems across the Bahamas.</p>
       </article>
     </div>
   </section>
@@ -640,7 +652,7 @@ const hudEl = document.getElementById('hud-canvas');
 const hudCtx = hudEl.getContext('2d');
 
 function initHud() {
-  const tv = document.querySelector('.tv');
+  const tv = document.querySelector('.bb-screen');
   if (!tv) return;
   const r = tv.getBoundingClientRect();
   hudEl.width  = r.width  * 0.38;
@@ -728,7 +740,7 @@ function dismissSplash() {
     const splash = document.getElementById('splash');
     if (splash) splash.classList.add('hidden');
     document.body.classList.remove('no-scroll');
-  }, 3500);
+  }, 4200);
 }
 
 if (document.readyState === 'complete') {

@@ -66,8 +66,27 @@ section.content { padding:3rem 5%; max-width:1200px; margin:0 auto; }
 
 /* SERVICES GRID — what's included */
 .services-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; }
-.svc-item { padding:1.6rem 1.4rem; border-radius:8px; }
-.svc-item .icon { font-size:1.8rem; margin-bottom:0.7rem; }
+.svc-item { padding:1.8rem 1.6rem; border-radius:10px; border-top:3px solid #c5a059; position:relative; overflow:hidden; transition:transform 0.3s, box-shadow 0.3s; }
+.svc-item::before { content:''; position:absolute; top:0; left:0; right:0; height:100%; background:linear-gradient(160deg, rgba(197,160,89,0.06) 0%, transparent 60%); pointer-events:none; }
+.svc-item:hover { transform:translateY(-6px); box-shadow:0 20px 40px rgba(0,0,0,0.1), 0 0 0 1px rgba(197,160,89,0.3); }
+.svc-item h3 { font-family:'Space Grotesk',sans-serif; font-size:1rem; font-weight:700; color:#0c182d; margin-bottom:0.5rem; }
+.svc-item p { font-size:0.82rem; color:#667; line-height:1.65; }
+.svc-item .icon {
+  width: 64px; height: 64px;
+  background: linear-gradient(135deg, rgba(197,160,89,0.2), rgba(197,160,89,0.08));
+  border-radius: 16px;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 1.1rem;
+  border: 1.5px solid rgba(197,160,89,0.45);
+  box-shadow: 0 0 18px rgba(197,160,89,0.25), inset 0 1px 0 rgba(255,255,255,0.6);
+  transition: all 0.3s ease;
+}
+.svc-item:hover .icon {
+  background: linear-gradient(135deg, rgba(197,160,89,0.35), rgba(197,160,89,0.15));
+  box-shadow: 0 0 28px rgba(197,160,89,0.5), inset 0 1px 0 rgba(255,255,255,0.6);
+  transform: scale(1.08);
+}
+.svc-item .icon svg { width: 30px; height: 30px; filter: drop-shadow(0 0 4px rgba(197,160,89,0.6)); }
 .svc-item h3 { font-family:'Space Grotesk',sans-serif; font-size:0.95rem; font-weight:700; color:#0c182d; margin-bottom:0.4rem; }
 .svc-item p { font-size:0.8rem; color:#667; line-height:1.6; }
 
@@ -75,11 +94,12 @@ section.content { padding:3rem 5%; max-width:1200px; margin:0 auto; }
 .pricing-section { padding:3rem 5%; }
 .pricing-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(280px,1fr)); gap:1.4rem; max-width:1200px; margin:0 auto; }
 
-.price-card { padding:2rem 1.8rem; border-radius:10px; position:relative; overflow:hidden; transition:transform 0.3s, box-shadow 0.3s; }
+.price-card { padding:2rem 1.8rem; border-radius:10px; position:relative; overflow:hidden; transition:transform 0.3s, box-shadow 0.3s; border-top:3px solid #c5a059; }
 .price-card:hover { transform:translateY(-6px); box-shadow:0 20px 40px rgba(0,0,0,0.1); }
 .price-card .tag { position:absolute; top:14px; right:14px; background:#c5a059; color:#fff; font-size:0.6rem; font-weight:700; padding:3px 10px; border-radius:20px; text-transform:uppercase; letter-spacing:0.5px; }
 .price-card h3 { font-family:'Space Grotesk',sans-serif; font-size:1.05rem; font-weight:700; color:#0c182d; margin-bottom:0.4rem; }
-.price-card .location { font-size:0.78rem; color:#7ab8c0; font-weight:600; margin-bottom:1rem; letter-spacing:0.5px; }
+.price-card .location { font-size:0.78rem; color:#7ab8c0; font-weight:600; margin-bottom:1rem; letter-spacing:0.5px; display:flex; align-items:center; gap:5px; }
+.price-card .location::before { content:''; display:inline-block; width:14px; height:14px; background:url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' fill='none' stroke='%237ab8c0' stroke-width='2' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z'/%3E%3Ccircle cx='12' cy='10' r='3'/%3E%3C/svg%3E") center/contain no-repeat; flex-shrink:0; }
 .price-card .price { font-family:'Space Grotesk',sans-serif; font-size:2rem; font-weight:700; color:#c5a059; }
 .price-card .price span { font-size:0.85rem; color:#888; font-weight:400; }
 .price-card .note { font-size:0.75rem; color:#778; margin-top:0.8rem; line-height:1.6; }
@@ -124,8 +144,9 @@ footer { background:rgba(255,255,255,0.9); color:#333; padding:4rem 4% 2rem; bor
   .hamburger { display:flex; }
   #main-nav { display:none; position:fixed; top:62px; left:0; right:0; background:rgba(255,255,255,0.97); backdrop-filter:blur(16px); border-bottom:3px solid #c5a059; z-index:999; padding:1.5rem 0; }
   #main-nav.open { display:block; }
-  #main-nav ul { flex-direction:column; gap:0; }
-  #main-nav ul li a { display:block; padding:0.9rem 5%; font-size:0.9rem; border-bottom:1px solid rgba(197,160,89,0.15); }
+  #main-nav ul { flex-direction:column; gap:0; display:flex; }
+  #main-nav ul li { width:100%; }
+  #main-nav ul li a { display:block; padding:0.9rem 5%; font-size:0.9rem; border-bottom:1px solid rgba(197,160,89,0.15); width:100%; }
   #main-nav ul li:first-child a { color:#c5a059; }
   .dd-menu { position:static; box-shadow:none; border-top:none; background:rgba(197,160,89,0.06); }
   .mobile-consult { display:block !important; margin:1rem 5%; text-align:center; padding:0.8rem; background:linear-gradient(135deg,#c5a059,#e8c87a 50%,#c5a059); color:#0c182d; font-weight:700; font-size:0.8rem; text-transform:uppercase; border-radius:4px; text-decoration:none; }
@@ -194,32 +215,56 @@ footer { background:rgba(255,255,255,0.9); color:#333; padding:4rem 4% 2rem; bor
     </div>
     <div class="services-grid">
       <div class="svc-item glass">
-        <div class="icon">📡</div>
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#c5a059" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="7" width="20" height="12" rx="2"/><path d="M16 3H8L6 7h12l-2-4z"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/>
+          </svg>
+        </div>
         <h3>Mediabox Billboards</h3>
         <p>Solar & digital billboard advertising with monthly and annual packages. Franchise opportunities available.</p>
       </div>
       <div class="svc-item glass">
-        <div class="icon">📋</div>
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#c5a059" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/>
+          </svg>
+        </div>
         <h3>Marketing & Business Plans</h3>
         <p>Comprehensive marketing plans, campaign development, and tailored business strategies.</p>
       </div>
       <div class="svc-item glass">
-        <div class="icon">🤝</div>
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#c5a059" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+          </svg>
+        </div>
         <h3>Business Consulting</h3>
         <p>Expert business consulting and negotiating services to help your company achieve its goals.</p>
       </div>
       <div class="svc-item glass">
-        <div class="icon">📖</div>
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#c5a059" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+          </svg>
+        </div>
         <h3>Mediabooks & Content</h3>
         <p>Customized mediabooks and full content management to keep your brand messaging consistent.</p>
       </div>
       <div class="svc-item glass">
-        <div class="icon">🖨️</div>
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#c5a059" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/>
+          </svg>
+        </div>
         <h3>Print & Graphic Design</h3>
         <p>Pull-up banners, signage printing, books, magazines, and full graphic design services.</p>
       </div>
       <div class="svc-item glass">
-        <div class="icon">📱</div>
+        <div class="icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#c5a059" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+          </svg>
+        </div>
         <h3>Social Media & E-Blast</h3>
         <p>Facebook, Instagram, TikTok, YouTube management plus targeted e-blast marketing campaigns.</p>
       </div>
@@ -239,7 +284,7 @@ footer { background:rgba(255,255,255,0.9); color:#333; padding:4rem 4% 2rem; bor
       <div class="price-card glass">
         <div class="tag">Solar Powered</div>
         <h3>Solar Billboard</h3>
-        <div class="location">📍 6FT × 4FT</div>
+        <div class="location">6FT × 4FT</div>
         <div class="price">$690 <span>/ month</span></div>
         <ul>
           <li>Saunders Beach</li>
@@ -252,7 +297,7 @@ footer { background:rgba(255,255,255,0.9); color:#333; padding:4rem 4% 2rem; bor
       <div class="price-card glass">
         <div class="tag">Best Value</div>
         <h3>Solar Billboard</h3>
-        <div class="location">📍 10FT × 8FT</div>
+        <div class="location">10FT × 8FT</div>
         <div class="price">$1,040 <span>/ month</span></div>
         <ul>
           <li>East Street & Independence Highway</li>
@@ -276,7 +321,7 @@ footer { background:rgba(255,255,255,0.9); color:#333; padding:4rem 4% 2rem; bor
 
       <div class="price-card glass" style="grid-column:span 1;">
         <h3>Nassau Digital Screens</h3>
-        <div class="location">📍 Multiple Nassau Locations</div>
+        <div class="location">Multiple Nassau Locations</div>
         <div class="price">$690 <span>/ month per location</span></div>
         <div class="divider" style="margin:1rem 0;"></div>
         <table class="loc-table">
@@ -298,7 +343,7 @@ footer { background:rgba(255,255,255,0.9); color:#333; padding:4rem 4% 2rem; bor
       <div class="price-card glass">
         <div class="tag">Grand Bahama</div>
         <h3>Freeport Digital Billboard</h3>
-        <div class="location">📍 Freeport, Grand Bahama</div>
+        <div class="location">Freeport, Grand Bahama</div>
         <div class="price">$4,000 <span>/ month</span></div>
         <ul>
           <li>24-hour operation</li>
@@ -324,30 +369,30 @@ footer { background:rgba(255,255,255,0.9); color:#333; padding:4rem 4% 2rem; bor
     <div class="pricing-grid" style="max-width:1200px;margin:0 auto;">
 
       <div class="price-card glass featured-card">
-        <div class="tag">🚢 High Traffic</div>
+        <div class="tag">High Traffic</div>
         <h3>Arrivals LED Screen</h3>
-        <div class="location">📍 Nassau Cruise Port — Arrivals Terminal</div>
+        <div class="location">Nassau Cruise Port — Arrivals Terminal</div>
         <div class="price">$16,000 <span>/ month</span></div>
         <p class="note">Oversized LED screen targeting every passenger as they disembark. 10 spots with 6 slots currently available. Go big or go home — showcase your brand to a captive audience that can't miss it. Discounted rates for long-term contracts.</p>
       </div>
 
       <div class="price-card glass">
         <h3>Wall Ad Space</h3>
-        <div class="location">📍 Port Plaza — 750 sq ft Wall</div>
+        <div class="location">Port Plaza — 750 sq ft Wall</div>
         <div class="price">$3,000 <span>/ month</span></div>
         <p class="note">Make your brand larger than life. A 750 square foot wall canvas with endless eye-catching possibilities. We identify the most suitable location based on your goals.</p>
       </div>
 
       <div class="price-card glass">
         <h3>Light Pole Banners</h3>
-        <div class="location">📍 Piers, Arrivals Terminal, Port Marketplace & Amphitheatre</div>
+        <div class="location">Piers, Arrivals Terminal, Port Marketplace & Amphitheatre</div>
         <div class="price">$3,000 <span>/ month</span></div>
         <p class="note">Submit a 2×5 graphic to boost your brand across high-traffic pole locations. Add a QR code for easy access to your website or sales pages.</p>
       </div>
 
       <div class="price-card glass">
         <h3>Canopy Ad Spaces</h3>
-        <div class="location">📍 Port Canopy Structures — 28 rows available</div>
+        <div class="location">Port Canopy Structures — 28 rows available</div>
         <div class="price">$4,000 <span>/ month</span></div>
         <ul>
           <li>Only 18 vacant spaces left</li>
@@ -359,7 +404,7 @@ footer { background:rgba(255,255,255,0.9); color:#333; padding:4rem 4% 2rem; bor
 
       <div class="price-card glass">
         <h3>Blue Wall Ad Space</h3>
-        <div class="location">📍 Port Plaza Entry — 12×8ft</div>
+        <div class="location">Port Plaza Entry — 12×8ft</div>
         <div class="price">$6,000 <span>/ month</span></div>
         <p class="note" style="color:#c5a059;font-weight:600;">3 Month Minimum</p>
         <p class="note">Eye-catching 12×8ft ad against a bold blue wall. Every excursion guest MUST pass this space on their return — impossibly high visibility.</p>
@@ -444,7 +489,7 @@ footer { background:rgba(255,255,255,0.9); color:#333; padding:4rem 4% 2rem; bor
     <div class="ft-col">
       <h4>Contact Us</h4>
       <p>Braynen Building, Nassau, Bahamas</p>
-      <p>Mediaboxbahamaslimited@gmail.com</p>
+      <p><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="aae7cfcec3cbc8c5d2c8cbc2cbc7cbd9c6c3c7c3decfceeacdc7cbc3c684c9c5c7">[email&#160;protected]</a></p>
       <p>+1 (242) 433-2528</p>
     </div>
     <div class="ft-col">
@@ -461,7 +506,7 @@ footer { background:rgba(255,255,255,0.9); color:#333; padding:4rem 4% 2rem; bor
   </div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 const c = document.getElementById('bg-canvas');
 c.style.cssText='position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:0;pointer-events:none;';
 const cx = c.getContext('2d');

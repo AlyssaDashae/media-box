@@ -3,631 +3,291 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>About Us | MediaBox Bahamas</title>
-<meta name="title" content="About Us | MediaBox Bahamas">
 <meta name="description" content="Learn about MediaBox Bahamas, an enviro-friendly marketing and media firm providing effective marketing solutions and billboard advertising.">
-<meta name="author" content="MediaBox Bahamas Limited">
-
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-:root {
---bg-color: #f7f9fc;
---main-teal: #0c182d;
---main-gold: #c5a059; /* Champagne Gold */
---text-dark: #333;
---text-light: #fff;
---accent-bg: #fff;
---font-main: 'Montserrat', sans-serif;
---font-heading: 'Playfair Display', serif;
-}
+* { margin:0; padding:0; box-sizing:border-box; }
 
-* {
-margin: 0;
-padding: 0;
-box-sizing: border-box;
-}
+body { font-family:'Montserrat',sans-serif; background:#e8eef2; overflow-x:hidden; }
 
-body {
-font-family: var(--font-main);
-color: var(--text-dark);
-background-color: var(--bg-color);
-overflow-x: hidden;
-}
+/* ===== BACKGROUND CANVAS ===== */
+#bg-canvas { position:fixed; top:0; left:0; width:100vw; height:100vh; z-index:0; pointer-events:none; }
 
-/* =========================================
-HEADER & NAVIGATION
-========================================= */
+/* ===== ORBS ===== */
+.orb { position:fixed; border-radius:50%; pointer-events:none; z-index:1; animation:orbDrift 10s ease-in-out infinite alternate; }
+.orb-1 { width:220px; height:220px; top:-60px; left:-60px; background:radial-gradient(circle at 50% 50%, rgba(200,248,255,1) 0%, rgba(140,235,252,0.95) 28%, rgba(80,215,245,0.65) 55%, rgba(40,190,235,0.18) 80%, transparent 100%); filter:blur(6px) drop-shadow(0 0 24px rgba(140,235,255,0.95)); animation-duration:11s; }
+.orb-2 { width:200px; height:200px; top:-55px; right:-55px; background:radial-gradient(circle at 50% 50%, rgba(255,235,150,1) 0%, rgba(240,205,110,0.9) 32%, rgba(210,170,70,0.6) 58%, rgba(190,145,50,0.18) 80%, transparent 100%); filter:blur(6px) drop-shadow(0 0 22px rgba(255,200,60,0.85)); animation-duration:14s; animation-delay:-3s; }
+.orb-3 { width:160px; height:160px; bottom:12%; left:2%; background:radial-gradient(circle at 50% 50%, rgba(210,250,255,0.98) 0%, rgba(150,238,252,0.82) 32%, rgba(90,218,248,0.42) 60%, transparent 100%); filter:blur(5px) drop-shadow(0 0 18px rgba(160,240,255,0.85)); animation-duration:16s; animation-delay:-6s; }
+.orb-4 { width:150px; height:150px; bottom:8%; right:3%; background:radial-gradient(circle at 50% 50%, rgba(252,230,140,0.95) 0%, rgba(230,195,90,0.72) 34%, rgba(200,160,55,0.32) 62%, transparent 100%); filter:blur(5px) drop-shadow(0 0 16px rgba(240,190,60,0.7)); animation-duration:13s; animation-delay:-9s; }
+@keyframes orbDrift { 0%{transform:translate(0,0) scale(1);} 25%{transform:translate(14px,10px) scale(1.06);} 55%{transform:translate(-8px,18px) scale(0.95);} 100%{transform:translate(10px,-14px) scale(1.04);} }
+
+/* ===== HEADER ===== */
 header {
-background-color: var(--main-teal);
-color: var(--text-light);
-padding: 1rem 5%;
-display: flex;
-justify-content: space-between;
-align-items: center;
-position: fixed;
-width: 100%;
-top: 0;
-z-index: 1000;
-border-bottom: 2px solid var(--main-gold);
-transition: all 0.3s ease;
+  position:fixed; top:0; width:100%; z-index:1000;
+  background:rgba(255,255,255,0.88); backdrop-filter:blur(16px);
+  border-bottom:3px solid #c5a059;
+  display:flex; align-items:center; justify-content:space-between;
+  padding:0.85rem 4%;
 }
+.logo { display:flex; align-items:center; gap:8px; text-decoration:none; }
+.logo img { height:38px; }
+.logo-text { line-height:1.1; }
+.brand-name { display:block; font-family:'Space Grotesk',sans-serif; font-size:1.42rem; font-weight:700; color:#c5a059; }
+.brand-sub  { display:block; font-size:0.62rem; color:#333; letter-spacing:1.8px; font-weight:600; }
 
-.logo {
-display: flex;
-align-items: center;
-cursor: pointer;
-text-decoration: none;
+nav ul { list-style:none; display:flex; gap:2rem; align-items:center; }
+nav a { text-decoration:none; color:#7ab8c0; font-size:0.8rem; font-weight:700; letter-spacing:0.7px; transition:color 0.2s; }
+nav a:hover { color:#c5a059; }
+nav li:first-child a { color:#c5a059; }
+
+.dropdown { position:relative; }
+.dd-menu { display:none; position:absolute; top:100%; left:0; background:#fff; min-width:180px; box-shadow:0 8px 20px rgba(0,0,0,0.1); border-top:2px solid #c5a059; z-index:2000; }
+.dd-menu a { display:block; padding:12px 18px; border-bottom:1px solid #eee; color:#333; font-size:0.8rem; font-weight:600; }
+.dd-menu a:hover { color:#c5a059; }
+.dropdown:hover .dd-menu { display:block; }
+
+.consult-btn {
+  background:linear-gradient(135deg, #c5a059, #e8c87a 50%, #c5a059);
+  background-size:200% auto; color:#0c182d; border:none; padding:0.62rem 1.3rem;
+  font-family:'Montserrat',sans-serif; font-weight:700; font-size:0.76rem;
+  text-transform:uppercase; letter-spacing:0.4px; border-radius:4px; cursor:pointer;
+  transition:all 0.4s; box-shadow:0 0 0 1px rgba(197,160,89,0.6), 0 0 18px rgba(0,210,255,0.5);
 }
+.consult-btn:hover { background-position:right; box-shadow:0 0 0 1px #c5a059, 0 0 28px rgba(0,210,255,0.8); }
 
-.logo img {
-height: 45px;
-margin-right: 0;
-position: relative;
-z-index: 2;
-}
+.mobile-consult { display: none; }
+.hamburger { display:none; flex-direction:column; justify-content:center; gap:5px; background:none; border:none; cursor:pointer; padding:6px; z-index:1001; }
+.hamburger.open span:nth-child(1) { transform:translateY(7.5px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity:0; }
+.hamburger.open span:nth-child(3) { transform:translateY(-7.5px) rotate(-45deg); }
 
-.logo-text {
-display: flex;
-flex-direction: column;
-line-height: 1.1;
-margin-left: -10px;
-position: relative;
-z-index: 1;
-}
-
-.brand-name {
-font-family: var(--font-heading);
-font-size: 1.6rem;
-color: var(--main-gold);
-margin: 0;
-}
-
-.brand-country {
-font-family: var(--font-main);
-font-size: 0.75rem;
-color: #aaa;
-margin-top: 2px;
-letter-spacing: 0.5px;
-text-transform: uppercase;
-}
-
-/* HAMBURGER MENU ICON (Hidden on Desktop) */
-.menu-toggle {
-display: none;
-cursor: pointer;
-}
-
-nav ul {
-list-style: none;
-margin: 0;
-padding: 0;
-display: flex;
-gap: 2rem;
-align-items: center;
-}
-
-nav a {
-text-decoration: none;
-color: var(--text-light);
-font-size: 0.9rem;
-font-weight: 600;
-transition: color 0.3s ease;
-}
-
-nav a:hover {
-color: var(--main-gold);
-}
-
-/* DROPDOWN MENU STYLES */
-.dropdown {
-position: relative;
-display: inline-block;
-}
-
-.dropdown-content {
-display: none;
-position: absolute;
-background-color: var(--main-teal);
-min-width: 180px;
-box-shadow: 0px 8px 20px rgba(0,0,0,0.3);
-z-index: 1001;
-top: 100%;
-left: 0;
-border-top: 2px solid var(--main-gold);
-padding: 0;
-flex-direction: column;
-gap: 0;
-}
-
-.dropdown-content li {
-width: 100%;
-}
-
-.dropdown-content a {
-color: var(--text-light);
-padding: 15px 20px;
-text-decoration: none;
-display: block;
-text-align: left;
-font-size: 0.85rem;
-transition: background-color 0.3s, color 0.3s;
-border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-.dropdown-content a:last-child {
-border-bottom: none;
-}
-
-.dropdown-content a:hover {
-background-color: rgba(255, 255, 255, 0.08);
-color: var(--main-gold);
-}
-
-.dropdown:hover .dropdown-content {
-display: flex;
-}
-
-.request-btn {
-background: linear-gradient(135deg, var(--main-gold) 0%, #fff0b3 45%, var(--main-gold) 100%);
-background-size: 200% auto;
-color: var(--main-teal);
-border: none;
-padding: 0.8rem 1.8rem;
-border-radius: 0;
-font-weight: 700;
-font-size: 0.9rem;
-cursor: pointer;
-transition: all 0.4s ease;
-text-transform: uppercase;
-}
-
-.request-btn:hover {
-background-position: right center;
-box-shadow: 0 0 15px rgba(197, 160, 89, 0.6);
-}
-
-/* =========================================
-PAGE HERO (ABOUT US)
-========================================= */
+/* ===== PAGE HERO ===== */
 .page-hero {
-background-color: var(--main-teal);
-background-image: linear-gradient(rgba(12, 24, 45, 0.8), rgba(12, 24, 45, 0.9)), url('https://images.unsplash.com/photo-1574950454793-100db5a16d8a?q=80&w=1600&auto=format&fit=crop');
-background-size: cover;
-background-position: center;
-color: var(--text-light);
-padding: 12rem 5% 6rem 5%;
-text-align: center;
+  position:relative; z-index:10;
+  padding: 9rem 5% 5rem;
+  text-align:center;
 }
-
 .page-hero h1 {
-font-family: var(--font-heading);
-font-size: 3.5rem;
-font-weight: 400;
-margin-bottom: 1rem;
-color: var(--main-gold);
+  font-family:'Space Grotesk',sans-serif; font-size:2.8rem; font-weight:700;
+  color:#c5a059; text-transform:uppercase; letter-spacing:1px; margin-bottom:1rem;
 }
+.page-hero h1::after { content:''; display:block; width:60px; height:3px; background:#c5a059; margin:12px auto 0; }
+.page-hero p { font-size:1rem; color:#3a4858; font-weight:500; max-width:580px; margin:0 auto; line-height:1.65; }
 
-.page-hero p {
-font-size: 1.1rem;
-opacity: 0.9;
-max-width: 600px;
-margin: 0 auto;
-}
-
-/* =========================================
-CONTENT SECTIONS
-========================================= */
+/* ===== CONTENT SECTIONS ===== */
 .content-section {
-padding: 6rem 5%;
-display: grid;
-grid-template-columns: 1fr 1fr;
-gap: 4rem;
-align-items: center;
-max-width: 1400px;
-margin: 0 auto;
+  position:relative; z-index:10;
+  padding:5rem 5%;
+  display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:center;
+  max-width:1200px; margin:0 auto;
 }
+.content-section.reverse { direction:rtl; }
+.content-section.reverse > * { direction:ltr; }
 
-.content-section.reverse {
-direction: rtl;
-background-color: var(--accent-bg);
+/* Glass card wrapping text */
+.text-card {
+  background:rgba(242,246,249,0.82);
+  backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px);
+  border:1px solid rgba(255,255,255,0.95);
+  border-radius:8px; padding:2.5rem 2rem;
+  box-shadow:0 8px 24px rgba(0,0,0,0.06);
 }
-
-.content-section.reverse > * {
-direction: ltr;
+.text-card h2 {
+  font-family:'Space Grotesk',sans-serif; font-size:1.8rem; font-weight:700;
+  color:#0c182d; margin-bottom:1.2rem; position:relative;
 }
+.text-card h2::after { content:''; display:block; width:48px; height:3px; background:#c5a059; margin-top:10px; }
+.text-card p { font-size:0.9rem; line-height:1.8; color:#556; margin-bottom:1.2rem; }
 
-.text-content h2 {
-font-family: var(--font-heading);
-font-size: 2.5rem;
-color: var(--main-teal);
-margin-bottom: 1.5rem;
-position: relative;
-display: inline-block;
+/* Benefits */
+.benefits-list { display:grid; gap:0.8rem; margin-top:1.5rem; }
+.benefit-item { display:flex; align-items:center; gap:0.9rem; font-weight:700; color:#0c182d; font-size:0.9rem; }
+.benefit-item svg { width:20px; height:20px; stroke:#c5a059; fill:none; stroke-width:2.5; flex-shrink:0; }
+
+/* Image wrapper */
+.img-wrap { position:relative; padding:18px; }
+.img-wrap::before {
+  content:''; position:absolute; top:0; left:0;
+  width:calc(100% - 36px); height:calc(100% - 36px);
+  border:2px solid #c5a059; z-index:1; transition:all 0.4s;
 }
-
-.text-content h2::after {
-content: '';
-display: block;
-width: 60px;
-height: 2px;
-background-color: var(--main-gold);
-margin-top: 10px;
+.img-wrap .img-inner {
+  position:relative; z-index:2; transform:translate(18px,18px);
+  box-shadow:0 20px 40px rgba(0,0,0,0.12); transition:all 0.4s; overflow:hidden; border-radius:4px;
 }
+.img-wrap img { width:100%; height:380px; object-fit:cover; display:block; transition:transform 0.4s; }
+.img-wrap:hover .img-inner { transform:translate(8px,8px); }
+.img-wrap:hover img { transform:scale(1.03); }
 
-.text-content p {
-font-size: 1rem;
-line-height: 1.8;
-color: #555;
-margin-bottom: 1.5rem;
+/* ===== FOOTER ===== */
+footer { background:rgba(255,255,255,0.9); color:#333; padding:4rem 4% 2rem; border-top:3px solid #c5a059; position:relative; z-index:100; }
+.ft-grid { display:flex; justify-content:space-between; flex-wrap:wrap; gap:3rem; max-width:1200px; margin:0 auto 3rem; }
+.ft-col { flex:1; min-width:220px; }
+.ft-col h4 { color:#c5a059; font-family:'Space Grotesk',sans-serif; font-size:1.15rem; margin-bottom:1.2rem; }
+.ft-col p,.ft-col a { font-size:0.84rem; color:#b8a898; line-height:1.9; text-decoration:none; display:block; transition:color 0.3s; }
+.ft-col a:hover { color:#c5a059; }
+.ft-bottom { max-width:1200px; margin:0 auto; padding-top:1.6rem; border-top:1px solid rgba(0,0,0,0.08); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; }
+.ft-bottom p { font-size:0.72rem; color:#b8a898; }
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:1024px){
+  .desktop-only { display:none !important; }
+  .hamburger { display:flex; }
+  #main-nav {
+    display:none; position:fixed; top:62px; left:0; right:0;
+    background:rgba(255,255,255,0.97); backdrop-filter:blur(16px);
+    border-bottom:3px solid #c5a059; z-index:999; padding:1.5rem 0;
+  }
+  #main-nav.open { display:block; }
+  #main-nav ul { flex-direction:column; gap:0; }
+  #main-nav ul li a { display:block; padding:0.9rem 5%; font-size:0.9rem; border-bottom:1px solid rgba(197,160,89,0.15); }
+  #main-nav ul li:first-child a { color:#c5a059; }
+  .dd-menu { position:static; box-shadow:none; border-top:none; background:rgba(197,160,89,0.06); }
+  .dropdown:hover .dd-menu { display:flex; flex-direction:column; }
+  .mobile-consult { display:block; margin:1rem 5%; text-align:center; padding:0.8rem; background:linear-gradient(135deg,#c5a059,#e8c87a 50%,#c5a059); color:#0c182d; font-weight:700; font-size:0.8rem; text-transform:uppercase; border-radius:4px; text-decoration:none; }
+  .content-section { grid-template-columns:1fr; gap:2.5rem; }
+  .content-section.reverse { direction:ltr; }
 }
-
-/* Mini Grid for Benefits */
-.benefits-list {
-display: grid;
-grid-template-columns: 1fr;
-gap: 1rem;
-margin-top: 2rem;
-}
-
-.benefit-item {
-display: flex;
-align-items: center;
-gap: 1rem;
-font-weight: 600;
-color: var(--main-teal);
-font-size: 1.1rem;
-}
-
-.benefit-item svg {
-width: 24px;
-height: 24px;
-stroke: var(--main-gold);
-fill: none;
-stroke-width: 2;
-}
-
-/* --- Elegant Image Holder --- */
-.elegant-image-wrapper {
-position: relative;
-padding: 20px;
-}
-
-.elegant-image-wrapper::before {
-content: '';
-position: absolute;
-top: 0;
-left: 0;
-width: calc(100% - 40px);
-height: calc(100% - 40px);
-border: 2px solid var(--main-gold);
-z-index: 1;
-transition: all 0.4s ease;
-}
-
-.elegant-image-wrapper .img-container {
-position: relative;
-z-index: 2;
-transform: translate(20px, 20px);
-box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-transition: all 0.4s ease;
-background-color: #eee;
-}
-
-.elegant-image-wrapper img {
-width: 100%;
-height: 400px;
-object-fit: cover;
-display: block;
-filter: grayscale(20%);
-transition: filter 0.4s ease;
-}
-
-.elegant-image-wrapper:hover .img-container {
-transform: translate(10px, 10px);
-box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-}
-.elegant-image-wrapper:hover img {
-filter: grayscale(0%);
-}
-
-/* =========================================
-FOOTER (MATCHING HOMEPAGE)
-========================================= */
-footer {
-background-color: var(--main-teal);
-color: var(--text-light);
-padding: 4rem 5% 2rem 5%;
-border-top: 2px solid var(--main-gold);
-}
-
-.footer-content {
-display: flex;
-justify-content: space-between;
-flex-wrap: wrap;
-gap: 3rem;
-max-width: 1200px;
-margin: 0 auto 3rem auto;
-text-align: left;
-}
-
-.footer-col {
-flex: 1;
-min-width: 250px;
-}
-
-.footer-col .logo {
-margin-bottom: 1.5rem;
-}
-
-.footer-col h4 {
-color: var(--main-gold);
-font-family: var(--font-heading);
-font-size: 1.3rem;
-margin-bottom: 1.5rem;
-}
-
-.footer-col p, .footer-col a {
-font-size: 0.9rem;
-color: #ddd;
-line-height: 1.8;
-text-decoration: none;
-margin-bottom: 0.8rem;
-display: flex;
-align-items: center;
-gap: 10px;
-transition: color 0.3s;
-}
-
-.footer-col a:hover {
-color: var(--main-gold);
-}
-
-.social-links {
-display: flex;
-gap: 1.5rem;
-margin-top: 1.5rem;
-}
-
-.social-links a svg {
-width: 28px;
-height: 28px;
-fill: var(--main-gold);
-transition: transform 0.3s;
-}
-
-.social-links a:hover svg {
-transform: translateY(-4px);
-}
-
-.footer-bottom {
-max-width: 1200px;
-margin: 0 auto;
-padding-top: 2rem;
-border-top: 1px solid rgba(255, 255, 255, 0.1);
-display: flex;
-justify-content: space-between;
-align-items: center;
-flex-wrap: wrap;
-gap: 1.5rem;
-}
-
-.footer-bottom p {
-font-size: 0.8rem;
-color: #888;
-margin: 0;
-}
-
-.payment-options {
-display: flex;
-gap: 1.2rem;
-align-items: center;
-}
-
-.payment-options svg {
-height: 24px;
-width: auto;
-fill: #aaa;
-transition: fill 0.3s;
-}
-
-.payment-options svg:hover {
-fill: var(--main-gold);
-}
-
-/* =========================================
-MOBILE RESPONSIVENESS
-========================================= */
-@media (max-width: 1024px) {
-/* Activate Hamburger Menu */
-.menu-toggle { display: block; }
-header { flex-wrap: wrap; }
-nav, .request-btn { display: none; width: 100%; }
-
-/* When menu is open via Javascript */
-header.active { background-color: var(--main-teal); }
-header.active nav, header.active .request-btn { display: flex; }
-
-nav ul { flex-direction: column; text-align: center; gap: 1.5rem; padding: 2rem 0; width: 100%;}
-.request-btn { margin-bottom: 1.5rem; justify-content: center;}
-
-/* Fix Dropdown for Mobile */
-.dropdown-content { position: relative; min-width: 100%; box-shadow: none; border-top: none; padding-top: 1rem; background-color: transparent;}
-.dropdown-content a { text-align: center; color: #aaa; }
-}
-
-@media (max-width: 900px) {
-.content-section { grid-template-columns: 1fr; gap: 3rem; }
-.elegant-image-wrapper img { height: 300px; }
-}
-
-@media (max-width: 768px) {
-header { padding: 1rem; width: 100%; }
-.page-hero { padding: 10rem 5% 4rem 5%; }
-.page-hero h1 { font-size: 2.5rem; margin-top: 1rem;}
-.footer-content { flex-direction: column; gap: 2rem;}
-.footer-bottom { flex-direction: column; justify-content: center; text-align: center;}
-.payment-options { justify-content: center; }
+@media(max-width:768px){
+  .page-hero h1 { font-size:2rem; }
+  .img-wrap img { height:260px; }
 }
 </style>
 </head>
 <body>
 
-<header id="main-header">
-<a href="index.html" class="logo" style="text-decoration: none;">
-<img src="Logo.png" alt="MediaBox Bahamas Gold Logo">
-<div class="logo-text">
-<span class="brand-name">MediaBox</span>
-<span class="brand-country">BAHAMAS</span>
-</div>
-</a>
+<canvas id="bg-canvas"></canvas>
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+<div class="orb orb-3"></div>
+<div class="orb orb-4"></div>
 
-<div class="menu-toggle" id="mobile-menu-btn">
-<svg viewBox="0 0 24 24" width="30" height="30" stroke="var(--main-gold)" stroke-width="2" fill="none"><path d="M3 12h18M3 6h18M3 18h18"></path></svg>
-</div>
-
-<nav aria-label="Main Navigation">
-<ul>
-<li><a href="index.html#home">HOME</a></li>
-<li><a href="index.html#services">SERVICES</a></li>
-<li><a href="index.html#portfolio">PORTFOLIO</a></li>
-<li><a href="about.html">ABOUT US</a></li>
-
-<li class="dropdown">
-<a href="#" style="cursor: default;">BROCHURE ▾</a>
-<ul class="dropdown-content">
-<li><a href="National.pdf" target="_blank">National Rate</a></li>
-<li><a href="International.pdf" target="_blank">International Rate</a></li>
-</ul>
-</li>
-
-</ul>
-</nav>
-<button class="request-btn">REQUEST A CONSULTATION</button>
+<header>
+  <a class="logo" href="index.html">
+    <img src="Logo.png" alt="MediaBox Bahamas" onerror="this.style.display='none'">
+    <div class="logo-text">
+      <span class="brand-name">MEDIABOX</span>
+      <span class="brand-sub">BAHAMAS</span>
+    </div>
+  </a>
+  <nav id="main-nav">
+    <ul>
+      <li><a href="index.html#home">HOME</a></li>
+      <li><a href="index.html#services">SERVICES</a></li>
+      <li><a href="index.html#portfolio">PORTFOLIO</a></li>
+      <li><a href="about.html">ABOUT US</a></li>
+      <li><a href="index.html#insights">INSIGHTS</a></li>
+      <li class="dropdown">
+        <a href="#">BROCHURE ▾</a>
+        <div class="dd-menu">
+          <a href="National.pdf" target="_blank">National Rate</a>
+          <a href="International.pdf" target="_blank">International Rate</a>
+        </div>
+      </li>
+    </ul>
+    <a class="mobile-consult" href="consultation.html">REQUEST A CONSULTATION</a>
+  </nav>
+  <button class="consult-btn desktop-only" onclick="location.href='consultation.html'">REQUEST A CONSULTATION</button>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </header>
 
 <main>
+  <section class="page-hero">
+    <h1>Our Story</h1>
+    <p>Using our knowledge, experience, and creativity to communicate your brand effectively.</p>
+  </section>
 
-<section class="page-hero">
-<h1>Our Story</h1>
-<p>Using our knowledge, experience, and creativity to communicate your brand effectively.</p>
-</section>
+  <section class="content-section">
+    <div class="text-card">
+      <h2>About Company</h2>
+      <p>Mediabox Bahamas Ltd. is an enviro-friendly marketing and media firm whose focus is to provide effective marketing solutions while contributing to entrepreneurial environmental stability.</p>
+      <p>Our mission is to offer clients a long term, mutually beneficial business relationship by using our knowledge, experience, and creativity to communicate their brands effectively.</p>
+    </div>
+    <div class="img-wrap">
+      <div class="img-inner">
+        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=800&auto=format&fit=crop" alt="Corporate Office">
+      </div>
+    </div>
+  </section>
 
-<section class="content-section">
-<div class="text-content">
-<h2>About Company</h2>
-<p>Mediabox Bahamas Ltd. is an enviro-friendly marketing and media firm whose focus is to provide effective marketing solutions while contributing to entrepreneurial environmental stability.</p>
-<p>Our mission is to offer clients with a long term, mutually beneficial business relationship by using our knowledge, experience, and creativity to communicate their brands effectively.</p>
-</div>
-
-<div class="elegant-image-wrapper">
-<div class="img-container">
-<img src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=800&auto=format&fit=crop" alt="Corporate Office">
-</div>
-</div>
-</section>
-
-<section class="content-section reverse">
-<div class="text-content">
-<h2>Why Choose Us?</h2>
-<p>MediaBox Bahamas highly recommends the use of our mediabox displays. This is the best time for your company to creatively attract the attention of its target audience and MediaBox can assist with content creation to help your company engage with its audience on a deeper level.</p>
-<p>Our billboards and media strategies can provide a number of key benefits to your brand, including:</p>
-
-<div class="benefits-list">
-<div class="benefit-item">
-<svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
-High traffic advertising
-</div>
-<div class="benefit-item">
-<svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
-Overnight Brand awareness
-</div>
-<div class="benefit-item">
-<svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
-Increase Sales
-</div>
-</div>
-</div>
-
-<div class="elegant-image-wrapper">
-<div class="img-container">
-<img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?q=80&w=800&auto=format&fit=crop" alt="Marketing Strategy Meeting">
-</div>
-</div>
-</section>
-
+  <section class="content-section reverse">
+    <div class="text-card">
+      <h2>Why Choose Us?</h2>
+      <p>MediaBox Bahamas highly recommends the use of our mediabox displays. This is the best time for your company to creatively attract the attention of its target audience — and MediaBox can assist with content creation to help your company engage with its audience on a deeper level.</p>
+      <p>Our billboards and media strategies provide key benefits to your brand:</p>
+      <div class="benefits-list">
+        <div class="benefit-item">
+          <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+          High traffic advertising
+        </div>
+        <div class="benefit-item">
+          <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+          Overnight brand awareness
+        </div>
+        <div class="benefit-item">
+          <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+          Increase in sales
+        </div>
+      </div>
+    </div>
+    <div class="img-wrap">
+      <div class="img-inner">
+        <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?q=80&w=800&auto=format&fit=crop" alt="Marketing Strategy">
+      </div>
+    </div>
+  </section>
 </main>
 
 <footer>
-<div class="footer-content">
-<div class="footer-col">
-<div class="logo">
-<img src="Logo.png" alt="MediaBox Bahamas Gold Logo">
-<div class="logo-text" style="align-items: flex-start; margin-left: -10px;">
-<span class="brand-name">MediaBox</span>
-<span class="brand-country">BAHAMAS</span>
-</div>
-</div>
-<p style="margin-top: 1rem;">Premium marketing and media production for the Bahamas' Elite Brands.</p>
-
-<div class="social-links">
-<a href="#" aria-label="Facebook">
-<svg viewBox="0 0 24 24"><path d="M22.675 0h-21.35C.597 0 0 .597 0 1.325v21.351C0 23.403.597 24 1.325 24H12.82v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116c.73 0 1.323-.597 1.323-1.324V1.325C24 .597 23.403 0 22.675 0z"/></svg>
-</a>
-<a href="https://wa.me/12424332528" aria-label="WhatsApp">
-<svg viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 000 12a12 12 0 001.917 6.483L.416 24l5.656-1.488A11.94 11.94 0 0011.944 24a12 12 0 0012-12 12 12 0 00-12-12zm6.658 17.15c-.279.79-1.573 1.485-2.203 1.54-.588.051-1.346.21-3.83-1.04-3.024-1.52-4.985-4.62-5.136-4.825-.15-.203-1.226-1.636-1.226-3.116 0-1.48.766-2.21 1.036-2.493.27-.283.593-.354.79-.354.195 0 .392.002.564.01.182.008.428-.073.67.513.25.602.812 1.983.886 2.133.074.15.123.325.025.524-.099.201-.15.326-.3.476-.15.15-.316.34-.45.474-.15.152-.308.318-.135.617.172.3.766 1.27 1.642 2.05.18.253 1.127 1.378 2.22 1.83.298.125.473.1.652-.11.178-.21.766-.89.97-1.196.202-.307.403-.254.67-.152.27.102 1.704.805 1.996.954.293.15.488.225.56.35.074.125.074.723-.205 1.513z"/></svg>
-</a>
-</div>
-</div>
-
-<div class="footer-col">
-<h4>Contact Us</h4>
-<p>
-<svg style="width:16px; height:16px; fill:var(--main-gold);" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-Braynen Building, Nassau, Bahamas
-</p>
-<p>
-<svg style="width:16px; height:16px; fill:var(--main-gold);" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-Mediaboxbahamaslimited@gmail.com
-</p>
-<p>
-<svg style="width:16px; height:16px; fill:var(--main-gold);" viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
-+1 (242) 433-2528
-</p>
-</div>
-
-<div class="footer-col">
-<h4>Quick Links</h4>
-<a href="index.html#services">Our Services</a>
-<a href="index.html#portfolio">Client Portfolio</a>
-<a href="about.html">About Us</a>
-<a href="National.pdf" target="_blank">National Rate Brochure</a>
-<a href="International.pdf" target="_blank">International Rate Brochure</a>
-</div>
-</div>
-
-<div class="footer-bottom">
-<p>&copy; 2026 MediaBox Bahamas Limited. All Rights Reserved.</p>
-
-<div class="payment-options">
-<svg viewBox="0 0 38 24"><path d="M13.73 17.653l2.228-11.45h3.606l-2.23 11.45h-3.604zm16.516-11.232c-1.12-.42-2.887-.8-4.707-.8-5.11 0-8.707 2.454-8.736 5.976-.03 2.597 2.585 4.04 4.57 4.93 2.025.91 2.703 1.493 2.71 2.308.01 1.255-1.637 1.82-3.152 1.82-1.996 0-3.058-.292-4.672-.942l-.66-3.12c1.077.472 3.085.875 5.176.896 2.57 0 4.137-1.144 4.15-2.914-.015-1.168-.895-2.03-3.41-3.107-1.745-.758-2.94-1.63-2.94-3.177.03-2.585 2.152-4.838 6.46-4.838 1.626-.03 2.942.27 3.996.64l-.785 3.37zM9.814 17.653h-3.48L3.926 7.425C3.78 6.78 3.572 6.55 3.047 6.305L.015 4.95v.35c.78.204 2.193.717 2.912 1.412l3.417 10.94H10.1l4.98-11.45h-3.76L9.814 17.653zm26.49 0h3.297l-2.853-11.45h-3.328c-.628 0-1.15.34-1.396.885l-5.305 10.565h3.766l.75-1.92h4.594l.432 1.92h-.002z" fill="#aaa"/></svg>
-<svg viewBox="0 0 38 24"><path d="M12.185 11.968A7.78 7.78 0 0115.176 5.6 7.848 7.848 0 007.84 0 7.84 7.84 0 000 7.84a7.84 7.84 0 007.84 7.84 7.82 7.82 0 004.345-1.312V11.97M23.52 0a7.84 7.84 0 00-7.84 7.84 7.84 7.84 0 002.99 6.228 7.84 7.84 0 0012.69-6.228A7.84 7.84 0 0023.52 0z" fill="#aaa"/></svg>
-<svg viewBox="0 0 38 24"><path d="M33.916 16.71H38l-4.14-10h-4.2l-4.15 10h3.51l.83-2.12h4.48l.58 2.12zm-3.04-4.85l1.32-3.38 1.48 3.38h-2.8zM18.814 6.71h-5.46v10h2.64v-3.7h2.82v3.7h2.64V6.71zM8.514 6.71H0v10h2.64V12.9h2.36l1.83 3.82h3.04L7.69 12.33c1.08-.5 1.76-1.52 1.76-2.71 0-1.68-1.29-2.91-3.2-2.91zm-2.82 4.1h-3-V8.82h3c.6 0 .96.3.96.98s-.36 1-1 1zm7.42 5.9h-2.64v-10h4.48c1.9 0 3.2 1.23 3.2 2.91 0 1.2-.68 2.2-1.76 2.7l2.18 4.38H15.5l-1.83-3.8h-2.36v3.8h1.83zm13.34-5.45l-2.06-4.54h-3.4v10h2.64v-5l1.6 3.4h1.94l1.6-3.4v5h2.65v-10h-3.4l-1.57 4.54z" fill="#aaa"/></svg>
-<svg viewBox="0 0 38 24"><path d="M22.096 15.688c2.14 0 3.83-1.69 3.83-3.83 0-2.14-1.69-3.83-3.83-3.83-2.14 0-3.83 1.69-3.83 3.83 0 2.14 1.69 3.83 3.83 3.83zm0-6.19c1.33 0 2.36 1.03 2.36 2.36 0 1.33-1.03 2.36-2.36 2.36-1.33 0-2.36-1.03-2.36-2.36 0-1.33 1.03-2.36 2.36-2.36zm-8.87.1v6h2.88v-6h-2.88zm8.87 0h-3.1v6h3.1c1.65 0 2.99-1.34 2.99-2.99 0-1.65-1.34-3.01-2.99-3.01zm-5.97 6v-6H13.6v6h2.53zM7.29 9.6h3v1.39c.67-.93 1.76-1.49 2.95-1.49 2.14 0 3.83 1.69 3.83 3.83 0 2.14-1.69 3.83-3.83 3.83-1.19 0-2.28-.56-2.95-1.49v1.39H7.29V9.6zm3 4.13c0 1.33 1.03 2.36 2.36 2.36 1.33 0 2.36-1.03 2.36-2.36 0-1.33-1.03-2.36-2.36-2.36-1.33 0-2.36 1.03-2.36 2.36zm-7.66 0c0 2.14 1.69 3.83 3.83 3.83 2.14 0 3.83-1.69 3.83-3.83V9.6H6.46v2.33c0 1.33-1.03 2.36-2.36 2.36-1.33 0-2.36-1.03-2.36-2.36 0-1.33 1.03-2.36 2.36-2.36 1.19 0 2.28.56 2.95 1.49V9.5c-1.19-.93-2.28-1.49-3.47-1.49-2.42 0-4.33 1.91-4.33 4.33 0 2.42 1.91 4.33 4.33 4.33 1.19 0 2.28-.56 2.95-1.49v-1.39H2.63v6.09H0v-6.09z" fill="#aaa"/></svg>
-</div>
-</div>
+  <div class="ft-grid">
+    <div class="ft-col">
+      <h4>Contact Us</h4>
+      <p>Braynen Building, Nassau, Bahamas</p>
+      <p>Mediaboxbahamaslimited@gmail.com</p>
+      <p>+1 (242) 433-2528</p>
+    </div>
+    <div class="ft-col">
+      <h4>Quick Links</h4>
+      <a href="index.html#services">Our Services</a>
+      <a href="index.html#portfolio">Client Portfolio</a>
+      <a href="about.html">About Us</a>
+      <a href="National.pdf">National Rate Brochure</a>
+      <a href="International.pdf">International Rate Brochure</a>
+    </div>
+  </div>
+  <div class="ft-bottom">
+    <p>&copy; 2026 MediaBox Bahamas Limited. All Rights Reserved.</p>
+  </div>
 </footer>
 
 <script>
-// --- Mobile Menu Toggle Logic ---
-const menuBtn = document.getElementById('mobile-menu-btn');
-const header = document.getElementById('main-header');
+/* Background */
+const c = document.getElementById('bg-canvas');
+c.style.cssText = 'position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:0;pointer-events:none;';
+const cx = c.getContext('2d');
+function drawBg() {
+  c.width = innerWidth; c.height = innerHeight;
+  const g = cx.createLinearGradient(0,0,c.width,c.height);
+  g.addColorStop(0,'#dde8ef'); g.addColorStop(0.4,'#e8eef3');
+  g.addColorStop(0.7,'#eaece9'); g.addColorStop(1,'#dce8e2');
+  cx.fillStyle = g; cx.fillRect(0,0,c.width,c.height);
+}
+drawBg(); window.addEventListener('resize', drawBg);
 
-menuBtn.addEventListener('click', () => {
-header.classList.toggle('active');
+/* Hamburger */
+const hamburger = document.getElementById('hamburger');
+const mainNav = document.getElementById('main-nav');
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('open');
+  mainNav.classList.toggle('open');
 });
+mainNav.querySelectorAll('a').forEach(l => l.addEventListener('click', () => {
+  hamburger.classList.remove('open');
+  mainNav.classList.remove('open');
+}));
 </script>
-
 </body>
 </html>

@@ -111,6 +111,7 @@ body.no-scroll { overflow: hidden; }
 
 .splash-logo-wrap {
   animation: splashIn 2.2s cubic-bezier(0.22,1,0.36,1) 0.2s both;
+  text-decoration: none !important;
 }
 
 .splash-img {
@@ -388,17 +389,72 @@ footer { background: rgba(255,255,255,0.9); color: #333; padding:4rem 4% 2rem; b
 .ft-bottom { max-width:1200px; margin:0 auto; padding-top:1.6rem; border-top:1px solid rgba(0,0,0,0.08); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; }
 .ft-bottom p { font-size:0.72rem; color: #b8a898; }
 
+/* Hamburger button */
+.hamburger {
+  display: none;
+  flex-direction: column; justify-content: center; gap: 5px;
+  background: none; border: none; cursor: pointer; padding: 6px; z-index: 1001;
+}
+.hamburger span {
+  display: block; width: 24px; height: 2.5px;
+  background: #c5a059; border-radius: 2px;
+  transition: all 0.3s ease;
+}
+.hamburger.open span:nth-child(1) { transform: translateY(7.5px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-7.5px) rotate(-45deg); }
+
 @media(max-width:1024px){
-  .svc-grid{grid-template-columns:repeat(2,1fr);}
-  .prod-grid{grid-template-columns:repeat(2,1fr);}
-  nav,.consult-btn{display:none;}
+  .desktop-only { display: none; }
+  .hamburger { display: flex; }
+  .svc-grid { grid-template-columns: repeat(2,1fr); }
+  .prod-grid { grid-template-columns: repeat(2,1fr); }
+
+  #main-nav {
+    display: none;
+    position: fixed;
+    top: 62px; left: 0; right: 0;
+    background: rgba(255,255,255,0.97);
+    backdrop-filter: blur(16px);
+    border-bottom: 3px solid #c5a059;
+    z-index: 999;
+    padding: 1.5rem 0;
+  }
+  #main-nav.open { display: block; }
+  #main-nav ul { flex-direction: column; gap: 0; }
+  #main-nav ul li { width: 100%; }
+  #main-nav ul li a {
+    display: block; padding: 0.9rem 5%;
+    font-size: 0.9rem; border-bottom: 1px solid rgba(197,160,89,0.15);
+  }
+  #main-nav ul li:first-child a { color: #c5a059; }
+  .dd-menu {
+    position: static; box-shadow: none; border-top: none;
+    background: rgba(197,160,89,0.06);
+  }
+  .dropdown:hover .dd-menu { display: flex; flex-direction: column; }
+
+  /* Mobile consult button inside nav */
+  #main-nav::after {
+    content: none;
+  }
+  .mobile-consult {
+    display: block;
+    margin: 1rem 5%;
+    text-align: center;
+    padding: 0.8rem;
+    background: linear-gradient(135deg, #c5a059, #e8c87a 50%, #c5a059);
+    color: #0c182d; font-weight: 700; font-size: 0.8rem;
+    text-transform: uppercase; border-radius: 4px; text-decoration: none;
+    letter-spacing: 0.4px;
+  }
 }
 @media(max-width:768px){
-  .tv{height:320px;width:96%;}
-  .hero-glass h1{font-size:1.4rem;}
-  .hero-glass{width:80%;}
-  .svc-grid{grid-template-columns:1fr;}
-  .prod-grid{grid-template-columns:1fr;}
+  .bb-screen { height: 320px; width: 96%; }
+  .hero-glass h1 { font-size: 1.4rem; }
+  .hero-glass { width: 80%; }
+  .svc-grid { grid-template-columns: 1fr; }
+  .prod-grid { grid-template-columns: 1fr; }
 }
 </style>
 </head>
@@ -416,101 +472,68 @@ footer { background: rgba(255,255,255,0.9); color: #333; padding:4rem 4% 2rem; b
 <!-- SPLASH — fully coded logo, no image needed -->
 <div id="splash">
   <div class="splash-logo-wrap">
+    <svg class="splash-img" viewBox="0 0 580 185" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="ff" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#92ccd8"/>
+          <stop offset="100%" stop-color="#4a9aaa"/>
+        </linearGradient>
+      </defs>
 
-    <!-- SVG Logo — recreated from scratch in code -->
-    <svg class="splash-img" viewBox="0 0 540 185" xmlns="http://www.w3.org/2000/svg">
+      <!-- CUBE
+           Big teal FRONT face (left), narrow dark RIGHT face, gold TOP
+           Cube ends at x~105, M starts right there -->
 
-      <!-- CUBE — exactly matching the logo -->
-      <g transform="translate(2, 15)">
-
-        <!-- FRONT FACE — large square, teal with 3x3 grid panels -->
-        <rect x="18" y="22" width="80" height="82" fill="#6ab8c8"/>
-
-        <!-- 3x3 panel grid on front face — lighter lines inside -->
-        <g stroke="#fff" stroke-width="0.8" opacity="0.35">
-          <!-- horizontal -->
-          <line x1="18" y1="49" x2="98" y2="49"/>
-          <line x1="18" y1="76" x2="98" y2="76"/>
-          <!-- vertical -->
-          <line x1="44" y1="22" x2="44" y2="104"/>
-          <line x1="70" y1="22" x2="70" y2="104"/>
-        </g>
-        <!-- Subtle gradient shimmer on panels -->
-        <rect x="18" y="22" width="80" height="82" fill="url(#cubeFront)" opacity="0.4"/>
-
-        <!-- TOP FACE — flat gold parallelogram -->
-        <polygon points="18,22 98,22 112,8 32,8" fill="#e8c44a"/>
-
-        <!-- RIGHT SIDE — narrow dark strip for depth -->
-        <polygon points="98,22 98,104 112,90 112,8" fill="#2a6878"/>
-
-        <!-- Dark vertical edge between front and right -->
-        <line x1="98" y1="22" x2="98" y2="104" stroke="#111" stroke-width="2"/>
-        <!-- Top edges -->
-        <polyline points="32,8 18,22" fill="none" stroke="#111" stroke-width="1.5"/>
-        <line x1="32" y1="8" x2="112" y2="8" stroke="#111" stroke-width="1.5"/>
-        <line x1="112" y1="8" x2="98" y2="22" stroke="#111" stroke-width="1.5"/>
-        <line x1="18" y1="22" x2="98" y2="22" stroke="#111" stroke-width="1.5"/>
-        <!-- Left edge -->
-        <line x1="18" y1="22" x2="18" y2="104" stroke="#111" stroke-width="2"/>
-        <!-- Bottom -->
-        <line x1="18" y1="104" x2="98" y2="104" stroke="#111" stroke-width="1.5"/>
-        <line x1="98" y1="104" x2="112" y2="90" stroke="#111" stroke-width="1.5"/>
-        <line x1="112" y1="8" x2="112" y2="90" stroke="#111" stroke-width="1.5"/>
-
-        <defs>
-          <linearGradient id="cubeFront" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stop-color="#fff" stop-opacity="0.5"/>
-            <stop offset="100%" stop-color="#000" stop-opacity="0.1"/>
-          </linearGradient>
-        </defs>
+      <!-- FRONT face — big teal square -->
+      <rect x="4" y="30" width="90" height="96" fill="url(#ff)"/>
+      <!-- 3x3 grid -->
+      <g stroke="#fff" stroke-width="1.1" opacity="0.32">
+        <line x1="4"  y1="62" x2="94" y2="62"/>
+        <line x1="4"  y1="94" x2="94" y2="94"/>
+        <line x1="34" y1="30" x2="34" y2="126"/>
+        <line x1="64" y1="30" x2="64" y2="126"/>
       </g>
 
-      <!-- SOLAR PANEL (above, center-right of cube) -->
-      <g transform="translate(88, 0)">
-        <!-- Main pole -->
-        <line x1="24" y1="62" x2="24" y2="22" stroke="#111" stroke-width="2.5"/>
-        <!-- Diagonal arm -->
-        <line x1="24" y1="22" x2="44" y2="6" stroke="#111" stroke-width="2"/>
-        <!-- Small brace -->
-        <line x1="24" y1="32" x2="38" y2="22" stroke="#111" stroke-width="1.5"/>
-        <!-- Panel body -->
-        <polygon points="26,0 58,8 50,26 18,18" fill="#e8b84b"/>
-        <!-- Panel shading -->
-        <polygon points="26,0 58,8 50,26 18,18" fill="url(#panelShade)" opacity="0.3"/>
-        <!-- Panel grid lines -->
-        <g stroke="#b88820" stroke-width="0.8" opacity="0.7">
-          <line x1="34" y1="2" x2="28" y2="22"/>
-          <line x1="44" y1="5" x2="36" y2="24"/>
-          <line x1="22" y1="9" x2="54" y2="17"/>
-          <line x1="20" y1="14" x2="52" y2="22"/>
+      <!-- RIGHT narrow dark face — angled, gives 3D slant -->
+      <polygon points="94,30 114,14 114,110 94,126" fill="#2a5a6a"/>
+
+      <!-- TOP gold face -->
+      <polygon points="4,30 94,30 114,14 24,14" fill="#e8c44a"/>
+
+      <!-- All edges -->
+      <rect x="4" y="30" width="90" height="96" fill="none" stroke="#111" stroke-width="2.5"/>
+      <polygon points="94,30 114,14 114,110 94,126" fill="none" stroke="#111" stroke-width="2"/>
+      <polygon points="4,30 94,30 114,14 24,14" fill="none" stroke="#111" stroke-width="2"/>
+      <line x1="4"  y1="30" x2="24" y2="14" stroke="#111" stroke-width="2"/>
+
+      <!-- SOLAR PANEL — sits above the "i" in Media (around x=310) -->
+      <g transform="translate(293,0)">
+        <line x1="12" y1="68" x2="12" y2="28" stroke="#111" stroke-width="2.5"/>
+        <line x1="12" y1="28" x2="30" y2="10" stroke="#111" stroke-width="2"/>
+        <line x1="12" y1="40" x2="24" y2="28" stroke="#111" stroke-width="1.5"/>
+        <!-- Panel body — large angled rectangle like logo -->
+        <polygon points="8,2 52,16 44,34 0,20" fill="#e8c44a"/>
+        <g stroke="#b88820" stroke-width="0.9" opacity="0.65">
+          <line x1="18" y1="4"  x2="12" y2="28"/>
+          <line x1="32" y1="9"  x2="24" y2="32"/>
+          <line x1="4"  y1="11" x2="48" y2="24"/>
+          <line x1="2"  y1="17" x2="46" y2="30"/>
         </g>
-        <defs>
-          <linearGradient id="panelShade" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stop-color="#fff" stop-opacity="0.4"/>
-            <stop offset="100%" stop-color="#000" stop-opacity="0.2"/>
-          </linearGradient>
-        </defs>
+        <polygon points="8,2 52,16 44,34 0,20" fill="none" stroke="#c89830" stroke-width="1.2"/>
       </g>
 
-      <!-- MEDIABOX TEXT — fixed spacing between M/edia and B/ox -->
-      <!-- M — bold heavy -->
-      <text x="100" y="118" font-family="Arial Black, sans-serif" font-weight="900" font-size="80" fill="#111">M</text>
-      <!-- edia — regular weight, small gap after M -->
-      <text x="162" y="118" font-family="Arial, sans-serif" font-weight="400" font-size="74" fill="#111">edia</text>
-      <!-- B — bold heavy, proper gap after edia -->
-      <text x="306" y="118" font-family="Arial Black, sans-serif" font-weight="900" font-size="80" fill="#111">B</text>
-      <!-- ox — regular weight, proper gap after B -->
-      <text x="356" y="118" font-family="Arial, sans-serif" font-weight="400" font-size="74" fill="#111">ox</text>
+      <!-- TEXT — M starts at x=114, flush against dark right face of cube -->
+      <text y="122" font-family="Arial,sans-serif" font-size="88" fill="#111" text-decoration="none">
+        <tspan font-family="Arial Black,Arial,sans-serif" font-weight="900" x="114">M</tspan><tspan font-weight="400" dx="-2">edia</tspan><tspan font-family="Arial Black,Arial,sans-serif" font-weight="900" dx="4">B</tspan><tspan font-weight="400" dx="-2">ox</tspan>
+      </text>
 
-      <!-- Underline -->
-      <rect x="100" y="124" width="388" height="4" fill="#111"/>
+      <!-- Underline — full word only -->
+      <line x1="114" y1="130" x2="530" y2="130" stroke="#111" stroke-width="4.5"/>
 
-      <!-- BAHAMAS LTD. -->
-      <text x="188" y="158" font-family="Arial, sans-serif" font-weight="700" font-size="22" fill="#2a8898" letter-spacing="4.5">BAHAMAS LTD.</text>
+      <!-- BAHAMAS LTD -->
+      <text x="192" y="165" font-family="Arial,sans-serif" font-weight="700" font-size="22" fill="#3a9aaa" letter-spacing="5">BAHAMAS LTD.</text>
 
     </svg>
-
   </div>
 </div>
 
@@ -529,7 +552,7 @@ footer { background: rgba(255,255,255,0.9); color: #333; padding:4rem 4% 2rem; b
       <text x="40" y="44" font-family="Arial,sans-serif" font-weight="700" font-size="8" fill="#333" letter-spacing="2">BAHAMAS</text>
     </svg>
   </a>
-  <nav>
+  <nav id="main-nav">
     <ul>
       <li><a href="#home">HOME</a></li>
       <li><a href="#services">SERVICES</a></li>
@@ -544,8 +567,13 @@ footer { background: rgba(255,255,255,0.9); color: #333; padding:4rem 4% 2rem; b
         </div>
       </li>
     </ul>
+    <a class="mobile-consult" href="consultation.html">REQUEST A CONSULTATION</a>
   </nav>
-  <button class="consult-btn" onclick="location.href='consultation.html'">REQUEST A CONSULTATION</button>
+  <button class="consult-btn desktop-only" onclick="location.href='consultation.html'">REQUEST A CONSULTATION</button>
+  <!-- Hamburger for mobile -->
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
 </header>
 
 <main>
@@ -837,6 +865,22 @@ function drawHud() {
 drawHud();
 
 
+
+/* Hamburger menu toggle */
+const hamburger = document.getElementById('hamburger');
+const mainNav   = document.getElementById('main-nav');
+if (hamburger && mainNav) {
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    mainNav.classList.toggle('open');
+  });
+  mainNav.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      hamburger.classList.remove('open');
+      mainNav.classList.remove('open');
+    });
+  });
+}
 
 /* =============================================================
    SPLASH DISMISS — robust, works even if load already fired

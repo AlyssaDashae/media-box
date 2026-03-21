@@ -15,14 +15,12 @@ body {
   overflow-x: hidden;
 }
 
-/* ===== BACKGROUND CANVAS ===== */
 #bg-canvas {
   position: fixed; top:0; left:0;
   width:100vw; height:100vh;
   z-index:0; pointer-events:none;
 }
 
-/* ===== ORBS ===== */
 .orb { position:fixed; border-radius:50%; pointer-events:none; z-index:1; animation:orbDrift 10s ease-in-out infinite alternate; }
 .orb-1 {
   width:220px; height:220px; top:-60px; left:-60px;
@@ -55,20 +53,18 @@ body {
   100% { transform: translate(10px,-14px) scale(1.04); }
 }
 
-/* ===== HEADER ===== */
 header {
   position:fixed; top:0; width:100%; z-index:1000;
-  background: rgba(255,255,255,0.88);
+  background: rgba(255,255,255,0.95);
   backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  color-scheme: light;
   border-bottom: 3px solid #c5a059;
   display:flex; align-items:center; justify-content:space-between;
   padding: 0.85rem 4%;
 }
-.logo { display:flex; align-items:center; gap:8px; text-decoration:none; }
-.logo img { height:38px; }
-.logo-text { line-height:1.1; }
-.brand-name { display:block; font-family:'Space Grotesk',sans-serif; font-size:1.42rem; font-weight:700; color:#c5a059; }
-.brand-sub  { display:block; font-size:0.62rem; color:#333; letter-spacing:1.8px; font-weight:600; }
+.logo { display:flex; align-items:center; text-decoration:none; }
+.logo img { height:52px; width:auto; }
 
 nav ul { list-style:none; display:flex; gap:2rem; align-items:center; }
 nav a { text-decoration:none; color:#7ab8c0; font-size:0.8rem; font-weight:700; letter-spacing:0.7px; transition:color 0.2s; }
@@ -96,7 +92,13 @@ nav li:first-child a { color:#c5a059; }
 }
 .consult-btn:hover { background-position:right; box-shadow:0 0 0 1px #c5a059, 0 0 28px rgba(0,210,255,0.8); }
 
-/* ===== PAGE CONTENT ===== */
+.mobile-consult { display:none; }
+.hamburger { display:none; flex-direction:column; justify-content:center; gap:5px; background:none; border:none; cursor:pointer; padding:6px; z-index:1001; }
+.hamburger span { display:block; width:24px; height:2.5px; background:#c5a059; border-radius:2px; transition:all 0.3s ease; }
+.hamburger.open span:nth-child(1) { transform:translateY(7.5px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity:0; }
+.hamburger.open span:nth-child(3) { transform:translateY(-7.5px) rotate(-45deg); }
+
 .page-wrap {
   position: relative; z-index:10;
   padding: 7rem 4% 5rem;
@@ -104,7 +106,6 @@ nav li:first-child a { color:#c5a059; }
   display: flex; flex-direction: column; align-items: center;
 }
 
-/* Page heading */
 .page-heading {
   text-align: center;
   margin-bottom: 2.5rem;
@@ -119,7 +120,6 @@ nav li:first-child a { color:#c5a059; }
   font-size: 0.95rem; color: #3a4858; font-weight: 500; line-height: 1.65;
 }
 
-/* Form card — glassmorphism matching index cards */
 .form-card {
   width: 100%; max-width: 860px;
   background: rgba(242,246,249,0.82);
@@ -141,7 +141,6 @@ nav li:first-child a { color:#c5a059; }
   margin-bottom: 2.5rem; line-height: 1.6;
 }
 
-/* Form grid */
 .form-grid {
   display: grid; grid-template-columns: 1fr 1fr; gap: 1.4rem;
 }
@@ -176,7 +175,6 @@ nav li:first-child a { color:#c5a059; }
 }
 .form-group textarea { resize:vertical; min-height:140px; }
 
-/* ===== MODERN CUSTOM SELECT ===== */
 .custom-select { position: relative; user-select: none; }
 
 .cs-selected {
@@ -241,7 +239,6 @@ nav li:first-child a { color:#c5a059; }
   font-size: 0.88rem; letter-spacing: 1.5px;
 }
 
-/* ===== FOOTER ===== */
 footer {
   background: rgba(255,255,255,0.9); color:#333;
   padding:4rem 4% 2rem; border-top:3px solid #c5a059;
@@ -254,13 +251,6 @@ footer {
 .ft-col a:hover { color:#c5a059; }
 .ft-bottom { max-width:1200px; margin:0 auto; padding-top:1.6rem; border-top:1px solid rgba(0,0,0,0.08); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; }
 .ft-bottom p { font-size:0.72rem; color:#b8a898; }
-
-.mobile-consult { display: none; }
-.hamburger { display:none; flex-direction:column; justify-content:center; gap:5px; background:none; border:none; cursor:pointer; padding:6px; z-index:1001; }
-.hamburger span { display:block; width:24px; height:2.5px; background:#c5a059; border-radius:2px; transition:all 0.3s ease; }
-.hamburger.open span:nth-child(1) { transform:translateY(7.5px) rotate(45deg); }
-.hamburger.open span:nth-child(2) { opacity:0; }
-.hamburger.open span:nth-child(3) { transform:translateY(-7.5px) rotate(-45deg); }
 
 @media(max-width:768px) {
   .desktop-only { display:none !important; }
@@ -293,19 +283,15 @@ footer {
 
 <header>
   <a class="logo" href="index.html">
-    <img src="Logo.png" alt="MediaBox Bahamas" onerror="this.style.display='none'">
-    <div class="logo-text">
-      <span class="brand-name">MEDIABOX</span>
-      <span class="brand-sub">BAHAMAS</span>
-    </div>
+    <img src="media-logo.png" alt="MediaBox Bahamas">
   </a>
   <nav id="main-nav">
     <ul>
-      <li><a href="index.html#home">HOME</a></li>
+      <li><a href="index.html">HOME</a></li>
       <li><a href="index.html#services">SERVICES</a></li>
       <li><a href="index.html#portfolio">PORTFOLIO</a></li>
       <li><a href="about.html">ABOUT US</a></li>
-      <li><a href="index.html#insights">INSIGHTS</a></li>
+      <li><a href="insight.html">INSIGHTS</a></li>
       <li class="dropdown">
         <a href="#">BROCHURE ▾</a>
         <div class="dd-menu">
@@ -334,8 +320,8 @@ footer {
       <p class="sub">Please fill out the form below with details about your marketing needs. Our corporate team will review your request and contact you promptly.</p>
 
       <form name="consultation" method="POST" netlify netlify-honeypot="bot-field" action="/thank-you.html">
-  <input type="hidden" name="form-name" value="consultation">
-  <p style="display:none"><input name="bot-field"></p>
+        <input type="hidden" name="form-name" value="consultation">
+        <p style="display:none"><input name="bot-field"></p>
         <div class="form-grid">
 
           <div class="form-group">
@@ -398,7 +384,7 @@ footer {
     <div class="ft-col">
       <h4>Contact Us</h4>
       <p>Braynen Building, Nassau, Bahamas</p>
-      <p><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="c588a0a1aca4a7aabda7a4ada4a8a4b6a9aca8acb1a0a185a2a8a4aca9eba6aaa8">[email&#160;protected]</a></p>
+      <a href="mailto:Mediaboxbahamaslimited@gmail.com">Mediaboxbahamaslimited@gmail.com</a>
       <p>+1 (242) 433-2528</p>
     </div>
     <div class="ft-col">
@@ -415,8 +401,7 @@ footer {
   </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-/* Hamburger */
+<script>
 const hamburger = document.getElementById('hamburger');
 const mainNav = document.getElementById('main-nav');
 if (hamburger && mainNav) {
@@ -430,7 +415,6 @@ if (hamburger && mainNav) {
   }));
 }
 
-/* Custom select */
 const cs = document.getElementById('customSelect');
 const csSelected = document.getElementById('csSelected');
 const csLabel = document.getElementById('csLabel');
@@ -454,6 +438,7 @@ document.querySelectorAll('.cs-option').forEach(opt => {
 document.addEventListener('click', e => {
   if (!cs.contains(e.target)) cs.classList.remove('open');
 });
+
 const bgCanvas = document.getElementById('bg-canvas');
 bgCanvas.style.cssText = 'position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:0;pointer-events:none;';
 const bgCtx = bgCanvas.getContext('2d');

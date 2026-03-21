@@ -333,7 +333,9 @@ footer {
       <h2>Consultation Request</h2>
       <p class="sub">Please fill out the form below with details about your marketing needs. Our corporate team will review your request and contact you promptly.</p>
 
-      <form action="mailto:Mediaboxbahamaslimited@gmail.com" method="post" enctype="text/plain">
+      <form name="consultation" method="POST" netlify netlify-honeypot="bot-field">
+  <input type="hidden" name="form-name" value="consultation">
+  <p style="display:none"><input name="bot-field"></p>
         <div class="form-grid">
 
           <div class="form-group">

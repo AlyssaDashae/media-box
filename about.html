@@ -30,11 +30,8 @@ header {
   display:flex; align-items:center; justify-content:space-between;
   padding:0.85rem 4%;
 }
-.logo { display:flex; align-items:center; gap:8px; text-decoration:none; }
-.logo img { height:38px; }
-.logo-text { line-height:1.1; }
-.brand-name { display:block; font-family:'Space Grotesk',sans-serif; font-size:1.42rem; font-weight:700; color:#c5a059; }
-.brand-sub  { display:block; font-size:0.62rem; color:#333; letter-spacing:1.8px; font-weight:600; }
+.logo { display:flex; align-items:center; text-decoration:none; }
+.logo img { height:52px; width:auto; }
 
 nav ul { list-style:none; display:flex; gap:2rem; align-items:center; }
 nav a { text-decoration:none; color:#7ab8c0; font-size:0.8rem; font-weight:700; letter-spacing:0.7px; transition:color 0.2s; }
@@ -58,6 +55,7 @@ nav li:first-child a { color:#c5a059; }
 
 .mobile-consult { display: none; }
 .hamburger { display:none; flex-direction:column; justify-content:center; gap:5px; background:none; border:none; cursor:pointer; padding:6px; z-index:1001; }
+.hamburger span { display:block; width:24px; height:2.5px; background:#c5a059; border-radius:2px; transition:all 0.3s ease; }
 .hamburger.open span:nth-child(1) { transform:translateY(7.5px) rotate(45deg); }
 .hamburger.open span:nth-child(2) { opacity:0; }
 .hamburger.open span:nth-child(3) { transform:translateY(-7.5px) rotate(-45deg); }
@@ -85,7 +83,6 @@ nav li:first-child a { color:#c5a059; }
 .content-section.reverse { direction:rtl; }
 .content-section.reverse > * { direction:ltr; }
 
-/* Glass card wrapping text */
 .text-card {
   background:rgba(242,246,249,0.82);
   backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px);
@@ -100,12 +97,10 @@ nav li:first-child a { color:#c5a059; }
 .text-card h2::after { content:''; display:block; width:48px; height:3px; background:#c5a059; margin-top:10px; }
 .text-card p { font-size:0.9rem; line-height:1.8; color:#556; margin-bottom:1.2rem; }
 
-/* Benefits */
 .benefits-list { display:grid; gap:0.8rem; margin-top:1.5rem; }
 .benefit-item { display:flex; align-items:center; gap:0.9rem; font-weight:700; color:#0c182d; font-size:0.9rem; }
 .benefit-item svg { width:20px; height:20px; stroke:#c5a059; fill:none; stroke-width:2.5; flex-shrink:0; }
 
-/* Image wrapper */
 .img-wrap { position:relative; padding:18px; }
 .img-wrap::before {
   content:''; position:absolute; top:0; left:0;
@@ -165,11 +160,7 @@ footer { background:rgba(255,255,255,0.9); color:#333; padding:4rem 4% 2rem; bor
 
 <header>
   <a class="logo" href="index.html">
-    <img src="media-logo.jpeg" alt="MediaBox Bahamas" onerror="this.style.display='none'">
-    <div class="logo-text">
-      <span class="brand-name">MEDIABOX</span>
-      <span class="brand-sub">BAHAMAS</span>
-    </div>
+    <img src="media-logo.png" alt="MediaBox Bahamas">
   </a>
   <nav id="main-nav">
     <ul>
@@ -264,7 +255,6 @@ footer { background:rgba(255,255,255,0.9); color:#333; padding:4rem 4% 2rem; bor
 </footer>
 
 <script>
-/* Background */
 const c = document.getElementById('bg-canvas');
 c.style.cssText = 'position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:0;pointer-events:none;';
 const cx = c.getContext('2d');
@@ -277,7 +267,6 @@ function drawBg() {
 }
 drawBg(); window.addEventListener('resize', drawBg);
 
-/* Hamburger */
 const hamburger = document.getElementById('hamburger');
 const mainNav = document.getElementById('main-nav');
 hamburger.addEventListener('click', () => {

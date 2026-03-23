@@ -350,38 +350,6 @@ nav li:first-child a { color:#c5a059; }
 
 .sec-title { text-align:center; font-family:'Space Grotesk',sans-serif; font-size:2rem; color:#0c182d; margin-bottom:2.2rem; position:relative; z-index:10; }
 .sec-title::after { content:''; display:block; width:50px; height:3px; background:#c5a059; margin:10px auto 0; }
-.products { padding:4rem 4%; position:relative; z-index:10; }
-.prod-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:1.2rem; max-width:1200px; margin:0 auto; }
-.prod-card { background:rgba(255,255,255,0.93); border-radius:12px; border:1px solid #dce8ee; box-shadow:0 5px 16px rgba(0,0,0,0.05); overflow:hidden; position:relative; display:flex; flex-direction:column; transition:transform 0.3s; }
-.prod-card:hover { transform:translateY(-5px); border-color:#c5a059; }
-.prod-badge { position:absolute; top:12px; right:12px; background:#c5a059; color:#fff; font-size:0.58rem; font-weight:700; padding:3px 9px; border-radius:20px; z-index:5; }
-
-.prod-media { position:relative; width:100%; height:185px; overflow:hidden; background:#000; }
-.prod-media img,
-.prod-media video { position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; transition:opacity 0.4s ease; }
-.prod-media img { opacity:1; z-index:1; }
-.prod-media video { opacity:0; z-index:2; }
-.prod-card.playing .prod-media img { opacity:0; }
-.prod-card.playing .prod-media video { opacity:1; }
-
-.media-toggle {
-  position:absolute; bottom:10px; left:50%; transform:translateX(-50%);
-  z-index:6; display:flex; gap:0; border-radius:20px; overflow:hidden;
-  border:1.5px solid rgba(197,160,89,0.8); background:rgba(0,0,0,0.55);
-  backdrop-filter:blur(8px);
-}
-.media-toggle button {
-  background:none; border:none; cursor:pointer;
-  padding:5px 14px; font-size:0.62rem; font-weight:700;
-  color:rgba(255,255,255,0.6); letter-spacing:0.8px; font-family:'Montserrat',sans-serif;
-  transition:all 0.2s;
-}
-.media-toggle button.active { background:#c5a059; color:#0c182d; }
-
-.prod-info { padding:1.2rem; display:flex; flex-direction:column; flex-grow:1; }
-.prod-info h4 { font-family:'Space Grotesk',sans-serif; font-size:0.95rem; color:#0c182d; margin-bottom:0.4rem; }
-.prod-desc { font-size:0.78rem; color:#778; margin-bottom:0.8rem; flex-grow:1; }
-.prod-price { font-size:1.15rem; color:#c5a059; font-weight:700; font-family:'Space Grotesk',sans-serif; margin-bottom:0.8rem; }
 
 .video-section { padding:5rem 4%; position:relative; z-index:10; }
 .video-inner { display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:center; max-width:1200px; margin:0 auto; }
@@ -511,8 +479,119 @@ nav li:first-child a { color:#c5a059; }
 .port-info h4 { font-family:'Space Grotesk',sans-serif; font-size:0.95rem; color:#0c182d; margin-bottom:0.35rem; }
 .port-info p  { font-size:0.78rem; color:#778; }
 
+.prod-media { position:relative; width:100%; height:185px; overflow:hidden; background:#000; }
+.prod-media img,
+.prod-media video { position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; transition:opacity 0.4s ease; }
+.prod-media img { opacity:1; z-index:1; }
+.prod-media video { opacity:0; z-index:2; }
+.port-item.playing .prod-media img { opacity:0; }
+.port-item.playing .prod-media video { opacity:1; }
+
+.media-toggle {
+  position:absolute; bottom:10px; left:50%; transform:translateX(-50%);
+  z-index:6; display:flex; gap:0; border-radius:20px; overflow:hidden;
+  border:1.5px solid rgba(197,160,89,0.8); background:rgba(0,0,0,0.55);
+  backdrop-filter:blur(8px);
+}
+.media-toggle button {
+  background:none; border:none; cursor:pointer;
+  padding:5px 14px; font-size:0.62rem; font-weight:700;
+  color:rgba(255,255,255,0.6); letter-spacing:0.8px; font-family:'Montserrat',sans-serif;
+  transition:all 0.2s;
+}
+.media-toggle button.active { background:#c5a059; color:#0c182d; }
+
 @media(max-width:1024px){ .port-track { grid-template-columns:repeat(2,1fr); } }
 @media(max-width:600px){ .port-track { grid-template-columns:1fr; } }
+
+/* ── FAQ Section ── */
+.faq-section {
+  padding: 5rem 4%;
+  position: relative;
+  z-index: 10;
+}
+.faq-inner {
+  max-width: 860px;
+  margin: 0 auto;
+}
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.faq-item {
+  background: rgba(255,255,255,0.93);
+  border: 1px solid #dce8ee;
+  border-left: 4px solid #c5a059;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.04);
+  transition: box-shadow 0.3s;
+}
+.faq-item:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.08); }
+.faq-question {
+  width: 100%;
+  background: none;
+  border: none;
+  text-align: left;
+  padding: 1.2rem 1.4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  gap: 1rem;
+}
+.faq-question span {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #0c182d;
+  line-height: 1.4;
+}
+.faq-icon {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(197,160,89,0.12);
+  border: 1.5px solid rgba(197,160,89,0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.25s, transform 0.35s;
+}
+.faq-icon svg {
+  width: 13px;
+  height: 13px;
+  stroke: #c5a059;
+  stroke-width: 2.5;
+  fill: none;
+  transition: transform 0.35s;
+}
+.faq-item.open .faq-icon {
+  background: #c5a059;
+  transform: rotate(45deg);
+}
+.faq-item.open .faq-icon svg {
+  stroke: #0c182d;
+}
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s cubic-bezier(0.4,0,0.2,1), padding 0.3s;
+  padding: 0 1.4rem;
+}
+.faq-item.open .faq-answer {
+  max-height: 300px;
+  padding: 0 1.4rem 1.3rem;
+}
+.faq-answer p {
+  font-size: 0.88rem;
+  color: #556;
+  line-height: 1.8;
+  border-top: 1px solid rgba(197,160,89,0.15);
+  padding-top: 1rem;
+}
 
 footer { background:rgba(255,255,255,0.9); color:#333; padding:4rem 4% 2rem; border-top:3px solid #c5a059; position:relative; z-index:100; }
 .ft-grid { display:flex; justify-content:space-between; flex-wrap:wrap; gap:3rem; max-width:1200px; margin:0 auto 3rem; }
@@ -534,7 +613,6 @@ footer { background:rgba(255,255,255,0.9); color:#333; padding:4rem 4% 2rem; bor
   .desktop-only { display:none !important; }
   .hamburger { display:flex; }
   .svc-grid { grid-template-columns:repeat(2,1fr); }
-  .prod-grid { grid-template-columns:repeat(2,1fr); }
   .video-inner { grid-template-columns:1fr; gap:3rem; }
   .iphone-wrap { margin:0 auto; }
   .video-text h2 { font-size:1.6rem; }
@@ -552,7 +630,6 @@ footer { background:rgba(255,255,255,0.9); color:#333; padding:4rem 4% 2rem; bor
   .hero-glass h1 { font-size:1.4rem; }
   .hero-glass { width:80%; }
   .svc-grid { grid-template-columns:1fr; }
-  .prod-grid { grid-template-columns:1fr; }
 }
 
 /* ── Billboard Carousel (added) ── */
@@ -914,83 +991,6 @@ footer { background:rgba(255,255,255,0.9); color:#333; padding:4rem 4% 2rem; bor
     </div>
   </section>
 
-  <section class="products" id="products">
-    <h2 class="sec-title">Featured Placements</h2>
-    <div class="prod-grid">
-
-      <article class="prod-card">
-        <div class="prod-badge">BEST VALUE</div>
-        <div class="prod-media">
-          <img src="https://images.unsplash.com/photo-1559828854-15f5fc858c2a?q=80&w=600" alt="Solar Billboard">
-          <video muted loop playsinline src="billboard.mp4"></video>
-          <div class="media-toggle">
-            <button class="active" onclick="showPhoto(this)">PHOTO</button>
-            <button onclick="showVideo(this)">VIDEO</button>
-          </div>
-        </div>
-        <div class="prod-info">
-          <h4>Solar Billboard (10x8)</h4>
-          <p class="prod-desc">High-visibility solar-powered billboard display.</p>
-          <p class="prod-price">$1,040</p>
-          <button class="consult-btn" onclick="location.href='consultation.html'" style="width:100%;">QUOTE</button>
-        </div>
-      </article>
-
-      <article class="prod-card">
-        <div class="prod-media">
-          <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=600" alt="Marketing Campaigns">
-          <video muted loop playsinline src="billboard.mp4"></video>
-          <div class="media-toggle">
-            <button class="active" onclick="showPhoto(this)">PHOTO</button>
-            <button onclick="showVideo(this)">VIDEO</button>
-          </div>
-        </div>
-        <div class="prod-info">
-          <h4>Marketing Campaigns</h4>
-          <p class="prod-desc">Comprehensive marketing campaign development.</p>
-          <p class="prod-price">$3,000</p>
-          <button class="consult-btn" onclick="location.href='consultation.html'" style="width:100%;">QUOTE</button>
-        </div>
-      </article>
-
-      <article class="prod-card">
-        <div class="prod-badge">POPULAR</div>
-        <div class="prod-media">
-          <img src="https://images.unsplash.com/photo-1588196749597-9ff046fe6e60?q=80&w=600" alt="Customized Banners">
-          <video muted loop playsinline src="billboard.mp4"></video>
-          <div class="media-toggle">
-            <button class="active" onclick="showPhoto(this)">PHOTO</button>
-            <button onclick="showVideo(this)">VIDEO</button>
-          </div>
-        </div>
-        <div class="prod-info">
-          <h4>Customized Banners</h4>
-          <p class="prod-desc">Premium pull-up banners for events.</p>
-          <p class="prod-price">$850</p>
-          <button class="consult-btn" onclick="location.href='consultation.html'" style="width:100%;">QUOTE</button>
-        </div>
-      </article>
-
-      <article class="prod-card">
-        <div class="prod-media">
-          <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=600" alt="Strategic Business Plans">
-          <video muted loop playsinline src="billboard.mp4"></video>
-          <div class="media-toggle">
-            <button class="active" onclick="showPhoto(this)">PHOTO</button>
-            <button onclick="showVideo(this)">VIDEO</button>
-          </div>
-        </div>
-        <div class="prod-info">
-          <h4>Strategic Business Plans</h4>
-          <p class="prod-desc">Professional tailored business plans for growth.</p>
-          <p class="prod-price">$2,500</p>
-          <button class="consult-btn" onclick="location.href='consultation.html'" style="width:100%;">QUOTE</button>
-        </div>
-      </article>
-
-    </div>
-  </section>
-
   <section class="portfolio" id="portfolio">
     <h2 class="sec-title">Selected Client Portfolio</h2>
     <div class="port-track">
@@ -1040,6 +1040,101 @@ footer { background:rgba(255,255,255,0.9); color:#333; padding:4rem 4% 2rem; bor
 
     </div>
   </section>
+
+  <!-- FAQ SECTION -->
+  <section class="faq-section" id="faq">
+    <h2 class="sec-title">Frequently Asked Questions</h2>
+    <div class="faq-inner">
+      <div class="faq-list">
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span>How much does it cost to advertise on a MediaBox billboard?</span>
+            <div class="faq-icon">
+              <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </div>
+          </button>
+          <div class="faq-answer">
+            <p>Billboard advertising starts from $690 per month. Pricing varies depending on the location, display size, and campaign duration. We offer both monthly and annual contracts — annual contracts include preferential rates. Contact us for a customized quote tailored to your budget and goals.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span>Where are MediaBox billboards located in the Bahamas?</span>
+            <div class="faq-icon">
+              <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </div>
+          </button>
+          <div class="faq-answer">
+            <p>We have 10+ premium billboard locations positioned at the highest-traffic intersections, roundabouts, and commercial corridors across Nassau and Grand Bahama. Each location is strategically selected to maximize daily impressions for your campaign.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span>How long does it take to get my advertisement live on a billboard?</span>
+            <div class="faq-icon">
+              <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </div>
+          </button>
+          <div class="faq-answer">
+            <p>Once your artwork is approved and your contract is signed, we can typically get your campaign live within 3–5 business days for digital displays. Our team handles all technical setup and scheduling, so you don't have to lift a finger.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span>Can MediaBox design my billboard artwork for me?</span>
+            <div class="faq-icon">
+              <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </div>
+          </button>
+          <div class="faq-answer">
+            <p>Absolutely. Our in-house creative team can design high-impact billboard artwork aligned with your brand identity. We also offer video production for digital display campaigns. If you already have artwork, we'll review it and make sure it meets display specifications.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span>What is the MediaBox franchise opportunity?</span>
+            <div class="faq-icon">
+              <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </div>
+          </button>
+          <div class="faq-answer">
+            <p>Our franchise model allows you to own a MediaBox billboard location and earn advertising revenue from day one. MediaBox handles site selection, installation, maintenance, and client onboarding — you simply collect the returns. Revenue typically starts from $690 per month per board, and you can scale by owning a full network of locations.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span>What other marketing services does MediaBox offer?</span>
+            <div class="faq-icon">
+              <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </div>
+          </button>
+          <div class="faq-answer">
+            <p>Beyond billboard advertising, MediaBox offers a full suite of services including video production, brand strategy, digital consultancy, website development, pull-up banners, MediaBooks (corporate profile books), and complete marketing campaign management. We are your all-in-one media partner in the Bahamas.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            <span>How do I get started with MediaBox?</span>
+            <div class="faq-icon">
+              <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </div>
+          </button>
+          <div class="faq-answer">
+            <p>Simply request a consultation using the button on our website. One of our team members will reach out to understand your goals, walk you through available locations and packages, and put together a proposal tailored to your business. You can also reach us directly at Mediaboxbahamas@gmail.com or call +1 (242) 433-2528.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
 </main>
 
 <footer>
@@ -1163,6 +1258,13 @@ function showVideo(btn) {
   btn.previousElementSibling.classList.remove('active');
 }
 
+function toggleFaq(btn) {
+  const item = btn.parentElement;
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+
 if (document.readyState === 'complete') { dismissSplash(); }
 else {
   window.addEventListener('load', dismissSplash);
@@ -1188,6 +1290,7 @@ else {
   function startAuto(){ autoTimer = setInterval(function(){ goTo(current+1); }, 3500); }
   startAuto();
 })();
+
 // Custom Cursor
 const dot  = document.getElementById('cursor-dot');
 const ring = document.getElementById('cursor-ring');

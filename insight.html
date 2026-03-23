@@ -7,6 +7,55 @@
 <meta name="description" content="Explore MediaBox Bahamas pricing, billboard locations, and marketing services across Nassau and the Bahamas.">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
+  * { cursor: none; }
+
+#cursor-dot {
+  position: fixed;
+  width: 8px; height: 8px;
+  background: #c5a059;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99999;
+  transform: translate(-50%, -50%);
+  transition: transform 0.08s ease, background 0.2s;
+}
+#cursor-ring {
+  position: fixed;
+  width: 36px; height: 36px;
+  border: 1.5px solid rgba(197,160,89,0.6);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99998;
+  transform: translate(-50%, -50%);
+  transition: width 0.2s ease, height 0.2s ease, border-color 0.2s ease, transform 0.12s ease;
+}
+#cursor-ring::before,
+#cursor-ring::after {
+  content: '';
+  position: absolute;
+  background: rgba(197,160,89,0.5);
+}
+#cursor-ring::before {
+  width: 1px; height: 10px;
+  left: 50%; top: -6px;
+  transform: translateX(-50%);
+  box-shadow: 0 32px 0 rgba(197,160,89,0.5);
+}
+#cursor-ring::after {
+  width: 10px; height: 1px;
+  top: 50%; left: -6px;
+  transform: translateY(-50%);
+  box-shadow: 32px 0 0 rgba(197,160,89,0.5);
+}
+body.cursor-hover #cursor-ring { width: 52px; height: 52px; border-color: rgba(197,160,89,0.9); }
+body.cursor-hover #cursor-dot  { background: #fff; transform: translate(-50%, -50%) scale(1.4); }
+body.cursor-click #cursor-ring { width: 24px; height: 24px; border-color: #c5a059; }
+body.cursor-click #cursor-dot  { transform: translate(-50%, -50%) scale(0.6); }
+
+@media(max-width:1024px) {
+  #cursor-dot, #cursor-ring { display: none; }
+  * { cursor: auto; }
+}
 * { margin:0; padding:0; box-sizing:border-box; }
 body { font-family:'Montserrat',sans-serif; background:#e8eef2; overflow-x:hidden; }
 
@@ -189,7 +238,8 @@ footer { background:rgba(255,255,255,0.9); color:#333; padding:4rem 4% 2rem; bor
 </style>
 </head>
 <body>
-
+<div id="cursor-dot"></div>
+<div id="cursor-ring"></div>
 <canvas id="bg-canvas"></canvas>
 <div class="orb orb-1"></div>
 <div class="orb orb-2"></div>
@@ -736,6 +786,32 @@ mainNav.querySelectorAll('a').forEach(l=>l.addEventListener('click',()=>{
   hamburger.classList.remove('open');
   mainNav.classList.remove('open');
 }));
+// Custom Cursor
+const dot  = document.getElementById('cursor-dot');
+const ring = document.getElementById('cursor-ring');
+let mouseX = 0, mouseY = 0, ringX = 0, ringY = 0;
+
+document.addEventListener('mousemove', e => {
+  mouseX = e.clientX; mouseY = e.clientY;
+  dot.style.left = mouseX + 'px';
+  dot.style.top  = mouseY + 'px';
+});
+
+(function animateRing() {
+  ringX += (mouseX - ringX) * 0.12;
+  ringY += (mouseY - ringY) * 0.12;
+  ring.style.left = ringX + 'px';
+  ring.style.top  = ringY + 'px';
+  requestAnimationFrame(animateRing);
+})();
+
+document.querySelectorAll('a, button').forEach(el => {
+  el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
+  el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
+});
+
+document.addEventListener('mousedown', () => document.body.classList.add('cursor-click'));
+document.addEventListener('mouseup',   () => document.body.classList.remove('cursor-click'));
 </script>
 </body>
 </html>

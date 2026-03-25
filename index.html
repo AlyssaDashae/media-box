@@ -203,13 +203,13 @@ nav li:first-child a { color:#c5a059; }
   position: relative;
 }
 
+/* FIX: height reduced to 400px so video fits without cropping.
+   object-fit:contain on the video shows it in full with no zoom/crop. */
 .bb-screen {
   overflow: hidden;
-  position: relative; /*make sure this is there*/
-  width: 100%;
-  height: 480px;
   position: relative;
-  overflow: hidden;
+  width: 100%;
+  height: 400px;
   border-radius: 2px;
   border: 6px solid #2a2a2a;
   box-shadow:
@@ -218,6 +218,7 @@ nav li:first-child a { color:#c5a059; }
     0 30px 80px rgba(0,0,0,0.4),
     0 8px 30px rgba(197,160,89,0.12);
   z-index: 2;
+  background: #0c182d;
 }
 
 /* SVG truss drawn inline below the panel */
@@ -229,7 +230,7 @@ nav li:first-child a { color:#c5a059; }
 }
 
 @media(max-width:768px) {
-  .bb-screen { height:320px; }
+  .bb-screen { height: 240px; }
 }
 #hud-canvas { position:absolute; left:0; top:0; width:38%; height:100%; z-index:2; pointer-events:none; }
 
@@ -294,7 +295,6 @@ nav li:first-child a { color:#c5a059; }
 
 /* Responsive */
 @media(max-width:768px) {
-  .bb-screen { height:320px; }
   .bb-pole { width:20px; }
   .bb-poles { height:90px; }
   .bb-pole-left  { left: 10%; }
@@ -706,19 +706,24 @@ footer { background:rgba(255,255,255,0.9); color:#333; padding:4rem 4% 2rem; bor
         <div class="bb-screen">
           <div class="bb-left"></div>
           <div class="bb-right"></div>
+
+          <!-- FIX: object-fit changed from cover to contain so the full video
+               is visible without zoom or cropping. background matches the
+               dark billboard surround. -->
           <video
-          autoplay
-          muted
-          loop
-          playsinline
-          style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:center;z-index:1;max-width:100%;">
-            <source src="billboard0.mp4" type="video/mp4"></video>
+            autoplay
+            muted
+            loop
+            playsinline
+            style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:contain;object-position:center;z-index:1;background:#0c182d;">
+            <source src="billboard0.mp4" type="video/mp4">
+          </video>
+
           <canvas id="hud-canvas"></canvas>
           <div class="lbl-model">MODEL BUILD</div>
           <div class="lbl-timeline">TIMELINE ——————</div>
           <div class="bb-badge"><div class="blink"></div><span>TRANSITIONING</span></div>
           <div class="bb-playing">'PLAYING'</div>
-
         </div>
 
         <!-- Truss + poles SVG -->
@@ -744,35 +749,26 @@ footer { background:rgba(255,255,255,0.9); color:#333; padding:4rem 4% 2rem; bor
           <rect x="0" y="4" width="1000" height="3" fill="rgba(255,255,255,0.07)"/>
 
           <!-- TRUSS: diagonal bracing between the two poles -->
-          <!-- left pole region diagonals -->
           <line x1="22" y1="16" x2="22" y2="136" stroke="#2e2e2e" stroke-width="6"/>
           <line x1="70" y1="16" x2="22" y2="76"  stroke="#3a3a3a" stroke-width="4"/>
           <line x1="22" y1="16" x2="70" y2="76"  stroke="#333"    stroke-width="4"/>
           <line x1="70" y1="76" x2="22" y2="136" stroke="#3a3a3a" stroke-width="4"/>
           <line x1="22" y1="76" x2="70" y2="136"  stroke="#333"    stroke-width="4"/>
-          <!-- left bottom horizontal -->
           <line x1="22" y1="136" x2="70" y2="136" stroke="#2a2a2a" stroke-width="5"/>
 
-          <!-- right pole region diagonals -->
           <line x1="978" y1="16" x2="978" y2="136" stroke="#2e2e2e" stroke-width="6"/>
           <line x1="930" y1="16" x2="978" y2="76"  stroke="#3a3a3a" stroke-width="4"/>
           <line x1="978" y1="16" x2="930" y2="76"  stroke="#333"    stroke-width="4"/>
           <line x1="930" y1="76" x2="978" y2="136" stroke="#3a3a3a" stroke-width="4"/>
           <line x1="978" y1="76" x2="930" y2="136"  stroke="#333"    stroke-width="4"/>
-          <!-- right bottom horizontal -->
           <line x1="930" y1="136" x2="978" y2="136" stroke="#2a2a2a" stroke-width="5"/>
 
-          <!-- LEFT POLE: tall vertical at far left -->
           <rect x="6" y="16" width="32" height="122" fill="url(#poleGrad)" rx="2"/>
-          <!-- LEFT POLE base plate -->
           <rect x="0" y="130" width="44" height="10" fill="#1e1e1e" rx="1"/>
 
-          <!-- RIGHT POLE: tall vertical at far right -->
           <rect x="962" y="16" width="32" height="122" fill="url(#poleGrad)" rx="2"/>
-          <!-- RIGHT POLE base plate -->
           <rect x="956" y="130" width="44" height="10" fill="#1e1e1e" rx="1"/>
 
-          <!-- bolt details on top beam corners -->
           <circle cx="30" cy="8" r="4" fill="#222" stroke="#555" stroke-width="1"/>
           <circle cx="970" cy="8" r="4" fill="#222" stroke="#555" stroke-width="1"/>
         </svg>

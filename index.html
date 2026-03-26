@@ -1,658 +1,258 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="icon" type="image/x-icon" href="favicon.ico"
-<meta charset="UTF-8">
-<meta name="google-site-verification" content="VMrW49pUqyfkak5b_mJtNE1yLcNcLhhwig2WNGxAjas" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MediaBox Bahamas | Luxury Media & Corporate Excellence</title>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
-<style>
-  * { cursor: none; }
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <meta charset="UTF-8">
+  <meta name="google-site-verification" content="VMrW49pUqyfkak5b_mJtNE1yLcNcLhhwig2WNGxAjas" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MediaBox Bahamas | Luxury Media & Corporate Excellence</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { cursor: none; }
 
-#cursor-dot {
-  position: fixed;
-  width: 8px; height: 8px;
-  background: #c5a059;
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 99999;
-  transform: translate(-50%, -50%);
-  transition: transform 0.08s ease, background 0.2s;
-}
-#cursor-ring {
-  position: fixed;
-  width: 36px; height: 36px;
-  border: 1.5px solid rgba(197,160,89,0.6);
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 99998;
-  transform: translate(-50%, -50%);
-  transition: width 0.2s ease, height 0.2s ease, border-color 0.2s ease, transform 0.12s ease;
-}
-#cursor-ring::before,
-#cursor-ring::after {
-  content: '';
-  position: absolute;
-  background: rgba(197,160,89,0.5);
-}
-#cursor-ring::before {
-  width: 1px; height: 10px;
-  left: 50%; top: -6px;
-  transform: translateX(-50%);
-  box-shadow: 0 32px 0 rgba(197,160,89,0.5);
-}
-#cursor-ring::after {
-  width: 10px; height: 1px;
-  top: 50%; left: -6px;
-  transform: translateY(-50%);
-  box-shadow: 32px 0 0 rgba(197,160,89,0.5);
-}
-body.cursor-hover #cursor-ring { width: 52px; height: 52px; border-color: rgba(197,160,89,0.9); }
-body.cursor-hover #cursor-dot  { background: #fff; transform: translate(-50%, -50%) scale(1.4); }
-body.cursor-click #cursor-ring { width: 24px; height: 24px; border-color: #c5a059; }
-body.cursor-click #cursor-dot  { transform: translate(-50%, -50%) scale(0.6); }
+    #cursor-dot {
+      position: fixed; width: 8px; height: 8px; background: #c5a059;
+      border-radius: 50%; pointer-events: none; z-index: 99999;
+      transform: translate(-50%, -50%); transition: transform 0.08s ease, background 0.2s;
+    }
+    #cursor-ring {
+      position: fixed; width: 36px; height: 36px;
+      border: 1.5px solid rgba(197,160,89,0.6); border-radius: 50%;
+      pointer-events: none; z-index: 99998; transform: translate(-50%, -50%);
+      transition: width 0.2s ease, height 0.2s ease, border-color 0.2s ease, transform 0.12s ease;
+    }
+    #cursor-ring::before, #cursor-ring::after { content: ''; position: absolute; background: rgba(197,160,89,0.5); }
+    #cursor-ring::before { width: 1px; height: 10px; left: 50%; top: -6px; transform: translateX(-50%); box-shadow: 0 32px 0 rgba(197,160,89,0.5); }
+    #cursor-ring::after  { width: 10px; height: 1px; top: 50%; left: -6px; transform: translateY(-50%); box-shadow: 32px 0 0 rgba(197,160,89,0.5); }
+    body.cursor-hover #cursor-ring { width: 52px; height: 52px; border-color: rgba(197,160,89,0.9); }
+    body.cursor-hover #cursor-dot  { background: #fff; transform: translate(-50%, -50%) scale(1.4); }
+    body.cursor-click #cursor-ring { width: 24px; height: 24px; border-color: #c5a059; }
+    body.cursor-click #cursor-dot  { transform: translate(-50%, -50%) scale(0.6); }
 
-@media(max-width:1024px) {
-  #cursor-dot, #cursor-ring { display: none; }
-  * { cursor: auto; }
-}
-* { margin:0; padding:0; box-sizing:border-box; }
+    @media(max-width:1024px) { #cursor-dot, #cursor-ring { display: none; } * { cursor: auto; } }
 
-body {
-  font-family: 'Montserrat', sans-serif;
-  background: #e8eef2;
-  overflow-x: hidden;
-}
-body.no-scroll { overflow: hidden; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Montserrat', sans-serif; background: #e8eef2; overflow-x: hidden; }
+    body.no-scroll { overflow: hidden; }
 
-#bg-canvas {
-  position: fixed;
-  top: 0; left: 0;
-  width: 100vw; height: 100vh;
-  z-index: 0;
-  pointer-events: none;
-}
+    #bg-canvas { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 0; pointer-events: none; }
 
-.orb {
-  position: fixed;
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 1;
-  animation: orbDrift 10s ease-in-out infinite alternate;
-}
+    .orb { position: fixed; border-radius: 50%; pointer-events: none; z-index: 1; animation: orbDrift 10s ease-in-out infinite alternate; }
+    .orb-1 { width: 220px; height: 220px; top: -60px; left: -60px; background: radial-gradient(circle at 50% 50%, rgba(200,248,255,1) 0%, rgba(140,235,252,0.95) 28%, rgba(80,215,245,0.65) 55%, rgba(40,190,235,0.18) 80%, transparent 100%); filter: blur(6px) drop-shadow(0 0 24px rgba(140,235,255,0.95)); animation-duration: 11s; }
+    .orb-2 { width: 200px; height: 200px; top: -55px; right: -55px; background: radial-gradient(circle at 50% 50%, rgba(255,235,150,1) 0%, rgba(240,205,110,0.9) 32%, rgba(210,170,70,0.6) 58%, rgba(190,145,50,0.18) 80%, transparent 100%); filter: blur(6px) drop-shadow(0 0 22px rgba(255,200,60,0.85)); animation-duration: 14s; animation-delay: -3s; }
+    .orb-3 { width: 160px; height: 160px; bottom: 12%; left: 2%; background: radial-gradient(circle at 50% 50%, rgba(210,250,255,0.98) 0%, rgba(150,238,252,0.82) 32%, rgba(90,218,248,0.42) 60%, transparent 100%); filter: blur(5px) drop-shadow(0 0 18px rgba(160,240,255,0.85)); animation-duration: 16s; animation-delay: -6s; }
+    .orb-4 { width: 150px; height: 150px; bottom: 8%; right: 3%; background: radial-gradient(circle at 50% 50%, rgba(252,230,140,0.95) 0%, rgba(230,195,90,0.72) 34%, rgba(200,160,55,0.32) 62%, transparent 100%); filter: blur(5px) drop-shadow(0 0 16px rgba(240,190,60,0.7)); animation-duration: 13s; animation-delay: -9s; }
+    @keyframes orbDrift { 0% { transform: translate(0px,0px) scale(1); } 25% { transform: translate(14px,10px) scale(1.06); } 55% { transform: translate(-8px,18px) scale(0.95); } 100% { transform: translate(10px,-14px) scale(1.04); } }
 
-.orb-1 {
-  width: 220px; height: 220px;
-  top: -60px; left: -60px;
-  background: radial-gradient(circle at 50% 50%,
-    rgba(200,248,255,1) 0%, rgba(140,235,252,0.95) 28%,
-    rgba(80,215,245,0.65) 55%, rgba(40,190,235,0.18) 80%, transparent 100%);
-  filter: blur(6px) drop-shadow(0 0 24px rgba(140,235,255,0.95));
-  animation-duration: 11s;
-}
+    #splash { position: fixed; inset: 0; z-index: 9999; background: #f2f5f7; display: flex; align-items: center; justify-content: center; transition: opacity 0.8s ease, visibility 0.8s ease; }
+    .hidden { opacity: 0 !important; visibility: hidden !important; }
+    .splash-logo-wrap { animation: splashIn 0.9s cubic-bezier(0.22,1,0.36,1) 0.1s both; text-decoration: none !important; }
+    .splash-img { width: 380px; max-width: 72vw; display: block; }
+    @keyframes splashIn { 0% { opacity:0; transform: scale(0.3) rotate(-8deg); filter: blur(6px); } 40% { opacity:1; filter: blur(0); } 65% { transform: scale(1.06) rotate(1deg); } 85% { transform: scale(0.97) rotate(-0.5deg); } 100% { opacity:1; transform: scale(1) rotate(0deg); } }
 
-.orb-2 {
-  width: 200px; height: 200px;
-  top: -55px; right: -55px;
-  background: radial-gradient(circle at 50% 50%,
-    rgba(255,235,150,1) 0%, rgba(240,205,110,0.9) 32%,
-    rgba(210,170,70,0.6) 58%, rgba(190,145,50,0.18) 80%, transparent 100%);
-  filter: blur(6px) drop-shadow(0 0 22px rgba(255,200,60,0.85));
-  animation-duration: 14s; animation-delay: -3s;
-}
+    header { position: fixed; top: 0; width: 100%; z-index: 1000; background: rgba(255,255,255,0.95); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); color-scheme: light; border-bottom: 3px solid #c5a059; display: flex; align-items: center; justify-content: space-between; padding: 0.85rem 4%; }
+    .logo { display: flex; align-items: center; gap: 8px; text-decoration: none; }
+    .logo img { height: 38px; }
+    .brand-name { display: block; font-family: 'Space Grotesk', sans-serif; font-size: 1.42rem; font-weight: 700; color: #c5a059; }
+    .brand-sub  { display: block; font-size: 0.62rem; color: #333; letter-spacing: 1.8px; font-weight: 600; }
 
-.orb-3 {
-  width: 160px; height: 160px;
-  bottom: 12%; left: 2%;
-  background: radial-gradient(circle at 50% 50%,
-    rgba(210,250,255,0.98) 0%, rgba(150,238,252,0.82) 32%,
-    rgba(90,218,248,0.42) 60%, transparent 100%);
-  filter: blur(5px) drop-shadow(0 0 18px rgba(160,240,255,0.85));
-  animation-duration: 16s; animation-delay: -6s;
-}
+    nav ul { list-style: none; display: flex; gap: 2rem; align-items: center; }
+    nav a { text-decoration: none; color: #7ab8c0; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.7px; transition: color 0.2s; }
+    nav a:hover { color: #c5a059; }
+    nav li:first-child a { color: #c5a059; }
 
-.orb-4 {
-  width: 150px; height: 150px;
-  bottom: 8%; right: 3%;
-  background: radial-gradient(circle at 50% 50%,
-    rgba(252,230,140,0.95) 0%, rgba(230,195,90,0.72) 34%,
-    rgba(200,160,55,0.32) 62%, transparent 100%);
-  filter: blur(5px) drop-shadow(0 0 16px rgba(240,190,60,0.7));
-  animation-duration: 13s; animation-delay: -9s;
-}
+    .dropdown { position: relative; }
+    .dd-menu { display: none; position: absolute; top: 100%; left: 0; background: #fff; min-width: 180px; box-shadow: 0 8px 20px rgba(0,0,0,0.1); border-top: 2px solid #c5a059; z-index: 2000; }
+    .dd-menu a { display: block; padding: 12px 18px; border-bottom: 1px solid #eee; color: #333; font-size: 0.8rem; font-weight: 600; }
+    .dd-menu a:hover { color: #c5a059; }
+    .dropdown:hover .dd-menu { display: block; }
 
-@keyframes orbDrift {
-  0%   { transform: translate(0px,0px) scale(1); }
-  25%  { transform: translate(14px,10px) scale(1.06); }
-  55%  { transform: translate(-8px,18px) scale(0.95); }
-  100% { transform: translate(10px,-14px) scale(1.04); }
-}
+    .consult-btn { background: linear-gradient(135deg, #c5a059, #e8c87a 50%, #c5a059); background-size: 200% auto; color: #0c182d; border: none; padding: 0.62rem 1.3rem; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.76rem; text-transform: uppercase; letter-spacing: 0.4px; border-radius: 4px; cursor: pointer; transition: all 0.4s; box-shadow: 0 0 0 1px rgba(197,160,89,0.6), 0 0 18px rgba(0,210,255,0.5); }
+    .consult-btn:hover { background-position: right; box-shadow: 0 0 0 1px #c5a059, 0 0 28px rgba(0,210,255,0.8); }
 
-#splash {
-  position: fixed; inset: 0; z-index: 9999;
-  background: #f2f5f7;
-  display: flex; align-items: center; justify-content: center;
-  transition: opacity 0.8s ease, visibility 0.8s ease;
-}
-.hidden { opacity: 0 !important; visibility: hidden !important; }
+    /* ── HERO ── */
+    .hero { position: relative; z-index: 10; padding-top: 5rem; display: flex; flex-direction: column; align-items: center; }
+    .billboard-wrap { display: flex; flex-direction: column; align-items: center; width: 100%; }
+    .bb-structure { overflow: hidden; display: flex; flex-direction: column; align-items: center; width: 92%; max-width: 1280px; position: relative; }
+    .bb-screen { overflow: hidden; position: relative; width: 100%; height: 400px; border-radius: 2px; border: 6px solid #2a2a2a; box-shadow: inset 0 0 0 2px rgba(255,255,255,0.05), 0 0 0 1px #111, 0 30px 80px rgba(0,0,0,0.4), 0 8px 30px rgba(197,160,89,0.12); z-index: 2; background: #0c182d; }
+    .bb-support { width: 100%; display: block; overflow: visible; margin-top: -1px; }
+    @media(max-width:768px) { .bb-screen { height: 240px; } }
 
-.splash-logo-wrap {
-  animation: splashIn 0.9s cubic-bezier(0.22,1,0.36,1) 0.1s both;
-  text-decoration: none !important;
-}
+    /* ── Billboard Slideshow ── */
+    .bb-slides-wrap { position: absolute; inset: 0; z-index: 1; overflow: hidden; }
+    .bb-slides-inner { display: flex; height: 100%; transition: transform 0.55s cubic-bezier(0.77,0,0.18,1); }
+    .bb-slide-item { flex: 0 0 100%; height: 100%; display: flex; align-items: center; justify-content: center; padding: 2rem 2.5rem; box-sizing: border-box; position: relative; overflow: hidden; }
+    .s1 { background: linear-gradient(135deg,#0a0f1e,#0d1a2e,#0a1220); }
+    .s2 { background: linear-gradient(135deg,#0f1a10,#0a1f12,#061410); }
+    .s3 { background: linear-gradient(135deg,#1a0e05,#1e1205,#0f0a02); }
+    .s4 { background: linear-gradient(135deg,#0a0810,#120d1e,#0c0812); }
+    .s5 { background: linear-gradient(135deg,#080d18,#091525,#060c18); }
+    .sl-content { position: relative; z-index: 2; width: 100%; display: flex; align-items: center; gap: 2rem; }
+    .sl-left { flex: 1; }
+    .sl-right { flex: 0 0 auto; display: flex; flex-direction: column; align-items: flex-end; gap: 0.5rem; }
+    .sl-tag { font-size: 0.52rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; padding: 3px 10px; border-radius: 2px; display: inline-block; margin-bottom: 0.6rem; }
+    .tg  { background: rgba(197,160,89,0.15); color: #c5a059; border: 1px solid rgba(197,160,89,0.4); }
+    .tgn { background: rgba(80,200,120,0.1);  color: #50c878; border: 1px solid rgba(80,200,120,0.3); }
+    .ta  { background: rgba(240,180,50,0.1);  color: #f0b432; border: 1px solid rgba(240,180,50,0.3); }
+    .tp  { background: rgba(160,100,240,0.12); color: #a064f0; border: 1px solid rgba(160,100,240,0.35); }
+    .tc  { background: rgba(0,229,255,0.1);   color: #00e5ff; border: 1px solid rgba(0,229,255,0.3); }
+    .sl-h { font-size: 1.6rem; font-weight: 900; line-height: 1.1; margin-bottom: 0.6rem; font-family: 'Space Grotesk', sans-serif; }
+    .sl-p { font-size: 0.75rem; color: rgba(255,255,255,0.6); line-height: 1.6; max-width: 380px; margin-bottom: 1rem; }
+    .sl-btn { display: inline-block; padding: 0.5rem 1.2rem; background: linear-gradient(135deg,#c5a059,#e8c87a); color: #0c182d; font-weight: 700; font-size: 0.65rem; letter-spacing: 1px; text-transform: uppercase; border-radius: 3px; border: none; cursor: pointer; }
+    .sl-stat { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-top: 2px solid #c5a059; border-radius: 4px; padding: 0.6rem 1rem; text-align: center; min-width: 90px; }
+    .sl-num { font-size: 1.3rem; font-weight: 700; color: #c5a059; font-family: 'Space Grotesk', sans-serif; line-height: 1; }
+    .sl-lbl { font-size: 0.52rem; color: rgba(255,255,255,0.45); text-transform: uppercase; letter-spacing: 1px; margin-top: 2px; }
+    .sl-acc { width: 40px; height: 3px; background: linear-gradient(90deg,#c5a059,transparent); margin-bottom: 0.8rem; border-radius: 2px; }
+    .bb-sdots { position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); display: flex; gap: 6px; z-index: 10; }
+    .bb-sdot { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,0.25); border: none; cursor: pointer; padding: 0; transition: all 0.25s; }
+    .bb-sdot.on { background: #c5a059; transform: scale(1.35); }
+    @media(max-width:768px) { .sl-right { display: none; } .sl-h { font-size: 1.1rem; } .sl-p { font-size: 0.7rem; } .sl-content { gap: 1rem; } }
 
-.splash-img { width: 380px; max-width: 72vw; display: block; }
+    /* ── Services ── */
+    .services { position: relative; z-index: 20; margin-top: -40px; padding: 0 4% 5rem; }
+    .svc-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 0.9rem; max-width: 1020px; margin: 0 auto; }
+    .svc-card { background: rgba(242,246,249,0.82); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(255,255,255,0.95); border-radius: 6px; text-align: center; padding: 1.9rem 1.1rem 1.7rem; box-shadow: 0 8px 22px rgba(0,0,0,0.06); transition: transform 0.3s, box-shadow 0.3s; }
+    .svc-card:hover { transform: translateY(-7px); box-shadow: 0 18px 36px rgba(0,0,0,0.1); }
+    .svc-icon { display: flex; justify-content: center; margin-bottom: 0.8rem; }
+    .svc-icon svg { width: 42px; height: 42px; stroke: #c5a059; stroke-width: 1.3; fill: none; }
+    .svc-card h3 { font-family: 'Space Grotesk', sans-serif; font-size: 0.84rem; font-weight: 700; color: #2a3545; text-transform: uppercase; letter-spacing: 0.7px; line-height: 1.35; margin-bottom: 0.5rem; }
+    .svc-card p { font-size: 0.76rem; color: #6a7888; line-height: 1.6; }
 
-@keyframes splashIn {
-  0%   { opacity:0; transform: scale(0.3) rotate(-8deg); filter: blur(6px); }
-  40%  { opacity:1; filter: blur(0); }
-  65%  { transform: scale(1.06) rotate(1deg); }
-  85%  { transform: scale(0.97) rotate(-0.5deg); }
-  100% { opacity:1; transform: scale(1) rotate(0deg); }
-}
+    /* ── Marketing Products ── */
+    .mktg-section { padding: 5rem 4%; position: relative; z-index: 10; }
+    .mktg-inner { max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; gap: 5rem; }
+    .mktg-row { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+    .mktg-row.reverse { direction: rtl; }
+    .mktg-row.reverse > * { direction: ltr; }
+    .mktg-img img { width: 100%; height: 320px; object-fit: contain; display: block; background: transparent; }
+    .mktg-img::after { display: none; }
+    .mktg-text .eyebrow { font-size: 0.72rem; font-weight: 700; color: #c5a059; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 0.8rem; display: block; }
+    .mktg-text h2 { font-family: 'Space Grotesk', sans-serif; font-size: 1.9rem; font-weight: 700; color: #0c182d; line-height: 1.25; margin-bottom: 1.2rem; }
+    .mktg-text h2 span { color: #c5a059; }
+    .mktg-text p { font-size: 0.9rem; color: #556; line-height: 1.8; margin-bottom: 1rem; }
+    .mktg-features { list-style: none; margin: 1.2rem 0 1.8rem; display: flex; flex-direction: column; gap: 0.6rem; }
+    .mktg-features li { display: flex; align-items: center; gap: 0.7rem; font-size: 0.85rem; color: #445; font-weight: 500; }
+    .mktg-features li::before { content: ''; width: 18px; height: 18px; flex-shrink: 0; background: linear-gradient(135deg,#c5a059,#e8c87a); border-radius: 50%; display: inline-block; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolyline points='20 6 9 17 4 12' stroke='%230c182d' stroke-width='3' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); background-size: 11px; background-repeat: no-repeat; background-position: center; }
+    .mktg-price { font-family: 'Space Grotesk', sans-serif; font-size: 1.8rem; font-weight: 700; color: #c5a059; margin-bottom: 1.4rem; }
+    .mktg-price span { font-size: 0.9rem; color: #888; font-weight: 400; }
+    @media(max-width:1024px) { .mktg-row, .mktg-row.reverse { grid-template-columns: 1fr; direction: ltr; gap: 2rem; } }
 
-header {
-  position: fixed; top: 0; width: 100%; z-index: 1000;
-  background: rgba(255,255,255,0.95);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  color-scheme: light;
-  border-bottom: 3px solid #c5a059;
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 0.85rem 4%;
-}
-.logo { display:flex; align-items:center; gap:8px; text-decoration:none; }
-.logo img { height:38px; }
-.logo-text { line-height:1.1; }
-.brand-name { display:block; font-family:'Space Grotesk',sans-serif; font-size:1.42rem; font-weight:700; color:#c5a059; }
-.brand-sub  { display:block; font-size:0.62rem; color:#333; letter-spacing:1.8px; font-weight:600; }
+    .sec-title { text-align: center; font-family: 'Space Grotesk', sans-serif; font-size: 2rem; color: #0c182d; margin-bottom: 2.2rem; position: relative; z-index: 10; }
+    .sec-title::after { content: ''; display: block; width: 50px; height: 3px; background: #c5a059; margin: 10px auto 0; }
 
-nav ul { list-style:none; display:flex; gap:2rem; align-items:center; }
-nav a { text-decoration:none; color:#7ab8c0; font-size:0.8rem; font-weight:700; letter-spacing:0.7px; transition:color 0.2s; }
-nav a:hover { color:#c5a059; }
-nav li:first-child a { color:#c5a059; }
+    /* ── Video Section ── */
+    .video-section { padding: 5rem 4%; position: relative; z-index: 10; }
+    .video-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; max-width: 1200px; margin: 0 auto; }
+    .iphone-wrap { display: flex; justify-content: center; align-items: center; filter: drop-shadow(0 40px 60px rgba(0,0,0,0.35)) drop-shadow(0 0 40px rgba(197,160,89,0.2)); }
+    .iphone { position: relative; background: linear-gradient(160deg,#1a1a1a 0%,#2e2e2e 40%,#1a1a1a 100%); border-radius: 56px; padding: 22px 16px; display: inline-block; box-shadow: 0 0 0 1px rgba(255,255,255,0.1), 0 0 0 3px #0a0a0a, inset 0 0 0 1px rgba(255,255,255,0.07), 0 40px 80px rgba(0,0,0,0.6), 0 0 60px rgba(0,0,0,0.3); }
+    .iphone::before { content: ''; position: absolute; left: -4px; top: 100px; width: 4px; height: 36px; background: linear-gradient(180deg,#444,#555,#444); border-radius: 3px 0 0 3px; box-shadow: 0 52px 0 #4a4a4a, 0 96px 0 #4a4a4a; }
+    .iphone::after { content: ''; position: absolute; right: -4px; top: 130px; width: 4px; height: 70px; background: linear-gradient(180deg,#444,#555,#444); border-radius: 0 3px 3px 0; }
+    .iphone-island { width: 110px; height: 32px; background: #000; border-radius: 20px; margin: 0 auto 12px; position: relative; z-index: 3; }
+    .iphone-island::after { content: ''; width: 11px; height: 11px; background: #0a0a0a; border-radius: 50%; position: absolute; top: 50%; right: 14px; transform: translateY(-50%); border: 1.5px solid #2a2a2a; }
+    .iphone-screen { background: #000; border-radius: 44px; overflow: hidden; width: 260px; height: 476px; position: relative; }
+    .iphone-screen video { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .iphone-bar { width: 120px; height: 5px; background: rgba(255,255,255,0.28); border-radius: 3px; margin: 12px auto 0; }
+    .iphone-glow { position: absolute; bottom: -28px; left: 50%; transform: translateX(-50%); width: 240px; height: 20px; background: radial-gradient(ellipse, rgba(197,160,89,0.55) 0%, transparent 70%); filter: blur(10px); }
+    .video-text .eyebrow { font-size: 0.72rem; font-weight: 700; color: #c5a059; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 0.8rem; display: block; }
+    .video-text h2 { font-family: 'Space Grotesk', sans-serif; font-size: 2rem; font-weight: 700; color: #0c182d; line-height: 1.25; margin-bottom: 1.2rem; }
+    .video-text h2 span { color: #c5a059; }
+    .video-text p { font-size: 0.9rem; color: #556; line-height: 1.8; margin-bottom: 1rem; }
+    .video-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.8rem 0 2rem; }
+    .stat { background: rgba(242,246,249,0.85); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.95); border-top: 3px solid #c5a059; border-radius: 8px; padding: 1rem 1.2rem; }
+    .stat .num { font-family: 'Space Grotesk', sans-serif; font-size: 1.6rem; font-weight: 700; color: #c5a059; line-height: 1; margin-bottom: 0.3rem; }
+    .stat .label { font-size: 0.72rem; color: #778; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
 
-.dropdown { position:relative; }
-.dd-menu { display:none; position:absolute; top:100%; left:0; background:#fff; min-width:180px; box-shadow:0 8px 20px rgba(0,0,0,0.1); border-top:2px solid #c5a059; z-index:2000; }
-.dd-menu a { display:block; padding:12px 18px; border-bottom:1px solid #eee; color:#333; font-size:0.8rem; font-weight:600; }
-.dd-menu a:hover { color:#c5a059; }
-.dropdown:hover .dd-menu { display:block; }
+    /* ── Portfolio ── */
+    .portfolio { padding: 4rem 4% 6rem; position: relative; z-index: 10; }
+    .port-track { display: grid; grid-template-columns: repeat(4,1fr); gap: 1.2rem; max-width: 1200px; margin: 0 auto; }
+    .port-item { background: rgba(255,255,255,0.93); border-radius: 12px; border: 1px solid #dce8ee; border-top: 3px solid #c5a059; overflow: hidden; box-shadow: 0 5px 16px rgba(0,0,0,0.05); transition: transform 0.3s, box-shadow 0.3s; }
+    .port-item:hover { transform: translateY(-5px); box-shadow: 0 16px 32px rgba(0,0,0,0.1); }
+    .port-info { padding: 1.2rem; }
+    .port-info h4 { font-family: 'Space Grotesk', sans-serif; font-size: 0.95rem; color: #0c182d; margin-bottom: 0.35rem; }
+    .port-info p  { font-size: 0.78rem; color: #778; }
+    .prod-media { position: relative; width: 100%; height: 185px; overflow: hidden; background: #000; }
+    .prod-media img, .prod-media video { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; transition: opacity 0.4s ease; }
+    .prod-media img { opacity: 1; z-index: 1; }
+    .prod-media video { opacity: 0; z-index: 2; }
+    .port-item.playing .prod-media img { opacity: 0; }
+    .port-item.playing .prod-media video { opacity: 1; }
+    .media-toggle { position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); z-index: 6; display: flex; border-radius: 20px; overflow: hidden; border: 1.5px solid rgba(197,160,89,0.8); background: rgba(0,0,0,0.55); backdrop-filter: blur(8px); }
+    .media-toggle button { background: none; border: none; cursor: pointer; padding: 5px 14px; font-size: 0.62rem; font-weight: 700; color: rgba(255,255,255,0.6); letter-spacing: 0.8px; font-family: 'Montserrat', sans-serif; transition: all 0.2s; }
+    .media-toggle button.active { background: #c5a059; color: #0c182d; }
+    @media(max-width:1024px) { .port-track { grid-template-columns: repeat(2,1fr); } }
+    @media(max-width:600px)  { .port-track { grid-template-columns: 1fr; } }
 
-.consult-btn {
-  background: linear-gradient(135deg, #c5a059, #e8c87a 50%, #c5a059);
-  background-size: 200% auto;
-  color: #0c182d; border:none; padding:0.62rem 1.3rem;
-  font-family:'Montserrat',sans-serif; font-weight:700; font-size:0.76rem;
-  text-transform:uppercase; letter-spacing:0.4px; border-radius:4px; cursor:pointer;
-  transition: all 0.4s;
-  box-shadow: 0 0 0 1px rgba(197,160,89,0.6), 0 0 18px rgba(0,210,255,0.5);
-}
-.consult-btn:hover { background-position:right; box-shadow:0 0 0 1px #c5a059, 0 0 28px rgba(0,210,255,0.8); }
+    /* ── Billboard Carousel (Own It section) ── */
+    .bb-carousel-wrap { display: flex; align-items: center; justify-content: center; padding: 1rem 32px; }
+    .bb-carousel { position: relative; width: 100%; max-width: 520px; user-select: none; }
+    .bb-track-clip { overflow: hidden; width: 100%; border-radius: 4px; }
+    .bb-track { display: flex; transition: transform 0.45s cubic-bezier(0.4,0,0.2,1); will-change: transform; }
+    .bb-slide { flex: 0 0 100%; display: flex; align-items: center; justify-content: center; }
+    .bb-slide img { width: 100%; height: 360px; object-fit: contain; display: block; background: transparent; }
+    .bb-arrow { position: absolute; top: 45%; transform: translateY(-50%); width: 42px; height: 42px; border-radius: 50%; border: 1.5px solid rgba(197,160,89,0.7); background: rgba(255,255,255,0.92); color: #c5a059; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.2s, border-color 0.2s, transform 0.2s; z-index: 10; box-shadow: 0 2px 10px rgba(0,0,0,0.08); }
+    .bb-arrow:hover { background: #c5a059; color: #fff; border-color: #c5a059; transform: translateY(-50%) scale(1.08); }
+    .bb-prev { left: -22px; }
+    .bb-next { right: -22px; }
+    .bb-dots { display: flex; justify-content: center; gap: 7px; margin-top: 0.8rem; }
+    .bb-dot { width: 7px; height: 7px; border-radius: 50%; background: rgba(197,160,89,0.3); cursor: pointer; transition: background 0.25s, transform 0.25s; }
+    .bb-dot.active { background: #c5a059; transform: scale(1.3); }
+    @media(max-width:768px) { .bb-prev { left: 4px; } .bb-next { right: 4px; } .bb-slide img { height: 240px; } }
 
-.hero { position:relative; z-index:10; padding-top:5rem; display:flex; flex-direction:column; align-items:center; }
-.billboard-wrap { display:flex; flex-direction:column; align-items:center; width:100%; }
+    /* ── FAQ ── */
+    .faq-section { padding: 5rem 4%; position: relative; z-index: 10; }
+    .faq-inner { max-width: 860px; margin: 0 auto; }
+    .faq-list { display: flex; flex-direction: column; gap: 0.75rem; }
+    .faq-item { background: rgba(255,255,255,0.93); border: 1px solid #dce8ee; border-left: 4px solid #c5a059; border-radius: 6px; overflow: hidden; box-shadow: 0 4px 14px rgba(0,0,0,0.04); transition: box-shadow 0.3s; }
+    .faq-item:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.08); }
+    .faq-question { width: 100%; background: none; border: none; text-align: left; padding: 1.2rem 1.4rem; display: flex; justify-content: space-between; align-items: center; cursor: pointer; gap: 1rem; }
+    .faq-question span { font-family: 'Space Grotesk', sans-serif; font-size: 0.95rem; font-weight: 700; color: #0c182d; line-height: 1.4; }
+    .faq-icon { flex-shrink: 0; width: 28px; height: 28px; border-radius: 50%; background: rgba(197,160,89,0.12); border: 1.5px solid rgba(197,160,89,0.4); display: flex; align-items: center; justify-content: center; transition: background 0.25s, transform 0.35s; }
+    .faq-icon svg { width: 13px; height: 13px; stroke: #c5a059; stroke-width: 2.5; fill: none; }
+    .faq-item.open .faq-icon { background: #c5a059; transform: rotate(45deg); }
+    .faq-item.open .faq-icon svg { stroke: #0c182d; }
+    .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s cubic-bezier(0.4,0,0.2,1), padding 0.3s; padding: 0 1.4rem; }
+    .faq-item.open .faq-answer { max-height: 300px; padding: 0 1.4rem 1.3rem; }
+    .faq-answer p { font-size: 0.88rem; color: #556; line-height: 1.8; border-top: 1px solid rgba(197,160,89,0.15); padding-top: 1rem; }
 
-/* ── Billboard Structure ── */
-.bb-structure {
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 92%;
-  max-width: 1280px;
-  position: relative;
-}
+    /* ── Footer ── */
+    footer { background: rgba(255,255,255,0.9); color: #333; padding: 4rem 4% 2rem; border-top: 3px solid #c5a059; position: relative; z-index: 100; }
+    .ft-grid { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 3rem; max-width: 1200px; margin: 0 auto 3rem; }
+    .ft-col { flex: 1; min-width: 220px; }
+    .ft-col h4 { color: #c5a059; font-family: 'Space Grotesk', sans-serif; font-size: 1.15rem; margin-bottom: 1.2rem; }
+    .ft-col p, .ft-col a { font-size: 0.84rem; color: #b8a898; line-height: 1.9; text-decoration: none; display: block; transition: color 0.3s; }
+    .ft-col a:hover { color: #c5a059; }
+    .ft-bottom { max-width: 1200px; margin: 0 auto; padding-top: 1.6rem; border-top: 1px solid rgba(0,0,0,0.08); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+    .ft-bottom p { font-size: 0.72rem; color: #b8a898; }
 
-/* FIX: height reduced to 400px so video fits without cropping.
-   object-fit:contain on the video shows it in full with no zoom/crop. */
-.bb-screen {
-  overflow: hidden;
-  position: relative;
-  width: 100%;
-  height: 400px;
-  border-radius: 2px;
-  border: 6px solid #2a2a2a;
-  box-shadow:
-    inset 0 0 0 2px rgba(255,255,255,0.05),
-    0 0 0 1px #111,
-    0 30px 80px rgba(0,0,0,0.4),
-    0 8px 30px rgba(197,160,89,0.12);
-  z-index: 2;
-  background: #0c182d;
-}
+    /* ── Mobile Nav ── */
+    .mobile-consult { display: none !important; }
+    .hamburger { display: none; flex-direction: column; justify-content: center; gap: 5px; background: none; border: none; cursor: pointer; padding: 6px; z-index: 1001; }
+    .hamburger span { display: block; width: 24px; height: 2.5px; background: #c5a059; border-radius: 2px; transition: all 0.3s ease; }
+    .hamburger.open span:nth-child(1) { transform: translateY(7.5px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7.5px) rotate(-45deg); }
 
-/* SVG truss drawn inline below the panel */
-.bb-support {
-  width: 100%;
-  display: block;
-  overflow: visible;
-  margin-top: -1px;
-}
-
-@media(max-width:768px) {
-  .bb-screen { height: 240px; }
-}
-#hud-canvas { position:absolute; left:0; top:0; width:38%; height:100%; z-index:2; pointer-events:none; }
-
-.lbl-model {
-  position:absolute; z-index:4; bottom:30%; left:1.5%;
-  color:rgba(255,255,255,0.82); font-size:0.52rem;
-  font-family:'Space Grotesk',sans-serif; letter-spacing:2px;
-  background:rgba(0,0,0,0.45); padding:2px 8px; border-radius:2px;
-  border-left:2px solid #00e5ff;
-}
-.lbl-timeline {
-  position:absolute; z-index:4; bottom:24%; left:1.5%;
-  color:rgba(255,255,255,0.52); font-size:0.46rem;
-  font-family:'Space Grotesk',sans-serif; letter-spacing:2px;
-}
-
-.bb-badge {
-  position:absolute; top:10px; right:10px; z-index:6;
-  display:flex; align-items:center; gap:6px;
-  background:rgba(0,0,0,0.65); padding:5px 11px; border-radius:3px;
-  border:1px solid rgba(0,229,255,0.4);
-}
-.bb-badge span { color:#00e5ff; font-family:'Space Grotesk',sans-serif; font-size:0.52rem; letter-spacing:2px; }
-.blink { width:5px; height:5px; background:#00e5ff; border-radius:50%; animation:bl 1.5s infinite; }
-@keyframes bl { 50% { opacity:0.1; } }
-
-.bb-playing {
-  position:absolute; top:10px; left:39%; z-index:6;
-  color:rgba(255,255,255,0.42); font-size:0.48rem;
-  font-family:'Space Grotesk',sans-serif; letter-spacing:1px;
-  background:rgba(0,0,0,0.38); padding:3px 7px; border-radius:2px;
-}
-
-.hero-glass {
-  position:absolute; top:8%; left:50%; transform:translateX(-50%);
-  z-index:8; width:55%;
-  background:rgba(236,242,246,0.74);
-  backdrop-filter:blur(26px); -webkit-backdrop-filter:blur(26px);
-  border:1px solid rgba(255,255,255,0.9);
-  border-radius:5px; padding:2.5rem 2rem; text-align:center;
-  box-shadow:0 8px 32px rgba(0,0,0,0.07);
-}
-.hero-glass h1 {
-  font-family:'Space Grotesk',sans-serif; font-size:2.1rem; font-weight:700;
-  color:#c5a059; text-transform:uppercase; line-height:1.18; margin-bottom:0.85rem;
-}
-.hero-glass p { font-size:0.9rem; color:#3a4858; font-weight:500; line-height:1.65; }
-
-.thumb-strip {
-  position:absolute; bottom:0; left:0; right:0; height:58px; z-index:7;
-  background:rgba(0,0,0,0.7); border-top:1px solid rgba(0,229,255,0.15);
-  overflow:hidden; display:flex; align-items:center;
-}
-.thumb-track { display:flex; gap:5px; padding:0 8px; animation:scroll 22s linear infinite; }
-@keyframes scroll { to { transform:translateX(-50%); } }
-.th { width:68px; height:40px; flex-shrink:0; border-radius:2px; border:1px solid rgba(197,160,89,0.35); overflow:hidden; background:#0d1e30; }
-.th img { width:100%; height:100%; object-fit:cover; opacity:0.7; }
-.playing-tag2 {
-  position:absolute; right:10px; bottom:6px; z-index:8;
-  color:#00e5ff; font-size:0.46rem; font-family:'Space Grotesk',sans-serif; letter-spacing:1.5px;
-}
-
-/* Responsive */
-@media(max-width:768px) {
-  .bb-pole { width:20px; }
-  .bb-poles { height:90px; }
-  .bb-pole-left  { left: 10%; }
-  .bb-pole-right { right: 10%; }
-  .bb-crossarm { left: calc(10% + 10px); right: calc(10% + 10px); }
-}
-
-.bb-left {
-  position: absolute; left: 0; top: 0; width: 38%; height: 100%;
-  background: linear-gradient(160deg, rgba(0,25,50,0.72) 0%, rgba(0,15,35,0.5) 100%),
-    url('https://images.unsplash.com/photo-1569263979104-865ab7cd8d13?q=80&w=900&auto=format&fit=crop') center/cover no-repeat;
-}
-
-.bb-right {
-  position: absolute; right: 0; top: 0; width: 62%; height: 100%;
-  background: linear-gradient(160deg, rgba(5,12,28,0.42) 0%, rgba(8,18,40,0.62) 100%),
-    url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=900&auto=format&fit=crop') center/cover no-repeat;
-}
-
-.services { position:relative; z-index:20; margin-top:-40px; padding:0 4% 5rem; }
-.svc-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:0.9rem; max-width:1020px; margin:0 auto; }
-.svc-card {
-  background:rgba(242,246,249,0.82); backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px);
-  border:1px solid rgba(255,255,255,0.95); border-radius:6px; text-align:center;
-  padding:1.9rem 1.1rem 1.7rem; box-shadow:0 8px 22px rgba(0,0,0,0.06);
-  transition:transform 0.3s, box-shadow 0.3s;
-}
-.svc-card:hover { transform:translateY(-7px); box-shadow:0 18px 36px rgba(0,0,0,0.1); }
-.svc-icon { display:flex; justify-content:center; margin-bottom:0.8rem; }
-.svc-icon svg { width:42px; height:42px; stroke:#c5a059; stroke-width:1.3; fill:none; }
-.svc-card h3 { font-family:'Space Grotesk',sans-serif; font-size:0.84rem; font-weight:700; color:#2a3545; text-transform:uppercase; letter-spacing:0.7px; line-height:1.35; margin-bottom:0.5rem; }
-.svc-card p { font-size:0.76rem; color:#6a7888; line-height:1.6; }
-
-/* Marketing Products Section */
-.mktg-section { padding:5rem 4%; position:relative; z-index:10; }
-.mktg-inner { max-width:1200px; margin:0 auto; display:flex; flex-direction:column; gap:5rem; }
-.mktg-row {
-  display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:center;
-}
-.mktg-row.reverse { direction:rtl; }
-.mktg-row.reverse > * { direction:ltr; }
-.mktg-img {
-  position:relative;
-}
-.mktg-img img { width:100%; height:320px; object-fit:contain; display:block; background:transparent; }
-.mktg-img::after { display:none; }
-.mktg-text .eyebrow { font-size:0.72rem; font-weight:700; color:#c5a059; letter-spacing:3px; text-transform:uppercase; margin-bottom:0.8rem; display:block; }
-.mktg-text h2 { font-family:'Space Grotesk',sans-serif; font-size:1.9rem; font-weight:700; color:#0c182d; line-height:1.25; margin-bottom:1.2rem; }
-.mktg-text h2 span { color:#c5a059; }
-.mktg-text p { font-size:0.9rem; color:#556; line-height:1.8; margin-bottom:1rem; }
-.mktg-features { list-style:none; margin:1.2rem 0 1.8rem; display:flex; flex-direction:column; gap:0.6rem; }
-.mktg-features li { display:flex; align-items:center; gap:0.7rem; font-size:0.85rem; color:#445; font-weight:500; }
-.mktg-features li::before { content:''; width:18px; height:18px; flex-shrink:0; background:linear-gradient(135deg,#c5a059,#e8c87a); border-radius:50%; display:inline-block; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolyline points='20 6 9 17 4 12' stroke='%230c182d' stroke-width='3' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); background-size:11px; background-repeat:no-repeat; background-position:center; }
-.mktg-price { font-family:'Space Grotesk',sans-serif; font-size:1.8rem; font-weight:700; color:#c5a059; margin-bottom:1.4rem; }
-.mktg-price span { font-size:0.9rem; color:#888; font-weight:400; }
-@media(max-width:1024px){ .mktg-row, .mktg-row.reverse { grid-template-columns:1fr; direction:ltr; gap:2rem; } }
-
-.sec-title { text-align:center; font-family:'Space Grotesk',sans-serif; font-size:2rem; color:#0c182d; margin-bottom:2.2rem; position:relative; z-index:10; }
-.sec-title::after { content:''; display:block; width:50px; height:3px; background:#c5a059; margin:10px auto 0; }
-
-.video-section { padding:5rem 4%; position:relative; z-index:10; }
-.video-inner { display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:center; max-width:1200px; margin:0 auto; }
-
-.iphone-wrap {
-  display:flex; justify-content:center; align-items:center;
-  filter: drop-shadow(0 40px 60px rgba(0,0,0,0.35)) drop-shadow(0 0 40px rgba(197,160,89,0.2));
-}
-.iphone {
-  position:relative;
-  background:linear-gradient(160deg,#1a1a1a 0%,#2e2e2e 40%,#1a1a1a 100%);
-  border-radius:56px;
-  padding:22px 16px;
-  display:inline-block;
-  box-shadow:
-    0 0 0 1px rgba(255,255,255,0.1),
-    0 0 0 3px #0a0a0a,
-    inset 0 0 0 1px rgba(255,255,255,0.07),
-    0 40px 80px rgba(0,0,0,0.6),
-    0 0 60px rgba(0,0,0,0.3);
-}
-.iphone::before {
-  content:'';
-  position:absolute; left:-4px; top:100px;
-  width:4px; height:36px;
-  background:linear-gradient(180deg,#444,#555,#444);
-  border-radius:3px 0 0 3px;
-  box-shadow: 0 52px 0 #4a4a4a, 0 96px 0 #4a4a4a;
-}
-.iphone::after {
-  content:'';
-  position:absolute; right:-4px; top:130px;
-  width:4px; height:70px;
-  background:linear-gradient(180deg,#444,#555,#444);
-  border-radius:0 3px 3px 0;
-}
-.iphone-island {
-  width:110px; height:32px;
-  background:#000; border-radius:20px;
-  margin:0 auto 12px;
-  position:relative; z-index:3;
-}
-.iphone-island::after {
-  content:''; width:11px; height:11px;
-  background:#0a0a0a; border-radius:50%;
-  position:absolute; top:50%; right:14px; transform:translateY(-50%);
-  border:1.5px solid #2a2a2a;
-}
-.iphone-screen {
-  background:#000;
-  border-radius:44px;
-  overflow:hidden;
-  width:260px;
-  height:476px;
-  position:relative;
-}
-.iphone-screen video {
-  width:100%; height:100%;
-  object-fit:cover;
-  display:block;
-}
-.iphone-bar {
-  width:120px; height:5px;
-  background:rgba(255,255,255,0.28);
-  border-radius:3px;
-  margin:12px auto 0;
-}
-.iphone-glow {
-  position:absolute; bottom:-28px; left:50%;
-  transform:translateX(-50%);
-  width:240px; height:20px;
-  background:radial-gradient(ellipse, rgba(197,160,89,0.55) 0%, transparent 70%);
-  filter:blur(10px);
-}
-
-.video-text .eyebrow { font-size:0.72rem; font-weight:700; color:#c5a059; letter-spacing:3px; text-transform:uppercase; margin-bottom:0.8rem; display:block; }
-.video-text h2 { font-family:'Space Grotesk',sans-serif; font-size:2rem; font-weight:700; color:#0c182d; line-height:1.25; margin-bottom:1.2rem; }
-.video-text h2 span { color:#c5a059; }
-.video-text p { font-size:0.9rem; color:#556; line-height:1.8; margin-bottom:1rem; }
-.video-stats { display:grid; grid-template-columns:1fr 1fr; gap:1rem; margin:1.8rem 0 2rem; }
-.stat { background:rgba(242,246,249,0.85); backdrop-filter:blur(12px); border:1px solid rgba(255,255,255,0.95); border-top:3px solid #c5a059; border-radius:8px; padding:1rem 1.2rem; }
-.stat .num { font-family:'Space Grotesk',sans-serif; font-size:1.6rem; font-weight:700; color:#c5a059; line-height:1; margin-bottom:0.3rem; }
-.stat .label { font-size:0.72rem; color:#778; font-weight:600; text-transform:uppercase; letter-spacing:0.5px; }
-
-.port-item-media { flex:0 0 320px; background:rgba(255,255,255,0.9); border-radius:8px; border:1px solid #dce8ee; overflow:hidden; box-shadow:0 5px 16px rgba(0,0,0,0.04); }
-.media-slider { position:relative; width:100%; height:195px; overflow:hidden; }
-.media-slides { display:flex; height:100%; transition:transform 0.4s cubic-bezier(0.4,0,0.2,1); }
-.media-slide { flex:0 0 100%; height:100%; position:relative; }
-.media-slide img { width:100%; height:100%; object-fit:cover; display:block; }
-.media-slide video { width:100%; height:100%; object-fit:cover; display:block; background:#000; }
-.slide-btn {
-  position:absolute; top:50%; transform:translateY(-50%);
-  background:rgba(0,0,0,0.55); border:none; color:#fff;
-  width:28px; height:28px; border-radius:50%; cursor:pointer;
-  display:flex; align-items:center; justify-content:center;
-  font-size:0.75rem; z-index:5; transition:background 0.2s;
-  backdrop-filter:blur(4px);
-}
-.slide-btn:hover { background:rgba(197,160,89,0.85); }
-.slide-btn.prev { left:8px; }
-.slide-btn.next { right:8px; }
-.slide-dots { position:absolute; bottom:7px; left:50%; transform:translateX(-50%); display:flex; gap:5px; z-index:5; }
-.slide-dot { width:6px; height:6px; border-radius:50%; background:rgba(255,255,255,0.5); cursor:pointer; transition:background 0.2s, transform 0.2s; }
-.slide-dot.active { background:#c5a059; transform:scale(1.25); }
-.play-badge {
-  position:absolute; top:8px; left:8px; z-index:5;
-  background:rgba(197,160,89,0.9); color:#0c182d;
-  font-size:0.52rem; font-weight:700; padding:3px 8px; border-radius:20px;
-  letter-spacing:0.5px; text-transform:uppercase;
-  display:flex; align-items:center; gap:4px;
-}
-
-.portfolio { padding:4rem 4% 6rem; position:relative; z-index:10; }
-.port-carousel { position:relative; max-width:1200px; margin:0 auto; }
-.port-track { display:grid; grid-template-columns:repeat(4,1fr); gap:1.2rem; max-width:1200px; margin:0 auto; }
-.port-item {
-  background:rgba(255,255,255,0.93);
-  border-radius:12px;
-  border:1px solid #dce8ee;
-  border-top:3px solid #c5a059;
-  overflow:hidden;
-  box-shadow:0 5px 16px rgba(0,0,0,0.05);
-  transition:transform 0.3s, box-shadow 0.3s;
-}
-.port-item:hover { transform:translateY(-5px); box-shadow:0 16px 32px rgba(0,0,0,0.1); }
-.port-info { padding:1.2rem; }
-.port-info h4 { font-family:'Space Grotesk',sans-serif; font-size:0.95rem; color:#0c182d; margin-bottom:0.35rem; }
-.port-info p  { font-size:0.78rem; color:#778; }
-
-.prod-media { position:relative; width:100%; height:185px; overflow:hidden; background:#000; }
-.prod-media img,
-.prod-media video { position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; transition:opacity 0.4s ease; }
-.prod-media img { opacity:1; z-index:1; }
-.prod-media video { opacity:0; z-index:2; }
-.port-item.playing .prod-media img { opacity:0; }
-.port-item.playing .prod-media video { opacity:1; }
-
-.media-toggle {
-  position:absolute; bottom:10px; left:50%; transform:translateX(-50%);
-  z-index:6; display:flex; gap:0; border-radius:20px; overflow:hidden;
-  border:1.5px solid rgba(197,160,89,0.8); background:rgba(0,0,0,0.55);
-  backdrop-filter:blur(8px);
-}
-.media-toggle button {
-  background:none; border:none; cursor:pointer;
-  padding:5px 14px; font-size:0.62rem; font-weight:700;
-  color:rgba(255,255,255,0.6); letter-spacing:0.8px; font-family:'Montserrat',sans-serif;
-  transition:all 0.2s;
-}
-.media-toggle button.active { background:#c5a059; color:#0c182d; }
-
-@media(max-width:1024px){ .port-track { grid-template-columns:repeat(2,1fr); } }
-@media(max-width:600px){ .port-track { grid-template-columns:1fr; } }
-
-/* ── FAQ Section ── */
-.faq-section {
-  padding: 5rem 4%;
-  position: relative;
-  z-index: 10;
-}
-.faq-inner {
-  max-width: 860px;
-  margin: 0 auto;
-}
-.faq-list {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-}
-.faq-item {
-  background: rgba(255,255,255,0.93);
-  border: 1px solid #dce8ee;
-  border-left: 4px solid #c5a059;
-  border-radius: 6px;
-  overflow: hidden;
-  box-shadow: 0 4px 14px rgba(0,0,0,0.04);
-  transition: box-shadow 0.3s;
-}
-.faq-item:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.08); }
-.faq-question {
-  width: 100%;
-  background: none;
-  border: none;
-  text-align: left;
-  padding: 1.2rem 1.4rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  cursor: pointer;
-  gap: 1rem;
-}
-.faq-question span {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 0.95rem;
-  font-weight: 700;
-  color: #0c182d;
-  line-height: 1.4;
-}
-.faq-icon {
-  flex-shrink: 0;
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  background: rgba(197,160,89,0.12);
-  border: 1.5px solid rgba(197,160,89,0.4);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background 0.25s, transform 0.35s;
-}
-.faq-icon svg {
-  width: 13px;
-  height: 13px;
-  stroke: #c5a059;
-  stroke-width: 2.5;
-  fill: none;
-  transition: transform 0.35s;
-}
-.faq-item.open .faq-icon {
-  background: #c5a059;
-  transform: rotate(45deg);
-}
-.faq-item.open .faq-icon svg {
-  stroke: #0c182d;
-}
-.faq-answer {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.4s cubic-bezier(0.4,0,0.2,1), padding 0.3s;
-  padding: 0 1.4rem;
-}
-.faq-item.open .faq-answer {
-  max-height: 300px;
-  padding: 0 1.4rem 1.3rem;
-}
-.faq-answer p {
-  font-size: 0.88rem;
-  color: #556;
-  line-height: 1.8;
-  border-top: 1px solid rgba(197,160,89,0.15);
-  padding-top: 1rem;
-}
-
-footer { background:rgba(255,255,255,0.9); color:#333; padding:4rem 4% 2rem; border-top:3px solid #c5a059; position:relative; z-index:100; }
-.ft-grid { display:flex; justify-content:space-between; flex-wrap:wrap; gap:3rem; max-width:1200px; margin:0 auto 3rem; }
-.ft-col { flex:1; min-width:220px; }
-.ft-col h4 { color:#c5a059; font-family:'Space Grotesk',sans-serif; font-size:1.15rem; margin-bottom:1.2rem; }
-.ft-col p,.ft-col a { font-size:0.84rem; color:#b8a898; line-height:1.9; text-decoration:none; display:block; transition:color 0.3s; }
-.ft-col a:hover { color:#c5a059; }
-.ft-bottom { max-width:1200px; margin:0 auto; padding-top:1.6rem; border-top:1px solid rgba(0,0,0,0.08); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; }
-.ft-bottom p { font-size:0.72rem; color:#b8a898; }
-
-.mobile-consult { display:none !important; }
-.hamburger { display:none; flex-direction:column; justify-content:center; gap:5px; background:none; border:none; cursor:pointer; padding:6px; z-index:1001; }
-.hamburger span { display:block; width:24px; height:2.5px; background:#c5a059; border-radius:2px; transition:all 0.3s ease; }
-.hamburger.open span:nth-child(1) { transform:translateY(7.5px) rotate(45deg); }
-.hamburger.open span:nth-child(2) { opacity:0; }
-.hamburger.open span:nth-child(3) { transform:translateY(-7.5px) rotate(-45deg); }
-
-@media(max-width:1024px){
-  .desktop-only { display:none !important; }
-  .hamburger { display:flex; }
-  .svc-grid { grid-template-columns:repeat(2,1fr); }
-  .video-inner { grid-template-columns:1fr; gap:3rem; }
-  .iphone-wrap { margin:0 auto; }
-  .video-text h2 { font-size:1.6rem; }
-  #main-nav { display:none; position:fixed; top:62px; left:0; right:0; background:rgba(255,255,255,0.97); backdrop-filter:blur(16px); border-bottom:3px solid #c5a059; z-index:999; padding:1.5rem 0; }
-  #main-nav.open { display:block; }
-  #main-nav ul { flex-direction:column; gap:0; }
-  #main-nav ul li { width:100%; }
-  #main-nav ul li a { display:block; padding:0.9rem 5%; font-size:0.9rem; border-bottom:1px solid rgba(197,160,89,0.15); }
-  #main-nav ul li:first-child a { color:#c5a059; }
-  .dd-menu { position:static; box-shadow:none; border-top:none; background:rgba(197,160,89,0.06); }
-  .dropdown:hover .dd-menu { display:flex; flex-direction:column; }
-  .mobile-consult { display:block !important; margin:1rem 5%; text-align:center; padding:0.8rem; background:linear-gradient(135deg,#c5a059,#e8c87a 50%,#c5a059); color:#0c182d; font-weight:700; font-size:0.8rem; text-transform:uppercase; border-radius:4px; text-decoration:none; letter-spacing:0.4px; }
-}
-@media(max-width:768px){
-  .hero-glass h1 { font-size:1.4rem; }
-  .hero-glass { width:80%; }
-  .svc-grid { grid-template-columns:1fr; }
-}
-
-/* ── Billboard Carousel (added) ── */
-.bb-carousel-wrap { display:flex; align-items:center; justify-content:center; padding:1rem 32px; }
-.bb-carousel { position:relative; width:100%; max-width:520px; user-select:none; }
-.bb-track-clip { overflow:hidden; width:100%; border-radius:4px; }
-.bb-track { display:flex; transition:transform 0.45s cubic-bezier(0.4,0,0.2,1); will-change:transform; }
-.bb-slide { flex:0 0 100%; display:flex; align-items:center; justify-content:center; }
-.bb-slide img { width:100%; height:360px; object-fit:contain; display:block; background:transparent; }
-.bb-arrow { position:absolute; top:45%; transform:translateY(-50%); width:42px; height:42px; border-radius:50%; border:1.5px solid rgba(197,160,89,0.7); background:rgba(255,255,255,0.92); color:#c5a059; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:background 0.2s, border-color 0.2s, transform 0.2s; z-index:10; box-shadow:0 2px 10px rgba(0,0,0,0.08); }
-.bb-arrow:hover { background:#c5a059; color:#fff; border-color:#c5a059; transform:translateY(-50%) scale(1.08); }
-.bb-prev { left:-22px; }
-.bb-next { right:-22px; }
-.bb-dots { display:flex; justify-content:center; gap:7px; margin-top:0.8rem; }
-.bb-dot { width:7px; height:7px; border-radius:50%; background:rgba(197,160,89,0.3); cursor:pointer; transition:background 0.25s, transform 0.25s; }
-.bb-dot.active { background:#c5a059; transform:scale(1.3); }
-@media(max-width:768px){ .bb-prev{left:4px;} .bb-next{right:4px;} .bb-slide img{height:240px;} }
-</style>
+    @media(max-width:1024px) {
+      .desktop-only { display: none !important; }
+      .hamburger { display: flex; }
+      .svc-grid { grid-template-columns: repeat(2,1fr); }
+      .video-inner { grid-template-columns: 1fr; gap: 3rem; }
+      .iphone-wrap { margin: 0 auto; }
+      .video-text h2 { font-size: 1.6rem; }
+      #main-nav { display: none; position: fixed; top: 62px; left: 0; right: 0; background: rgba(255,255,255,0.97); backdrop-filter: blur(16px); border-bottom: 3px solid #c5a059; z-index: 999; padding: 1.5rem 0; }
+      #main-nav.open { display: block; }
+      #main-nav ul { flex-direction: column; gap: 0; }
+      #main-nav ul li { width: 100%; }
+      #main-nav ul li a { display: block; padding: 0.9rem 5%; font-size: 0.9rem; border-bottom: 1px solid rgba(197,160,89,0.15); }
+      #main-nav ul li:first-child a { color: #c5a059; }
+      .dd-menu { position: static; box-shadow: none; border-top: none; background: rgba(197,160,89,0.06); }
+      .dropdown:hover .dd-menu { display: flex; flex-direction: column; }
+      .mobile-consult { display: block !important; margin: 1rem 5%; text-align: center; padding: 0.8rem; background: linear-gradient(135deg,#c5a059,#e8c87a 50%,#c5a059); color: #0c182d; font-weight: 700; font-size: 0.8rem; text-transform: uppercase; border-radius: 4px; text-decoration: none; letter-spacing: 0.4px; }
+    }
+    @media(max-width:768px) {
+      .svc-grid { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 <body>
 <div id="cursor-dot"></div>
@@ -699,85 +299,154 @@ footer { background:rgba(255,255,255,0.9); color:#333; padding:4rem 4% 2rem; bor
 <main>
   <section class="hero" id="home">
     <div class="billboard-wrap">
-
-      <!-- Billboard outer structure -->
       <div class="bb-structure">
-
-        <!-- The actual billboard panel -->
         <div class="bb-screen">
-          <div class="bb-left"></div>
-          <div class="bb-right"></div>
 
-          <!-- FIX: object-fit changed from cover to contain so the full video
-               is visible without zoom or cropping. background matches the
-               dark billboard surround. -->
-          <video
-            autoplay
-            muted
-            loop
-            playsinline
-            style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:contain;object-position:center;z-index:1;background:#0c182d;">
-            <source src="billboard0.mp4" type="video/mp4">
-          </video>
+          <!-- ── BILLBOARD SLIDESHOW ── -->
+          <div class="bb-slides-wrap">
+            <div class="bb-slides-inner" id="bbHeroInner">
 
-          <canvas id="hud-canvas"></canvas>
-          <div class="lbl-model">MODEL BUILD</div>
-          <div class="lbl-timeline">TIMELINE ——————</div>
-          <div class="bb-badge"><div class="blink"></div><span>TRANSITIONING</span></div>
-          <div class="bb-playing">'PLAYING'</div>
+              <!-- Slide 1: Billboard Advertising -->
+              <div class="bb-slide-item s1">
+                <div class="sl-content">
+                  <div class="sl-left">
+                    <div class="sl-tag tg">Prime Outdoor Media</div>
+                    <div class="sl-acc"></div>
+                    <div class="sl-h"><span style="color:#fff">Nassau's Most </span><span style="color:#c5a059">Unmissable</span><br><span style="color:#fff">Billboards.</span></div>
+                    <div class="sl-p">Strategically placed at the highest-traffic intersections across Nassau & Grand Bahama. Your brand — seen by thousands, every single day.</div>
+                    <button class="sl-btn" onclick="location.href='consultation.html'">Claim Your Spot</button>
+                  </div>
+                  <div class="sl-right">
+                    <div class="sl-stat"><div class="sl-num">100K+</div><div class="sl-lbl">Weekly Eyes</div></div>
+                    <div class="sl-stat"><div class="sl-num">24/7</div><div class="sl-lbl">Non-Stop</div></div>
+                    <div class="sl-stat"><div class="sl-num">$690</div><div class="sl-lbl">From/Month</div></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Slide 2: High Traffic -->
+              <div class="bb-slide-item s2">
+                <div class="sl-content">
+                  <div class="sl-left">
+                    <div class="sl-tag tgn">High-Traffic Locations</div>
+                    <div class="sl-acc" style="background:linear-gradient(90deg,#50c878,transparent)"></div>
+                    <div class="sl-h"><span style="color:#50c878">Roundabouts.</span> <span style="color:#fff">Corridors.</span><br><span style="color:#fff">Can't-Miss </span><span style="color:#c5a059">Zones.</span></div>
+                    <div class="sl-p">Every MediaBox billboard sits at a chokepoint where traffic has no choice but to stop and look. Morning rush, afternoon shoppers, evening commuters — all yours.</div>
+                    <button class="sl-btn" onclick="location.href='consultation.html'">See Locations</button>
+                  </div>
+                  <div class="sl-right">
+                    <div class="sl-stat" style="border-top-color:#50c878"><div class="sl-num" style="color:#50c878">10+</div><div class="sl-lbl">Prime Spots</div></div>
+                    <div class="sl-stat" style="border-top-color:#50c878"><div class="sl-num" style="color:#50c878">#1</div><div class="sl-lbl">Bahamas OOH</div></div>
+                    <div class="sl-stat" style="border-top-color:#50c878"><div class="sl-num" style="color:#50c878">3–5</div><div class="sl-lbl">Days to Live</div></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Slide 3: Franchise -->
+              <div class="bb-slide-item s3">
+                <div class="sl-content">
+                  <div class="sl-left">
+                    <div class="sl-tag ta">Billboard Franchise</div>
+                    <div class="sl-acc" style="background:linear-gradient(90deg,#f0b432,transparent)"></div>
+                    <div class="sl-h"><span style="color:#fff">Own a Billboard.</span><br><span style="color:#f0b432">Earn Every</span> <span style="color:#fff">Month.</span></div>
+                    <div class="sl-p">Become a MediaBox franchisee. We handle site selection, installation, clients & maintenance. You collect passive revenue from day one.</div>
+                    <button class="sl-btn" style="background:linear-gradient(135deg,#f0b432,#fcd97a)" onclick="location.href='consultation.html'">Become a Franchisee</button>
+                  </div>
+                  <div class="sl-right">
+                    <div class="sl-stat" style="border-top-color:#f0b432"><div class="sl-num" style="color:#f0b432">$690+</div><div class="sl-lbl">Revenue/Mo</div></div>
+                    <div class="sl-stat" style="border-top-color:#f0b432"><div class="sl-num" style="color:#f0b432">0</div><div class="sl-lbl">Hassle</div></div>
+                    <div class="sl-stat" style="border-top-color:#f0b432"><div class="sl-num" style="color:#f0b432">∞</div><div class="sl-lbl">Scalable</div></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Slide 4: MediaBook -->
+              <div class="bb-slide-item s4">
+                <div class="sl-content">
+                  <div class="sl-left">
+                    <div class="sl-tag tp">Corporate Identity</div>
+                    <div class="sl-acc" style="background:linear-gradient(90deg,#a064f0,transparent)"></div>
+                    <div class="sl-h"><span style="color:#fff">Your Brand.</span><br><span style="color:#a064f0">Unforgettable</span> <span style="color:#c5a059">MediaBook.</span></div>
+                    <div class="sl-p">Walk into every room with a MediaBook that commands respect. Premium printed, fully customized — the leave-behind that closes deals.</div>
+                    <button class="sl-btn" style="background:linear-gradient(135deg,#a064f0,#c89ef8);color:#fff" onclick="location.href='consultation.html'">Order Your MediaBook</button>
+                  </div>
+                  <div class="sl-right">
+                    <div class="sl-stat" style="border-top-color:#a064f0"><div class="sl-num" style="color:#a064f0">100%</div><div class="sl-lbl">Custom</div></div>
+                    <div class="sl-stat" style="border-top-color:#a064f0"><div class="sl-num" style="color:#a064f0">PRO</div><div class="sl-lbl">Print Quality</div></div>
+                    <div class="sl-stat" style="border-top-color:#a064f0"><div class="sl-num" style="color:#a064f0">Fast</div><div class="sl-lbl">Turnaround</div></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Slide 5: Brand & Web -->
+              <div class="bb-slide-item s5">
+                <div class="sl-content">
+                  <div class="sl-left">
+                    <div class="sl-tag tc">Full-Service Media Partner</div>
+                    <div class="sl-acc" style="background:linear-gradient(90deg,#00e5ff,transparent)"></div>
+                    <div class="sl-h"><span style="color:#00e5ff">Strategy.</span> <span style="color:#fff">Websites.</span><br><span style="color:#c5a059">Brands That</span> <span style="color:#fff">Sell.</span></div>
+                    <div class="sl-p">From brand identity to high-converting websites and full digital strategy — MediaBox is your all-in-one growth partner in the Bahamas. Stop blending in.</div>
+                    <button class="sl-btn" onclick="location.href='consultation.html'">Get a Free Consultation</button>
+                  </div>
+                  <div class="sl-right">
+                    <div class="sl-stat" style="border-top-color:#00e5ff"><div class="sl-num" style="color:#00e5ff">6+</div><div class="sl-lbl">Services</div></div>
+                    <div class="sl-stat" style="border-top-color:#00e5ff"><div class="sl-num" style="color:#00e5ff">1</div><div class="sl-lbl">Partner. Us.</div></div>
+                    <div class="sl-stat" style="border-top-color:#00e5ff"><div class="sl-num" style="color:#00e5ff">0</div><div class="sl-lbl">Compromises</div></div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Dots -->
+            <div class="bb-sdots">
+              <button class="bb-sdot on" onclick="bbHeroGo(0)"></button>
+              <button class="bb-sdot" onclick="bbHeroGo(1)"></button>
+              <button class="bb-sdot" onclick="bbHeroGo(2)"></button>
+              <button class="bb-sdot" onclick="bbHeroGo(3)"></button>
+              <button class="bb-sdot" onclick="bbHeroGo(4)"></button>
+            </div>
+          </div>
+          <!-- ── END SLIDESHOW ── -->
+
         </div>
 
         <!-- Truss + poles SVG -->
         <svg class="bb-support" viewBox="0 0 1000 140" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="height:140px;">
           <defs>
             <linearGradient id="poleGrad" x1="0" y1="0" x2="1" y2="0">
-              <stop offset="0%" stop-color="#1a1a1a"/>
-              <stop offset="20%" stop-color="#484848"/>
-              <stop offset="50%" stop-color="#606060"/>
-              <stop offset="80%" stop-color="#3a3a3a"/>
-              <stop offset="100%" stop-color="#181818"/>
+              <stop offset="0%" stop-color="#1a1a1a"/><stop offset="20%" stop-color="#484848"/><stop offset="50%" stop-color="#606060"/><stop offset="80%" stop-color="#3a3a3a"/><stop offset="100%" stop-color="#181818"/>
             </linearGradient>
             <linearGradient id="beamGrad" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="#5a5a5a"/>
-              <stop offset="50%" stop-color="#383838"/>
-              <stop offset="100%" stop-color="#1e1e1e"/>
+              <stop offset="0%" stop-color="#5a5a5a"/><stop offset="50%" stop-color="#383838"/><stop offset="100%" stop-color="#1e1e1e"/>
             </linearGradient>
           </defs>
-
-          <!-- horizontal top beam (catwalk) spanning full width -->
           <rect x="0" y="0" width="1000" height="16" fill="url(#beamGrad)"/>
-          <!-- catwalk railing slots -->
           <rect x="0" y="4" width="1000" height="3" fill="rgba(255,255,255,0.07)"/>
-
-          <!-- TRUSS: diagonal bracing between the two poles -->
           <line x1="22" y1="16" x2="22" y2="136" stroke="#2e2e2e" stroke-width="6"/>
           <line x1="70" y1="16" x2="22" y2="76"  stroke="#3a3a3a" stroke-width="4"/>
           <line x1="22" y1="16" x2="70" y2="76"  stroke="#333"    stroke-width="4"/>
           <line x1="70" y1="76" x2="22" y2="136" stroke="#3a3a3a" stroke-width="4"/>
-          <line x1="22" y1="76" x2="70" y2="136"  stroke="#333"    stroke-width="4"/>
+          <line x1="22" y1="76" x2="70" y2="136" stroke="#333"    stroke-width="4"/>
           <line x1="22" y1="136" x2="70" y2="136" stroke="#2a2a2a" stroke-width="5"/>
-
           <line x1="978" y1="16" x2="978" y2="136" stroke="#2e2e2e" stroke-width="6"/>
           <line x1="930" y1="16" x2="978" y2="76"  stroke="#3a3a3a" stroke-width="4"/>
           <line x1="978" y1="16" x2="930" y2="76"  stroke="#333"    stroke-width="4"/>
           <line x1="930" y1="76" x2="978" y2="136" stroke="#3a3a3a" stroke-width="4"/>
-          <line x1="978" y1="76" x2="930" y2="136"  stroke="#333"    stroke-width="4"/>
+          <line x1="978" y1="76" x2="930" y2="136" stroke="#333"    stroke-width="4"/>
           <line x1="930" y1="136" x2="978" y2="136" stroke="#2a2a2a" stroke-width="5"/>
-
-          <rect x="6" y="16" width="32" height="122" fill="url(#poleGrad)" rx="2"/>
-          <rect x="0" y="130" width="44" height="10" fill="#1e1e1e" rx="1"/>
-
+          <rect x="6"   y="16" width="32" height="122" fill="url(#poleGrad)" rx="2"/>
+          <rect x="0"   y="130" width="44" height="10" fill="#1e1e1e" rx="1"/>
           <rect x="962" y="16" width="32" height="122" fill="url(#poleGrad)" rx="2"/>
           <rect x="956" y="130" width="44" height="10" fill="#1e1e1e" rx="1"/>
-
-          <circle cx="30" cy="8" r="4" fill="#222" stroke="#555" stroke-width="1"/>
+          <circle cx="30"  cy="8" r="4" fill="#222" stroke="#555" stroke-width="1"/>
           <circle cx="970" cy="8" r="4" fill="#222" stroke="#555" stroke-width="1"/>
         </svg>
-
       </div>
     </div>
   </section>
 
+  <!-- SERVICES -->
   <section class="services" id="services">
     <h2 class="sec-title">Our Services</h2>
     <div class="svc-grid">
@@ -817,8 +486,6 @@ footer { background:rgba(255,255,255,0.9); color:#333; padding:4rem 4% 2rem; bor
   <!-- MARKETING PRODUCTS -->
   <section class="mktg-section">
     <div class="mktg-inner">
-
-      <!-- MEDIABOOK ROW -->
       <div class="mktg-row">
         <div class="mktg-img">
           <img src="mediabook.png" alt="MediaBook">
@@ -840,7 +507,6 @@ footer { background:rgba(255,255,255,0.9); color:#333; padding:4rem 4% 2rem; bor
         </div>
       </div>
 
-      <!-- BANNERS ROW -->
       <div class="mktg-row reverse">
         <div class="mktg-img" style="display:flex;align-items:center;justify-content:center;padding:2rem 0;">
           <img src="Banner.png" alt="Pull-Up Banners" style="width:100%;max-width:620px;height:460px;object-fit:contain;display:block;mix-blend-mode:multiply;">
@@ -861,45 +527,35 @@ footer { background:rgba(255,255,255,0.9); color:#333; padding:4rem 4% 2rem; bor
           <button class="consult-btn" onclick="location.href='consultation.html'">ORDER YOUR BANNERS</button>
         </div>
       </div>
-
     </div>
   </section>
 
-  <!-- BILLBOARD OPPORTUNITY SECTIONS -->
+  <!-- BILLBOARD OPPORTUNITIES -->
   <section class="mktg-section">
     <div class="mktg-inner">
 
-      <!-- BECOME A FRANCHISEE -->
       <div class="mktg-row">
         <div class="mktg-img" style="display:flex;align-items:center;justify-content:center;padding:2rem 0;">
           <svg width="100%" viewBox="0 0 500 420" xmlns="http://www.w3.org/2000/svg" style="max-width:480px;">
             <defs>
-              <linearGradient id="poleG1" x1="0" y1="0" x2="1" y2="0">
-                <stop offset="0%" stop-color="#1c1c1c"/><stop offset="25%" stop-color="#4a4a4a"/><stop offset="50%" stop-color="#5e5e5e"/><stop offset="75%" stop-color="#3a3a3a"/><stop offset="100%" stop-color="#1a1a1a"/>
-              </linearGradient>
-              <linearGradient id="frameTopG1" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stop-color="#5a5a5a"/><stop offset="100%" stop-color="#2e2e2e"/>
-              </linearGradient>
-              <linearGradient id="frameSideG1" x1="0" y1="0" x2="1" y2="0">
-                <stop offset="0%" stop-color="#4a4a4a"/><stop offset="40%" stop-color="#383838"/><stop offset="100%" stop-color="#1e1e1e"/>
-              </linearGradient>
-              <linearGradient id="frameBottomG1" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stop-color="#2a2a2a"/><stop offset="100%" stop-color="#141414"/>
-              </linearGradient>
+              <linearGradient id="poleG1" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#1c1c1c"/><stop offset="25%" stop-color="#4a4a4a"/><stop offset="50%" stop-color="#5e5e5e"/><stop offset="75%" stop-color="#3a3a3a"/><stop offset="100%" stop-color="#1a1a1a"/></linearGradient>
+              <linearGradient id="frameTopG1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#5a5a5a"/><stop offset="100%" stop-color="#2e2e2e"/></linearGradient>
+              <linearGradient id="frameSideG1" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#4a4a4a"/><stop offset="40%" stop-color="#383838"/><stop offset="100%" stop-color="#1e1e1e"/></linearGradient>
+              <linearGradient id="frameBottomG1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#2a2a2a"/><stop offset="100%" stop-color="#141414"/></linearGradient>
             </defs>
             <ellipse cx="250" cy="375" rx="115" ry="10" fill="rgba(0,0,0,0.18)"/>
             <polygon points="212,265 228,265 220,360 204,360" fill="#1e1e1e"/>
             <polygon points="272,265 288,265 296,360 280,360" fill="#1e1e1e"/>
             <polygon points="234,265 266,265 258,358 242,358" fill="url(#poleG1)"/>
             <rect x="218" y="355" width="64" height="10" rx="1" fill="#2a2a2a"/>
-            <rect x="210" y="363" width="80" height="7" rx="1" fill="#222"/>
+            <rect x="210" y="363" width="80" height="7"  rx="1" fill="#222"/>
             <rect x="200" y="368" width="100" height="5" rx="1" fill="#181818"/>
-            <rect x="44" y="50" width="424" height="220" rx="4" fill="#111"/>
-            <rect x="38" y="40" width="426" height="18" rx="3" fill="url(#frameTopG1)"/>
-            <rect x="38" y="252" width="426" height="16" rx="3" fill="url(#frameBottomG1)"/>
-            <rect x="38" y="40" width="16" height="228" rx="3" fill="url(#frameSideG1)"/>
-            <rect x="448" y="40" width="16" height="228" rx="3" fill="#1e1e1e"/>
-            <rect x="54" y="58" width="394" height="194" fill="#f4f5f6"/>
+            <rect x="44"  y="50"  width="424" height="220" rx="4" fill="#111"/>
+            <rect x="38"  y="40"  width="426" height="18"  rx="3" fill="url(#frameTopG1)"/>
+            <rect x="38"  y="252" width="426" height="16"  rx="3" fill="url(#frameBottomG1)"/>
+            <rect x="38"  y="40"  width="16"  height="228" rx="3" fill="url(#frameSideG1)"/>
+            <rect x="448" y="40"  width="16"  height="228" rx="3" fill="#1e1e1e"/>
+            <rect x="54"  y="58"  width="394" height="194" fill="#f4f5f6"/>
             <text x="251" y="152" text-anchor="middle" font-family="Arial Black,Arial,sans-serif" font-weight="900" font-size="20" fill="#c5a059" letter-spacing="2">LEASE</text>
             <text x="251" y="176" text-anchor="middle" font-family="Arial,sans-serif" font-size="11" fill="#aaa" letter-spacing="2">MEDIABOX BAHAMAS</text>
           </svg>
@@ -921,18 +577,17 @@ footer { background:rgba(255,255,255,0.9); color:#333; padding:4rem 4% 2rem; bor
         </div>
       </div>
 
-      <!-- PURCHASE A BILLBOARD -->
       <div class="mktg-row reverse">
         <div class="mktg-img bb-carousel-wrap">
           <div class="bb-carousel">
             <div class="bb-track-clip">
-            <div class="bb-track" id="bbTrack2">
-              <div class="bb-slide"><img src="Billboard1.png" alt="MediaBox Billboard Type 1"></div>
-              <div class="bb-slide"><img src="Billboard2.png" alt="MediaBox Billboard Type 2"></div>
-              <div class="bb-slide"><img src="Billboard3.png" alt="MediaBox Billboard Type 3"></div>
-              <div class="bb-slide"><img src="Billboard4.png" alt="MediaBox Billboard Type 4"></div>
-              <div class="bb-slide"><img src="Billboard5.png" alt="MediaBox Billboard Type 5"></div>
-            </div>
+              <div class="bb-track" id="bbTrack2">
+                <div class="bb-slide"><img src="Billboard1.png" alt="MediaBox Billboard Type 1"></div>
+                <div class="bb-slide"><img src="Billboard2.png" alt="MediaBox Billboard Type 2"></div>
+                <div class="bb-slide"><img src="Billboard3.png" alt="MediaBox Billboard Type 3"></div>
+                <div class="bb-slide"><img src="Billboard4.png" alt="MediaBox Billboard Type 4"></div>
+                <div class="bb-slide"><img src="Billboard5.png" alt="MediaBox Billboard Type 5"></div>
+              </div>
             </div>
             <button class="bb-arrow bb-prev" id="bbPrev2" aria-label="Previous">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><polyline points="15 18 9 12 15 6"/></svg>
@@ -955,7 +610,7 @@ footer { background:rgba(255,255,255,0.9); color:#333; padding:4rem 4% 2rem; bor
           <p>Why pay rent when you can own the asset outright? Purchase your own MediaBox solar or digital billboard and turn it into a long-term revenue-generating machine. Your billboard, your rules, your returns.</p>
           <p>MediaBox manages the full process, from sourcing the perfect high-traffic location to professional installation and ongoing technical support. You sit back and watch the income roll in.</p>
           <ul class="mktg-features">
-            <li>One-time purchase no ongoing lease payments</li>
+            <li>One-time purchase — no ongoing lease payments</li>
             <li>Full site survey & location selection by our team</li>
             <li>Professional installation handled by MediaBox</li>
             <li>Ongoing maintenance & tech support packages available</li>
@@ -969,6 +624,7 @@ footer { background:rgba(255,255,255,0.9); color:#333; padding:4rem 4% 2rem; bor
     </div>
   </section>
 
+  <!-- WHY ADVERTISE WITH US -->
   <section class="video-section">
     <div class="video-inner">
       <div class="iphone-wrap">
@@ -987,32 +643,29 @@ footer { background:rgba(255,255,255,0.9); color:#333; padding:4rem 4% 2rem; bor
         <span class="eyebrow">Why Advertise With Us</span>
         <h2>Your Brand. <span>Maximum</span> Exposure. Zero Compromise.</h2>
         <p>MediaBox billboards are strategically positioned at the highest-traffic intersections, roundabouts, and commercial corridors across Nassau and Grand Bahama, ensuring your message is seen by tens of thousands of commuters, shoppers, and visitors every single day.</p>
-        <p>Our solar-powered and digital displays operate 24 hours a day, delivering your campaign to morning rush-hour traffic, afternoon shoppers, and evening commuters without interruption. This isn't just advertising, it's unavoidable brand presence.</p>
+        <p>Our solar-powered and digital displays operate 24 hours a day, delivering your campaign to morning rush-hour traffic, afternoon shoppers, and evening commuters without interruption. This isn't just advertising — it's unavoidable brand presence.</p>
         <div class="video-stats">
           <div class="stat"><div class="num">100K+</div><div class="label">Weekly Impressions</div></div>
-          <div class="stat"><div class="num">24/7</div><div class="label">Continuous Display Operation</div></div>
-          <div class="stat"><div class="num">10+</div><div class="label">Premium Nassau Locations</div></div>
-          <div class="stat"><div class="num">$690</div><div class="label">Starting From Per Month</div></div>
+          <div class="stat"><div class="num">24/7</div><div class="label">Continuous Display</div></div>
+          <div class="stat"><div class="num">10+</div><div class="label">Premium Locations</div></div>
+          <div class="stat"><div class="num">$690</div><div class="label">Starting From/Month</div></div>
         </div>
         <button class="consult-btn" onclick="location.href='consultation.html'">GET YOUR SPOT TODAY</button>
       </div>
     </div>
   </section>
 
+  <!-- PORTFOLIO -->
   <section class="portfolio" id="portfolio">
     <h2 class="sec-title">Selected Client Portfolio</h2>
     <div class="port-track">
-
       <article class="port-item">
-        <div class="prod-media">
-          <img src="BICCU.jpg" alt="BICCU Mediabook">
-        </div>
+        <div class="prod-media"><img src="BICCU.jpg" alt="BICCU Mediabook"></div>
         <div class="port-info"><h4>Corporate Marketing: Mediabook</h4><p>BICCU</p></div>
       </article>
-
       <article class="port-item">
         <div class="prod-media">
-          <img src="Nestle.webp" alt="Private Events">
+          <img src="Nestle.webp" alt="Nestle Billboard">
           <video muted loop playsinline src="Nestle-Video.MP4"></video>
           <div class="media-toggle">
             <button class="active" onclick="showPhoto(this)">PHOTO</button>
@@ -1021,19 +674,17 @@ footer { background:rgba(255,255,255,0.9); color:#333; padding:4rem 4% 2rem; bor
         </div>
         <div class="port-info"><h4>Corporate Campaign: Billboard</h4><p>NESTLE</p></div>
       </article>
-
       <article class="port-item">
         <div class="prod-media">
-          <img src="Ford2.webp" alt="Billboard Campaign">
+          <img src="Ford2.webp" alt="Ford Billboard">
           <video muted loop playsinline src="billboard.mp4"></video>
           <div class="media-toggle">
             <button class="active" onclick="showPhoto(this)">PHOTO</button>
             <button onclick="showVideo(this)">VIDEO</button>
           </div>
         </div>
-        <div class="port-info"><h4> Corporate Advertising:</h4><p>FORD</p></div>
+        <div class="port-info"><h4>Corporate Advertising</h4><p>FORD</p></div>
       </article>
-
       <article class="port-item">
         <div class="prod-media">
           <img src="theatre.jpg" alt="Private Events">
@@ -1045,104 +696,66 @@ footer { background:rgba(255,255,255,0.9); color:#333; padding:4rem 4% 2rem; bor
         </div>
         <div class="port-info"><h4>Private Events</h4><p>Sold-Out Theatre</p></div>
       </article>
-
     </div>
   </section>
 
-  <!-- FAQ SECTION -->
+  <!-- FAQ -->
   <section class="faq-section" id="faq">
     <h2 class="sec-title">Frequently Asked Questions</h2>
     <div class="faq-inner">
       <div class="faq-list">
-
         <div class="faq-item">
           <button class="faq-question" onclick="toggleFaq(this)">
             <span>How much does it cost to advertise on a MediaBox billboard?</span>
-            <div class="faq-icon">
-              <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-            </div>
+            <div class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
           </button>
-          <div class="faq-answer">
-            <p>Billboard advertising starts from $690 per month. Pricing varies depending on the location, display size, and campaign duration. We offer both monthly and annual contracts — annual contracts include preferential rates. Contact us for a customized quote tailored to your budget and goals.</p>
-          </div>
+          <div class="faq-answer"><p>Billboard advertising starts from $690 per month. Pricing varies depending on the location, display size, and campaign duration. We offer both monthly and annual contracts — annual contracts include preferential rates. Contact us for a customized quote tailored to your budget and goals.</p></div>
         </div>
-
         <div class="faq-item">
           <button class="faq-question" onclick="toggleFaq(this)">
             <span>Where are MediaBox billboards located in the Bahamas?</span>
-            <div class="faq-icon">
-              <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-            </div>
+            <div class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
           </button>
-          <div class="faq-answer">
-            <p>We have 10+ premium billboard locations positioned at the highest-traffic intersections, roundabouts, and commercial corridors across Nassau and Grand Bahama. Each location is strategically selected to maximize daily impressions for your campaign.</p>
-          </div>
+          <div class="faq-answer"><p>We have 10+ premium billboard locations positioned at the highest-traffic intersections, roundabouts, and commercial corridors across Nassau and Grand Bahama. Each location is strategically selected to maximize daily impressions for your campaign.</p></div>
         </div>
-
         <div class="faq-item">
           <button class="faq-question" onclick="toggleFaq(this)">
             <span>How long does it take to get my advertisement live on a billboard?</span>
-            <div class="faq-icon">
-              <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-            </div>
+            <div class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
           </button>
-          <div class="faq-answer">
-            <p>Once your artwork is approved and your contract is signed, we can typically get your campaign live within 3–5 business days for digital displays. Our team handles all technical setup and scheduling, so you don't have to lift a finger.</p>
-          </div>
+          <div class="faq-answer"><p>Once your artwork is approved and your contract is signed, we can typically get your campaign live within 3–5 business days for digital displays. Our team handles all technical setup and scheduling, so you don't have to lift a finger.</p></div>
         </div>
-
         <div class="faq-item">
           <button class="faq-question" onclick="toggleFaq(this)">
             <span>Can MediaBox design my billboard artwork for me?</span>
-            <div class="faq-icon">
-              <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-            </div>
+            <div class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
           </button>
-          <div class="faq-answer">
-            <p>Absolutely. Our in-house creative team can design high-impact billboard artwork aligned with your brand identity. We also offer video production for digital display campaigns. If you already have artwork, we'll review it and make sure it meets display specifications.</p>
-          </div>
+          <div class="faq-answer"><p>Absolutely. Our in-house creative team can design high-impact billboard artwork aligned with your brand identity. We also offer video production for digital display campaigns. If you already have artwork, we'll review it and make sure it meets display specifications.</p></div>
         </div>
-
         <div class="faq-item">
           <button class="faq-question" onclick="toggleFaq(this)">
             <span>What is the MediaBox franchise opportunity?</span>
-            <div class="faq-icon">
-              <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-            </div>
+            <div class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
           </button>
-          <div class="faq-answer">
-            <p>Our franchise model allows you to own a MediaBox billboard location and earn advertising revenue from day one. MediaBox handles site selection, installation, maintenance, and client onboarding — you simply collect the returns. Revenue typically starts from $690 per month per board, and you can scale by owning a full network of locations.</p>
-          </div>
+          <div class="faq-answer"><p>Our franchise model allows you to own a MediaBox billboard location and earn advertising revenue from day one. MediaBox handles site selection, installation, maintenance, and client onboarding — you simply collect the returns. Revenue typically starts from $690 per month per board, and you can scale by owning a full network of locations.</p></div>
         </div>
-
         <div class="faq-item">
           <button class="faq-question" onclick="toggleFaq(this)">
             <span>What other marketing services does MediaBox offer?</span>
-            <div class="faq-icon">
-              <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-            </div>
+            <div class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
           </button>
-          <div class="faq-answer">
-            <p>Beyond billboard advertising, MediaBox offers a full suite of services including video production, brand strategy, digital consultancy, website development, pull-up banners, MediaBooks (corporate profile books), and complete marketing campaign management. We are your all-in-one media partner in the Bahamas.</p>
-          </div>
+          <div class="faq-answer"><p>Beyond billboard advertising, MediaBox offers a full suite of services including video production, brand strategy, digital consultancy, website development, pull-up banners, MediaBooks (corporate profile books), and complete marketing campaign management. We are your all-in-one media partner in the Bahamas.</p></div>
         </div>
-
         <div class="faq-item">
           <button class="faq-question" onclick="toggleFaq(this)">
             <span>How do I get started with MediaBox?</span>
-            <div class="faq-icon">
-              <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-            </div>
+            <div class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
           </button>
-          <div class="faq-answer">
-            <p>Simply request a consultation using the button on our website. One of our team members will reach out to understand your goals, walk you through available locations and packages, and put together a proposal tailored to your business. You can also reach us directly at Mediaboxbahamas@gmail.com or call +1 (242) 433-2528.</p>
-          </div>
+          <div class="faq-answer"><p>Simply request a consultation using the button on our website. One of our team members will reach out to understand your goals, walk you through available locations and packages, and put together a proposal tailored to your business. You can also reach us directly at Mediaboxbahamas@gmail.com or call +1 (242) 433-2528.</p></div>
         </div>
-
       </div>
     </div>
   </section>
-
 </main>
 
 <footer>
@@ -1166,106 +779,77 @@ footer { background:rgba(255,255,255,0.9); color:#333; padding:4rem 4% 2rem; bor
 </footer>
 
 <script>
+/* ── Background Canvas ── */
 const bgCanvas = document.getElementById('bg-canvas');
 bgCanvas.style.cssText = 'position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:0;pointer-events:none;';
 const bgCtx = bgCanvas.getContext('2d');
 function resizeBg() { bgCanvas.width = innerWidth; bgCanvas.height = innerHeight; }
 resizeBg();
 window.addEventListener('resize', resizeBg);
-let t = 0;
 function drawBg() {
-  t++;
   const W = bgCanvas.width, H = bgCanvas.height;
-  bgCtx.clearRect(0, 0, W, H);
-  const bgGrad = bgCtx.createLinearGradient(0, 0, W, H);
-  bgGrad.addColorStop(0,'#dde8ef'); bgGrad.addColorStop(0.4,'#e8eef3');
-  bgGrad.addColorStop(0.7,'#eaece9'); bgGrad.addColorStop(1,'#dce8e2');
-  bgCtx.fillStyle = bgGrad; bgCtx.fillRect(0,0,W,H);
+  bgCtx.clearRect(0,0,W,H);
+  const g = bgCtx.createLinearGradient(0,0,W,H);
+  g.addColorStop(0,'#dde8ef'); g.addColorStop(0.4,'#e8eef3');
+  g.addColorStop(0.7,'#eaece9'); g.addColorStop(1,'#dce8e2');
+  bgCtx.fillStyle = g; bgCtx.fillRect(0,0,W,H);
   requestAnimationFrame(drawBg);
 }
 drawBg();
 
-const hudEl = document.getElementById('hud-canvas');
-const hudCtx = hudEl.getContext('2d');
-function initHud() {
-  const tv = document.querySelector('.bb-screen');
-  if (!tv) return;
-  const r = tv.getBoundingClientRect();
-  hudEl.width = r.width * 0.38; hudEl.height = r.height;
-}
-window.addEventListener('resize', initHud);
-setTimeout(initHud, 100);
-function drawHud() {
-  const W = hudEl.width, H = hudEl.height;
-  if (!W || !H) { requestAnimationFrame(drawHud); return; }
-  hudCtx.clearRect(0, 0, W, H);
-  const now = Date.now() / 1000;
-  const cx = W * 0.5, cy = H * 0.35;
-  hudCtx.save(); hudCtx.strokeStyle = 'rgba(0,229,255,0.5)'; hudCtx.lineWidth = 0.7;
-  hudCtx.beginPath(); hudCtx.ellipse(cx,cy,W*0.42,H*0.18,0,0,Math.PI*2); hudCtx.stroke();
-  hudCtx.beginPath(); hudCtx.ellipse(cx,cy,W*0.28,H*0.12,0,0,Math.PI*2); hudCtx.stroke();
-  hudCtx.strokeStyle = 'rgba(0,229,255,0.4)';
-  hudCtx.beginPath(); hudCtx.moveTo(cx-W*0.44,cy); hudCtx.lineTo(cx+W*0.44,cy); hudCtx.stroke();
-  hudCtx.beginPath(); hudCtx.moveTo(cx,cy-H*0.2); hudCtx.lineTo(cx,cy+H*0.2); hudCtx.stroke();
-  hudCtx.restore();
-  const nodes = [[cx,cy],[cx-W*0.18,cy-H*0.04],[cx+W*0.2,cy-H*0.03],[cx-W*0.1,cy+H*0.05],[cx+W*0.12,cy-H*0.07],[cx-W*0.22,cy-H*0.09]];
-  hudCtx.save(); hudCtx.fillStyle = 'rgba(0,229,255,0.9)';
-  nodes.forEach(([nx,ny],i) => {
-    const pulse = 1 + Math.sin(now*2+i*1.2)*0.3;
-    hudCtx.beginPath(); hudCtx.arc(nx,ny,(i===0?3.5:2.2)*pulse,0,Math.PI*2); hudCtx.fill();
-  });
-  hudCtx.restore();
-  hudCtx.save(); hudCtx.strokeStyle = 'rgba(0,229,255,0.6)'; hudCtx.lineWidth = 0.85;
-  nodes.slice(1).forEach(([nx,ny]) => { hudCtx.beginPath(); hudCtx.moveTo(nodes[0][0],nodes[0][1]); hudCtx.lineTo(nx,ny); hudCtx.stroke(); });
-  hudCtx.restore();
-  hudCtx.save(); hudCtx.strokeStyle = 'rgba(0,229,255,0.35)'; hudCtx.lineWidth = 1.2;
-  const m=14,len=22;
-  [[m,m,1,1],[W-m,m,-1,1],[m,H-m,1,-1],[W-m,H-m,-1,-1]].forEach(([x,y,sx,sy]) => {
-    hudCtx.beginPath(); hudCtx.moveTo(x,y); hudCtx.lineTo(x+sx*len,y); hudCtx.stroke();
-    hudCtx.beginPath(); hudCtx.moveTo(x,y); hudCtx.lineTo(x,y+sy*len); hudCtx.stroke();
-  });
-  hudCtx.restore();
-  hudCtx.save(); hudCtx.strokeStyle = 'rgba(0,229,255,0.18)'; hudCtx.lineWidth = 0.5;
-  [[m,H*0.62,W*0.45,H*0.62],[m,H*0.68,W*0.38,H*0.68],[m,H*0.74,W*0.52,H*0.74]].forEach(([x1,y1,x2,y2]) => {
-    hudCtx.beginPath(); hudCtx.moveTo(x1,y1); hudCtx.lineTo(x2,y2); hudCtx.stroke();
-  });
-  hudCtx.restore();
-  requestAnimationFrame(drawHud);
-}
-drawHud();
+/* ── Hero Billboard Slideshow ── */
+(function(){
+  var cur = 0, total = 5, timer;
+  var inner = document.getElementById('bbHeroInner');
+  var dots  = document.querySelectorAll('.bb-sdot');
+  window.bbHeroGo = function(n) {
+    cur = (n + total) % total;
+    inner.style.transform = 'translateX(-' + (cur * 100) + '%)';
+    dots.forEach(function(d,i){ d.classList.toggle('on', i === cur); });
+  };
+  function start() { timer = setInterval(function(){ bbHeroGo(cur + 1); }, 4500); }
+  start();
+})();
 
+/* ── Mobile Nav ── */
 const hamburger = document.getElementById('hamburger');
-const mainNav = document.getElementById('main-nav');
+const mainNav   = document.getElementById('main-nav');
 if (hamburger && mainNav) {
   hamburger.addEventListener('click', () => { hamburger.classList.toggle('open'); mainNav.classList.toggle('open'); });
   mainNav.querySelectorAll('a').forEach(link => { link.addEventListener('click', () => { hamburger.classList.remove('open'); mainNav.classList.remove('open'); }); });
 }
 
+/* ── Splash ── */
 function dismissSplash() {
   setTimeout(() => {
-    const splash = document.getElementById('splash');
-    if (splash) splash.classList.add('hidden');
+    const s = document.getElementById('splash');
+    if (s) s.classList.add('hidden');
     document.body.classList.remove('no-scroll');
   }, 1600);
 }
+if (document.readyState === 'complete') { dismissSplash(); }
+else {
+  window.addEventListener('load', dismissSplash);
+  setTimeout(() => { const s = document.getElementById('splash'); if(s) s.classList.add('hidden'); document.body.classList.remove('no-scroll'); }, 5000);
+}
 
+/* ── Portfolio Photo/Video Toggle ── */
 function showPhoto(btn) {
-  const card = btn.closest('.prod-card, .port-item');
+  const card = btn.closest('.port-item');
   card.classList.remove('playing');
-  const vid = card.querySelector('video');
-  vid.pause();
+  card.querySelector('video').pause();
   btn.classList.add('active');
   btn.nextElementSibling.classList.remove('active');
 }
 function showVideo(btn) {
-  const card = btn.closest('.prod-card, .port-item');
+  const card = btn.closest('.port-item');
   card.classList.add('playing');
-  const vid = card.querySelector('video');
-  vid.play();
+  card.querySelector('video').play();
   btn.classList.add('active');
   btn.previousElementSibling.classList.remove('active');
 }
 
+/* ── FAQ ── */
 function toggleFaq(btn) {
   const item = btn.parentElement;
   const isOpen = item.classList.contains('open');
@@ -1273,24 +857,16 @@ function toggleFaq(btn) {
   if (!isOpen) item.classList.add('open');
 }
 
-if (document.readyState === 'complete') { dismissSplash(); }
-else {
-  window.addEventListener('load', dismissSplash);
-  setTimeout(() => { const s = document.getElementById('splash'); if(s) s.classList.add('hidden'); document.body.classList.remove('no-scroll'); }, 5000);
-}
-
-// Billboard Carousel — Own It section
+/* ── Billboard Carousel (Own It section) ── */
 (function() {
   var track = document.getElementById('bbTrack2');
   if (!track) return;
-  var dots  = document.querySelectorAll('#bbDots2 .bb-dot');
-  var total = dots.length;
-  var current = 0;
-  var autoTimer;
+  var dots = document.querySelectorAll('#bbDots2 .bb-dot');
+  var total = dots.length, current = 0, autoTimer;
   function goTo(n) {
     current = (n + total) % total;
     track.style.transform = 'translateX(-' + (current * 100) + '%)';
-    dots.forEach(function(d,i){ d.classList.toggle('active', i===current); });
+    dots.forEach(function(d,i){ d.classList.toggle('active', i === current); });
   }
   document.getElementById('bbPrev2').addEventListener('click', function(){ clearInterval(autoTimer); goTo(current-1); startAuto(); });
   document.getElementById('bbNext2').addEventListener('click', function(){ clearInterval(autoTimer); goTo(current+1); startAuto(); });
@@ -1299,40 +875,30 @@ else {
   startAuto();
 })();
 
-// Custom Cursor
+/* ── Custom Cursor ── */
 const dot  = document.getElementById('cursor-dot');
 const ring = document.getElementById('cursor-ring');
 let mouseX = 0, mouseY = 0, ringX = 0, ringY = 0;
-
 document.addEventListener('mousemove', e => {
   mouseX = e.clientX; mouseY = e.clientY;
-  dot.style.left = mouseX + 'px';
-  dot.style.top  = mouseY + 'px';
+  dot.style.left = mouseX + 'px'; dot.style.top = mouseY + 'px';
 });
-
 (function animateRing() {
   ringX += (mouseX - ringX) * 0.12;
   ringY += (mouseY - ringY) * 0.12;
-  ring.style.left = ringX + 'px';
-  ring.style.top  = ringY + 'px';
+  ring.style.left = ringX + 'px'; ring.style.top = ringY + 'px';
   requestAnimationFrame(animateRing);
 })();
-
 document.querySelectorAll('a, button').forEach(el => {
   el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
   el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
 });
-
 document.addEventListener('mousedown', () => document.body.classList.add('cursor-click'));
 document.addEventListener('mouseup',   () => document.body.classList.remove('cursor-click'));
 </script>
+
 <script type="application/ld+json">
-  {"@context": "https://schema.org",
-"@type": "Organization",
-"name": "Mediabox Bahamas",
-"url":"https://mediaboxbahamas.com",
-"logo": "https://mediaboxbahamas.com/media-logo1.png"
-}
+{"@context":"https://schema.org","@type":"Organization","name":"Mediabox Bahamas","url":"https://mediaboxbahamas.com","logo":"https://mediaboxbahamas.com/media-logo1.png"}
 </script>
 </body>
 </html>

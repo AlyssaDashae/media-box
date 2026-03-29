@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="icon" type="image/x-icon" href="favicon.ico"
-
-<meta charset="UTF-8">
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Insights & Pricing | MediaBox Bahamas</title>
 <meta name="description" content="Explore MediaBox Bahamas pricing, billboard locations, and marketing services across Nassau and the Bahamas.">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-  * { cursor: none; }
+  *, *::before, *::after { cursor: none !important; }
+  a, button, [onclick], label, select, input, textarea { cursor: none !important; }
 
 #cursor-dot {
   position: fixed;
@@ -56,7 +56,8 @@ body.cursor-click #cursor-dot  { transform: translate(-50%, -50%) scale(0.6); }
 
 @media(max-width:1024px) {
   #cursor-dot, #cursor-ring { display: none; }
-  * { cursor: auto; }
+  *, *::before, *::after { cursor: auto !important; }
+  a, button, [onclick], label, select, input, textarea { cursor: pointer !important; }
 }
 * { margin:0; padding:0; box-sizing:border-box; }
 body { font-family:'Montserrat',sans-serif; background:#e8eef2; overflow-x:hidden; }
@@ -81,10 +82,10 @@ nav li:first-child a { color:#c5a059; }
 .dd-menu a { display:block; padding:12px 18px; border-bottom:1px solid #eee; color:#333; font-size:0.8rem; font-weight:600; }
 .dd-menu a:hover { color:#c5a059; }
 .dropdown:hover .dd-menu { display:block; }
-.consult-btn { background:linear-gradient(135deg, #c5a059, #e8c87a 50%, #c5a059); background-size:200% auto; color:#0c182d; border:none; padding:0.62rem 1.3rem; font-family:'Montserrat',sans-serif; font-weight:700; font-size:0.76rem; text-transform:uppercase; letter-spacing:0.4px; border-radius:4px; cursor:pointer; transition:all 0.4s; box-shadow:0 0 0 1px rgba(197,160,89,0.6), 0 0 18px rgba(0,210,255,0.5); }
+.consult-btn { background:linear-gradient(135deg, #c5a059, #e8c87a 50%, #c5a059); background-size:200% auto; color:#0c182d; border:none; padding:0.62rem 1.3rem; font-family:'Montserrat',sans-serif; font-weight:700; font-size:0.76rem; text-transform:uppercase; letter-spacing:0.4px; border-radius:4px; cursor:none !important; transition:all 0.4s; box-shadow:0 0 0 1px rgba(197,160,89,0.6), 0 0 18px rgba(0,210,255,0.5); }
 .consult-btn:hover { background-position:right; box-shadow:0 0 0 1px #c5a059, 0 0 28px rgba(0,210,255,0.8); }
 .mobile-consult { display:none; }
-.hamburger { display:none; flex-direction:column; justify-content:center; gap:5px; background:none; border:none; cursor:pointer; padding:6px; z-index:1001; }
+.hamburger { display:none; flex-direction:column; justify-content:center; gap:5px; background:none; border:none; cursor:none !important; padding:6px; z-index:1001; }
 .hamburger span { display:block; width:24px; height:2.5px; background:#c5a059; border-radius:2px; transition:all 0.3s ease; }
 .hamburger.open span:nth-child(1) { transform:translateY(7.5px) rotate(45deg); }
 .hamburger.open span:nth-child(2) { opacity:0; }
@@ -156,7 +157,6 @@ section.content { padding:3rem 5%; max-width:1200px; margin:0 auto; }
 .web-pricing-section { padding:3rem 5%; }
 .web-pricing-inner { max-width:1200px; margin:0 auto; }
 
-/* Tier label pill */
 .tier-label { display:inline-block; font-size:0.62rem; font-weight:700; letter-spacing:2px; text-transform:uppercase; padding:4px 14px; border-radius:20px; margin-bottom:1.4rem; }
 .tier-label.one-time { background:rgba(122,184,192,0.15); color:#7ab8c0; border:1px solid rgba(122,184,192,0.4); }
 .tier-label.subscription { background:rgba(197,160,89,0.12); color:#c5a059; border:1px solid rgba(197,160,89,0.35); }
@@ -193,7 +193,7 @@ section.content { padding:3rem 5%; max-width:1200px; margin:0 auto; }
 .web-card .feat-list li.muted { color:#aaa; }
 
 .web-card .card-cta { margin-top:1.4rem; }
-.web-card .card-cta button { width:100%; background:linear-gradient(135deg,#c5a059,#e8c87a 50%,#c5a059); background-size:200% auto; color:#0c182d; border:none; padding:0.7rem 1rem; font-family:'Montserrat',sans-serif; font-weight:700; font-size:0.74rem; text-transform:uppercase; letter-spacing:0.4px; border-radius:4px; cursor:pointer; transition:all 0.4s; box-shadow:0 0 0 1px rgba(197,160,89,0.5); }
+.web-card .card-cta button { width:100%; background:linear-gradient(135deg,#c5a059,#e8c87a 50%,#c5a059); background-size:200% auto; color:#0c182d; border:none; padding:0.7rem 1rem; font-family:'Montserrat',sans-serif; font-weight:700; font-size:0.74rem; text-transform:uppercase; letter-spacing:0.4px; border-radius:4px; cursor:none !important; transition:all 0.4s; box-shadow:0 0 0 1px rgba(197,160,89,0.5); }
 .web-card .card-cta button:hover { background-position:right; box-shadow:0 0 0 1px #c5a059, 0 0 20px rgba(0,210,255,0.6); }
 .web-card.featured .card-cta button { background:linear-gradient(135deg,#7ab8c0,#a0d8e0 50%,#7ab8c0); box-shadow:0 0 0 1px rgba(122,184,192,0.5); }
 .web-card.featured .card-cta button:hover { box-shadow:0 0 0 1px #7ab8c0, 0 0 20px rgba(122,184,192,0.6); }
@@ -260,7 +260,7 @@ footer { background:rgba(255,255,255,0.9); color:#333; padding:4rem 4% 2rem; bor
       <li><a href="about.html">ABOUT US</a></li>
       <li><a href="insight.html">INSIGHTS</a></li>
       <li class="dropdown">
-        <a href="#">BROCHURE▾</a>
+        <a href="#">BROCHURE&#9660;</a>
         <div class="dd-menu">
           <a href="National.pdf" target="_blank">National Rate</a>
           <a href="International.pdf" target="_blank">International Rate</a>
@@ -279,7 +279,7 @@ footer { background:rgba(255,255,255,0.9); color:#333; padding:4rem 4% 2rem; bor
 
   <!-- HERO -->
   <div class="page-hero">
-    <h1>Insights & Pricing</h1>
+    <h1>Insights &amp; Pricing</h1>
     <p>Everything you need to know about our advertising solutions, locations, and investment options across the Bahamas.</p>
   </div>
 
@@ -287,7 +287,7 @@ footer { background:rgba(255,255,255,0.9); color:#333; padding:4rem 4% 2rem; bor
   <section class="content">
     <div class="sec-head">
       <h2>Our Full Suite of Services</h2>
-      <p>From billboards to social media — we cover every angle of your brand's growth.</p>
+      <p>From billboards to social media we cover every angle of your brand's growth.</p>
     </div>
     <div class="services-grid">
       <div class="svc-item glass">
@@ -297,7 +297,7 @@ footer { background:rgba(255,255,255,0.9); color:#333; padding:4rem 4% 2rem; bor
           </svg>
         </div>
         <h3>Mediabox Billboards</h3>
-        <p>Solar & digital billboard advertising with monthly and annual packages. Franchise opportunities available.</p>
+        <p>Solar &amp; digital billboard advertising with monthly and annual packages. Franchise opportunities available.</p>
       </div>
       <div class="svc-item glass">
         <div class="icon">
@@ -305,7 +305,7 @@ footer { background:rgba(255,255,255,0.9); color:#333; padding:4rem 4% 2rem; bor
             <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/>
           </svg>
         </div>
-        <h3>Marketing & Business Plans</h3>
+        <h3>Marketing &amp; Business Plans</h3>
         <p>Comprehensive marketing plans, campaign development, and tailored business strategies.</p>
       </div>
       <div class="svc-item glass">
@@ -323,7 +323,7 @@ footer { background:rgba(255,255,255,0.9); color:#333; padding:4rem 4% 2rem; bor
             <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
           </svg>
         </div>
-        <h3>Mediabooks & Content</h3>
+        <h3>Mediabooks &amp; Content</h3>
         <p>Customized mediabooks and full content management to keep your brand messaging consistent.</p>
       </div>
       <div class="svc-item glass">
@@ -332,7 +332,7 @@ footer { background:rgba(255,255,255,0.9); color:#333; padding:4rem 4% 2rem; bor
             <polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/>
           </svg>
         </div>
-        <h3>Print & Graphic Design</h3>
+        <h3>Print &amp; Graphic Design</h3>
         <p>Pull-up banners, signage printing, books, magazines, and full graphic design services.</p>
       </div>
       <div class="svc-item glass">
@@ -341,7 +341,7 @@ footer { background:rgba(255,255,255,0.9); color:#333; padding:4rem 4% 2rem; bor
             <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
           </svg>
         </div>
-        <h3>Social Media & E-Blast</h3>
+        <h3>Social Media &amp; E-Blast</h3>
         <p>Facebook, Instagram, TikTok, YouTube management plus targeted e-blast marketing campaigns.</p>
       </div>
     </div>
@@ -353,13 +353,13 @@ footer { background:rgba(255,255,255,0.9); color:#333; padding:4rem 4% 2rem; bor
   <div class="pricing-section">
     <div class="sec-head">
       <h2>Solar Billboard Pricing</h2>
-      <p>Nassau, New Providence — eco-friendly, high-visibility outdoor advertising</p>
+      <p>Nassau, New Providence &mdash; eco-friendly, high-visibility outdoor advertising</p>
     </div>
     <div class="pricing-grid" style="max-width:1200px;margin:0 auto;">
       <div class="price-card glass">
         <div class="tag">Solar Powered</div>
         <h3>Solar Billboard</h3>
-        <div class="location">6FT × 4FT</div>
+        <div class="location">6FT &times; 4FT</div>
         <div class="price">$690 <span>/ month</span></div>
         <ul>
           <li>Saunders Beach</li>
@@ -371,10 +371,10 @@ footer { background:rgba(255,255,255,0.9); color:#333; padding:4rem 4% 2rem; bor
       <div class="price-card glass">
         <div class="tag">Best Value</div>
         <h3>Solar Billboard</h3>
-        <div class="location">10FT × 8FT</div>
+        <div class="location">10FT &times; 8FT</div>
         <div class="price">$1,040 <span>/ month</span></div>
         <ul>
-          <li>East Street & Independence Highway</li>
+          <li>East Street &amp; Independence Highway</li>
           <li>2-sided view of traffic available</li>
         </ul>
         <p class="note">Discounts available for 3, 6, or 12-month campaigns.</p>
@@ -388,7 +388,7 @@ footer { background:rgba(255,255,255,0.9); color:#333; padding:4rem 4% 2rem; bor
   <div class="pricing-section">
     <div class="sec-head">
       <h2>Digital Billboard Pricing</h2>
-      <p>Nassau premium digital screen locations — minimum monthly rate</p>
+      <p>Nassau premium digital screen locations &mdash; minimum monthly rate</p>
     </div>
     <div class="pricing-grid" style="max-width:1200px;margin:0 auto;">
       <div class="price-card glass" style="grid-column:span 1;">
@@ -440,25 +440,25 @@ footer { background:rgba(255,255,255,0.9); color:#333; padding:4rem 4% 2rem; bor
       <div class="price-card glass featured-card">
         <div class="tag">High Traffic</div>
         <h3>Arrivals LED Screen</h3>
-        <div class="location">Nassau Cruise Port — Arrivals Terminal</div>
+        <div class="location">Nassau Cruise Port &mdash; Arrivals Terminal</div>
         <div class="price">$16,000 <span>/ month</span></div>
-        <p class="note">Oversized LED screen targeting every passenger as they disembark. 10 spots with 6 slots currently available. Go big or go home — showcase your brand to a captive audience that can't miss it. Discounted rates for long-term contracts.</p>
+        <p class="note">Oversized LED screen targeting every passenger as they disembark. 10 spots with 6 slots currently available. Go big or go home &mdash; showcase your brand to a captive audience that can't miss it. Discounted rates for long-term contracts.</p>
       </div>
       <div class="price-card glass">
         <h3>Wall Ad Space</h3>
-        <div class="location">Port Plaza — 750 sq ft Wall</div>
+        <div class="location">Port Plaza &mdash; 750 sq ft Wall</div>
         <div class="price">$3,000 <span>/ month</span></div>
         <p class="note">Make your brand larger than life. A 750 square foot wall canvas with endless eye-catching possibilities.</p>
       </div>
       <div class="price-card glass">
         <h3>Light Pole Banners</h3>
-        <div class="location">Piers, Arrivals Terminal, Port Marketplace & Amphitheatre</div>
+        <div class="location">Piers, Arrivals Terminal, Port Marketplace &amp; Amphitheatre</div>
         <div class="price">$3,000 <span>/ month</span></div>
-        <p class="note">Submit a 2×5 graphic to boost your brand across high-traffic pole locations. Add a QR code for easy access to your website or sales pages.</p>
+        <p class="note">Submit a 2&times;5 graphic to boost your brand across high-traffic pole locations. Add a QR code for easy access to your website or sales pages.</p>
       </div>
       <div class="price-card glass">
         <h3>Canopy Ad Spaces</h3>
-        <div class="location">Port Canopy Structures — 28 rows available</div>
+        <div class="location">Port Canopy Structures &mdash; 28 rows available</div>
         <div class="price">$4,000 <span>/ month</span></div>
         <ul>
           <li>Only 18 vacant spaces left</li>
@@ -469,10 +469,10 @@ footer { background:rgba(255,255,255,0.9); color:#333; padding:4rem 4% 2rem; bor
       </div>
       <div class="price-card glass">
         <h3>Blue Wall Ad Space</h3>
-        <div class="location">Port Plaza Entry — 12×8ft</div>
+        <div class="location">Port Plaza Entry &mdash; 12&times;8ft</div>
         <div class="price">$6,000 <span>/ month</span></div>
         <p class="note" style="color:#c5a059;font-weight:600;">3 Month Minimum</p>
-        <p class="note">Eye-catching 12×8ft ad against a bold blue wall. Every excursion guest MUST pass this space on their return — impossibly high visibility.</p>
+        <p class="note">Eye-catching 12&times;8ft ad against a bold blue wall. Every excursion guest MUST pass this space on their return &mdash; impossibly high visibility.</p>
       </div>
     </div>
   </div>
@@ -482,8 +482,8 @@ footer { background:rgba(255,255,255,0.9); color:#333; padding:4rem 4% 2rem; bor
   <!-- MARKETING PRODUCTS & SERVICES -->
   <div class="pricing-section">
     <div class="sec-head">
-      <h2>Marketing Products & Services</h2>
-      <p>Print, plans, and digital — everything your brand needs</p>
+      <h2>Marketing Products &amp; Services</h2>
+      <p>Print, plans, and digital &mdash; everything your brand needs</p>
     </div>
     <div class="pricing-grid" style="max-width:1200px;margin:0 auto;">
       <div class="price-card glass">
@@ -494,21 +494,21 @@ footer { background:rgba(255,255,255,0.9); color:#333; padding:4rem 4% 2rem; bor
       </div>
       <div class="price-card glass">
         <h3>Print Services</h3>
-        <div class="location">Signage & Publications</div>
+        <div class="location">Signage &amp; Publications</div>
         <ul>
-          <li>6ft × 4ft Print — $250</li>
-          <li>10ft × 8ft Print — $950</li>
-          <li>Books & Magazines — Varies</li>
+          <li>6ft &times; 4ft Print &mdash; $250</li>
+          <li>10ft &times; 8ft Print &mdash; $950</li>
+          <li>Books &amp; Magazines &mdash; Varies</li>
         </ul>
         <p class="note">High-quality print production for all billboard and marketing material needs.</p>
       </div>
       <div class="price-card glass">
-        <h3>Marketing & Business Plans</h3>
-        <div class="location">Strategy & Planning</div>
+        <h3>Marketing &amp; Business Plans</h3>
+        <div class="location">Strategy &amp; Planning</div>
         <ul>
-          <li>Marketing Campaigns — $3,000</li>
-          <li>Business Plans — $2,500</li>
-          <li>Marketing Plans — $2,000+</li>
+          <li>Marketing Campaigns &mdash; $3,000</li>
+          <li>Business Plans &mdash; $2,500</li>
+          <li>Marketing Plans &mdash; $2,000+</li>
         </ul>
         <p class="note">Prices may vary based on client needs and scope of project.</p>
       </div>
@@ -535,11 +535,11 @@ footer { background:rgba(255,255,255,0.9); color:#333; padding:4rem 4% 2rem; bor
 
   <div class="divider" style="max-width:1200px;margin:0 auto;padding:0 5%;"></div>
 
-  <!-- ===== WEBSITE DEVELOPMENT & MANAGEMENT ===== -->
+  <!-- WEBSITE DEVELOPMENT & MANAGEMENT -->
   <div class="web-pricing-section">
     <div class="sec-head">
-      <h2>Website Development & Management</h2>
-      <p>Professional websites built for the Bahamas' leading businesses — from single-page launches to fully managed digital experiences.</p>
+      <h2>Website Development &amp; Management</h2>
+      <p>Professional websites built for the Bahamas' leading businesses &mdash; from single-page launches to fully managed digital experiences.</p>
     </div>
 
     <div class="web-pricing-inner">
@@ -552,20 +552,19 @@ footer { background:rgba(255,255,255,0.9); color:#333; padding:4rem 4% 2rem; bor
         </div>
         <div class="web-grid cols-2" style="grid-template-columns:repeat(3,1fr);">
 
-          <!-- TIER 1: STARTER -->
           <div class="web-card glass">
             <div class="tag">One-Time</div>
             <h3>Starter Page</h3>
-            <div class="subtitle">Single Page Website — One-Time Build</div>
+            <div class="subtitle">Single Page Website &mdash; One-Time Build</div>
             <div class="web-price">Custom <span>/ pricing</span></div>
-            <div class="price-note">One-time payment · No ongoing fees · Delivered in 5–7 business days</div>
+            <div class="price-note">One-time payment &middot; No ongoing fees &middot; Delivered in 5&ndash;7 business days</div>
             <ul class="feat-list">
-              <li>Single responsive page (mobile & desktop)</li>
+              <li>Single responsive page (mobile &amp; desktop)</li>
               <li>Up to 6 content sections (hero, about, services, pricing, gallery, contact)</li>
               <li>Contact form with email integration</li>
-              <li>Google Maps embed & social media links</li>
+              <li>Google Maps embed &amp; social media links</li>
               <li>Basic on-page SEO setup</li>
-              <li>Domain & hosting setup guidance</li>
+              <li>Domain &amp; hosting setup guidance</li>
               <li>1 round of revisions included</li>
               <li class="muted">No ongoing updates or management</li>
               <li class="muted">No hosting or maintenance included</li>
@@ -573,36 +572,34 @@ footer { background:rgba(255,255,255,0.9); color:#333; padding:4rem 4% 2rem; bor
             <div class="card-cta"><button onclick="location.href='consultation.html'">GET A QUOTE</button></div>
           </div>
 
-          <!-- TIER 2: BUSINESS SITE -->
           <div class="web-card glass">
             <div class="tag">Popular</div>
             <h3>Business Site</h3>
-            <div class="subtitle">5-Page Website — One-Time Build</div>
+            <div class="subtitle">5-Page Website &mdash; One-Time Build</div>
             <div class="web-price">Custom <span>/ pricing</span></div>
-            <div class="price-note">One-time payment · No ongoing fees · Delivered in 10–14 business days</div>
+            <div class="price-note">One-time payment &middot; No ongoing fees &middot; Delivered in 10&ndash;14 business days</div>
             <ul class="feat-list">
               <li>Up to 5 fully designed pages</li>
               <li>Custom design matched to your brand identity</li>
               <li>Mobile-first responsive build</li>
               <li>Contact form with email integration</li>
               <li>Image gallery or portfolio section</li>
-              <li>Google Maps, social links & live chat setup</li>
+              <li>Google Maps, social links &amp; live chat setup</li>
               <li>On-page SEO for all pages</li>
               <li>Google Analytics installation</li>
-              <li>Domain & hosting setup guidance</li>
+              <li>Domain &amp; hosting setup guidance</li>
               <li>2 rounds of revisions included</li>
               <li class="muted">No ongoing updates or management</li>
             </ul>
             <div class="card-cta"><button onclick="location.href='consultation.html'">GET A QUOTE</button></div>
           </div>
 
-          <!-- TIER 3: PREMIUM BUILD -->
           <div class="web-card glass featured">
             <div class="tag blue">Premium</div>
             <h3>Premium Build</h3>
-            <div class="subtitle">10-Page Custom Website — One-Time Build</div>
+            <div class="subtitle">10-Page Custom Website &mdash; One-Time Build</div>
             <div class="web-price">Custom <span>/ pricing</span></div>
-            <div class="price-note">One-time payment · No ongoing fees · Delivered in 3–4 weeks</div>
+            <div class="price-note">One-time payment &middot; No ongoing fees &middot; Delivered in 3&ndash;4 weeks</div>
             <ul class="feat-list">
               <li>Up to 10 fully custom-designed pages</li>
               <li>Premium UI/UX design with animations</li>
@@ -610,10 +607,10 @@ footer { background:rgba(255,255,255,0.9); color:#333; padding:4rem 4% 2rem; bor
               <li>CMS integration for easy self-management</li>
               <li>Blog or news section setup</li>
               <li>Advanced on-page SEO for all pages</li>
-              <li>Google Analytics & Search Console setup</li>
+              <li>Google Analytics &amp; Search Console setup</li>
               <li>Contact forms, booking or enquiry system</li>
               <li>Social media feed integration</li>
-              <li>Speed & performance optimization</li>
+              <li>Speed &amp; performance optimization</li>
               <li>SSL certificate setup</li>
               <li>3 rounds of revisions included</li>
             </ul>
@@ -636,7 +633,7 @@ footer { background:rgba(255,255,255,0.9); color:#333; padding:4rem 4% 2rem; bor
             <h3>Business Pro</h3>
             <div class="subtitle">Multi-Page Website + Ongoing Management</div>
             <div class="web-price">Custom <span>/ month</span></div>
-            <div class="price-note">Monthly subscription · 3-month minimum · Cancel anytime after</div>
+            <div class="price-note">Monthly subscription &middot; 3-month minimum &middot; Cancel anytime after</div>
             <ul class="feat-list">
               <li>Up to 8 fully designed pages</li>
               <li>Custom design aligned to your brand identity</li>
@@ -645,9 +642,9 @@ footer { background:rgba(255,255,255,0.9); color:#333; padding:4rem 4% 2rem; bor
               <li>Blog or news section setup</li>
               <li>Advanced SEO optimization</li>
               <li>Monthly content updates (up to 4 per month)</li>
-              <li>Performance monitoring & speed optimization</li>
-              <li>SSL certificate & security updates</li>
-              <li>Hosting & domain management included</li>
+              <li>Performance monitoring &amp; speed optimization</li>
+              <li>SSL certificate &amp; security updates</li>
+              <li>Hosting &amp; domain management included</li>
               <li>Monthly analytics report</li>
               <li>Priority email support</li>
             </ul>
@@ -659,18 +656,18 @@ footer { background:rgba(255,255,255,0.9); color:#333; padding:4rem 4% 2rem; bor
             <h3>Enterprise Elite</h3>
             <div class="subtitle">Full Custom Website + Full Management Suite</div>
             <div class="web-price">Custom <span>/ month</span></div>
-            <div class="price-note">Monthly subscription · Fully bespoke · Dedicated account manager</div>
+            <div class="price-note">Monthly subscription &middot; Fully bespoke &middot; Dedicated account manager</div>
             <ul class="feat-list">
-              <li>Unlimited pages — fully custom design</li>
+              <li>Unlimited pages &mdash; fully custom design</li>
               <li>E-commerce or booking system integration</li>
-              <li>Custom animations & interactive elements</li>
+              <li>Custom animations &amp; interactive elements</li>
               <li>Multi-language support (if required)</li>
               <li>Advanced SEO + Google Ads integration</li>
               <li>Unlimited monthly content updates</li>
-              <li>Social media feed & live chat integration</li>
-              <li>Full hosting, domain & SSL management</li>
-              <li>24/7 uptime monitoring & emergency support</li>
-              <li>Weekly performance & analytics reports</li>
+              <li>Social media feed &amp; live chat integration</li>
+              <li>Full hosting, domain &amp; SSL management</li>
+              <li>24/7 uptime monitoring &amp; emergency support</li>
+              <li>Weekly performance &amp; analytics reports</li>
               <li>Dedicated MediaBox account manager</li>
               <li>Quarterly strategy review sessions</li>
             </ul>
@@ -691,14 +688,14 @@ footer { background:rgba(255,255,255,0.9); color:#333; padding:4rem 4% 2rem; bor
           <div class="web-card glass">
             <div class="tag">Management</div>
             <h3>Care Plan</h3>
-            <div class="subtitle">Existing Website — Essential Maintenance</div>
+            <div class="subtitle">Existing Website &mdash; Essential Maintenance</div>
             <div class="web-price">Custom <span>/ month</span></div>
-            <div class="price-note">Monthly subscription · For existing websites · No build fee</div>
+            <div class="price-note">Monthly subscription &middot; For existing websites &middot; No build fee</div>
             <ul class="feat-list">
-              <li>Monthly plugin, theme & software updates</li>
-              <li>Security scans & malware monitoring</li>
+              <li>Monthly plugin, theme &amp; software updates</li>
+              <li>Security scans &amp; malware monitoring</li>
               <li>Weekly automated backups</li>
-              <li>Uptime monitoring & issue alerts</li>
+              <li>Uptime monitoring &amp; issue alerts</li>
               <li>Up to 2 content updates per month</li>
               <li>Basic performance checks</li>
               <li>Email support (48hr response)</li>
@@ -711,18 +708,18 @@ footer { background:rgba(255,255,255,0.9); color:#333; padding:4rem 4% 2rem; bor
           <div class="web-card glass">
             <div class="tag">Management</div>
             <h3>Growth Manager</h3>
-            <div class="subtitle">Existing Website — Full Management & Growth</div>
+            <div class="subtitle">Existing Website &mdash; Full Management &amp; Growth</div>
             <div class="web-price">Custom <span>/ month</span></div>
-            <div class="price-note">Monthly subscription · For established businesses · Full hands-off management</div>
+            <div class="price-note">Monthly subscription &middot; For established businesses &middot; Full hands-off management</div>
             <ul class="feat-list">
               <li>Everything in Care Plan</li>
               <li>Up to 8 content updates per month</li>
-              <li>Ongoing SEO monitoring & improvements</li>
-              <li>Google Analytics & Search Console management</li>
+              <li>Ongoing SEO monitoring &amp; improvements</li>
+              <li>Google Analytics &amp; Search Console management</li>
               <li>Conversion rate optimization suggestions</li>
               <li>New landing page builds (1 per month)</li>
-              <li>Social media link & feed updates</li>
-              <li>Monthly performance & traffic report</li>
+              <li>Social media link &amp; feed updates</li>
+              <li>Monthly performance &amp; traffic report</li>
               <li>Priority support (same-day response)</li>
             </ul>
             <div class="card-cta"><button onclick="location.href='consultation.html'">GET A QUOTE</button></div>
@@ -765,7 +762,7 @@ footer { background:rgba(255,255,255,0.9); color:#333; padding:4rem 4% 2rem; bor
   </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 const c = document.getElementById('bg-canvas');
 c.style.cssText='position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:0;pointer-events:none;';
 const cx = c.getContext('2d');
@@ -788,6 +785,7 @@ mainNav.querySelectorAll('a').forEach(l=>l.addEventListener('click',()=>{
   hamburger.classList.remove('open');
   mainNav.classList.remove('open');
 }));
+
 // Custom Cursor
 const dot  = document.getElementById('cursor-dot');
 const ring = document.getElementById('cursor-ring');

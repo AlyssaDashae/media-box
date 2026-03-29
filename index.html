@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
   <meta charset="UTF-8">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
   <meta name="google-site-verification" content="VMrW49pUqyfkak5b_mJtNE1yLcNcLhhwig2WNGxAjas" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>MediaBox Bahamas | Luxury Media & Corporate Excellence</title>
@@ -31,7 +31,7 @@
     body.cursor-click #cursor-ring { width: 24px; height: 24px; border-color: #c5a059; }
     body.cursor-click #cursor-dot  { transform: translate(-50%, -50%) scale(0.6); }
 
-    @media(max-width:1024px) { #cursor-dot, #cursor-ring { display: none; } * { cursor: auto; } }
+    @media(max-width:1024px) { #cursor-dot, #cursor-ring { display: none; } *, *::before, *::after { cursor: auto !important; } a, button, [onclick], label, select, input, textarea { cursor: pointer !important; } }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { font-family: 'Montserrat', sans-serif; background: #e8eef2; overflow-x: hidden; }
@@ -69,7 +69,7 @@
     .dd-menu a:hover { color: #c5a059; }
     .dropdown:hover .dd-menu { display: block; }
 
-    .consult-btn { background: linear-gradient(135deg, #c5a059, #e8c87a 50%, #c5a059); background-size: 200% auto; color: #0c182d; border: none; padding: 0.62rem 1.3rem; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.76rem; text-transform: uppercase; letter-spacing: 0.4px; border-radius: 4px; cursor: pointer; transition: all 0.4s; box-shadow: 0 0 0 1px rgba(197,160,89,0.6), 0 0 18px rgba(0,210,255,0.5); }
+    .consult-btn { background: linear-gradient(135deg, #c5a059, #e8c87a 50%, #c5a059); background-size: 200% auto; color: #0c182d; border: none; padding: 0.62rem 1.3rem; font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 0.76rem; text-transform: uppercase; letter-spacing: 0.4px; border-radius: 4px; cursor: none !important; transition: all 0.4s; box-shadow: 0 0 0 1px rgba(197,160,89,0.6), 0 0 18px rgba(0,210,255,0.5); }
     .consult-btn:hover { background-position: right; box-shadow: 0 0 0 1px #c5a059, 0 0 28px rgba(0,210,255,0.8); }
 
     /* ── HERO ── */
@@ -100,13 +100,13 @@
     .tc  { background: rgba(0,229,255,0.1);   color: #00e5ff; border: 1px solid rgba(0,229,255,0.3); }
     .sl-h { font-size: 1.6rem; font-weight: 900; line-height: 1.1; margin-bottom: 0.6rem; font-family: 'Space Grotesk', sans-serif; }
     .sl-p { font-size: 0.75rem; color: rgba(255,255,255,0.6); line-height: 1.6; max-width: 380px; margin-bottom: 1rem; }
-    .sl-btn { display: inline-block; padding: 0.5rem 1.2rem; background: linear-gradient(135deg,#c5a059,#e8c87a); color: #0c182d; font-weight: 700; font-size: 0.65rem; letter-spacing: 1px; text-transform: uppercase; border-radius: 3px; border: none; cursor: pointer; }
+    .sl-btn { display: inline-block; padding: 0.5rem 1.2rem; background: linear-gradient(135deg,#c5a059,#e8c87a); color: #0c182d; font-weight: 700; font-size: 0.65rem; letter-spacing: 1px; text-transform: uppercase; border-radius: 3px; border: none; cursor: none !important; }
     .sl-stat { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); border-top: 2px solid #c5a059; border-radius: 4px; padding: 0.6rem 1rem; text-align: center; min-width: 90px; }
     .sl-num { font-size: 1.3rem; font-weight: 700; color: #c5a059; font-family: 'Space Grotesk', sans-serif; line-height: 1; }
     .sl-lbl { font-size: 0.52rem; color: rgba(255,255,255,0.45); text-transform: uppercase; letter-spacing: 1px; margin-top: 2px; }
     .sl-acc { width: 40px; height: 3px; background: linear-gradient(90deg,#c5a059,transparent); margin-bottom: 0.8rem; border-radius: 2px; }
     .bb-sdots { position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); display: flex; gap: 6px; z-index: 10; }
-    .bb-sdot { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,0.25); border: none; cursor: pointer; padding: 0; transition: all 0.25s; }
+    .bb-sdot { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,0.25); border: none; cursor: none !important; padding: 0; transition: all 0.25s; }
     .bb-sdot.on { background: #c5a059; transform: scale(1.35); }
     @media(max-width:768px) { .sl-right { display: none; } .sl-h { font-size: 1.1rem; } .sl-p { font-size: 0.7rem; } .sl-content { gap: 1rem; } }
 
@@ -135,6 +135,8 @@
     .mktg-features { list-style: none; margin: 1.2rem 0 1.8rem; display: flex; flex-direction: column; gap: 0.6rem; }
     .mktg-features li { display: flex; align-items: center; gap: 0.7rem; font-size: 0.85rem; color: #445; font-weight: 500; }
     .mktg-features li::before { content: ''; width: 18px; height: 18px; flex-shrink: 0; background: linear-gradient(135deg,#c5a059,#e8c87a); border-radius: 50%; display: inline-block; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolyline points='20 6 9 17 4 12' stroke='%230c182d' stroke-width='3' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); background-size: 11px; background-repeat: no-repeat; background-position: center; }
+    .mktg-features li.muted::before { background: rgba(0,0,0,0.08); background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cline x1='5' y1='12' x2='19' y2='12' stroke='%23aaa' stroke-width='2.5' stroke-linecap='round'/%3E%3C/svg%3E"); background-size: 11px; background-repeat: no-repeat; background-position: center; }
+    .mktg-features li.muted { color: #aaa; }
     .mktg-price { font-family: 'Space Grotesk', sans-serif; font-size: 1.8rem; font-weight: 700; color: #c5a059; margin-bottom: 1.4rem; }
     .mktg-price span { font-size: 0.9rem; color: #888; font-weight: 400; }
     @media(max-width:1024px) { .mktg-row, .mktg-row.reverse { grid-template-columns: 1fr; direction: ltr; gap: 2rem; } }
@@ -179,7 +181,7 @@
     .port-item.playing .prod-media img { opacity: 0; }
     .port-item.playing .prod-media video { opacity: 1; }
     .media-toggle { position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); z-index: 6; display: flex; border-radius: 20px; overflow: hidden; border: 1.5px solid rgba(197,160,89,0.8); background: rgba(0,0,0,0.55); backdrop-filter: blur(8px); }
-    .media-toggle button { background: none; border: none; cursor: pointer; padding: 5px 14px; font-size: 0.62rem; font-weight: 700; color: rgba(255,255,255,0.6); letter-spacing: 0.8px; font-family: 'Montserrat', sans-serif; transition: all 0.2s; }
+    .media-toggle button { background: none; border: none; cursor: none !important; padding: 5px 14px; font-size: 0.62rem; font-weight: 700; color: rgba(255,255,255,0.6); letter-spacing: 0.8px; font-family: 'Montserrat', sans-serif; transition: all 0.2s; }
     .media-toggle button.active { background: #c5a059; color: #0c182d; }
     @media(max-width:1024px) { .port-track { grid-template-columns: repeat(2,1fr); } }
     @media(max-width:600px)  { .port-track { grid-template-columns: 1fr; } }
@@ -191,12 +193,12 @@
     .bb-track { display: flex; transition: transform 0.45s cubic-bezier(0.4,0,0.2,1); will-change: transform; }
     .bb-slide { flex: 0 0 100%; display: flex; align-items: center; justify-content: center; }
     .bb-slide img { width: 100%; height: 360px; object-fit: contain; display: block; background: transparent; }
-    .bb-arrow { position: absolute; top: 45%; transform: translateY(-50%); width: 42px; height: 42px; border-radius: 50%; border: 1.5px solid rgba(197,160,89,0.7); background: rgba(255,255,255,0.92); color: #c5a059; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.2s, border-color 0.2s, transform 0.2s; z-index: 10; box-shadow: 0 2px 10px rgba(0,0,0,0.08); }
+    .bb-arrow { position: absolute; top: 45%; transform: translateY(-50%); width: 42px; height: 42px; border-radius: 50%; border: 1.5px solid rgba(197,160,89,0.7); background: rgba(255,255,255,0.92); color: #c5a059; cursor: none !important; display: flex; align-items: center; justify-content: center; transition: background 0.2s, border-color 0.2s, transform 0.2s; z-index: 10; box-shadow: 0 2px 10px rgba(0,0,0,0.08); }
     .bb-arrow:hover { background: #c5a059; color: #fff; border-color: #c5a059; transform: translateY(-50%) scale(1.08); }
     .bb-prev { left: -22px; }
     .bb-next { right: -22px; }
     .bb-dots { display: flex; justify-content: center; gap: 7px; margin-top: 0.8rem; }
-    .bb-dot { width: 7px; height: 7px; border-radius: 50%; background: rgba(197,160,89,0.3); cursor: pointer; transition: background 0.25s, transform 0.25s; }
+    .bb-dot { width: 7px; height: 7px; border-radius: 50%; background: rgba(197,160,89,0.3); cursor: none !important; transition: background 0.25s, transform 0.25s; }
     .bb-dot.active { background: #c5a059; transform: scale(1.3); }
     @media(max-width:768px) { .bb-prev { left: 4px; } .bb-next { right: 4px; } .bb-slide img { height: 240px; } }
 
@@ -206,7 +208,7 @@
     .faq-list { display: flex; flex-direction: column; gap: 0.75rem; }
     .faq-item { background: rgba(255,255,255,0.93); border: 1px solid #dce8ee; border-left: 4px solid #c5a059; border-radius: 6px; overflow: hidden; box-shadow: 0 4px 14px rgba(0,0,0,0.04); transition: box-shadow 0.3s; }
     .faq-item:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.08); }
-    .faq-question { width: 100%; background: none; border: none; text-align: left; padding: 1.2rem 1.4rem; display: flex; justify-content: space-between; align-items: center; cursor: pointer; gap: 1rem; }
+    .faq-question { width: 100%; background: none; border: none; text-align: left; padding: 1.2rem 1.4rem; display: flex; justify-content: space-between; align-items: center; cursor: none !important; gap: 1rem; }
     .faq-question span { font-family: 'Space Grotesk', sans-serif; font-size: 0.95rem; font-weight: 700; color: #0c182d; line-height: 1.4; }
     .faq-icon { flex-shrink: 0; width: 28px; height: 28px; border-radius: 50%; background: rgba(197,160,89,0.12); border: 1.5px solid rgba(197,160,89,0.4); display: flex; align-items: center; justify-content: center; transition: background 0.25s, transform 0.35s; }
     .faq-icon svg { width: 13px; height: 13px; stroke: #c5a059; stroke-width: 2.5; fill: none; }
@@ -228,7 +230,7 @@
 
     /* ── Mobile Nav ── */
     .mobile-consult { display: none !important; }
-    .hamburger { display: none; flex-direction: column; justify-content: center; gap: 5px; background: none; border: none; cursor: pointer; padding: 6px; z-index: 1001; }
+    .hamburger { display: none; flex-direction: column; justify-content: center; gap: 5px; background: none; border: none; cursor: none !important; padding: 6px; z-index: 1001; }
     .hamburger span { display: block; width: 24px; height: 2.5px; background: #c5a059; border-radius: 2px; transition: all 0.3s ease; }
     .hamburger.open span:nth-child(1) { transform: translateY(7.5px) rotate(45deg); }
     .hamburger.open span:nth-child(2) { opacity: 0; }
@@ -303,19 +305,16 @@
     <div class="billboard-wrap">
       <div class="bb-structure">
         <div class="bb-screen">
-
-          <!-- ── BILLBOARD SLIDESHOW ── -->
           <div class="bb-slides-wrap">
             <div class="bb-slides-inner" id="bbHeroInner">
 
-              <!-- Slide 1: Billboard Advertising -->
               <div class="bb-slide-item s1">
                 <div class="sl-content">
                   <div class="sl-left">
                     <div class="sl-tag tg">Prime Outdoor Media</div>
                     <div class="sl-acc"></div>
                     <div class="sl-h"><span style="color:#fff">Nassau's Most </span><span style="color:#c5a059">Unmissable</span><br><span style="color:#fff">Billboards.</span></div>
-                    <div class="sl-p">Strategically placed at the highest-traffic intersections across Nassau & Grand Bahama. Your brand — seen by thousands, every single day.</div>
+                    <div class="sl-p">Strategically placed at the highest-traffic intersections across Nassau &amp; Grand Bahama. Your brand &mdash; seen by thousands, every single day.</div>
                     <button class="sl-btn" onclick="location.href='consultation.html'">Claim Your Spot</button>
                   </div>
                   <div class="sl-right">
@@ -326,50 +325,47 @@
                 </div>
               </div>
 
-              <!-- Slide 2: High Traffic -->
               <div class="bb-slide-item s2">
                 <div class="sl-content">
                   <div class="sl-left">
                     <div class="sl-tag tgn">High-Traffic Locations</div>
                     <div class="sl-acc" style="background:linear-gradient(90deg,#50c878,transparent)"></div>
                     <div class="sl-h"><span style="color:#50c878">Roundabouts.</span> <span style="color:#fff">Corridors.</span><br><span style="color:#fff">Can't-Miss </span><span style="color:#c5a059">Zones.</span></div>
-                    <div class="sl-p">Every MediaBox billboard sits at a chokepoint where traffic has no choice but to stop and look. Morning rush, afternoon shoppers, evening commuters — all yours.</div>
+                    <div class="sl-p">Every MediaBox billboard sits at a chokepoint where traffic has no choice but to stop and look. Morning rush, afternoon shoppers, evening commuters &mdash; all yours.</div>
                     <button class="sl-btn" onclick="location.href='consultation.html'">See Locations</button>
                   </div>
                   <div class="sl-right">
                     <div class="sl-stat" style="border-top-color:#50c878"><div class="sl-num" style="color:#50c878">10+</div><div class="sl-lbl">Prime Spots</div></div>
                     <div class="sl-stat" style="border-top-color:#50c878"><div class="sl-num" style="color:#50c878">#1</div><div class="sl-lbl">Bahamas OOH</div></div>
-                    <div class="sl-stat" style="border-top-color:#50c878"><div class="sl-num" style="color:#50c878">3–5</div><div class="sl-lbl">Days to Live</div></div>
+                    <div class="sl-stat" style="border-top-color:#50c878"><div class="sl-num" style="color:#50c878">3&ndash;5</div><div class="sl-lbl">Days to Live</div></div>
                   </div>
                 </div>
               </div>
 
-              <!-- Slide 3: Franchise -->
               <div class="bb-slide-item s3">
                 <div class="sl-content">
                   <div class="sl-left">
                     <div class="sl-tag ta">Billboard Franchise</div>
                     <div class="sl-acc" style="background:linear-gradient(90deg,#f0b432,transparent)"></div>
                     <div class="sl-h"><span style="color:#fff">Own a Billboard.</span><br><span style="color:#f0b432">Earn Every</span> <span style="color:#fff">Month.</span></div>
-                    <div class="sl-p">Become a MediaBox franchisee. We handle site selection, installation, clients & maintenance. You collect passive revenue from day one.</div>
+                    <div class="sl-p">Become a MediaBox franchisee. We handle site selection, installation, clients &amp; maintenance. You collect passive revenue from day one.</div>
                     <button class="sl-btn" style="background:linear-gradient(135deg,#f0b432,#fcd97a)" onclick="location.href='consultation.html'">Become a Franchisee</button>
                   </div>
                   <div class="sl-right">
                     <div class="sl-stat" style="border-top-color:#f0b432"><div class="sl-num" style="color:#f0b432">$690+</div><div class="sl-lbl">Revenue/Mo</div></div>
                     <div class="sl-stat" style="border-top-color:#f0b432"><div class="sl-num" style="color:#f0b432">0</div><div class="sl-lbl">Hassle</div></div>
-                    <div class="sl-stat" style="border-top-color:#f0b432"><div class="sl-num" style="color:#f0b432">∞</div><div class="sl-lbl">Scalable</div></div>
+                    <div class="sl-stat" style="border-top-color:#f0b432"><div class="sl-num" style="color:#f0b432">&infin;</div><div class="sl-lbl">Scalable</div></div>
                   </div>
                 </div>
               </div>
 
-              <!-- Slide 4: MediaBook -->
               <div class="bb-slide-item s4">
                 <div class="sl-content">
                   <div class="sl-left">
                     <div class="sl-tag tp">Corporate Identity</div>
                     <div class="sl-acc" style="background:linear-gradient(90deg,#a064f0,transparent)"></div>
                     <div class="sl-h"><span style="color:#fff">Your Brand.</span><br><span style="color:#a064f0">Unforgettable</span> <span style="color:#c5a059">MediaBook.</span></div>
-                    <div class="sl-p">Walk into every room with a MediaBook that commands respect. Premium printed, fully customized — the leave-behind that closes deals.</div>
+                    <div class="sl-p">Walk into every room with a MediaBook that commands respect. Premium printed, fully customized &mdash; the leave-behind that closes deals.</div>
                     <button class="sl-btn" style="background:linear-gradient(135deg,#a064f0,#c89ef8);color:#fff" onclick="location.href='consultation.html'">Order Your MediaBook</button>
                   </div>
                   <div class="sl-right">
@@ -380,14 +376,13 @@
                 </div>
               </div>
 
-              <!-- Slide 5: Brand & Web -->
               <div class="bb-slide-item s5">
                 <div class="sl-content">
                   <div class="sl-left">
                     <div class="sl-tag tc">Full-Service Media Partner</div>
                     <div class="sl-acc" style="background:linear-gradient(90deg,#00e5ff,transparent)"></div>
                     <div class="sl-h"><span style="color:#00e5ff">Strategy.</span> <span style="color:#fff">Websites.</span><br><span style="color:#c5a059">Brands That</span> <span style="color:#fff">Sell.</span></div>
-                    <div class="sl-p">From brand identity to high-converting websites and full digital strategy — MediaBox is your all-in-one growth partner in the Bahamas. Stop blending in.</div>
+                    <div class="sl-p">From brand identity to high-converting websites and full digital strategy &mdash; MediaBox is your all-in-one growth partner in the Bahamas. Stop blending in.</div>
                     <button class="sl-btn" onclick="location.href='consultation.html'">Get a Free Consultation</button>
                   </div>
                   <div class="sl-right">
@@ -399,8 +394,6 @@
               </div>
 
             </div>
-
-            <!-- Dots -->
             <div class="bb-sdots">
               <button class="bb-sdot on" onclick="bbHeroGo(0)"></button>
               <button class="bb-sdot" onclick="bbHeroGo(1)"></button>
@@ -409,11 +402,8 @@
               <button class="bb-sdot" onclick="bbHeroGo(4)"></button>
             </div>
           </div>
-          <!-- ── END SLIDESHOW ── -->
-
         </div>
 
-        <!-- Truss + poles SVG -->
         <svg class="bb-support" viewBox="0 0 1000 140" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="height:140px;">
           <defs>
             <linearGradient id="poleGrad" x1="0" y1="0" x2="1" y2="0">
@@ -484,7 +474,8 @@
       </article>
     </div>
   </section>
- <!-- WHY ADVERTISE WITH US -->
+
+  <!-- WHY ADVERTISE WITH US (moved up, was below mediabook) -->
   <section class="video-section">
     <div class="video-inner">
       <div class="iphone-wrap">
@@ -503,7 +494,7 @@
         <span class="eyebrow">Why Advertise With Us</span>
         <h2>Your Brand. <span>Maximum</span> Exposure. Zero Compromise.</h2>
         <p>MediaBox billboards are strategically positioned at the highest-traffic intersections, roundabouts, and commercial corridors across Nassau and Grand Bahama, ensuring your message is seen by tens of thousands of commuters, shoppers, and visitors every single day.</p>
-        <p>Our solar-powered and digital displays operate 24 hours a day, delivering your campaign to morning rush-hour traffic, afternoon shoppers, and evening commuters without interruption. This isn't just advertising — it's unavoidable brand presence.</p>
+        <p>Our solar-powered and digital displays operate 24 hours a day, delivering your campaign to morning rush-hour traffic, afternoon shoppers, and evening commuters without interruption. This isn't just advertising &mdash; it's unavoidable brand presence.</p>
         <div class="video-stats">
           <div class="stat"><div class="num">100K+</div><div class="label">Weekly Impressions</div></div>
           <div class="stat"><div class="num">24/7</div><div class="label">Continuous Display</div></div>
@@ -514,7 +505,32 @@
       </div>
     </div>
   </section>
-   <div class="mktg-row reverse">
+
+  <!-- MARKETING PRODUCTS (moved down, was above video section) -->
+  <section class="mktg-section">
+    <div class="mktg-inner">
+      <div class="mktg-row">
+        <div class="mktg-img">
+          <img src="mediabook.png" alt="MediaBook">
+        </div>
+        <div class="mktg-text">
+          <span class="eyebrow">Premium Marketing Tool</span>
+          <h2>Get Your <span>MediaBook</span> Today.</h2>
+          <p>A MediaBook is your brand's most powerful leave-behind. Professionally designed and fully customized, it tells your company's story in a format that clients remember long after the meeting ends.</p>
+          <p>From corporate profiles to product catalogues, your MediaBook positions your business as the premium choice in every room it enters.</p>
+          <ul class="mktg-features">
+            <li>Fully customized to your brand identity</li>
+            <li>Premium print quality &mdash; high-gloss &amp; matte finishes</li>
+            <li>Perfect for client meetings, pitches &amp; events</li>
+            <li>Available in multiple sizes and formats</li>
+            <li>Pairs with digital &amp; billboard campaigns</li>
+          </ul>
+          <div class="mktg-price">Custom Pricing <span>/ based on size &amp; quantity</span></div>
+          <button class="consult-btn" onclick="location.href='consultation.html'">ORDER YOUR MEDIABOOK</button>
+        </div>
+      </div>
+
+      <div class="mktg-row reverse">
         <div class="mktg-img" style="display:flex;align-items:center;justify-content:center;padding:2rem 0;">
           <img src="Banner.png" alt="Pull-Up Banners" style="width:100%;max-width:620px;height:460px;object-fit:contain;display:block;mix-blend-mode:multiply;">
         </div>
@@ -573,10 +589,10 @@
           <p>Why wait for customers to come to you? Secure your own MediaBox billboard location and start generating advertising revenue from day one. Our franchise model gives you a premium asset with a built-in client base and full operational support.</p>
           <p>MediaBox handles everything from site selection, installation, maintenance, and client onboarding. You collect the returns.</p>
           <ul class="mktg-features">
-            <li>Prime Nassau & Grand Bahama locations available</li>
-            <li>Full installation & setup by MediaBox</li>
-            <li>Ongoing maintenance & technical support included</li>
-            <li>Monthly & annual advertising contracts secured for you</li>
+            <li>Prime Nassau &amp; Grand Bahama locations available</li>
+            <li>Full installation &amp; setup by MediaBox</li>
+            <li>Ongoing maintenance &amp; technical support included</li>
+            <li>Monthly &amp; annual advertising contracts secured for you</li>
             <li>Scalable: Own one board or a full network</li>
           </ul>
           <div class="mktg-price">From $690 <span>/ month in revenue per board</span></div>
@@ -617,12 +633,11 @@
           <p>Why pay rent when you can own the asset outright? Purchase your own MediaBox solar or digital billboard and turn it into a long-term revenue-generating machine. Your billboard, your rules, your returns.</p>
           <p>MediaBox manages the full process, from sourcing the perfect high-traffic location to professional installation and ongoing technical support. You sit back and watch the income roll in.</p>
           <ul class="mktg-features">
-            <li>One-time purchase — no ongoing lease payments</li>
-            <li>Full site survey & location selection by our team</li>
+            <li>One-time purchase &mdash; no ongoing lease payments</li>
+            <li>Full site survey &amp; location selection by our team</li>
             <li>Start earning from advertising revenue immediately</li>
-            <li class="muted">No Ongoing maintenance & tech support included</li>
+            <li class="muted">No Ongoing maintenance &amp; tech support included</li>
             <li class="muted">No Professional installation handled by MediaBox</li>
-
           </ul>
           <div class="mktg-price">Contact Us <span>/ for ownership pricing</span></div>
           <button class="consult-btn" onclick="location.href='consultation.html'">ENQUIRE ABOUT OWNERSHIP</button>
@@ -631,30 +646,6 @@
 
     </div>
   </section>
-
-  <!-- MARKETING PRODUCTS -->
-  <section class="mktg-section">
-    <div class="mktg-inner">
-      <div class="mktg-row">
-        <div class="mktg-img">
-          <img src="mediabook.png" alt="MediaBook">
-        </div>
-        <div class="mktg-text">
-          <span class="eyebrow">Premium Marketing Tool</span>
-          <h2>Get Your <span>MediaBook</span> Today.</h2>
-          <p>A MediaBook is your brand's most powerful leave-behind. Professionally designed and fully customized, it tells your company's story in a format that clients remember long after the meeting ends.</p>
-          <p>From corporate profiles to product catalogues, your MediaBook positions your business as the premium choice in every room it enters.</p>
-          <ul class="mktg-features">
-            <li>Fully customized to your brand identity</li>
-            <li>Premium print quality — high-gloss & matte finishes</li>
-            <li>Perfect for client meetings, pitches & events</li>
-            <li>Available in multiple sizes and formats</li>
-            <li>Pairs with digital & billboard campaigns</li>
-          </ul>
-          <div class="mktg-price">Custom Pricing <span>/ based on size & quantity</span></div>
-          <button class="consult-btn" onclick="location.href='consultation.html'">ORDER YOUR MEDIABOOK</button>
-        </div>
-      </div>
 
   <!-- PORTFOLIO -->
   <section class="portfolio" id="portfolio">
@@ -710,7 +701,7 @@
             <span>How much does it cost to advertise on a MediaBox billboard?</span>
             <div class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
           </button>
-          <div class="faq-answer"><p>Billboard advertising starts from $690 per month. Pricing varies depending on the location, display size, and campaign duration. We offer both monthly and annual contracts — annual contracts include preferential rates. Contact us for a customized quote tailored to your budget and goals.</p></div>
+          <div class="faq-answer"><p>Billboard advertising starts from $690 per month. Pricing varies depending on the location, display size, and campaign duration. We offer both monthly and annual contracts &mdash; annual contracts include preferential rates. Contact us for a customized quote tailored to your budget and goals.</p></div>
         </div>
         <div class="faq-item">
           <button class="faq-question" onclick="toggleFaq(this)">
@@ -724,7 +715,7 @@
             <span>How long does it take to get my advertisement live on a billboard?</span>
             <div class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
           </button>
-          <div class="faq-answer"><p>Once your artwork is approved and your contract is signed, we can typically get your campaign live within 3–5 business days for digital displays. Our team handles all technical setup and scheduling, so you don't have to lift a finger.</p></div>
+          <div class="faq-answer"><p>Once your artwork is approved and your contract is signed, we can typically get your campaign live within 3&ndash;5 business days for digital displays. Our team handles all technical setup and scheduling, so you don't have to lift a finger.</p></div>
         </div>
         <div class="faq-item">
           <button class="faq-question" onclick="toggleFaq(this)">
@@ -738,7 +729,7 @@
             <span>What is the MediaBox franchise opportunity?</span>
             <div class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
           </button>
-          <div class="faq-answer"><p>Our franchise model allows you to own a MediaBox billboard location and earn advertising revenue from day one. MediaBox handles site selection, installation, maintenance, and client onboarding — you simply collect the returns. Revenue typically starts from $690 per month per board, and you can scale by owning a full network of locations.</p></div>
+          <div class="faq-answer"><p>Our franchise model allows you to own a MediaBox billboard location and earn advertising revenue from day one. MediaBox handles site selection, installation, maintenance, and client onboarding &mdash; you simply collect the returns. Revenue typically starts from $690 per month per board, and you can scale by owning a full network of locations.</p></div>
         </div>
         <div class="faq-item">
           <button class="faq-question" onclick="toggleFaq(this)">

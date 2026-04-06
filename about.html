@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="icon" type="image/x-icon" href="favicon.ico"
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>About Us | MediaBox Bahamas</title>
@@ -61,10 +61,8 @@ body.cursor-click #cursor-dot  { transform: translate(-50%, -50%) scale(0.6); }
 
 body { font-family:'Montserrat',sans-serif; background:#e8eef2; overflow-x:hidden; }
 
-/* ===== BACKGROUND CANVAS ===== */
 #bg-canvas { position:fixed; top:0; left:0; width:100vw; height:100vh; z-index:0; pointer-events:none; }
 
-/* ===== ORBS ===== */
 .orb { position:fixed; border-radius:50%; pointer-events:none; z-index:1; animation:orbDrift 10s ease-in-out infinite alternate; }
 .orb-1 { width:220px; height:220px; top:-60px; left:-60px; background:radial-gradient(circle at 50% 50%, rgba(200,248,255,1) 0%, rgba(140,235,252,0.95) 28%, rgba(80,215,245,0.65) 55%, rgba(40,190,235,0.18) 80%, transparent 100%); filter:blur(6px) drop-shadow(0 0 24px rgba(140,235,255,0.95)); animation-duration:11s; }
 .orb-2 { width:200px; height:200px; top:-55px; right:-55px; background:radial-gradient(circle at 50% 50%, rgba(255,235,150,1) 0%, rgba(240,205,110,0.9) 32%, rgba(210,170,70,0.6) 58%, rgba(190,145,50,0.18) 80%, transparent 100%); filter:blur(6px) drop-shadow(0 0 22px rgba(255,200,60,0.85)); animation-duration:14s; animation-delay:-3s; }
@@ -72,7 +70,6 @@ body { font-family:'Montserrat',sans-serif; background:#e8eef2; overflow-x:hidde
 .orb-4 { width:150px; height:150px; bottom:8%; right:3%; background:radial-gradient(circle at 50% 50%, rgba(252,230,140,0.95) 0%, rgba(230,195,90,0.72) 34%, rgba(200,160,55,0.32) 62%, transparent 100%); filter:blur(5px) drop-shadow(0 0 16px rgba(240,190,60,0.7)); animation-duration:13s; animation-delay:-9s; }
 @keyframes orbDrift { 0%{transform:translate(0,0) scale(1);} 25%{transform:translate(14px,10px) scale(1.06);} 55%{transform:translate(-8px,18px) scale(0.95);} 100%{transform:translate(10px,-14px) scale(1.04);} }
 
-/* ===== HEADER ===== */
 header {
   position:fixed; top:0; width:100%; z-index:1000;
   background:rgba(255,255,255,0.88); backdrop-filter:blur(16px);
@@ -110,7 +107,6 @@ nav li:first-child a { color:#c5a059; }
 .hamburger.open span:nth-child(2) { opacity:0; }
 .hamburger.open span:nth-child(3) { transform:translateY(-7.5px) rotate(-45deg); }
 
-/* ===== PAGE HERO ===== */
 .page-hero {
   position:relative; z-index:10;
   padding: 9rem 5% 5rem;
@@ -123,7 +119,6 @@ nav li:first-child a { color:#c5a059; }
 .page-hero h1::after { content:''; display:block; width:60px; height:3px; background:#c5a059; margin:12px auto 0; }
 .page-hero p { font-size:1rem; color:#3a4858; font-weight:500; max-width:580px; margin:0 auto; line-height:1.65; }
 
-/* ===== CONTENT SECTIONS ===== */
 .content-section {
   position:relative; z-index:10;
   padding:5rem 5%;
@@ -159,11 +154,83 @@ nav li:first-child a { color:#c5a059; }
 }
 .img-wrap .img-inner {
   position:relative; z-index:2; transform:translate(18px,18px);
-  box-shadow:0 20px 40px rgba(0,0,0,0.12); transition:all 0.4s; overflow:hidden; border-radius:4px;
+  box-shadow:0 20px 40px rgba(0,0,0,0.08); transition:all 0.4s; overflow:hidden; border-radius:4px; background:transparent;
 }
-.img-wrap img { width:100%; height:380px; object-fit:cover; display:block; transition:transform 0.4s; }
+.img-wrap img { width:100%; height:380px; object-fit:contain; background:transparent; display:block; transition:transform 0.4s; }
 .img-wrap:hover .img-inner { transform:translate(8px,8px); }
 .img-wrap:hover img { transform:scale(1.03); }
+
+/* ===== TEAM SECTION ===== */
+.team-section {
+  position:relative; z-index:10;
+  padding:5rem 5% 6rem;
+  text-align:center;
+}
+.team-inner { max-width:900px; margin:0 auto; }
+.team-heading { margin-bottom:3.5rem; }
+.team-heading h2 {
+  font-family:'Space Grotesk',sans-serif; font-size:2rem; font-weight:700;
+  color:#0c182d; margin-bottom:0.6rem;
+}
+.team-heading h2::after { content:''; display:block; width:48px; height:3px; background:#c5a059; margin:10px auto 0; }
+.team-heading p { font-size:0.9rem; color:#7a8a98; font-weight:500; margin-top:1rem; }
+
+.team-grid {
+  display:grid; grid-template-columns:1fr 1fr;
+  gap:3rem; justify-items:center;
+}
+
+.team-card {
+  display:flex; flex-direction:column; align-items:center;
+  background:rgba(242,246,249,0.82);
+  backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px);
+  border:1px solid rgba(255,255,255,0.95);
+  border-radius:12px; padding:2.5rem 2rem 2rem;
+  box-shadow:0 8px 32px rgba(0,0,0,0.07);
+  width:100%; max-width:360px;
+  transition:transform 0.3s ease, box-shadow 0.3s ease;
+}
+.team-card:hover {
+  transform:translateY(-6px);
+  box-shadow:0 18px 48px rgba(197,160,89,0.18);
+}
+
+.team-photo-wrap {
+  position:relative; width:180px; height:180px; margin-bottom:1.8rem;
+}
+.team-photo-wrap img {
+  width:100%; height:100%; object-fit:cover;
+  border-radius:50%; display:block;
+  position:relative; z-index:2;
+  border:4px solid #fff;
+  box-shadow:0 8px 24px rgba(0,0,0,0.13);
+}
+.team-photo-border {
+  position:absolute; top:-6px; left:-6px;
+  width:calc(100% + 12px); height:calc(100% + 12px);
+  border-radius:50%;
+  border:2px solid #c5a059;
+  z-index:1;
+  animation:rotateBorder 8s linear infinite;
+  background: conic-gradient(#c5a059 0deg, transparent 60deg, #e8c87a 120deg, transparent 180deg, #c5a059 240deg, transparent 300deg, #c5a059 360deg);
+  -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 2px), #000 calc(100% - 2px));
+  mask: radial-gradient(farthest-side, transparent calc(100% - 2px), #000 calc(100% - 2px));
+}
+@keyframes rotateBorder { to { transform:rotate(360deg); } }
+
+.team-info { text-align:center; }
+.team-info h3 {
+  font-family:'Space Grotesk',sans-serif; font-size:1.2rem; font-weight:700;
+  color:#0c182d; margin-bottom:0.5rem;
+}
+.team-title {
+  display:inline-block;
+  background:linear-gradient(135deg,#c5a059,#e8c87a);
+  color:#0c182d; font-size:0.72rem; font-weight:700;
+  text-transform:uppercase; letter-spacing:0.8px;
+  padding:0.35rem 1rem; border-radius:20px;
+  box-shadow:0 2px 8px rgba(197,160,89,0.3);
+}
 
 /* ===== FOOTER ===== */
 footer { background:rgba(255,255,255,0.9); color:#333; padding:4rem 4% 2rem; border-top:3px solid #c5a059; position:relative; z-index:100; }
@@ -193,10 +260,12 @@ footer { background:rgba(255,255,255,0.9); color:#333; padding:4rem 4% 2rem; bor
   .mobile-consult { display:block; margin:1rem 5%; text-align:center; padding:0.8rem; background:linear-gradient(135deg,#c5a059,#e8c87a 50%,#c5a059); color:#0c182d; font-weight:700; font-size:0.8rem; text-transform:uppercase; border-radius:4px; text-decoration:none; }
   .content-section { grid-template-columns:1fr; gap:2.5rem; }
   .content-section.reverse { direction:ltr; }
+  .team-grid { grid-template-columns:1fr; gap:2rem; }
 }
 @media(max-width:768px){
   .page-hero h1 { font-size:2rem; }
   .img-wrap img { height:260px; }
+  .team-photo-wrap { width:150px; height:150px; }
 }
 </style>
 </head>
@@ -250,7 +319,7 @@ footer { background:rgba(255,255,255,0.9); color:#333; padding:4rem 4% 2rem; bor
     </div>
     <div class="img-wrap">
       <div class="img-inner">
-        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=800&auto=format&fit=crop" alt="Corporate Office">
+        <img src="Billboard1.png" alt="MediaBox Billboard">
       </div>
     </div>
   </section>
@@ -277,7 +346,39 @@ footer { background:rgba(255,255,255,0.9); color:#333; padding:4rem 4% 2rem; bor
     </div>
     <div class="img-wrap">
       <div class="img-inner">
-        <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?q=80&w=800&auto=format&fit=crop" alt="Marketing Strategy">
+        <img src="Billboard2.png" alt="MediaBox Digital Billboard">
+      </div>
+    </div>
+  </section>
+
+  <!-- MEET THE TEAM -->
+  <section class="team-section">
+    <div class="team-inner">
+      <div class="team-heading">
+        <h2>Meet the Team</h2>
+        <p>The visionaries behind MediaBox Bahamas</p>
+      </div>
+      <div class="team-grid">
+        <div class="team-card">
+          <div class="team-photo-wrap">
+            <img src="joebeth.jpeg" alt="Joebeth Newbold">
+            <div class="team-photo-border"></div>
+          </div>
+          <div class="team-info">
+            <h3>Joebeth Newbold</h3>
+            <span class="team-title">Chairman &amp; Founder</span>
+          </div>
+        </div>
+        <div class="team-card">
+          <div class="team-photo-wrap">
+            <img src="santina.jpeg" alt="Santina Mckinney">
+            <div class="team-photo-border"></div>
+          </div>
+          <div class="team-info">
+            <h3>Santina Mckinney</h3>
+            <span class="team-title">CEO &amp; Founder</span>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -328,7 +429,7 @@ mainNav.querySelectorAll('a').forEach(l => l.addEventListener('click', () => {
   hamburger.classList.remove('open');
   mainNav.classList.remove('open');
 }));
-// Custom Cursor
+
 const dot  = document.getElementById('cursor-dot');
 const ring = document.getElementById('cursor-ring');
 let mouseX = 0, mouseY = 0, ringX = 0, ringY = 0;

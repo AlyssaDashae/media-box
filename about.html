@@ -146,18 +146,11 @@ nav li:first-child a { color:#c5a059; }
 .benefit-item { display:flex; align-items:center; gap:0.9rem; font-weight:700; color:#0c182d; font-size:0.9rem; }
 .benefit-item svg { width:20px; height:20px; stroke:#c5a059; fill:none; stroke-width:2.5; flex-shrink:0; }
 
-.img-wrap { position:relative; padding:18px; }
-.img-wrap::before {
-  content:''; position:absolute; top:0; left:0;
-  width:calc(100% - 36px); height:calc(100% - 36px);
-  border:2px solid #c5a059; z-index:1; transition:all 0.4s;
-}
+.img-wrap { position:relative; padding:0; }
 .img-wrap .img-inner {
-  position:relative; z-index:2; transform:translate(18px,18px);
-  box-shadow:0 20px 40px rgba(0,0,0,0.08); transition:all 0.4s; overflow:hidden; border-radius:4px; background:transparent;
+  position:relative; overflow:hidden; border-radius:4px; background:transparent;
 }
 .img-wrap img { width:100%; height:380px; object-fit:contain; background:transparent; display:block; transition:transform 0.4s; }
-.img-wrap:hover .img-inner { transform:translate(8px,8px); }
 .img-wrap:hover img { transform:scale(1.03); }
 
 /* ===== TEAM SECTION ===== */
@@ -361,7 +354,7 @@ footer { background:rgba(255,255,255,0.9); color:#333; padding:4rem 4% 2rem; bor
       <div class="team-grid">
         <div class="team-card">
           <div class="team-photo-wrap">
-            <img src="joebeth.jpeg" alt="Joebeth Newbold">
+            <img src="jobeth.jpeg" alt="Jobeth Newbold">
             <div class="team-photo-border"></div>
           </div>
           <div class="team-info">

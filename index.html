@@ -72,180 +72,27 @@
     .bb-slides-wrap { position:absolute; inset:0; z-index:1; overflow:hidden; }
     .bb-slides-inner { display:flex; height:100%; transition:transform 0.55s cubic-bezier(0.77,0,0.18,1); }
 
-    /* =============================================
-       SLIDE BASE
-    ============================================= */
-    .bb-slide-item {
-      flex:0 0 100%; height:100%;
-      display:flex; align-items:center;
-      padding:2rem 2.5rem;
-      box-sizing:border-box;
-      position:relative; overflow:hidden;
-    }
+    .bb-slide-item { flex:0 0 100%; height:100%; display:flex; align-items:center; padding:2rem 2.5rem; box-sizing:border-box; position:relative; overflow:hidden; }
 
-    /* =============================================
-       SLIDE 1 — GOLD CITYSCAPE / OUTDOOR MEDIA
-       Deep midnight navy, gold light-ray burst,
-       perspective city grid, particle dust
-    ============================================= */
-    .s1 {
-      background: radial-gradient(ellipse 80% 60% at 72% 50%, #1a2a0a 0%, #08110a 40%, #020608 100%);
-    }
-    .s1::before {
-      content:'';
-      position:absolute; inset:0;
-      background:
-        radial-gradient(ellipse 55% 80% at 78% 50%, rgba(197,160,89,0.18) 0%, transparent 65%),
-        radial-gradient(ellipse 30% 50% at 80% 48%, rgba(232,200,122,0.22) 0%, transparent 50%);
-      z-index:0;
-    }
-    .s1::after {
-      content:'';
-      position:absolute; inset:0;
-      background-image:
-        repeating-linear-gradient(
-          90deg,
-          transparent,
-          transparent 59px,
-          rgba(197,160,89,0.04) 60px
-        ),
-        repeating-linear-gradient(
-          180deg,
-          transparent,
-          transparent 59px,
-          rgba(197,160,89,0.03) 60px
-        );
-      background-size:60px 60px;
-      transform: perspective(600px) rotateX(30deg) translateY(20%) scaleX(1.4);
-      transform-origin: bottom center;
-      opacity:0.9;
-      z-index:0;
-    }
-    .s1 .slide-art {
-      position:absolute; right:0; top:0; width:52%; height:100%;
-      z-index:1; pointer-events:none; overflow:hidden;
-    }
+    .s1 { background: radial-gradient(ellipse 80% 60% at 72% 50%, #1a2a0a 0%, #08110a 40%, #020608 100%); }
+    .s1::before { content:''; position:absolute; inset:0; background: radial-gradient(ellipse 55% 80% at 78% 50%, rgba(197,160,89,0.18) 0%, transparent 65%), radial-gradient(ellipse 30% 50% at 80% 48%, rgba(232,200,122,0.22) 0%, transparent 50%); z-index:0; }
+    .s1::after { content:''; position:absolute; inset:0; background-image: repeating-linear-gradient(90deg, transparent, transparent 59px, rgba(197,160,89,0.04) 60px), repeating-linear-gradient(180deg, transparent, transparent 59px, rgba(197,160,89,0.03) 60px); background-size:60px 60px; transform: perspective(600px) rotateX(30deg) translateY(20%) scaleX(1.4); transform-origin: bottom center; opacity:0.9; z-index:0; }
+    .s1 .slide-art { position:absolute; right:0; top:0; width:52%; height:100%; z-index:1; pointer-events:none; overflow:hidden; }
     .s1 .slide-art canvas { width:100%; height:100%; display:block; }
 
-    /* =============================================
-       SLIDE 2 — GREEN TRAFFIC MAP
-       Dark emerald, glowing road network,
-       radial pulse rings, moving dot
-    ============================================= */
-    .s2 {
-      background: radial-gradient(ellipse 90% 80% at 65% 55%, #021408 0%, #010c06 50%, #010806 100%);
-    }
-    .s2::before {
-      content:'';
-      position:absolute; inset:0;
-      background:
-        radial-gradient(ellipse 50% 60% at 68% 50%, rgba(80,200,120,0.14) 0%, transparent 65%),
-        radial-gradient(ellipse 25% 35% at 70% 48%, rgba(100,230,140,0.18) 0%, transparent 45%);
-      z-index:0;
-    }
+    .s2 { background: radial-gradient(ellipse 90% 80% at 65% 55%, #021408 0%, #010c06 50%, #010806 100%); }
+    .s2::before { content:''; position:absolute; inset:0; background: radial-gradient(ellipse 50% 60% at 68% 50%, rgba(80,200,120,0.14) 0%, transparent 65%), radial-gradient(ellipse 25% 35% at 70% 48%, rgba(100,230,140,0.18) 0%, transparent 45%); z-index:0; }
 
-    /* =============================================
-       SLIDE 3 — AMBER WEALTH / FRANCHISE
-       Dark bronze, stacked coin rings,
-       diagonal sweep light, floating $
-    ============================================= */
-    .s3 {
-      background: radial-gradient(ellipse 85% 70% at 68% 52%, #1c0e00 0%, #0e0600 50%, #060300 100%);
-    }
-    .s3::before {
-      content:'';
-      position:absolute; inset:0;
-      background:
-        radial-gradient(ellipse 55% 65% at 72% 50%, rgba(240,180,50,0.16) 0%, transparent 65%),
-        radial-gradient(ellipse 28% 40% at 74% 48%, rgba(255,200,80,0.2) 0%, transparent 48%);
-      z-index:0;
-    }
+    .s3 { background: radial-gradient(ellipse 85% 70% at 68% 52%, #1c0e00 0%, #0e0600 50%, #060300 100%); }
+    .s3::before { content:''; position:absolute; inset:0; background: radial-gradient(ellipse 55% 65% at 72% 50%, rgba(240,180,50,0.16) 0%, transparent 65%), radial-gradient(ellipse 28% 40% at 74% 48%, rgba(255,200,80,0.2) 0%, transparent 48%); z-index:0; }
 
-    /* =============================================
-       SLIDE 4 — PURPLE PRESTIGE / MEDIABOOK
-       Deep violet, luxury diamond lattice,
-       glowing centre orb
-    ============================================= */
-    .s4 {
-      background: radial-gradient(ellipse 85% 70% at 65% 50%, #0d0520 0%, #060210 50%, #030108 100%);
-    }
-    .s4::before {
-      content:'';
-      position:absolute; inset:0;
-      background:
-        radial-gradient(ellipse 50% 60% at 70% 50%, rgba(160,100,240,0.18) 0%, transparent 60%),
-        radial-gradient(ellipse 25% 35% at 72% 48%, rgba(190,130,255,0.22) 0%, transparent 45%);
-      z-index:0;
-    }
+    .s4 { background: radial-gradient(ellipse 85% 70% at 65% 50%, #0d0520 0%, #060210 50%, #030108 100%); }
+    .s4::before { content:''; position:absolute; inset:0; background: radial-gradient(ellipse 50% 60% at 70% 50%, rgba(160,100,240,0.18) 0%, transparent 60%), radial-gradient(ellipse 25% 35% at 72% 48%, rgba(190,130,255,0.22) 0%, transparent 45%); z-index:0; }
 
-    /* =============================================
-       SLIDE 5 — CYAN TECH / FULL SERVICE
-       Near-black, neon circuit traces,
-       scanning horizontal beam, node pulses
-    ============================================= */
-    .s5 {
-      background: radial-gradient(ellipse 85% 70% at 65% 50%, #010d14 0%, #010810 55%, #010608 100%);
-    }
-    .s5::before {
-      content:'';
-      position:absolute; inset:0;
-      background:
-        radial-gradient(ellipse 50% 60% at 70% 50%, rgba(0,229,255,0.12) 0%, transparent 65%),
-        radial-gradient(ellipse 22% 30% at 72% 48%, rgba(0,245,255,0.2) 0%, transparent 44%);
-      z-index:0;
-    }
+    .s5 { background: radial-gradient(ellipse 85% 70% at 65% 50%, #010d14 0%, #010810 55%, #010608 100%); }
+    .s5::before { content:''; position:absolute; inset:0; background: radial-gradient(ellipse 50% 60% at 70% 50%, rgba(0,229,255,0.12) 0%, transparent 65%), radial-gradient(ellipse 22% 30% at 72% 48%, rgba(0,245,255,0.2) 0%, transparent 44%); z-index:0; }
 
-    /* Slide SVG canvas layers */
-    .slide-bg-svg {
-      position:absolute; inset:0; width:100%; height:100%;
-      pointer-events:none; z-index:1;
-    }
-
-    /* Animated elements */
-    @keyframes scanBeam {
-      0%   { transform: translateY(-100%); opacity:0; }
-      5%   { opacity:1; }
-      95%  { opacity:1; }
-      100% { transform: translateY(400px); opacity:0; }
-    }
-    @keyframes pulse {
-      0%,100% { r:8; opacity:0.9; }
-      50%      { r:14; opacity:0.4; }
-    }
-    @keyframes pulseLg {
-      0%   { r:0;  opacity:0.6; }
-      100% { r:90; opacity:0; }
-    }
-    @keyframes rotateSlow {
-      from { transform: rotate(0deg); }
-      to   { transform: rotate(360deg); }
-    }
-    @keyframes floatY {
-      0%,100% { transform: translateY(0px); }
-      50%      { transform: translateY(-12px); }
-    }
-    @keyframes shimmer {
-      0%,100% { opacity:0.25; }
-      50%      { opacity:0.7; }
-    }
-    @keyframes moveDot {
-      0%   { offset-distance:0%; }
-      100% { offset-distance:100%; }
-    }
-    @keyframes beamSweep {
-      0%   { opacity:0; transform:scaleX(0) translateX(-50%); }
-      20%  { opacity:1; transform:scaleX(1) translateX(0); }
-      80%  { opacity:1; }
-      100% { opacity:0; transform:scaleX(1.5) translateX(30%); }
-    }
-    @keyframes coinFloat {
-      0%,100% { transform: translateY(0) rotate(-2deg); }
-      50%      { transform: translateY(-8px) rotate(2deg); }
-    }
-    @keyframes latticeShift {
-      0%,100% { stroke-dashoffset:0; }
-      50%      { stroke-dashoffset:20; }
-    }
+    .slide-bg-svg { position:absolute; inset:0; width:100%; height:100%; pointer-events:none; z-index:1; }
 
     .sl-content { position:relative; z-index:5; width:100%; display:flex; align-items:center; gap:2rem; }
     .sl-left { flex:1; }
@@ -292,8 +139,6 @@
     .mktg-features { list-style:none; margin:1.2rem 0 1.8rem; display:flex; flex-direction:column; gap:0.6rem; }
     .mktg-features li { display:flex; align-items:center; gap:0.7rem; font-size:0.85rem; color:#445; font-weight:500; }
     .mktg-features li::before { content:''; width:18px; height:18px; flex-shrink:0; background:linear-gradient(135deg,#c5a059,#e8c87a); border-radius:50%; display:inline-block; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpolyline points='20 6 9 17 4 12' stroke='%230c182d' stroke-width='3' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); background-size:11px; background-repeat:no-repeat; background-position:center; }
-    .mktg-features li.muted::before { background:rgba(0,0,0,0.08); background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cline x1='5' y1='12' x2='19' y2='12' stroke='%23aaa' stroke-width='2.5' stroke-linecap='round'/%3E%3C/svg%3E"); background-size:11px; background-repeat:no-repeat; background-position:center; }
-    .mktg-features li.muted { color:#aaa; }
     .mktg-price { font-family:'Space Grotesk',sans-serif; font-size:1.8rem; font-weight:700; color:#c5a059; margin-bottom:1.4rem; }
     .mktg-price span { font-size:0.9rem; color:#888; font-weight:400; }
     @media(max-width:1024px) { .mktg-row, .mktg-row.reverse { grid-template-columns:1fr; direction:ltr; gap:2rem; } }
@@ -332,12 +177,15 @@
     .port-info { padding:1.2rem; }
     .port-info h4 { font-family:'Space Grotesk',sans-serif; font-size:0.95rem; color:#0c182d; margin-bottom:0.35rem; }
     .port-info p  { font-size:0.78rem; color:#778; }
-    .prod-media { position:relative; width:100%; height:185px; overflow:hidden; background:#000; }
-    .prod-media img, .prod-media video { position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; transition:opacity 0.4s ease; }
-    .prod-media img { opacity:1; z-index:1; }
-    .prod-media video { opacity:0; z-index:2; }
-    .port-item.playing .prod-media img { opacity:0; }
-    .port-item.playing .prod-media video { opacity:1; }
+    /* Photo-only cards */
+    .prod-media-photo { position:relative; width:100%; height:185px; overflow:hidden; }
+    .prod-media-photo img { width:100%; height:100%; object-fit:cover; display:block; }
+    /* Nestle video card */
+    .prod-media-video { position:relative; width:100%; height:185px; overflow:hidden; background:#000; }
+    .prod-media-video img { position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; transition:opacity 0.4s ease; z-index:1; }
+    .prod-media-video video { position:absolute; top:0; left:0; width:100%; height:100%; object-fit:cover; transition:opacity 0.4s ease; opacity:0; z-index:2; }
+    .port-item.playing .prod-media-video img { opacity:0; }
+    .port-item.playing .prod-media-video video { opacity:1; }
     .media-toggle { position:absolute; bottom:10px; left:50%; transform:translateX(-50%); z-index:6; display:flex; border-radius:20px; overflow:hidden; border:1.5px solid rgba(197,160,89,0.8); background:rgba(0,0,0,0.55); backdrop-filter:blur(8px); }
     .media-toggle button { background:none; border:none; cursor:none !important; padding:5px 14px; font-size:0.62rem; font-weight:700; color:rgba(255,255,255,0.6); letter-spacing:0.8px; font-family:'Montserrat',sans-serif; transition:all 0.2s; }
     .media-toggle button.active { background:#c5a059; color:#0c182d; }
@@ -463,12 +311,10 @@
           <div class="bb-slides-wrap">
             <div class="bb-slides-inner" id="bbHeroInner">
 
-              <!-- ========== SLIDE 1: OUTDOOR MEDIA — gold ray burst + perspective grid + floating particles ========== -->
+              <!-- SLIDE 1 -->
               <div class="bb-slide-item s1">
-                <!-- Animated background canvas -->
                 <canvas class="slide-bg-svg" id="slideCanvas1" style="position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none;"></canvas>
-                <!-- SVG art layer: perspective grid + light rays -->
-                <svg class="slide-bg-svg" viewBox="0 0 900 400" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" style="z-index:2;">
+                                <svg class="slide-bg-svg" viewBox="0 0 900 400" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" style="z-index:2;">
                   <defs>
                     <radialGradient id="rayOrigin1" cx="78%" cy="50%" r="45%">
                       <stop offset="0%" stop-color="#e8c87a" stop-opacity="0.55"/>
@@ -481,9 +327,7 @@
                       <stop offset="100%" stop-color="#e8c87a" stop-opacity="0.55"/>
                     </linearGradient>
                   </defs>
-                  <!-- Glow core -->
                   <ellipse cx="720" cy="200" rx="180" ry="140" fill="url(#rayOrigin1)"/>
-                  <!-- Light rays fanning from right -->
                   <line x1="720" y1="200" x2="0" y2="0"   stroke="rgba(232,200,122,0.07)" stroke-width="28"/>
                   <line x1="720" y1="200" x2="0" y2="50"  stroke="rgba(232,200,122,0.1)"  stroke-width="20"/>
                   <line x1="720" y1="200" x2="0" y2="100" stroke="rgba(232,200,122,0.13)" stroke-width="14"/>
@@ -493,23 +337,19 @@
                   <line x1="720" y1="200" x2="0" y2="300" stroke="rgba(232,200,122,0.1)"  stroke-width="14"/>
                   <line x1="720" y1="200" x2="0" y2="350" stroke="rgba(232,200,122,0.08)" stroke-width="18"/>
                   <line x1="720" y1="200" x2="0" y2="400" stroke="rgba(232,200,122,0.06)" stroke-width="24"/>
-                  <!-- Billboard silhouette right side -->
                   <rect x="620" y="80" width="240" height="150" rx="4" fill="rgba(197,160,89,0.06)" stroke="rgba(197,160,89,0.2)" stroke-width="1.5"/>
                   <rect x="614" y="75" width="252" height="10" rx="2" fill="rgba(197,160,89,0.18)"/>
                   <rect x="614" y="228" width="252" height="8" rx="2" fill="rgba(197,160,89,0.12)"/>
                   <line x1="634" y1="236" x2="634" y2="310" stroke="rgba(197,160,89,0.15)" stroke-width="10"/>
                   <line x1="846" y1="236" x2="846" y2="310" stroke="rgba(197,160,89,0.15)" stroke-width="10"/>
                   <text x="740" y="162" text-anchor="middle" font-family="Arial Black,sans-serif" font-weight="900" font-size="22" fill="rgba(197,160,89,0.25)" letter-spacing="4">MEDIABOX</text>
-                  <!-- Horizontal scan line animation -->
                   <rect x="620" y="80" width="240" height="2" fill="rgba(232,200,122,0.6)" opacity="0">
                     <animate attributeName="y" values="80;228;80" dur="3s" repeatCount="indefinite"/>
                     <animate attributeName="opacity" values="0;0.8;0.8;0" dur="3s" repeatCount="indefinite"/>
                   </rect>
-                  <!-- Gold accent bar left -->
                   <rect x="0" y="0" width="4" height="400" fill="rgba(197,160,89,0.35)"/>
                   <rect x="0" y="0" width="180" height="2" fill="rgba(197,160,89,0.2)"/>
                   <rect x="0" y="398" width="180" height="2" fill="rgba(197,160,89,0.12)"/>
-                  <!-- Corner ornament -->
                   <line x1="4" y1="20" x2="60" y2="20" stroke="rgba(197,160,89,0.3)" stroke-width="1"/>
                   <line x1="4" y1="380" x2="60" y2="380" stroke="rgba(197,160,89,0.2)" stroke-width="1"/>
                 </svg>
@@ -529,32 +369,26 @@
                 </div>
               </div>
 
-              <!-- ========== SLIDE 2: HIGH-TRAFFIC — glowing map network + pulse rings + road grid ========== -->
+              <!-- SLIDE 2 -->
               <div class="bb-slide-item s2">
-                <svg class="slide-bg-svg" viewBox="0 0 900 400" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" style="z-index:1;">
+                                <svg class="slide-bg-svg" viewBox="0 0 900 400" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" style="z-index:1;">
                   <defs>
                     <radialGradient id="mapGlow2" cx="68%" cy="50%" r="50%">
                       <stop offset="0%" stop-color="#50c878" stop-opacity="0.22"/>
                       <stop offset="100%" stop-color="#50c878" stop-opacity="0"/>
                     </radialGradient>
                   </defs>
-                  <!-- Background glow -->
                   <rect width="900" height="400" fill="url(#mapGlow2)"/>
-                  <!-- Road grid — horizontal -->
                   <line x1="0" y1="130" x2="900" y2="130" stroke="rgba(255,255,255,0.035)" stroke-width="20"/>
                   <line x1="0" y1="270" x2="900" y2="270" stroke="rgba(255,255,255,0.025)" stroke-width="16"/>
-                  <!-- Road grid — vertical -->
                   <line x1="500" y1="0" x2="500" y2="400" stroke="rgba(255,255,255,0.03)" stroke-width="18"/>
                   <line x1="720" y1="0" x2="720" y2="400" stroke="rgba(255,255,255,0.02)" stroke-width="14"/>
-                  <!-- Road dashes -->
                   <line x1="0" y1="130" x2="900" y2="130" stroke="rgba(80,200,120,0.12)" stroke-width="1" stroke-dasharray="20 14"/>
                   <line x1="0" y1="270" x2="900" y2="270" stroke="rgba(80,200,120,0.08)" stroke-width="1" stroke-dasharray="20 14"/>
                   <line x1="500" y1="0" x2="500" y2="400" stroke="rgba(80,200,120,0.1)" stroke-width="1" stroke-dasharray="20 14"/>
-                  <!-- Roundabout at intersection -->
                   <circle cx="720" cy="200" r="70" fill="none" stroke="rgba(80,200,120,0.15)" stroke-width="1.5"/>
                   <circle cx="720" cy="200" r="50" fill="none" stroke="rgba(80,200,120,0.1)" stroke-width="1"/>
                   <circle cx="720" cy="200" r="28" fill="rgba(80,200,120,0.06)" stroke="rgba(80,200,120,0.2)" stroke-width="1.5"/>
-                  <!-- Pulse rings from roundabout -->
                   <circle cx="720" cy="200" r="28" fill="none" stroke="rgba(80,200,120,0.5)" stroke-width="1.5">
                     <animate attributeName="r" values="28;85;28" dur="2.5s" repeatCount="indefinite"/>
                     <animate attributeName="opacity" values="0.5;0;0.5" dur="2.5s" repeatCount="indefinite"/>
@@ -563,12 +397,10 @@
                     <animate attributeName="r" values="28;85;28" dur="2.5s" begin="0.8s" repeatCount="indefinite"/>
                     <animate attributeName="opacity" values="0.4;0;0.4" dur="2.5s" begin="0.8s" repeatCount="indefinite"/>
                   </circle>
-                  <!-- Network connection lines -->
                   <line x1="720" y1="200" x2="500" y2="130" stroke="rgba(80,200,120,0.2)" stroke-width="1.5"/>
                   <line x1="720" y1="200" x2="500" y2="270" stroke="rgba(80,200,120,0.18)" stroke-width="1.5"/>
                   <line x1="720" y1="200" x2="850" y2="80"  stroke="rgba(80,200,120,0.14)" stroke-width="1"/>
                   <line x1="720" y1="200" x2="850" y2="330" stroke="rgba(80,200,120,0.14)" stroke-width="1"/>
-                  <!-- Map pins -->
                   <g transform="translate(720,200)">
                     <circle r="6" fill="#50c878" opacity="0.9"/>
                     <circle r="3" fill="#fff" opacity="0.8"/>
@@ -584,11 +416,9 @@
                   <g transform="translate(850,80)">
                     <path d="M0-10C-4-10 -8-7 -8-2 -8 3 0 10 0 10S8 3 8-2C8-7 4-10 0-10Z" fill="#50c878" opacity="0.5"/>
                   </g>
-                  <!-- Moving car dot on road -->
                   <circle r="5" fill="rgba(80,200,120,0.9)">
                     <animateMotion dur="4s" repeatCount="indefinite" path="M 0 130 L 500 130 L 500 270 L 900 270"/>
                   </circle>
-                  <!-- Left accent -->
                   <rect x="0" y="0" width="4" height="400" fill="rgba(80,200,120,0.4)"/>
                 </svg>
                 <div class="sl-content">
@@ -607,9 +437,9 @@
                 </div>
               </div>
 
-              <!-- ========== SLIDE 3: FRANCHISE — stacked coin rings + wealth diagonal + $ particles ========== -->
+              <!-- SLIDE 3 -->
               <div class="bb-slide-item s3">
-                <svg class="slide-bg-svg" viewBox="0 0 900 400" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" style="z-index:1;">
+                                <svg class="slide-bg-svg" viewBox="0 0 900 400" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" style="z-index:1;">
                   <defs>
                     <radialGradient id="coinGlow3" cx="70%" cy="50%" r="50%">
                       <stop offset="0%" stop-color="#f0b432" stop-opacity="0.28"/>
@@ -626,39 +456,32 @@
                     </linearGradient>
                   </defs>
                   <rect width="900" height="400" fill="url(#coinGlow3)"/>
-                  <!-- Diagonal wealth sweep -->
                   <rect x="400" y="-60" width="90" height="600" fill="rgba(240,180,50,0.035)" transform="rotate(-20,600,200)"/>
                   <rect x="530" y="-60" width="50" height="600" fill="rgba(240,180,50,0.025)" transform="rotate(-20,600,200)"/>
-                  <!-- Coin stack — 5 coins, stacked vertically, right side -->
-                  <!-- Coin 5 (bottom) -->
                   <g transform="translate(680,280)">
                     <ellipse rx="80" ry="20" fill="#1a0e00" stroke="#6a4a10" stroke-width="1"/>
                     <rect x="-80" y="-28" width="160" height="28" fill="#1a0e00" stroke="#6a4a10" stroke-width="0.5"/>
                     <ellipse ry="20" rx="80" fill="url(#coinFace)" stroke="#8a6020" stroke-width="1.5"/>
                     <ellipse ry="14" rx="60" fill="none" stroke="rgba(197,160,89,0.2)" stroke-width="0.5"/>
                   </g>
-                  <!-- Coin 4 -->
                   <g transform="translate(680,250)">
                     <ellipse rx="80" ry="20" fill="#1a0e00" stroke="#6a4a10" stroke-width="1"/>
                     <rect x="-80" y="-28" width="160" height="28" fill="#1a0e00" stroke="#6a4a10" stroke-width="0.5"/>
                     <ellipse ry="20" rx="80" fill="url(#coinFace)" stroke="#8a6020" stroke-width="1.5"/>
                     <ellipse ry="14" rx="60" fill="none" stroke="rgba(197,160,89,0.2)" stroke-width="0.5"/>
                   </g>
-                  <!-- Coin 3 -->
                   <g transform="translate(680,218)">
                     <ellipse rx="80" ry="20" fill="#211200" stroke="#7a5510" stroke-width="1"/>
                     <rect x="-80" y="-28" width="160" height="28" fill="#211200" stroke="#7a5510" stroke-width="0.5"/>
                     <ellipse ry="20" rx="80" fill="#2a1800" stroke="#aa7820" stroke-width="1.5"/>
                     <ellipse ry="14" rx="60" fill="none" stroke="rgba(197,160,89,0.3)" stroke-width="0.5"/>
                   </g>
-                  <!-- Coin 2 -->
                   <g transform="translate(680,185)">
                     <ellipse rx="80" ry="20" fill="#241400" stroke="#8a6015" stroke-width="1"/>
                     <rect x="-80" y="-28" width="160" height="28" fill="#241400" stroke="#8a6015" stroke-width="0.5"/>
                     <ellipse ry="20" rx="80" fill="#301a00" stroke="#c09030" stroke-width="1.5"/>
                     <ellipse ry="14" rx="60" fill="none" stroke="rgba(197,160,89,0.35)" stroke-width="1"/>
                   </g>
-                  <!-- Coin 1 (top) — brightest -->
                   <g transform="translate(680,150)">
                     <ellipse rx="80" ry="20" fill="#2a1800" stroke="#aa8020" stroke-width="1.5"/>
                     <rect x="-80" y="-28" width="160" height="28" fill="#2a1800" stroke="#aa8020" stroke-width="1"/>
@@ -666,14 +489,11 @@
                     <ellipse ry="14" rx="60" fill="none" stroke="rgba(197,160,89,0.5)" stroke-width="1"/>
                     <text y="6" text-anchor="middle" font-family="Arial Black,sans-serif" font-weight="900" font-size="18" fill="rgba(197,160,89,0.6)">$</text>
                   </g>
-                  <!-- Growth arrow -->
                   <polyline points="520,340 545,290 570,305 605,230 640,248 660,180" fill="none" stroke="rgba(240,180,50,0.25)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                   <polygon points="656,168 670,185 645,182" fill="rgba(240,180,50,0.4)"/>
-                  <!-- Floating $ signs -->
                   <text x="800" y="100" font-family="Arial Black,sans-serif" font-size="28" fill="rgba(197,160,89,0.12)" font-weight="900">$</text>
                   <text x="560" y="80"  font-family="Arial Black,sans-serif" font-size="18" fill="rgba(197,160,89,0.1)" font-weight="900">$</text>
                   <text x="850" y="280" font-family="Arial Black,sans-serif" font-size="22" fill="rgba(197,160,89,0.1)" font-weight="900">$</text>
-                  <!-- Left accent -->
                   <rect x="0" y="0" width="4" height="400" fill="rgba(240,180,50,0.4)"/>
                 </svg>
                 <div class="sl-content">
@@ -692,9 +512,9 @@
                 </div>
               </div>
 
-              <!-- ========== SLIDE 4: MEDIABOOK — luxury diamond lattice + rotating ring + book pages ========== -->
+              <!-- SLIDE 4 -->
               <div class="bb-slide-item s4">
-                <svg class="slide-bg-svg" viewBox="0 0 900 400" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" style="z-index:1;">
+                                <svg class="slide-bg-svg" viewBox="0 0 900 400" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" style="z-index:1;">
                   <defs>
                     <radialGradient id="luxGlow4" cx="68%" cy="50%" r="52%">
                       <stop offset="0%" stop-color="#a064f0" stop-opacity="0.25"/>
@@ -708,7 +528,6 @@
                   </defs>
                   <rect width="900" height="400" fill="url(#luxGlow4)"/>
                   <rect width="900" height="400" fill="url(#diamond4)"/>
-                  <!-- Rotating outer ring -->
                   <g transform="translate(720,200)">
                     <circle r="130" fill="none" stroke="rgba(160,100,240,0.12)" stroke-width="1" stroke-dasharray="8 6">
                       <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="18s" repeatCount="indefinite"/>
@@ -716,34 +535,25 @@
                     <circle r="100" fill="none" stroke="rgba(160,100,240,0.08)" stroke-width="1" stroke-dasharray="4 8">
                       <animateTransform attributeName="transform" type="rotate" from="360" to="0" dur="12s" repeatCount="indefinite"/>
                     </circle>
-                    <!-- Diamond shape -->
                     <polygon points="0,-85 75,0 0,85 -75,0" fill="none" stroke="rgba(160,100,240,0.18)" stroke-width="1"/>
                     <polygon points="0,-60 52,0 0,60 -52,0" fill="none" stroke="rgba(160,100,240,0.12)" stroke-width="1"/>
                     <polygon points="0,-35 30,0 0,35 -30,0" fill="rgba(160,100,240,0.07)" stroke="rgba(160,100,240,0.22)" stroke-width="1"/>
-                    <!-- Centre orb -->
                     <circle r="12" fill="rgba(160,100,240,0.3)" stroke="rgba(190,130,255,0.6)" stroke-width="1.5"/>
                     <circle r="5" fill="rgba(255,255,255,0.5)"/>
                   </g>
-                  <!-- Book / MediaBook illustration -->
                   <g transform="translate(620,130)">
-                    <!-- Book spine -->
                     <rect x="0" y="0" width="18" height="140" rx="2" fill="rgba(160,100,240,0.2)" stroke="rgba(160,100,240,0.35)" stroke-width="1"/>
-                    <!-- Book cover -->
                     <rect x="16" y="-4" width="100" height="148" rx="3" fill="rgba(30,10,60,0.6)" stroke="rgba(160,100,240,0.3)" stroke-width="1"/>
-                    <!-- Gold MB on cover -->
                     <text x="66" y="72" text-anchor="middle" font-family="Arial Black,sans-serif" font-weight="900" font-size="20" fill="rgba(197,160,89,0.5)" letter-spacing="1">MB</text>
                     <line x1="30" y1="90" x2="102" y2="90" stroke="rgba(197,160,89,0.2)" stroke-width="1"/>
-                    <!-- Page lines -->
                     <line x1="30" y1="105" x2="95" y2="105" stroke="rgba(160,100,240,0.2)" stroke-width="0.5"/>
                     <line x1="30" y1="115" x2="88" y2="115" stroke="rgba(160,100,240,0.15)" stroke-width="0.5"/>
                     <line x1="30" y1="125" x2="92" y2="125" stroke="rgba(160,100,240,0.15)" stroke-width="0.5"/>
                   </g>
-                  <!-- Corner ornaments -->
                   <line x1="4" y1="25"  x2="70" y2="25"  stroke="rgba(160,100,240,0.3)" stroke-width="1"/>
                   <line x1="4" y1="25"  x2="4"  y2="90"  stroke="rgba(160,100,240,0.3)" stroke-width="1"/>
                   <line x1="4" y1="375" x2="70" y2="375" stroke="rgba(197,160,89,0.25)" stroke-width="1"/>
                   <line x1="4" y1="375" x2="4"  y2="310" stroke="rgba(197,160,89,0.25)" stroke-width="1"/>
-                  <!-- Left accent -->
                   <rect x="0" y="0" width="4" height="400" fill="rgba(160,100,240,0.45)"/>
                 </svg>
                 <div class="sl-content">
@@ -762,9 +572,9 @@
                 </div>
               </div>
 
-              <!-- ========== SLIDE 5: FULL-SERVICE — neon circuit board + scanning beam + pulsing nodes ========== -->
+              <!-- SLIDE 5 -->
               <div class="bb-slide-item s5">
-                <svg class="slide-bg-svg" viewBox="0 0 900 400" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" style="z-index:1;">
+                                <svg class="slide-bg-svg" viewBox="0 0 900 400" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" style="z-index:1;">
                   <defs>
                     <radialGradient id="techGlow5" cx="66%" cy="50%" r="50%">
                       <stop offset="0%" stop-color="#00e5ff" stop-opacity="0.18"/>
@@ -772,20 +582,16 @@
                     </radialGradient>
                   </defs>
                   <rect width="900" height="400" fill="url(#techGlow5)"/>
-                  <!-- Circuit trace lines -->
-                  <!-- Horizontal bus lines -->
                   <polyline points="450,80 560,80 560,140 680,140 680,200 780,200" fill="none" stroke="rgba(0,229,255,0.12)" stroke-width="1.5"/>
                   <polyline points="450,200 530,200 530,120 660,120 660,60 800,60" fill="none" stroke="rgba(0,229,255,0.1)" stroke-width="1"/>
                   <polyline points="450,300 560,300 560,240 700,240 700,310 820,310" fill="none" stroke="rgba(0,229,255,0.1)" stroke-width="1"/>
                   <polyline points="550,320 550,360 680,360 680,310" fill="none" stroke="rgba(0,229,255,0.07)" stroke-width="1"/>
                   <polyline points="600,50  600,80"  fill="none" stroke="rgba(0,229,255,0.08)" stroke-width="1"/>
                   <polyline points="750,200 750,260 820,260" fill="none" stroke="rgba(0,229,255,0.08)" stroke-width="1"/>
-                  <!-- Corner nodes (IC chips) -->
                   <rect x="548" y="68"  width="24" height="24" rx="2" fill="rgba(0,229,255,0.08)" stroke="rgba(0,229,255,0.3)" stroke-width="1"/>
                   <rect x="668" y="128" width="24" height="24" rx="2" fill="rgba(0,229,255,0.1)"  stroke="rgba(0,229,255,0.35)" stroke-width="1"/>
                   <rect x="518" y="188" width="24" height="24" rx="2" fill="rgba(0,229,255,0.08)" stroke="rgba(0,229,255,0.28)" stroke-width="1"/>
                   <rect x="548" y="288" width="24" height="24" rx="2" fill="rgba(0,229,255,0.08)" stroke="rgba(0,229,255,0.25)" stroke-width="1"/>
-                  <!-- Pulsing dot nodes -->
                   <circle cx="780" cy="200" r="6" fill="rgba(0,229,255,0.25)" stroke="rgba(0,229,255,0.6)" stroke-width="1.5">
                     <animate attributeName="r" values="6;11;6" dur="1.8s" repeatCount="indefinite"/>
                     <animate attributeName="opacity" values="1;0.4;1" dur="1.8s" repeatCount="indefinite"/>
@@ -798,18 +604,15 @@
                     <animate attributeName="r" values="5;9;5" dur="2.1s" begin="0.8s" repeatCount="indefinite"/>
                     <animate attributeName="opacity" values="1;0.3;1" dur="2.1s" begin="0.8s" repeatCount="indefinite"/>
                   </circle>
-                  <!-- Scanning beam — horizontal sweep -->
                   <rect x="450" y="0" width="2" height="400" fill="rgba(0,229,255,0.6)" opacity="0">
                     <animate attributeName="x" values="450;900;450" dur="3s" repeatCount="indefinite"/>
                     <animate attributeName="opacity" values="0;0.4;0.4;0" dur="3s" repeatCount="indefinite"/>
                   </rect>
-                  <!-- Grid overlay fine -->
                   <line x1="450" y1="0"   x2="900" y2="0"   stroke="rgba(0,229,255,0.04)" stroke-width="1"/>
                   <line x1="450" y1="100" x2="900" y2="100" stroke="rgba(0,229,255,0.03)" stroke-width="1"/>
                   <line x1="450" y1="200" x2="900" y2="200" stroke="rgba(0,229,255,0.03)" stroke-width="1"/>
                   <line x1="450" y1="300" x2="900" y2="300" stroke="rgba(0,229,255,0.03)" stroke-width="1"/>
                   <line x1="450" y1="400" x2="900" y2="400" stroke="rgba(0,229,255,0.04)" stroke-width="1"/>
-                  <!-- Left accent -->
                   <rect x="0" y="0" width="4" height="400" fill="rgba(0,229,255,0.5)"/>
                   <rect x="0" y="0" width="450" height="1" fill="rgba(0,229,255,0.06)"/>
                 </svg>
@@ -862,8 +665,6 @@
           <rect x="0" y="130" width="44" height="10" fill="#1e1e1e" rx="1"/>
           <rect x="962" y="16" width="32" height="122" fill="url(#poleGrad)" rx="2"/>
           <rect x="956" y="130" width="44" height="10" fill="#1e1e1e" rx="1"/>
-          <circle cx="30" cy="8" r="4" fill="#222" stroke="#555" stroke-width="1"/>
-          <circle cx="970" cy="8" r="4" fill="#222" stroke="#555" stroke-width="1"/>
         </svg>
       </div>
     </div>
@@ -879,12 +680,12 @@
         <p>Global advertising and strategic communications reaching your ideal audience.</p>
       </article>
       <article class="svc-card">
-        <div class="svc-icon"><svg viewBox="0 0 24 24"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2"/><circle cx="7" cy="12" r="1.5"/></svg></div>
+        <div class="svc-icon"><svg viewBox="0 0 24 24"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg></div>
         <h3>VIDEO<br>PRODUCTION</h3>
         <p>Video presentations and professional digital editing for elite brands.</p>
       </article>
       <article class="svc-card">
-        <div class="svc-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="5"/><polyline points="10 8 12 7 14 8"/><line x1="12" y1="7" x2="12" y2="17"/></svg></div>
+        <div class="svc-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="5"/><line x1="12" y1="7" x2="12" y2="17"/></svg></div>
         <h3>MARKETING<br>PLANS</h3>
         <p>Customize marketing campaigns and business plans.</p>
       </article>
@@ -899,7 +700,7 @@
         <p>High-performance digital experiences crafted to elevate your brand's online presence.</p>
       </article>
       <article class="svc-card">
-        <div class="svc-icon"><svg viewBox="0 0 24 24"><rect x="1" y="3" width="22" height="14" rx="1"/><line x1="12" y1="17" x2="12" y2="21"/><line x1="5" y1="21" x2="19" y2="21"/><circle cx="12" cy="10" r="2"/><path d="M5 8h2M17 8h2M5 12h2M17 12h2"/></svg></div>
+        <div class="svc-icon"><svg viewBox="0 0 24 24"><rect x="1" y="3" width="22" height="14" rx="1"/><line x1="12" y1="17" x2="12" y2="21"/><line x1="5" y1="21" x2="19" y2="21"/></svg></div>
         <h3>HIGH TRAFFIC BILLBOARD<br>ADVERTISING</h3>
         <p>Turnkey supply and professional installation of state-of-the-art digital billboard systems across the Bahamas.</p>
       </article>
@@ -937,50 +738,6 @@
     </div>
   </section>
 
-  <!-- MEDIABOOK + PULL-UP BANNERS -->
-  <section class="mktg-section">
-    <div class="mktg-inner">
-      <div class="mktg-row">
-        <div class="mktg-img"><img src="mediabook.png" alt="MediaBook"></div>
-        <div class="mktg-text">
-          <span class="eyebrow">Premium Marketing Tool</span>
-          <h2>Get Your <span>MediaBook</span> Today.</h2>
-          <p>A MediaBook is your brand's most powerful leave-behind. Professionally designed and fully customized, it tells your company's story in a format that clients remember long after the meeting ends.</p>
-          <p>From corporate profiles to product catalogues, your MediaBook positions your business as the premium choice in every room it enters.</p>
-          <ul class="mktg-features">
-            <li>Fully customized to your brand identity</li>
-            <li>Premium print quality &mdash; high-gloss &amp; matte finishes</li>
-            <li>Perfect for client meetings, pitches &amp; events</li>
-            <li>Available in multiple sizes and formats</li>
-            <li>Pairs with digital &amp; billboard campaigns</li>
-          </ul>
-          <div class="mktg-price">Custom Pricing <span>/ based on size &amp; quantity</span></div>
-          <button class="consult-btn" onclick="location.href='consultation.html'">ORDER YOUR MEDIABOOK</button>
-        </div>
-      </div>
-      <div class="mktg-row reverse">
-        <div class="mktg-img" style="display:flex;align-items:center;justify-content:center;padding:2rem 0;">
-          <img src="Banner.png" alt="Pull-Up Banners" style="width:100%;max-width:620px;height:460px;object-fit:contain;display:block;mix-blend-mode:multiply;">
-        </div>
-        <div class="mktg-text">
-          <span class="eyebrow">Event &amp; Retail Marketing</span>
-          <h2>Customized <span>Pull-Up Banners</span> 2 for $850.</h2>
-          <p>Make a bold statement at trade shows, events, storefronts, and exhibitions. Our customized pull-up banners are professionally printed with vibrant, eye-catching graphics that stop people in their tracks.</p>
-          <p>Lightweight, portable, and built to last &mdash; these banners go wherever your business goes, keeping your brand front and center every time.</p>
-          <ul class="mktg-features">
-            <li>Full-color professional printing</li>
-            <li>Lightweight &amp; easy to set up in seconds</li>
-            <li>Durable material built for repeated use</li>
-            <li>Custom sizing available</li>
-            <li>Ideal for events, lobbies &amp; storefronts</li>
-          </ul>
-          <div class="mktg-price">$850 <span>/ 2 banners</span></div>
-          <button class="consult-btn" onclick="location.href='consultation.html'">ORDER YOUR BANNERS</button>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- BILLBOARD FRANCHISE + OWN IT -->
   <section class="mktg-section">
     <div class="mktg-inner">
@@ -990,20 +747,16 @@
             <defs>
               <linearGradient id="poleG1" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#1c1c1c"/><stop offset="25%" stop-color="#4a4a4a"/><stop offset="50%" stop-color="#5e5e5e"/><stop offset="75%" stop-color="#3a3a3a"/><stop offset="100%" stop-color="#1a1a1a"/></linearGradient>
               <linearGradient id="frameTopG1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#5a5a5a"/><stop offset="100%" stop-color="#2e2e2e"/></linearGradient>
-              <linearGradient id="frameSideG1" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#4a4a4a"/><stop offset="40%" stop-color="#383838"/><stop offset="100%" stop-color="#1e1e1e"/></linearGradient>
-              <linearGradient id="frameBottomG1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#2a2a2a"/><stop offset="100%" stop-color="#141414"/></linearGradient>
             </defs>
             <ellipse cx="250" cy="375" rx="115" ry="10" fill="rgba(0,0,0,0.18)"/>
             <polygon points="212,265 228,265 220,360 204,360" fill="#1e1e1e"/>
             <polygon points="272,265 288,265 296,360 280,360" fill="#1e1e1e"/>
             <polygon points="234,265 266,265 258,358 242,358" fill="url(#poleG1)"/>
             <rect x="218" y="355" width="64" height="10" rx="1" fill="#2a2a2a"/>
-            <rect x="210" y="363" width="80" height="7" rx="1" fill="#222"/>
-            <rect x="200" y="368" width="100" height="5" rx="1" fill="#181818"/>
             <rect x="44" y="50" width="424" height="220" rx="4" fill="#111"/>
             <rect x="38" y="40" width="426" height="18" rx="3" fill="url(#frameTopG1)"/>
-            <rect x="38" y="252" width="426" height="16" rx="3" fill="url(#frameBottomG1)"/>
-            <rect x="38" y="40" width="16" height="228" rx="3" fill="url(#frameSideG1)"/>
+            <rect x="38" y="252" width="426" height="16" rx="3" fill="#141414"/>
+            <rect x="38" y="40" width="16" height="228" rx="3" fill="#3a3a3a"/>
             <rect x="448" y="40" width="16" height="228" rx="3" fill="#1e1e1e"/>
             <rect x="54" y="58" width="394" height="194" fill="#f4f5f6"/>
             <text x="251" y="152" text-anchor="middle" font-family="Arial Black,Arial,sans-serif" font-weight="900" font-size="20" fill="#c5a059" letter-spacing="2">LEASE</text>
@@ -1045,20 +798,62 @@
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><polyline points="9 18 15 12 9 6"/></svg>
             </button>
             <div class="bb-dots" id="bbDots2">
-              <span class="bb-dot active"></span>
-              <span class="bb-dot"></span>
-              <span class="bb-dot"></span>
-              <span class="bb-dot"></span>
-              <span class="bb-dot"></span>
+              <span class="bb-dot active"></span><span class="bb-dot"></span><span class="bb-dot"></span><span class="bb-dot"></span><span class="bb-dot"></span>
             </div>
           </div>
         </div>
         <div class="mktg-text">
           <span class="eyebrow">Billboard Ownership</span>
           <h2>Don't Want to Lease? <span>Own It.</span></h2>
-          <p>Purchase your own Mediabox solar or digital billboard. Your billboard, Your ruless</p>
+          <p>Purchase your own Mediabox solar or digital billboard. Your billboard, your rules.</p>
           <div class="mktg-price">Contact Us <span>/ for ownership pricing</span></div>
           <button class="consult-btn" onclick="location.href='consultation.html'">ENQUIRE ABOUT OWNERSHIP</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MEDIABOOK + PULL-UP BANNERS — moved above portfolio -->
+  <section class="mktg-section">
+    <div class="mktg-inner">
+      <!-- MediaBook: text LEFT, image RIGHT -->
+      <div class="mktg-row">
+        <div class="mktg-text">
+          <span class="eyebrow">Premium Marketing Tool</span>
+          <h2>Get Your <span>MediaBook</span> Today.</h2>
+          <p>A MediaBook is your brand's most powerful leave-behind. Professionally designed and fully customized, it tells your company's story in a format that clients remember long after the meeting ends.</p>
+          <p>From corporate profiles to product catalogues, your MediaBook positions your business as the premium choice in every room it enters.</p>
+          <ul class="mktg-features">
+            <li>Fully customized to your brand identity</li>
+            <li>Premium print quality &mdash; high-gloss &amp; matte finishes</li>
+            <li>Perfect for client meetings, pitches &amp; events</li>
+            <li>Available in multiple sizes and formats</li>
+            <li>Pairs with digital &amp; billboard campaigns</li>
+          </ul>
+          <div class="mktg-price">Custom Pricing <span>/ based on size &amp; quantity</span></div>
+          <button class="consult-btn" onclick="location.href='consultation.html'">ORDER YOUR MEDIABOOK</button>
+        </div>
+        <div class="mktg-img"><img src="mediabook.png" alt="MediaBook"></div>
+      </div>
+      <!-- Pull-Up Banners: text RIGHT, image LEFT -->
+      <div class="mktg-row">
+        <div class="mktg-img" style="display:flex;align-items:center;justify-content:center;padding:2rem 0;">
+          <img src="Banner.png" alt="Pull-Up Banners" style="width:100%;max-width:620px;height:460px;object-fit:contain;display:block;mix-blend-mode:multiply;">
+        </div>
+        <div class="mktg-text">
+          <span class="eyebrow">Event &amp; Retail Marketing</span>
+          <h2>Customized <span>Pull-Up Banners</span> 2 for $850.</h2>
+          <p>Make a bold statement at trade shows, events, storefronts, and exhibitions. Our customized pull-up banners are professionally printed with vibrant, eye-catching graphics that stop people in their tracks.</p>
+          <p>Lightweight, portable, and built to last &mdash; these banners go wherever your business goes, keeping your brand front and center every time.</p>
+          <ul class="mktg-features">
+            <li>Full-color professional printing</li>
+            <li>Lightweight &amp; easy to set up in seconds</li>
+            <li>Durable material built for repeated use</li>
+            <li>Custom sizing available</li>
+            <li>Ideal for events, lobbies &amp; storefronts</li>
+          </ul>
+          <div class="mktg-price">$850 <span>/ 2 banners</span></div>
+          <button class="consult-btn" onclick="location.href='consultation.html'">ORDER YOUR BANNERS</button>
         </div>
       </div>
     </div>
@@ -1068,14 +863,16 @@
   <section class="portfolio" id="portfolio">
     <h2 class="sec-title">Selected Client Portfolio</h2>
     <div class="port-track">
+      <!-- BICCU — photo only -->
       <article class="port-item">
-        <div class="prod-media"><img src="BICCU.jpg" alt="BICCU Mediabook"></div>
+        <div class="prod-media-photo"><img src="BICCU.jpg" alt="BICCU Mediabook"></div>
         <div class="port-info"><h4>Corporate Marketing: Mediabook</h4><p>BICCU</p></div>
       </article>
+      <!-- NESTLE — photo + video toggle -->
       <article class="port-item">
-        <div class="prod-media">
+        <div class="prod-media-video">
           <img src="Nestle.webp" alt="Nestle Billboard">
-          <video muted loop playsinline src="Nestle-Video.MP4"></video>
+          <video muted loop playsinline src="Nestle-Video.MP4" style="object-fit:cover;"></video>
           <div class="media-toggle">
             <button class="active" onclick="showPhoto(this)">PHOTO</button>
             <button onclick="showVideo(this)">VIDEO</button>
@@ -1083,26 +880,14 @@
         </div>
         <div class="port-info"><h4>Corporate Campaign: Billboard</h4><p>NESTLE</p></div>
       </article>
+      <!-- FORD — photo only -->
       <article class="port-item">
-        <div class="prod-media">
-          <img src="Ford2.webp" alt="Ford Billboard">
-          <video muted loop playsinline src="billboard.mp4"></video>
-          <div class="media-toggle">
-            <button class="active" onclick="showPhoto(this)">PHOTO</button>
-            <button onclick="showVideo(this)">VIDEO</button>
-          </div>
-        </div>
+        <div class="prod-media-photo"><img src="Ford2.webp" alt="Ford Billboard"></div>
         <div class="port-info"><h4>Corporate Advertising</h4><p>FORD</p></div>
       </article>
+      <!-- Theatre — photo only -->
       <article class="port-item">
-        <div class="prod-media">
-          <img src="theatre.jpg" alt="Private Events">
-          <video muted loop playsinline src="billboard.mp4"></video>
-          <div class="media-toggle">
-            <button class="active" onclick="showPhoto(this)">PHOTO</button>
-            <button onclick="showVideo(this)">VIDEO</button>
-          </div>
-        </div>
+        <div class="prod-media-photo"><img src="theatre.jpg" alt="Private Events"></div>
         <div class="port-info"><h4>Private Events</h4><p>Sold-Out Theatre</p></div>
       </article>
     </div>
@@ -1139,7 +924,7 @@
         </div>
         <div class="faq-item">
           <button class="faq-question" onclick="toggleFaq(this)"><span>How do I get started with MediaBox?</span><div class="faq-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></button>
-          <div class="faq-answer"><p>Simply request a consultation using the button on our website. One of our team members will reach out to understand your goals, walk you through available locations and packages, and put together a proposal tailored to your business. You can also reach us directly at Mediaboxbahamas@gmail.com or call +1 (242) 433-2528.</p></div>
+          <div class="faq-answer"><p>Simply request a consultation using the button on our website. One of our team members will reach out to understand your goals, walk you through available locations and packages, and put together a proposal tailored to your business. You can also reach us directly at <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="eea38b8a878f8c81968c8f868f838f9dae89838f8782c08d8183">[email&#160;protected]</a> or call +1 (242) 433-2528.</p></div>
         </div>
       </div>
     </div>
@@ -1152,7 +937,7 @@
     <div class="ft-col">
       <h4>Contact Us</h4>
       <p>Braynen Building, Nassau, Bahamas</p>
-      <a href="mailto:Mediaboxbahamas@gmail.com">Mediaboxbahamas@gmail.com</a>
+      <a href="/cdn-cgi/l/email-protection#226f47464b43404d5a40434a434f435162454f434b4e0c414d4f"><span class="__cf_email__" data-cfemail="48052d2c21292a27302a29202925293b082f25292124662b2725">[email&#160;protected]</span></a>
       <p>+1 (242) 433-2528</p>
     </div>
     <div class="ft-col">
@@ -1167,9 +952,8 @@
   </div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 const bgCanvas = document.getElementById('bg-canvas');
-bgCanvas.style.cssText = 'position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:0;pointer-events:none;';
 const bgCtx = bgCanvas.getContext('2d');
 function resizeBg() { bgCanvas.width = innerWidth; bgCanvas.height = innerHeight; }
 resizeBg();
@@ -1185,124 +969,80 @@ function drawBg() {
 }
 drawBg();
 
-/* ---- Slide 1: gold particle canvas ---- */
 (function(){
   const c = document.getElementById('slideCanvas1');
   if(!c) return;
   const ctx = c.getContext('2d');
   let pts = [];
-  function init(){
-    c.width = c.offsetWidth; c.height = c.offsetHeight;
-    pts = [];
-    for(let i=0;i<55;i++) pts.push({
-      x: Math.random()*c.width, y: Math.random()*c.height,
-      r: Math.random()*1.5+0.3,
-      vx:(Math.random()-0.5)*0.25,
-      vy:(Math.random()-0.5)*0.2,
-      a: Math.random()
-    });
-  }
-  function draw(){
-    ctx.clearRect(0,0,c.width,c.height);
-    pts.forEach(p=>{
-      p.x+=p.vx; p.y+=p.vy; p.a+=0.008;
-      if(p.x<0||p.x>c.width) p.vx*=-1;
-      if(p.y<0||p.y>c.height) p.vy*=-1;
-      const alpha = 0.15+Math.abs(Math.sin(p.a))*0.45;
-      ctx.beginPath();
-      ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
-      ctx.fillStyle = `rgba(197,160,89,${alpha})`;
-      ctx.fill();
-    });
-    requestAnimationFrame(draw);
-  }
-  init(); draw();
-  window.addEventListener('resize', init);
+  function init(){ c.width = c.offsetWidth; c.height = c.offsetHeight; pts = []; for(let i=0;i<55;i++) pts.push({x:Math.random()*c.width,y:Math.random()*c.height,r:Math.random()*1.5+0.3,vx:(Math.random()-0.5)*0.25,vy:(Math.random()-0.5)*0.2,a:Math.random()}); }
+  function draw(){ ctx.clearRect(0,0,c.width,c.height); pts.forEach(p=>{p.x+=p.vx;p.y+=p.vy;p.a+=0.008;if(p.x<0||p.x>c.width)p.vx*=-1;if(p.y<0||p.y>c.height)p.vy*=-1;const alpha=0.15+Math.abs(Math.sin(p.a))*0.45;ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle=`rgba(197,160,89,${alpha})`;ctx.fill();}); requestAnimationFrame(draw); }
+  init(); draw(); window.addEventListener('resize', init);
 })();
 
 (function(){
-  var cur = 0, total = 5;
-  var inner = document.getElementById('bbHeroInner');
-  var dots  = document.querySelectorAll('.bb-sdot');
-  window.bbHeroGo = function(n) {
-    cur = (n + total) % total;
-    inner.style.transform = 'translateX(-' + (cur * 100) + '%)';
-    dots.forEach(function(d,i){ d.classList.toggle('on', i === cur); });
-  };
-  setInterval(function(){ bbHeroGo(cur + 1); }, 4500);
+  var cur=0, total=5;
+  var inner=document.getElementById('bbHeroInner');
+  var dots=document.querySelectorAll('.bb-sdot');
+  window.bbHeroGo=function(n){ cur=(n+total)%total; inner.style.transform='translateX(-'+(cur*100)+'%)'; dots.forEach(function(d,i){d.classList.toggle('on',i===cur);}); };
+  setInterval(function(){ bbHeroGo(cur+1); }, 4500);
 })();
 
 const hamburger = document.getElementById('hamburger');
 const mainNav = document.getElementById('main-nav');
-if (hamburger && mainNav) {
-  hamburger.addEventListener('click', () => { hamburger.classList.toggle('open'); mainNav.classList.toggle('open'); });
-  mainNav.querySelectorAll('a').forEach(link => { link.addEventListener('click', () => { hamburger.classList.remove('open'); mainNav.classList.remove('open'); }); });
+if(hamburger && mainNav){
+  hamburger.addEventListener('click',()=>{hamburger.classList.toggle('open');mainNav.classList.toggle('open');});
+  mainNav.querySelectorAll('a').forEach(link=>{link.addEventListener('click',()=>{hamburger.classList.remove('open');mainNav.classList.remove('open');});});
 }
 
-function dismissSplash() {
-  setTimeout(() => { const s = document.getElementById('splash'); if (s) s.classList.add('hidden'); document.body.classList.remove('no-scroll'); }, 1600);
+function dismissSplash(){
+  setTimeout(()=>{const s=document.getElementById('splash');if(s)s.classList.add('hidden');document.body.classList.remove('no-scroll');},1600);
 }
-if (document.readyState === 'complete') { dismissSplash(); }
-else { window.addEventListener('load', dismissSplash); setTimeout(() => { const s = document.getElementById('splash'); if(s) s.classList.add('hidden'); document.body.classList.remove('no-scroll'); }, 5000); }
+if(document.readyState==='complete'){dismissSplash();}
+else{window.addEventListener('load',dismissSplash);setTimeout(()=>{const s=document.getElementById('splash');if(s)s.classList.add('hidden');document.body.classList.remove('no-scroll');},5000);}
 
-function showPhoto(btn) {
-  const card = btn.closest('.port-item');
+function showPhoto(btn){
+  const card=btn.closest('.port-item');
   card.classList.remove('playing');
   card.querySelector('video').pause();
   btn.classList.add('active');
   btn.nextElementSibling.classList.remove('active');
 }
-function showVideo(btn) {
-  const card = btn.closest('.port-item');
+function showVideo(btn){
+  const card=btn.closest('.port-item');
   card.classList.add('playing');
   card.querySelector('video').play();
   btn.classList.add('active');
   btn.previousElementSibling.classList.remove('active');
 }
 
-function toggleFaq(btn) {
-  const item = btn.parentElement;
-  const isOpen = item.classList.contains('open');
-  document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
-  if (!isOpen) item.classList.add('open');
+function toggleFaq(btn){
+  const item=btn.parentElement;
+  const isOpen=item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(el=>el.classList.remove('open'));
+  if(!isOpen)item.classList.add('open');
 }
 
-(function() {
-  var track = document.getElementById('bbTrack2');
-  if (!track) return;
-  var dots = document.querySelectorAll('#bbDots2 .bb-dot');
-  var total = dots.length, current = 0, autoTimer;
-  function goTo(n) {
-    current = (n + total) % total;
-    track.style.transform = 'translateX(-' + (current * 100) + '%)';
-    dots.forEach(function(d,i){ d.classList.toggle('active', i === current); });
-  }
-  document.getElementById('bbPrev2').addEventListener('click', function(){ clearInterval(autoTimer); goTo(current-1); startAuto(); });
-  document.getElementById('bbNext2').addEventListener('click', function(){ clearInterval(autoTimer); goTo(current+1); startAuto(); });
-  dots.forEach(function(d,i){ d.addEventListener('click', function(){ clearInterval(autoTimer); goTo(i); startAuto(); }); });
-  function startAuto(){ autoTimer = setInterval(function(){ goTo(current+1); }, 3500); }
+(function(){
+  var track=document.getElementById('bbTrack2');
+  if(!track)return;
+  var dots=document.querySelectorAll('#bbDots2 .bb-dot');
+  var total=dots.length, current=0, autoTimer;
+  function goTo(n){ current=(n+total)%total; track.style.transform='translateX(-'+(current*100)+'%)'; dots.forEach(function(d,i){d.classList.toggle('active',i===current);}); }
+  document.getElementById('bbPrev2').addEventListener('click',function(){clearInterval(autoTimer);goTo(current-1);startAuto();});
+  document.getElementById('bbNext2').addEventListener('click',function(){clearInterval(autoTimer);goTo(current+1);startAuto();});
+  dots.forEach(function(d,i){d.addEventListener('click',function(){clearInterval(autoTimer);goTo(i);startAuto();});});
+  function startAuto(){autoTimer=setInterval(function(){goTo(current+1);},3500);}
   startAuto();
 })();
 
-const dot  = document.getElementById('cursor-dot');
-const ring = document.getElementById('cursor-ring');
-let mouseX = 0, mouseY = 0, ringX = 0, ringY = 0;
-document.addEventListener('mousemove', e => {
-  mouseX = e.clientX; mouseY = e.clientY;
-  dot.style.left = mouseX + 'px'; dot.style.top = mouseY + 'px';
-});
-(function animateRing() {
-  ringX += (mouseX - ringX) * 0.12;
-  ringY += (mouseY - ringY) * 0.12;
-  ring.style.left = ringX + 'px'; ring.style.top = ringY + 'px';
-  requestAnimationFrame(animateRing);
-})();
-document.querySelectorAll('a, button').forEach(el => {
-  el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
-  el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
-});
-document.addEventListener('mousedown', () => document.body.classList.add('cursor-click'));
-document.addEventListener('mouseup',   () => document.body.classList.remove('cursor-click'));
+const dot=document.getElementById('cursor-dot');
+const ring=document.getElementById('cursor-ring');
+let mouseX=0,mouseY=0,ringX=0,ringY=0;
+document.addEventListener('mousemove',e=>{mouseX=e.clientX;mouseY=e.clientY;dot.style.left=mouseX+'px';dot.style.top=mouseY+'px';});
+(function animateRing(){ringX+=(mouseX-ringX)*0.12;ringY+=(mouseY-ringY)*0.12;ring.style.left=ringX+'px';ring.style.top=ringY+'px';requestAnimationFrame(animateRing);})();
+document.querySelectorAll('a, button').forEach(el=>{el.addEventListener('mouseenter',()=>document.body.classList.add('cursor-hover'));el.addEventListener('mouseleave',()=>document.body.classList.remove('cursor-hover'));});
+document.addEventListener('mousedown',()=>document.body.classList.add('cursor-click'));
+document.addEventListener('mouseup',()=>document.body.classList.remove('cursor-click'));
 </script>
 
 <script type="application/ld+json">
